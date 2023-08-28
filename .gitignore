@@ -192,3 +192,5 @@ FakesAssemblies/
 .vs/
 
 /src/MiNET/MiNET.Console/dist
+/src/MiNET/Worlds
+src/MiNET/MiNET.Console/start.bat
