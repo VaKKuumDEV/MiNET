@@ -474,16 +474,16 @@ namespace MiNET
 				case 21: // enchanting
 				case 22: // enchanting
 				case 41: // loom
-				case 58: // cursor
-				case 59: // creative
+				case 59: // cursor
+				case 60: // creative
 					item = _player.Inventory.UiInventory.Slots[slot];
 					break;
 				case 12: // auto
-				case 27: // hotbar
-				case 28: // player inventory
+				case 28: // hotbar
+				case 29: // player inventory
 					item = _player.Inventory.Slots[slot];
 					break;
-				case 33: // off-hand
+				case 34: // off-hand
 					item = _player.Inventory.OffHand;
 					break;
 				case 6: // armor
