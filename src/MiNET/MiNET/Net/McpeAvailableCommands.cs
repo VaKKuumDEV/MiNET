@@ -62,8 +62,19 @@ namespace MiNET.Net
 					stringValues.Add(str);
 				}
 			}
+			
+			int chainedSubcommandNames = stringValues.Count(); 
+			{
+				uint count = ReadUnsignedVarInt();
+				Log.Debug($"Chained subcommand values {count}");
+				for (int i = 0; i < count; i++)
+				{
+					string s = ReadString();
+					Log.Debug(s);
+				}
+			}
+			
 			int stringValuesCount = stringValues.Count();
-
 			{
 				uint count = ReadUnsignedVarInt();
 				Log.Debug($"Postfix values {count}");
@@ -110,6 +121,8 @@ namespace MiNET.Net
 					enums[i] = new EnumData(enumName, enumValues);
 				}
 			}
+			
+			ReadUnsignedVarInt(); //chained subcommand data
 
 			{
 				uint count = ReadUnsignedVarInt();
@@ -253,12 +266,14 @@ namespace MiNET.Net
 				if (CommandSet == null || CommandSet.Count == 0)
 				{
 					Log.Warn("No commands to send");
-					WriteUnsignedVarInt(0);
-					WriteUnsignedVarInt(0);
-					WriteUnsignedVarInt(0);
-					WriteUnsignedVarInt(0);
-					WriteUnsignedVarInt(0);
-					WriteUnsignedVarInt(0);
+					WriteUnsignedVarInt(0); // enum value size
+					WriteUnsignedVarInt(0); // ch subcom value
+					WriteUnsignedVarInt(0); // postfix size
+					WriteUnsignedVarInt(0); // enums size
+					WriteUnsignedVarInt(0); // subcom data
+					WriteUnsignedVarInt(0); // command size
+					WriteUnsignedVarInt(0); // soft enum size
+					WriteUnsignedVarInt(0); // enum constraints
 					return;
 				}
 
@@ -306,7 +321,8 @@ namespace MiNET.Net
 						//Log.Debug($"String: {s}, {(short) stringList.IndexOf(s)} ");
 					}
 				}
-
+				
+				WriteUnsignedVarInt(0); // subcommand values
 				WriteUnsignedVarInt(0); // Postfixes
 
 				List<string> enumList = new List<string>();
@@ -374,6 +390,8 @@ namespace MiNET.Net
 							//Log.Debug($"EnumType: {aliasEnum}, {enumValue}, {stringList.IndexOf(enumValue)} ");
 						}
 					}
+					
+					WriteUnsignedVarInt(0);  // chained subcommand data
 
 					var overloads = command.Versions[0].Overloads;
 					foreach (var overload in overloads.Values)
@@ -415,10 +433,13 @@ namespace MiNET.Net
 						}
 					}
 				}
+				
+				WriteUnsignedVarInt(0);  // chained subcommands
 
 				WriteUnsignedVarInt((uint) commands.Count);
 				foreach (var command in commands.Values)
 				{
+					Write(false); // changing?
 					Write(command.Name);
 					Write(command.Versions[0].Description);
 					Write((short) 0); // flags
@@ -433,7 +454,6 @@ namespace MiNET.Net
 					{
 						Write((int) -1); // Enum index
 					}
-
 
 					//Log.Warn($"Writing command {command.Name}");
 

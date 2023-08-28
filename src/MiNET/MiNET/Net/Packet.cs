@@ -35,6 +35,7 @@ using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
 using System.Threading;
+using System.Xml.Linq;
 using fNbt;
 using log4net;
 using Microsoft.IO;
@@ -63,7 +64,7 @@ namespace MiNET.Net
 		[JsonIgnore] public bool ForceClear;
 		[JsonIgnore] public bool NoBatch { get; set; }
 
-		[JsonIgnore] public byte Id;
+		[JsonIgnore] public int Id;
 		[JsonIgnore] public bool IsMcpe;
 
 		protected MemoryStreamReader _reader; // new construct for reading
@@ -77,7 +78,17 @@ namespace MiNET.Net
 		{
 			Timer.Start();
 		}
+		
+		public void Write(sbyte value)
+		{
+			_writer.Write(value);
+		}
 
+		public sbyte ReadSByte()
+		{
+			return (sbyte)_reader.ReadByte();
+		}
+		
 		public void Write(byte value)
 		{
 			_writer.Write(value);
@@ -1860,6 +1871,41 @@ namespace MiNET.Net
 			return dictionary;
 		}
 
+		public AttributeModifiers ReadAttributeModifiers()
+		{
+			var modifiers = new AttributeModifiers();
+			uint count = ReadUnsignedVarInt();
+			for (int i = 0; i < count; i++)
+			{
+				AttributeModifier modifier = new AttributeModifier
+				{
+					Id = ReadString(),
+					Name = ReadString(),
+					Amount = ReadFloat(),
+					Operations = ReadInt(),
+					Operand = ReadInt(),
+					Serializable = ReadBool(),
+				};
+				modifiers[modifier.Name] = modifier;
+			}
+
+			return modifiers;
+		}
+
+		public void Write(AttributeModifiers modifiers)
+		{
+			WriteUnsignedVarInt((uint) modifiers.Count);
+			foreach (AttributeModifier modifier in modifiers.Values)
+			{
+				Write(modifier.Id);
+				Write(modifier.Name);
+				Write(modifier.Amount);
+				Write(modifier.Operations); // unknown
+				Write(modifier.Operand);
+				Write(modifier.Serializable);
+			}
+		}
+
 		public PlayerAttributes ReadPlayerAttributes()
 		{
 			var attributes = new PlayerAttributes();
@@ -1873,8 +1919,8 @@ namespace MiNET.Net
 					Value = ReadFloat(),
 					Default = ReadFloat(),
 					Name = ReadString(),
+					Modifiers = ReadAttributeModifiers()
 				};
-
 				attributes[attribute.Name] = attribute;
 			}
 
@@ -1891,6 +1937,7 @@ namespace MiNET.Net
 				Write(attribute.Value);
 				Write(attribute.Default); // unknown
 				Write(attribute.Name);
+				Write(attribute.Modifiers);
 			}
 		}
 
@@ -2174,6 +2221,49 @@ namespace MiNET.Net
 				Write(record.Name);
 				Write(record.StatesCacheNbt);
 			}
+		}
+
+		public void Write(AbilityLayer layer)
+		{
+			Write((ushort)layer.Type);
+			Write((uint)layer.Abilities);
+			Write((uint)layer.Values);
+			Write(layer.FlySpeed);
+			Write(layer.WalkSpeed);
+		}
+
+		public AbilityLayer ReadAbilityLayer()
+		{
+			AbilityLayer layer = new AbilityLayer();
+			layer.Type = (AbilityLayerType) ReadUshort();
+			layer.Abilities = (PlayerAbility)ReadUint();
+			layer.Values = ReadUint();
+			layer.FlySpeed = ReadFloat();
+			layer.WalkSpeed = ReadFloat();
+
+			return layer;
+		}
+
+		public void Write(AbilityLayers layers)
+		{
+			Write((byte)layers.Count);
+
+			foreach (var layer in layers)
+			{
+				Write(layer);
+			}
+		}
+		
+		public AbilityLayers ReadAbilityLayers()
+		{
+			AbilityLayers layers = new AbilityLayers();
+			var count = ReadByte();
+
+			for (int i = 0; i < count; i++)
+			{
+				layers.Add(ReadAbilityLayer());
+			}
+			return layers;
 		}
 
 		public void Write(EntityLink link)
@@ -2492,6 +2582,7 @@ namespace MiNET.Net
 			Write(skin.IsPersonaSkin);
 			Write(skin.Cape.OnClassicSkin);
 			Write(skin.IsPrimaryUser);
+			Write(skin.isOverride);
 		}
 
 		public Skin ReadSkin()
@@ -2561,6 +2652,7 @@ namespace MiNET.Net
 			skin.IsPersonaSkin = ReadBool();
 			skin.Cape.OnClassicSkin = ReadBool();
 			skin.IsPrimaryUser = ReadBool();
+			skin.isOverride = ReadBool();
 			//Log.Debug($"SkinId={skin.SkinId}");
 			//Log.Debug($"SkinData lenght={skin.Data.Length}");
 			//Log.Debug($"CapeData lenght={skin.Cape.Data.Length}");
@@ -2579,6 +2671,7 @@ namespace MiNET.Net
 		const byte ShulkerBox = 5;
 		const byte ShapelessChemistry = 6;
 		const byte ShapedChemistry = 7;
+		const byte SmithingTransform = 8;
 
 		public void Write(Recipes recipes)
 		{
@@ -2648,6 +2741,31 @@ namespace MiNET.Net
 						}
 						Write(rec.Result);
 						Write(rec.Block);
+						break;
+					}
+					case SmithingTransformRecipe smithingTransformRecipe:
+					{
+							//WriteSignedVarInt(SmithingTransform); // Type
+							var rec = smithingTransformRecipe;
+							Write(rec.Id.ToString());
+							WriteRecipeIngredient(rec.Template);
+							WriteRecipeIngredient(rec.Input);
+							WriteRecipeIngredient(rec.Addition);
+							Write(rec.Output, false);
+							Write(rec.Block);
+							WriteVarInt(smithingTransformRecipe.UniqueId); // unique id
+							break;
+					}
+					case SmithingTrimRecipe smithingTrimRecipe:
+					{
+						//WriteSignedVarInt(SmithingTransform); // Type
+						var rec = smithingTrimRecipe;
+						Write(rec.Id.ToString());
+						WriteRecipeIngredient(rec.Template);
+						WriteRecipeIngredient(rec.Input);
+						WriteRecipeIngredient(rec.Addition);
+						Write(rec.Block);
+						WriteVarInt(smithingTrimRecipe.UniqueId); // unique id
 						break;
 					}
 					case MultiRecipe multiRecipe:
@@ -2732,6 +2850,20 @@ namespace MiNET.Net
 						recipe.UniqueId = ReadVarInt(); // unique id
 						recipes.Add(recipe);
 						//Log.Error("Read shaped recipe");
+						break;
+					}
+					case SmithingTransform:
+					{
+						var recipe = new SmithingTransformRecipe();
+						ReadString(); // some unique id
+						recipe.Input = ReadRecipeIngredient();
+						recipe.Addition = ReadRecipeIngredient();
+						recipe.Output = ReadItem(false);
+						recipe.Id = ReadUUID(); // Id
+						recipe.Block = ReadString(); // block?
+						recipe.UniqueId = ReadVarInt(); // unique id
+						recipes.Add(recipe);
+						//Log.Error("Read smithing recipe");
 						break;
 					}
 					case Furnace:
@@ -2838,12 +2970,13 @@ namespace MiNET.Net
 		{
 			if (stack == null || stack.Id == 0)
 			{
+				Write(false);
 				WriteVarInt(0);
 				return;
 			}
-
-			WriteVarInt(stack.Id);
-			WriteVarInt(stack.Metadata);
+			Write(true);
+			Write(stack.Id);
+			Write(stack.Metadata);
 			WriteVarInt(stack.Count);
 		}
 
@@ -2855,8 +2988,8 @@ namespace MiNET.Net
 				return new ItemAir();
 			}
 
-			short metadata = (short) ReadVarInt();
-			int count = ReadVarInt();
+			short metadata = (short) ReadShort();
+			int count = ReadShort();
 
 			return ItemFactory.GetItem(id, metadata, count);
 		}
@@ -2967,11 +3100,12 @@ namespace MiNET.Net
 			WriteUnsignedVarInt((uint) map.UpdateType);
 			Write((byte) 0); // dimension
 			Write(false); // Locked
+			Write(map.Origin);
 
 			if ((map.UpdateType & MapUpdateFlagInitialisation) != 0)
 			{
-				WriteUnsignedVarInt(1);
-				WriteSignedVarLong(map.MapId);
+				WriteUnsignedVarInt(0);
+				//WriteSignedVarLong(map.MapId);
 			}
 
 			if ((map.UpdateType & (MapUpdateFlagInitialisation | MapUpdateFlagDecoration | MapUpdateFlagTexture)) != 0)
@@ -2981,6 +3115,23 @@ namespace MiNET.Net
 
 			if ((map.UpdateType & MapUpdateFlagDecoration) != 0)
 			{
+				var countTrackedObj = map.TrackedObjects.Length;
+
+				WriteUnsignedVarInt((uint) countTrackedObj);
+				foreach (var trackedObject in map.TrackedObjects)
+				{
+					if (trackedObject is EntityMapTrackedObject entity)
+					{
+						Write(0);
+						WriteSignedVarLong(entity.EntityId);
+					}
+					else if (trackedObject is BlockMapTrackedObject block)
+					{
+						Write(1);
+						Write(block.Coordinates);
+					}
+				}
+
 				var count = map.Decorators.Length;
 
 				WriteUnsignedVarInt((uint) count);
@@ -3026,7 +3177,7 @@ namespace MiNET.Net
 						byte g = map.Data[i++];
 						byte b = map.Data[i++];
 						byte a = map.Data[i++];
-						uint color = BitConverter.ToUInt32(new byte[] {r, g, b, 0xff}, 0);
+						uint color = BitConverter.ToUInt32(new byte[] { r, g, b, 0xff }, 0);
 						WriteUnsignedVarInt(color);
 					}
 				}
@@ -3437,17 +3588,17 @@ namespace MiNET.Net
 
 		public void Write(SubChunkPositionOffset offset)
 		{
-			Write((byte)offset.XOffset);
-			Write((byte)offset.YOffset);
-			Write((byte)offset.ZOffset);
+			Write(offset.XOffset);
+			Write(offset.YOffset);
+			Write(offset.ZOffset);
 		}
 
 		public SubChunkPositionOffset ReadSubChunkPositionOffset()
 		{
 			SubChunkPositionOffset result = new SubChunkPositionOffset();
-			result.XOffset = (sbyte)ReadByte();
-			result.YOffset = (sbyte)ReadByte();
-			result.ZOffset = (sbyte)ReadByte();
+			result.XOffset = ReadSByte();
+			result.YOffset = ReadSByte();
+			result.ZOffset = ReadSByte();
 			return result;
 		}
 
@@ -3517,7 +3668,75 @@ namespace MiNET.Net
 
 			return definitions;
 		}
-		
+
+		public void Write(PropertySyncData syncData)
+		{
+			if (syncData == null)
+			{
+				WriteUnsignedVarInt(0);
+				WriteUnsignedVarInt(0);
+				return;
+			}
+			WriteUnsignedVarInt((uint) syncData.intProperties.Count);
+
+			foreach (var intP in syncData.intProperties)
+			{
+				WriteUnsignedVarInt(intP.Key);
+				WriteSignedVarInt(intP.Value);
+			}
+
+			WriteUnsignedVarInt((uint) syncData.floatProperties.Count);
+
+			foreach (var intF in syncData.floatProperties)
+			{
+				WriteUnsignedVarInt(intF.Key);
+				Write(intF.Value);
+			}
+		}
+
+		public PropertySyncData ReadPropertySyncData()
+		{
+			PropertySyncData syncData = new PropertySyncData();
+			var countInt = ReadUnsignedVarInt();
+			for (int i = 0; i < countInt; i++)
+			{
+				syncData.intProperties.Add(ReadUnsignedVarInt(), ReadVarInt());
+			}
+
+			var countFloat = ReadUnsignedVarInt();
+			for (int i = 0; i < countFloat; i++)
+			{
+				syncData.floatProperties.Add(ReadUnsignedVarInt(), ReadFloat());
+			}
+			return syncData;
+		}
+
+		public ModalFormInfo ReadModalFormInfo()
+		{
+			ModalFormInfo form = new ModalFormInfo();
+			form.formId = ReadUnsignedVarInt();
+			if (form.isData = ReadBool())
+			{
+				form.data = ReadString();
+			}
+			if (form.isCancelReason = ReadBool())
+			{
+				form.cancelReason = ReadByte();
+			}
+			return form;
+		}
+
+		public void Write(ModalFormInfo form)
+		{
+			Write(form.formId);
+			Write(form.isData);
+			if (form.isData)
+				Write(form.data);
+			Write(form.isCancelReason);
+			if (form.isCancelReason)
+				Write(form.cancelReason);
+		}
+
 		public bool CanRead()
 		{
 			return _reader.Position < _reader.Length;
@@ -3601,7 +3820,7 @@ namespace MiNET.Net
 		{
 			_buffer.Position = 0;
 			if (IsMcpe) WriteVarInt(Id);
-			else Write(Id);
+			else Write((byte)Id);
 		}
 
 		[Obsolete("Use decode with ReadOnlyMemory<byte> instead.")]
@@ -3630,7 +3849,7 @@ namespace MiNET.Net
 
 		protected virtual void DecodePacket()
 		{
-			Id = IsMcpe ? (byte) ReadVarInt() : ReadByte();
+			Id = IsMcpe ? ReadVarInt() : ReadByte();
 		}
 
 		public abstract void PutPool();

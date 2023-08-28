@@ -149,6 +149,10 @@ namespace MiNET
 			//MiNetServer.FastThreadPool.QueueUserWorkItem(() => { Start(null); });
 		}
 
+		public void HandleMcpeRequestNetworkSettings(McpeRequestNetworkSettings message)
+		{
+		}
+
 		public virtual void HandleMcpeScriptCustomEvent(McpeScriptCustomEvent message)
 		{
 		}
@@ -768,18 +772,89 @@ namespace MiNET
 
 		public virtual void SendAdventureSettings()
 		{
-			McpeAdventureSettings mcpeAdventureSettings = McpeAdventureSettings.CreateObject();
+			McpeUpdateAdventureSettings settings = McpeUpdateAdventureSettings.CreateObject();
+			settings.noPvm = IsNoPvm;
+			settings.noMvp = IsNoMvp;
+			settings.autoJump = IsAutoJump;
+			settings.immutableWorld = IsWorldImmutable;
+			settings.showNametags = true;
+			SendPacket(settings);
+		}
 
-			var flags = GetAdventureFlags();
+		public virtual void SendAbilities()
+		{
+			McpeUpdateAbilities packet = McpeUpdateAbilities.CreateObject();
+			packet.layers = GetAbilities();
+			packet.commandPermissions = (byte) CommandPermission;
+			packet.playerPermissions = (byte) PermissionLevel;
+			packet.entityUniqueId = BinaryPrimitives.ReverseEndianness(EntityId);
+			SendPacket(packet);
+		}
 
-			mcpeAdventureSettings.flags = flags;
-			mcpeAdventureSettings.commandPermission = (uint) CommandPermission;
-			mcpeAdventureSettings.actionPermissions = (uint) ActionPermissions;
-			mcpeAdventureSettings.permissionLevel = (uint) PermissionLevel;
-			mcpeAdventureSettings.customStoredPermissions = (uint) 0;
-			mcpeAdventureSettings.entityUniqueId = BinaryPrimitives.ReverseEndianness(EntityId);
+		private AbilityLayers GetAbilities()
+		{
+			PlayerAbility abilities = 0;
+			PlayerAbility values = 0;
 
-			SendPacket(mcpeAdventureSettings);
+			if (GameMode.AllowsFlying())
+			{
+				abilities |= PlayerAbility.MayFly;
+
+				if (IsFlying)
+				{
+					abilities |= PlayerAbility.Flying;
+				}
+			}
+
+			if (!GameMode.HasCollision())
+			{
+				abilities |= PlayerAbility.NoClip;
+			}
+
+			if (!GameMode.AllowsTakingDamage())
+			{
+				abilities |= PlayerAbility.Invulnerable;
+			}
+
+			if (GameMode.HasCreativeInventory())
+			{
+				abilities |= PlayerAbility.InstantBuild;
+			}
+
+			if (GameMode.AllowsEditing())
+			{
+				abilities |= PlayerAbility.Build | PlayerAbility.Mine;
+			}
+
+			if (GameMode.AllowsInteraction())
+			{
+				abilities |= PlayerAbility.DoorsAndSwitches | PlayerAbility.OpenContainers | PlayerAbility.AttackPlayers | PlayerAbility.AttackMobs;
+			}
+
+			if (PermissionLevel == PermissionLevel.Operator)
+			{
+				abilities |= PlayerAbility.OperatorCommands;
+			}
+
+			if (IsMuted)
+			{
+				abilities |= PlayerAbility.Muted;
+			}
+
+			var layers = new AbilityLayers();
+
+			var baseLayer = new AbilityLayer()
+			{
+				Type = AbilityLayerType.Base,
+				Abilities = abilities,
+				Values = (uint) abilities,
+				FlySpeed = 0.05f,
+				WalkSpeed = 0.1f
+			};
+
+			layers.Add(baseLayer);
+
+			return layers;
 		}
 
 		private uint GetAdventureFlags()
@@ -1802,6 +1877,7 @@ namespace MiNET
 			GameMode = gameMode;
 
 			SendSetPlayerGameType();
+			SendAbilities();
 		}
 
 
@@ -2234,6 +2310,12 @@ namespace MiNET
 			}
 			
 			SendPacket(response);*/
+		}
+
+		/// <inheritdoc />
+		public void HandleMcpeRequestAbility(McpeRequestAbility message)
+		{
+			//TODO: Implement ability requests
 		}
 
 		public virtual void HandleMcpeMobArmorEquipment(McpeMobArmorEquipment message)
@@ -2972,7 +3054,7 @@ namespace MiNET
 			levelSettings.gamerules = Level.GetGameRules();
 			levelSettings.bonusChest = false;
 			levelSettings.mapEnabled = false;
-			levelSettings.permissionLevel = (int) PermissionLevel;
+			levelSettings.permissionLevel = (byte) PermissionLevel;
 			levelSettings.gameVersion = "";
 			levelSettings.hasEduFeaturesEnabled = true;
 			
@@ -2998,6 +3080,16 @@ namespace MiNET
 			startGame.enableNewInventorySystem = true;
 			startGame.blockPaletteChecksum = 0;
 			startGame.serverVersion = McpeProtocolInfo.GameVersion;
+			startGame.propertyData = new Nbt
+			{
+				NbtFile = new NbtFile
+				{
+					BigEndian = false,
+					UseVarInt = true,
+					RootTag = new NbtCompound("")
+				}
+			};
+			startGame.worldTemplateId = new UUID(Guid.Empty.ToByteArray());
 
 			SendPacket(startGame);
 		}
@@ -3161,6 +3253,7 @@ namespace MiNET
 				MaxValue = 1,
 				Value = 1,
 				Default = 1,
+				Modifiers = new AttributeModifiers()
 			};
 			attributes["minecraft:absorption"] = new PlayerAttribute
 			{
@@ -3169,6 +3262,7 @@ namespace MiNET
 				MaxValue = float.MaxValue,
 				Value = HealthManager.Absorption,
 				Default = 0,
+				Modifiers = new AttributeModifiers()
 			};
 			attributes["minecraft:health"] = new PlayerAttribute
 			{
@@ -3177,6 +3271,7 @@ namespace MiNET
 				MaxValue = HealthManager.MaxHearts,
 				Value = HealthManager.Hearts,
 				Default = HealthManager.MaxHearts,
+				Modifiers = new AttributeModifiers()
 			};
 			attributes["minecraft:movement"] = new PlayerAttribute
 			{
@@ -3185,6 +3280,7 @@ namespace MiNET
 				MaxValue = 0.5f,
 				Value = MovementSpeed,
 				Default = MovementSpeed,
+				Modifiers = new AttributeModifiers()
 			};
 			attributes["minecraft:knockback_resistance"] = new PlayerAttribute
 			{
@@ -3193,6 +3289,7 @@ namespace MiNET
 				MaxValue = 1,
 				Value = 0,
 				Default = 0,
+				Modifiers = new AttributeModifiers()
 			};
 			attributes["minecraft:luck"] = new PlayerAttribute
 			{
@@ -3201,6 +3298,7 @@ namespace MiNET
 				MaxValue = 1024,
 				Value = 0,
 				Default = 0,
+				Modifiers = new AttributeModifiers()
 			};
 			attributes["minecraft:follow_range"] = new PlayerAttribute
 			{
@@ -3209,6 +3307,7 @@ namespace MiNET
 				MaxValue = 2048,
 				Value = 16,
 				Default = 16,
+				Modifiers = new AttributeModifiers()
 			};
 			// Workaround, bad design.
 			attributes = HungerManager.AddHungerAttributes(attributes);
@@ -3225,8 +3324,11 @@ namespace MiNET
 			CurrentForm = form;
 
 			McpeModalFormRequest message = McpeModalFormRequest.CreateObject();
-			message.formId = form.Id; // whatever
-			message.data = form.ToJson();
+			message.modalforminfo.formId = form.Id; // whatever
+			message.modalforminfo.data = form.ToJson();
+			message.modalforminfo.isData = true;
+			message.modalforminfo.isCancelReason = false;//????
+			message.modalforminfo.cancelReason = 0;
 			SendPacket(message);
 		}
 
@@ -3703,14 +3805,15 @@ namespace MiNET
 			mcpeAddPlayer.headYaw = KnownPosition.HeadYaw;
 			mcpeAddPlayer.pitch = KnownPosition.Pitch;
 			mcpeAddPlayer.metadata = GetMetadata();
-			mcpeAddPlayer.flags = GetAdventureFlags();
+			/*mcpeAddPlayer.flags = GetAdventureFlags();
 			mcpeAddPlayer.commandPermission = (uint) CommandPermission;
 			mcpeAddPlayer.actionPermissions = (uint) ActionPermissions;
 			mcpeAddPlayer.permissionLevel = (uint) PermissionLevel;
-			mcpeAddPlayer.userId = -1;
+			mcpeAddPlayer.userId = -1;*/
 			mcpeAddPlayer.deviceId = PlayerInfo.DeviceId;
 			mcpeAddPlayer.deviceOs = PlayerInfo.DeviceOS;
 			mcpeAddPlayer.gameType = (uint) GameMode;
+			mcpeAddPlayer.layers = GetAbilities();
 
 			int[] a = new int[5];
 
@@ -3838,6 +3941,7 @@ namespace MiNET
 		public virtual void HandleMcpeLevelSoundEventV2(McpeLevelSoundEventV2 message)
 		{
 		}
+
 	}
 
 	public class PlayerEventArgs : EventArgs

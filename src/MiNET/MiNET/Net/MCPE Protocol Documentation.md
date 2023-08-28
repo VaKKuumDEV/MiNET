@@ -152,6 +152,9 @@ Read more about packets and this specification on the [Protocol Wiki](https://gi
 | Sub Chunk Packet | 0xae | 174 |   
 | Sub Chunk Request Packet | 0xaf | 175 |   
 | Dimension Data | 0xb4 | 180 |   
+| Request Ability | 0xb8 | 184 |   
+| Update Abilities | 0xbb | 187 |   
+| Update Adventure Settings | 0xbc | 188 |   
 | Alex Entity Animation | 0xe0 | 224 |   
 
 
@@ -159,6 +162,7 @@ Read more about packets and this specification on the [Protocol Wiki](https://gi
 
 | Data type | 
 |:--- |
+| AbilityLayers [(wiki)](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-Type-AbilityLayers) |
 | AnimationKey[] [(wiki)](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-Type-AnimationKey[]) |
 | BlockCoordinates [(wiki)](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-Type-BlockCoordinates) |
 | bool [(wiki)](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-Type-bool) |
@@ -452,7 +456,6 @@ Wiki: [Add Player](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-AddPla
 |:-----|:-----|:-----|
 |UUID | UUID |  |
 |Username | string |  |
-|Entity ID Self | SignedVarLong |  |
 |Runtime Entity ID | UnsignedVarLong |  |
 |Platform Chat ID | string |  |
 |X | float |  |
@@ -467,12 +470,10 @@ Wiki: [Add Player](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-AddPla
 |Item | Item |  |
 |Game Type | UnsignedVarInt |  |
 |Metadata | MetadataDictionary |  |
-|Flags | UnsignedVarInt |  |
-|Command permission | UnsignedVarInt |  |
-|Action Permissions | UnsignedVarInt |  |
-|Permission Level | UnsignedVarInt |  |
-|Custom stored permissions | UnsignedVarInt |  |
-|User Id | long |  |
+|Entity ID Self | SignedVarLong |  |
+|Player Permissions | byte |  |
+|Command Permissions | byte |  |
+|Layers | AbilityLayers |  |
 |Links | EntityLinks |  |
 |Device ID | string |  |
 |Device OS | int |  |
@@ -514,6 +515,7 @@ val2 float
 |Pitch | float |  |
 |Yaw | float |  |
 |Head Yaw | float |  |
+|Body Yaw | float |  |
 |Attributes | EntityAttributes |  |
 |Metadata | MetadataDictionary |  |
 |Links | EntityLinks |  |
@@ -1016,6 +1018,7 @@ Wiki: [Player Action](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-Pla
 |Runtime Entity ID | UnsignedVarLong |  |
 |Action ID | SignedVarInt |  |
 |Coordinates | BlockCoordinates |  |
+|Result Coordinates | BlockCoordinates |  |
 |Face | SignedVarInt |  |
 -----------------------------------------------------------------------
 ### Hurt Armor (0x26)
@@ -2905,6 +2908,58 @@ Wiki: [Dimension Data](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-Di
 | Name | Type | Size |
 |:-----|:-----|:-----|
 |Definitions | DimensionDefinitions |  |
+-----------------------------------------------------------------------
+### Update Abilities (0xbb)
+Wiki: [Update Abilities](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-UpdateAbilities)
+
+**Sent from server:** true  
+**Sent from client:** false
+
+
+
+
+#### Fields
+
+| Name | Type | Size |
+|:-----|:-----|:-----|
+|Entity Unique ID | long |  |
+|Player Permissions | byte |  |
+|Command Permissions | byte |  |
+|Layers | AbilityLayers |  |
+-----------------------------------------------------------------------
+### Update Adventure Settings (0xbc)
+Wiki: [Update Adventure Settings](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-UpdateAdventureSettings)
+
+**Sent from server:** true  
+**Sent from client:** false
+
+
+
+
+#### Fields
+
+| Name | Type | Size |
+|:-----|:-----|:-----|
+|No PvM | bool |  |
+|No MvP | bool |  |
+|Immutable World | bool |  |
+|Show NameTags | bool |  |
+|Auto Jump | bool |  |
+-----------------------------------------------------------------------
+### Request Ability (0xb8)
+Wiki: [Request Ability](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-RequestAbility)
+
+**Sent from server:** false  
+**Sent from client:** true
+
+
+
+
+#### Fields
+
+| Name | Type | Size |
+|:-----|:-----|:-----|
+|Ability | VarInt |  |
 -----------------------------------------------------------------------
 ### Alex Entity Animation (0xe0)
 Wiki: [Alex Entity Animation](https://github.com/NiclasOlofsson/MiNET/wiki//Protocol-AlexEntityAnimation)
