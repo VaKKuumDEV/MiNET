@@ -691,6 +691,18 @@ namespace MiNET
 				{
 					break;
 				}
+				case PlayerAction.MissedSwing:
+				{
+					break;
+				}
+				case PlayerAction.StartCrawling: //todo - handle this?
+				{
+					break;
+				}
+				case PlayerAction.StopCrawling:
+				{
+					break;
+				}
 				default:
 				{
 					Log.Warn($"Unhandled action ID={message.actionId}");

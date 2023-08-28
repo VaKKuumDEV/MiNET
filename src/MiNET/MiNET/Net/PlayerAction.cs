@@ -58,6 +58,9 @@ namespace MiNET.Net
 		ContinueDestroyBlock = 27,
 		StartItemUse = 28,
 		StopItemUse = 29,
-		HandledTeleport = 30
+		HandledTeleport = 30,
+		MissedSwing = 31,
+		StartCrawling = 32,
+		StopCrawling = 33
 	}
 }
