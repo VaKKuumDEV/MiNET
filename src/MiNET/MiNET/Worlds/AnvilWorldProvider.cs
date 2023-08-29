@@ -628,7 +628,7 @@ namespace MiNET.Worlds
 			byte[] blockLight = sectionTag["BlockLight"].ByteArrayValue;
 			byte[] skyLight = sectionTag["SkyLight"].ByteArrayValue;
 
-			var subChunk = chunkColumn[4 + sectionIndex]; //Offset by 4 because of 1.18 world update.
+			var subChunk = chunkColumn[sectionIndex];
 
 			for (int x = 0; x < 16; x++)
 			{
