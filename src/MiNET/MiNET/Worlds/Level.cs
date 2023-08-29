@@ -165,8 +165,7 @@ namespace MiNET.Worlds
 			{
 				if (Config.GetProperty("CheckForSafeSpawn", false))
 				{
-					var height = GetHeight((BlockCoordinates) SpawnPoint);
-					if (height > SpawnPoint.Y) SpawnPoint.Y = height;
+					SpawnPoint.Y = GetHeight((BlockCoordinates) SpawnPoint) + 1;
 					Log.Debug("Checking for safe spawn");
 				}
 
