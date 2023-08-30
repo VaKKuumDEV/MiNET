@@ -94,9 +94,11 @@ namespace MiNET.Net
 
 			if (sendInBatch.Count > 0)
 			{
+				var compress = CompressionLevel.NoCompression;
 				var batch = McpeWrapper.CreateObject();
 				batch.ReliabilityHeader.Reliability = Reliability.ReliableOrdered;
-				batch.payload = Compression.CompressPacketsForWrapper(sendInBatch, _session.EnableCompression ? CompressionLevel.Fastest : CompressionLevel.NoCompression);
+				if (_session != null && _session.EnableCompression) { compress = CompressionLevel.Fastest; }
+				batch.payload = Compression.CompressPacketsForWrapper(sendInBatch, compress);
 				batch.Encode(); // prepare
 				sendList.Add(batch);
 			}
