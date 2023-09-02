@@ -62,19 +62,8 @@ namespace MiNET.Net
 					stringValues.Add(str);
 				}
 			}
-			
-			int chainedSubcommandNames = stringValues.Count(); 
-			{
-				uint count = ReadUnsignedVarInt();
-				Log.Debug($"Chained subcommand values {count}");
-				for (int i = 0; i < count; i++)
-				{
-					string s = ReadString();
-					Log.Debug(s);
-				}
-			}
-			
 			int stringValuesCount = stringValues.Count();
+
 			{
 				uint count = ReadUnsignedVarInt();
 				Log.Debug($"Postfix values {count}");
@@ -121,8 +110,6 @@ namespace MiNET.Net
 					enums[i] = new EnumData(enumName, enumValues);
 				}
 			}
-			
-			ReadUnsignedVarInt(); //chained subcommand data
 
 			{
 				uint count = ReadUnsignedVarInt();
@@ -391,8 +378,6 @@ namespace MiNET.Net
 						}
 					}
 					
-					WriteUnsignedVarInt(0);  // chained subcommand data
-
 					var overloads = command.Versions[0].Overloads;
 					foreach (var overload in overloads.Values)
 					{
@@ -439,7 +424,6 @@ namespace MiNET.Net
 				WriteUnsignedVarInt((uint) commands.Count);
 				foreach (var command in commands.Values)
 				{
-					Write(false); // changing?
 					Write(command.Name);
 					Write(command.Versions[0].Description);
 					Write((short) 0); // flags
@@ -457,10 +441,12 @@ namespace MiNET.Net
 
 					//Log.Warn($"Writing command {command.Name}");
 
+					WriteUnsignedVarInt(0);
 					var overloads = command.Versions[0].Overloads;
 					WriteUnsignedVarInt((uint) overloads.Count); // Overloads
 					foreach (var overload in overloads.Values)
 					{
+						Write(false);
 						//Log.Warn($"Writing command: {command.Name}");
 
 						var parameters = overload.Input.Parameters;
@@ -469,31 +455,29 @@ namespace MiNET.Net
 							WriteUnsignedVarInt(0); // Parameter count
 							continue;
 						}
-
-						WriteUnsignedVarInt((uint) parameters.Length); // Parameter count
+						WriteUnsignedVarInt(0); // Parameter count
 						foreach (var parameter in parameters)
 						{
 							//Log.Debug($"Writing command overload parameter {command.Name}, {parameter.Name}, {parameter.Type}");
 
-							Write(parameter.Name); // parameter name
+							//Write(parameter.Name); // parameter name
 							if (parameter.Type == "stringenum" && parameter.EnumValues != null)
 							{
-								Write((short) enumList.IndexOf(parameter.EnumType));
-								Write((short) 0x30);
+								//Write((short) enumList.IndexOf(parameter.EnumType));
+								//Write((short) 0x30);
 							}
 							else if (parameter.Type == "softenum" && parameter.EnumValues != null)
 							{
-								Write((short) 0); // soft enum index below
-								Write((short) 0x0410);
+							//	Write((short) 0); // soft enum index below
+								//Write((short) 0x0410);
 							}
 							else
 							{
-								Write((short) GetParameterTypeId(parameter.Type)); // param type
-								Write((short) 0x10);
+								//Write((int) 0 | GetParameterTypeId(parameter.Type)); // param type
 							}
 
-							Write(parameter.Optional); // optional
-							Write((byte) 0); // unknown
+							//Write(parameter.Optional); // optional
+							//Write((byte) 0); // unknown
 						}
 					}
 				}
@@ -522,16 +506,20 @@ namespace MiNET.Net
 				"mixed" => 0x04,
 				"wildcardint" => 0x05,
 				"operator" => 0x06,
-				"target" => 0x07,
-				"filename" => 0x10,
-				"string" => 0x20,
-				"blockpos" => 0x25,
-				"entitypos" => 0x26,
-				"xyz" => 0x28,
-				"message" => 0x2c,
-				"rawtext" => 0x2e,
-				"json" => 0x32,
-				"command" => 0x3f,
+				"operatorcompare" => 0x06,
+				"target" => 0x08,
+				"wildcardtarget" => 0x0A,
+				"filename" => 0x11,
+				"fullintrange" => 0x17,
+				"equipmentslot" => 0x2B,
+				"string" => 0x2C,
+				"blockpositon" => 0x34,
+				"pos" => 0x35,
+				"message" => 0x37,
+				"rawtext" => 0x3A,
+				"json" => 0x3E,
+				"blockstates" => 0x47,
+				"command" => 0x4A,
 				_ => 0
 			};
 		}
@@ -548,16 +536,20 @@ namespace MiNET.Net
 				0x04 => "mixed",
 				0x05 => "wildcardint",
 				0x06 => "operator",
-				0x07 => "target",
-				0x10 => "filename",
-				0x20 => "string",
-				0x25   => "blockpos",
-				0x26   => "entitypos",
-				0x28 => "xyz",
-				0x2c => "message", // kick, me, etc
-				0x2e => "rawtext", // kick, me, etc
-				0x32 => "json", // give, replace
-				0x3f => "command",
+				0x07 => "operatorcompare",
+				0x08 => "target",
+				0x0A => "wildcardtarget",
+				0x11 => "filename",
+				0x17 => "fullintrange",
+				0x2B => "equipmentslot",
+				0x2C => "string",
+				0x34 => "blockpositon",
+				0x35 => "pos",
+				0x37 => "message", // kick, me, etc
+				0x3A => "rawtext", // kick, me, etc
+				0x3E => "json", // give, replace
+				0x47 => "blockstates",
+				0x4A => "command",
 				_    => $"undefined({type})"
 			};
 		}
