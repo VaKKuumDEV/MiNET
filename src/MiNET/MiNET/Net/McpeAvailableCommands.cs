@@ -450,41 +450,49 @@ namespace MiNET.Net
 						//Log.Warn($"Writing command: {command.Name}");
 
 						var parameters = overload.Input.Parameters;
+						if (parameters != null)
+						{
+							foreach (var parameter in parameters)
+							{
+								if (parameter.Type == "softenum" || parameter.Type == "value" || parameter.Type == "blockpos" || parameter.Type == "entitypos")
+								{
+									parameters = null;
+								}
+							}
+
+						}
 						if (parameters == null)
 						{
 							WriteUnsignedVarInt(0); // Parameter count
 							continue;
 						}
-						WriteUnsignedVarInt(0); // Parameter count
+						WriteUnsignedVarInt((uint) parameters.Length);
 						foreach (var parameter in parameters)
 						{
 							//Log.Debug($"Writing command overload parameter {command.Name}, {parameter.Name}, {parameter.Type}");
-
-							//Write(parameter.Name); // parameter name
 							if (parameter.Type == "stringenum" && parameter.EnumValues != null)
 							{
-								//Write((short) enumList.IndexOf(parameter.EnumType));
-								//Write((short) 0x30);
+								Write(parameter.Name); // parameter name
+								Write(0x200000 | enumList.IndexOf(parameter.EnumType));
+								Write(parameter.Optional); // optional
+								Write((byte) 0); // unknown
 							}
 							else if (parameter.Type == "softenum" && parameter.EnumValues != null)
 							{
-							//	Write((short) 0); // soft enum index below
-								//Write((short) 0x0410);
+								//todo
 							}
 							else
 							{
-								//Write((int) 0 | GetParameterTypeId(parameter.Type)); // param type
+								Write(parameter.Name); // parameter name
+								Write(0x100000 | GetParameterTypeId(parameter.Type)); // param type
+								Write(parameter.Optional); // optional
+								Write((byte) 0); // unknown
 							}
-
-							//Write(parameter.Optional); // optional
-							//Write((byte) 0); // unknown
 						}
 					}
 				}
 
-				WriteUnsignedVarInt(1); //TODO: soft enums
-				Write("CmdSoftEnumValues");
-				Write(false);
+				WriteUnsignedVarInt(0); //TODO: soft enums
 
 				WriteUnsignedVarInt(0); //TODO: constraints
 			}
