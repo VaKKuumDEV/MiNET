@@ -237,6 +237,12 @@ namespace MiNET.Net
 				case McpeRequestAbility msg:
 					handler.HandleMcpeRequestAbility(msg);
 					break;
+				case McpeEmotePacket msg:
+					handler.HandleMcpeEmote(msg);
+					break;
+				case McpeEmoteList msg:
+					handler.HandleMcpeEmoteList(msg);
+					break;
 
 				default:
 				{

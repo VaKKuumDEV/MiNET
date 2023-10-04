@@ -41,6 +41,7 @@ using LongString = System.String;
 using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
 using MiNET.Utils.Nbt;
+using System.Collections.Generic;
 
 namespace MiNET.Net
 {
@@ -113,6 +114,8 @@ namespace MiNET.Net
 		void HandleMcpeSubChunkRequestPacket(McpeSubChunkRequestPacket message);
 		void HandleMcpeRequestAbility(McpeRequestAbility message);
 		void HandleMcpeRequestNetworkSettings(McpeRequestNetworkSettings message);
+		void HandleMcpeEmote(McpeEmotePacket message);
+		void HandleMcpeEmoteList(McpeEmoteList message);
 	}
 
 	public interface IMcpeClientMessageHandler
@@ -248,6 +251,8 @@ namespace MiNET.Net
 		void HandleMcpeOpenSign(McpeOpenSign message);
 		void HandleMcpeAlexEntityAnimation(McpeAlexEntityAnimation message);
 		void HandleFtlCreatePlayer(FtlCreatePlayer message);
+		void HandleMcpeEmote(McpeEmotePacket message);
+		void HandleMcpeEmoteList(McpeEmoteList message);
 	}
 
 	public class McpeClientMessageDispatcher
@@ -656,6 +661,12 @@ namespace MiNET.Net
 				case FtlCreatePlayer msg:
 					_messageHandler.HandleFtlCreatePlayer(msg);
 					break;
+				case McpeEmotePacket msg:
+					_messageHandler.HandleMcpeEmote(msg);
+					break;
+				case McpeEmoteList msg:
+					_messageHandler.HandleMcpeEmoteList(msg);
+					break;
 				default:
 					return false;
 			}
@@ -1027,6 +1038,10 @@ namespace MiNET.Net
 						return McpeOpenSign.CreateObject().Decode(buffer);
 					case 0xe0:
 						return McpeAlexEntityAnimation.CreateObject().Decode(buffer);
+					case 0x8a:
+						return McpeEmotePacket.CreateObject().Decode(buffer);
+					case 0x98:
+						return McpeEmoteList.CreateObject().Decode(buffer);
 				}
 			}
 
@@ -10587,6 +10602,133 @@ namespace MiNET.Net
 		}
 
 	}
+
+	public partial class McpeEmotePacket : Packet<McpeEmotePacket>
+	{
+
+		public long runtimeEntityId; // = null;
+		public string xuid; // = null;
+		public string platformId; // = null;
+		public string emoteId; // = null;
+		public byte flags; // = null;
+
+		public McpeEmotePacket()
+		{
+			Id = 0x8a;
+			IsMcpe = true;
+		}
+
+		protected override void EncodePacket()
+		{
+			base.EncodePacket();
+
+			BeforeEncode();
+
+			WriteUnsignedVarLong(runtimeEntityId);
+			Write(emoteId);
+			Write(xuid);
+			Write(platformId);
+			Write(flags);
+
+			AfterEncode();
+		}
+
+		partial void BeforeEncode();
+		partial void AfterEncode();
+
+		protected override void DecodePacket()
+		{
+			base.DecodePacket();
+
+			BeforeDecode();
+
+			runtimeEntityId = ReadUnsignedVarLong();
+			emoteId = ReadString();
+			xuid = ReadString();
+			platformId = ReadString();
+			flags = ReadByte();
+
+			AfterDecode();
+		}
+
+		partial void BeforeDecode();
+		partial void AfterDecode();
+
+		protected override void ResetPacket()
+		{
+			base.ResetPacket();
+
+			runtimeEntityId = default(long);
+			xuid = default(string);
+			platformId = default(string);
+			emoteId = default(string);
+		}
+
+	}
+
+	public partial class McpeEmoteList : Packet<McpeEmoteList>
+	{
+
+		public long runtimeEntityId; // = null;
+		List<UUID> emoteId = new List<UUID>(); // = null;
+		public uint emoteCount; // = null;
+
+		public McpeEmoteList()
+		{
+			Id = 0x8a;
+			IsMcpe = true;
+		}
+
+		protected override void EncodePacket()
+		{
+			base.EncodePacket();
+
+			BeforeEncode();
+
+			WriteUnsignedVarLong(runtimeEntityId);
+			Write(emoteId.Count);
+			foreach (UUID emotes in emoteId)
+			{
+				Write(emotes);
+			}
+
+			AfterEncode();
+		}
+
+		partial void BeforeEncode();
+		partial void AfterEncode();
+
+		protected override void DecodePacket()
+		{
+			base.DecodePacket();
+
+			BeforeDecode();
+
+			runtimeEntityId = ReadUnsignedVarLong();
+			emoteCount = ReadUnsignedVarInt();
+			for (int i = 0; i < (int)emoteCount; i++)
+			{
+				emoteId.Add(ReadUUID());
+			}
+
+			AfterDecode();
+		}
+
+		partial void BeforeDecode();
+		partial void AfterDecode();
+
+		protected override void ResetPacket()
+		{
+			base.ResetPacket();
+
+			runtimeEntityId = default(long);
+			emoteCount = default(uint);
+			emoteId.Clear();
+
+		}
+
+	}
+
 
 }
 

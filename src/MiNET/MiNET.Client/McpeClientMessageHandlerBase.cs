@@ -747,6 +747,16 @@ namespace MiNET.Client
 		{
 			
 		}
+
+		public void HandleMcpeEmote(McpeEmotePacket message)
+		{
+
+		}
+
+		public void HandleMcpeEmoteList(McpeEmoteList message)
+		{
+
+		}
 	}
 
 	public class DefaultMessageHandler : McpeClientMessageHandlerBase

@@ -779,6 +779,14 @@ namespace MiNET
 		public void HandleMcpeScriptCustomEvent(McpeScriptCustomEvent message)
 		{
 		}
+
+		public void HandleMcpeEmote(McpeEmotePacket message)
+		{
+		}
+
+		public void HandleMcpeEmoteList(McpeEmoteList message)
+		{
+		}
 	}
 
 	public interface IServerManager

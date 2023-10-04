@@ -2907,6 +2907,20 @@ namespace MiNET
 		{
 		}
 
+		public void HandleMcpeEmote(McpeEmotePacket message)
+		{
+			McpeEmotePacket msg = McpeEmotePacket.CreateObject();
+			msg.runtimeEntityId = EntityId;
+			msg.xuid = message.xuid;
+			msg.platformId = message.platformId;
+			msg.emoteId = message.emoteId;
+			Level.RelayBroadcast(this, msg);
+		}
+
+		public void HandleMcpeEmoteList(McpeEmoteList message)
+		{
+		}
+
 		/// <summary>
 		///     Handles the interact.
 		/// </summary>
@@ -3831,11 +3845,6 @@ namespace MiNET
 			mcpeAddPlayer.headYaw = KnownPosition.HeadYaw;
 			mcpeAddPlayer.pitch = KnownPosition.Pitch;
 			mcpeAddPlayer.metadata = GetMetadata();
-			/*mcpeAddPlayer.flags = GetAdventureFlags();
-			mcpeAddPlayer.commandPermission = (uint) CommandPermission;
-			mcpeAddPlayer.actionPermissions = (uint) ActionPermissions;
-			mcpeAddPlayer.permissionLevel = (uint) PermissionLevel;
-			mcpeAddPlayer.userId = -1;*/
 			mcpeAddPlayer.deviceId = PlayerInfo.DeviceId;
 			mcpeAddPlayer.deviceOs = PlayerInfo.DeviceOS;
 			mcpeAddPlayer.gameType = (uint) GameMode;
