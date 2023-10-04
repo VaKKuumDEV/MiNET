@@ -2592,7 +2592,7 @@ namespace MiNET.Net
 			WriteUnsignedVarInt(gameType);
 			Write(metadata);
 			Write(syncdata);
-			WriteSignedVarLong(entityIdSelf);
+			Write(entityIdSelf);
 			Write(playerPermissions);
 			Write(commandPermissions);
 			Write(layers);
