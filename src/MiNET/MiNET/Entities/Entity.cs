@@ -288,6 +288,7 @@ namespace MiNET.Entities
 		}
 
 		public bool IsSneaking { get; set; }
+		public bool IsSwimming { get; set; }
 		public bool IsRiding { get; set; }
 		public bool IsSprinting { get; set; }
 		public bool IsUsingItem { get; set; }
@@ -390,7 +391,69 @@ namespace MiNET.Entities
 			AffectedByGravity,
 			FireImmune,
 			Dancing,
-			Enchanted
+			Enchanted,
+			TridentRope,
+			PrivateInventory,
+			Transforming,
+			SpinAttack,
+			Swimming,
+			Bribed,
+			Pregnant,
+			LayingEgg,
+			RiderCanPick,
+			TransistionSettings,
+			Eating,
+			LayingDown,
+			Sneezing,
+			Trusting,
+			Rolling,
+			Scared,
+			InScaffolding,
+			OverScaffolding,
+			FallInScaffolding,
+			Blocking,
+			TransistionBlocking,
+			BlockedWithShield,
+			BlockedWithDamagedShield,
+			Sleeping,
+			GrowingUp,
+			TradeInterest,
+			DoorBreaking,
+			ObstructionBreaking,
+			DoorOpening,
+			IsIllagerCaptain,
+			Stunned,
+			Roaring,
+			DelayedAttack,
+			AvoidingMobs,
+			AvoidingBlocks,
+			FacingTargetToAttack,
+			HiddenInvisible,
+			InUI,
+			Stalking,
+			Emoting,
+			Celebriting,
+			Admiring,
+			Celebriting2,
+			OutOfControl,
+			RamAttack,
+			FakeDead,
+			InAscendableBlock,
+			OverDescendableBlock,
+			Cooking,
+			EatingMob,
+			GoalJump,
+			Emerging,
+			Sniffing,
+			Digging,
+			SonicBoom,
+			DashCooldown,
+			PushToClosestSpace,
+			Scenting,
+			Rising,
+			FeelingHappy,
+			Searching,
+			Crawling
 		}
 
 		protected virtual BitArray GetFlags()
@@ -398,6 +461,7 @@ namespace MiNET.Entities
 			BitArray bits = new BitArray(64);
 			bits[(int) DataFlags.OnFire] = HealthManager.IsOnFire;
 			bits[(int) DataFlags.Sneaking] = IsSneaking;
+			bits[(int) DataFlags.Swimming] = IsSwimming;
 			bits[(int) DataFlags.Riding] = IsRiding;
 			bits[(int) DataFlags.Sprinting] = IsSprinting;
 			bits[(int) DataFlags.UsingItem] = IsUsingItem;

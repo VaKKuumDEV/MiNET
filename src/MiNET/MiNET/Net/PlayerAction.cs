@@ -61,6 +61,8 @@ namespace MiNET.Net
 		HandledTeleport = 30,
 		MissedSwing = 31,
 		StartCrawling = 32,
-		StopCrawling = 33
+		StopCrawling = 33,
+		StartFlying = 34,
+		StopFlying = 35
 	}
 }

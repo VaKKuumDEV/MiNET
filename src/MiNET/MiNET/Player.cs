@@ -691,11 +691,21 @@ namespace MiNET
 				{
 					break;
 				}
+				case PlayerAction.StartSwimming:
+				{
+					IsSwimming = true;
+					break;
+				}
+				case PlayerAction.StopSwimming:
+				{
+					IsSwimming = false;
+					break;
+				}
 				case PlayerAction.MissedSwing:
 				{
 					break;
 				}
-				case PlayerAction.StartCrawling: //todo - handle this?
+				case PlayerAction.StartCrawling:
 				{
 					break;
 				}
@@ -708,6 +718,14 @@ namespace MiNET
 					break;
 				}
 				case PlayerAction.StopItemUse:
+				{
+					break;
+				}
+				case PlayerAction.StartFlying:
+				{
+					break;
+				}
+				case PlayerAction.StopFlying:
 				{
 					break;
 				}
@@ -814,7 +832,6 @@ namespace MiNET
 		private AbilityLayers GetAbilities()
 		{
 			PlayerAbility abilities = 0;
-			PlayerAbility values = 0;
 
 			if (GameMode.AllowsFlying())
 			{
