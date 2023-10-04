@@ -10662,6 +10662,7 @@ namespace MiNET.Net
 			xuid = default(string);
 			platformId = default(string);
 			emoteId = default(string);
+			flags = default(byte);
 		}
 
 	}
