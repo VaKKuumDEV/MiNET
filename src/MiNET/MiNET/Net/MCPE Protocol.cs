@@ -4408,6 +4408,7 @@ namespace MiNET.Net
 			WriteSignedVarLong(riderId);
 			Write(linkType);
 			Write(unknown);
+			Write(false);
 
 			AfterEncode();
 		}
@@ -10671,8 +10672,7 @@ namespace MiNET.Net
 	{
 
 		public long runtimeEntityId; // = null;
-		List<UUID> emoteId = new List<UUID>(); // = null;
-		public uint emoteCount; // = null;
+		public EmoteIds emoteIds; // = null;
 
 		public McpeEmoteList()
 		{
@@ -10687,11 +10687,7 @@ namespace MiNET.Net
 			BeforeEncode();
 
 			WriteUnsignedVarLong(runtimeEntityId);
-			Write(emoteId.Count);
-			foreach (UUID emotes in emoteId)
-			{
-				Write(emotes);
-			}
+			Write(emoteIds);
 
 			AfterEncode();
 		}
@@ -10706,11 +10702,7 @@ namespace MiNET.Net
 			BeforeDecode();
 
 			runtimeEntityId = ReadUnsignedVarLong();
-			emoteCount = ReadUnsignedVarInt();
-			for (int i = 0; i < (int)emoteCount; i++)
-			{
-				emoteId.Add(ReadUUID());
-			}
+			emoteIds = ReadEmoteId();
 
 			AfterDecode();
 		}
@@ -10723,8 +10715,7 @@ namespace MiNET.Net
 			base.ResetPacket();
 
 			runtimeEntityId = default(long);
-			emoteCount = default(uint);
-			emoteId.Clear();
+			emoteIds = default(EmoteIds);
 
 		}
 

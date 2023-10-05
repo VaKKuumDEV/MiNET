@@ -3711,6 +3711,26 @@ namespace MiNET.Net
 			return syncData;
 		}
 
+		public EmoteIds ReadEmoteId()
+		{
+			EmoteIds Ids = new EmoteIds();
+			var emoteCount = ReadUnsignedVarInt();
+			for (int i = 0; i < (int) emoteCount; i++)
+			{
+				Ids.emoteId.Add(ReadUUID());
+			}
+			return Ids;
+		}
+
+		public void Write(EmoteIds Ids)
+		{
+			Write(Ids.emoteId.Count);
+			foreach (var emoteIds in Ids.emoteId)
+			{
+				Write(emoteIds);
+			}
+		}
+
 		public ModalFormInfo ReadModalFormInfo()
 		{
 			ModalFormInfo form = new ModalFormInfo();
