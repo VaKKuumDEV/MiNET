@@ -1181,12 +1181,19 @@ namespace MiNET
 			_haveJoined = true;
 
 			OnPlayerJoin(new PlayerEventArgs(this));
-		}
 
-		//public virtual void HandleMcpeRespawn()
-		//{
-		//	HandleMcpeRespawn(null);
-		//}
+			String ops = Config.GetProperty("ServerOps", "");
+			foreach (string opsP in ops.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+			{
+				if (Username == opsP)
+				{
+					ActionPermissions = ActionPermissions.Operator;
+					CommandPermission = 4;
+					PermissionLevel = PermissionLevel.Operator;
+					SendAbilities();
+				}
+			}
+		}
 
 		public virtual void HandleMcpeRespawn(McpeRespawn message)
 		{

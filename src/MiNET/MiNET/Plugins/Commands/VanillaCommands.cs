@@ -50,6 +50,12 @@ namespace MiNET.Plugins.Commands
 		{
 		}
 
+		[Command(Name = "about", Description = "About the server")]
+		public string About()
+		{
+			return $"This server is running on MiNET for Minecraft Bedrock Edition {McpeProtocolInfo.GameVersion} ({McpeProtocolInfo.ProtocolVersion})";
+		}
+
 		[Command(Name = "op", Description = "Make player an operator")]
 		[Authorize(Permission = 4)]
 		public string MakeOperator(Player commander, Target target)
@@ -65,7 +71,7 @@ namespace MiNET.Plugins.Commands
 					p.ActionPermissions = ActionPermissions.Operator;
 					p.CommandPermission = 4;
 					p.PermissionLevel = PermissionLevel.Operator;
-					p.SendAdventureSettings();
+					p.SendAbilities();
 				}
 				body = string.Join(", ", names);
 			}
@@ -82,20 +88,15 @@ namespace MiNET.Plugins.Commands
 			return $"Oped: {body}";
 		}
 
-		[Command]
-		public void Worldbuilder(Player commander)
-		{
-			commander.IsWorldBuilder = !commander.IsWorldBuilder;
-			commander.SendAdventureSettings();
-		}
-
-		[Command]
+		[Command(Name = "setblock", Description = "Place a block")]
+		[Authorize(Permission = 4)]
 		public string SetBlock(Player commander, BlockPos position, BlockTypeEnum tileName, int tileData = 0)
 		{
 			return $"Set block complete. {position.XRelative} {tileName.Value}";
 		}
 
-		[Command]
+		[Command(Name = "give", Description = "Give item to Player")]
+		[Authorize(Permission = 4)]
 		public string Give(Player commander, Target player, ItemTypeEnum itemName, int amount = 1, int data = 0)
 		{
 			string body = player.Selector;
@@ -120,7 +121,8 @@ namespace MiNET.Plugins.Commands
 			return $"Gave {body} {amount} of {itemName.Value}.";
 		}
 
-		[Command]
+		[Command(Name = "summon", Description = "Spawn entity")]
+		[Authorize(Permission = 4)]
 		public void Summon(Player player, EntityTypeEnum entityType, bool noAi = true, BlockPos spawnPos = null)
 		{
 			EntityType petType;
@@ -220,9 +222,9 @@ namespace MiNET.Plugins.Commands
 				case EntityType.ZombiePigman:
 					mob = new ZombiePigman(world);
 					break;
-				case EntityType.Slime:
+				/*case EntityType.Slime:
 					mob = new Slime(world);
-					break;
+					break;*/
 				case EntityType.Enderman:
 					mob = new Enderman(world);
 					break;
@@ -321,7 +323,8 @@ namespace MiNET.Plugins.Commands
 			}
 		}
 
-		[Command]
+		[Command(Name = "xp", Description = "Add XP to Player")]
+		[Authorize(Permission = 4)]
 		public string Xp(Player commander, int experience, Target player)
 		{
 			string body = player.Selector;
@@ -341,7 +344,8 @@ namespace MiNET.Plugins.Commands
 			return $"Gave {body} {experience} experience points.";
 		}
 
-		[Command]
+		[Command(Name = "difficulty", Description = "Change worlds difficulty")]
+		[Authorize(Permission = 4)]
 		public string Difficulty(Player commander, Difficulty difficulty)
 		{
 			Level level = commander.Level;
@@ -355,6 +359,7 @@ namespace MiNET.Plugins.Commands
 		}
 
 		[Command(Name = "time set", Description = "Changes or queries the world's game time")]
+		[Authorize(Permission = 4)]
 		public string TimeSet(Player commander, int time = 5000)
 		{
 			Level level = commander.Level;
@@ -374,6 +379,7 @@ namespace MiNET.Plugins.Commands
 		}
 
 		[Command(Name = "time set")]
+		[Authorize(Permission = 4)]
 		public string TimeSet(Player commander, DayNight time)
 		{
 			Level level = commander.Level;
@@ -387,6 +393,7 @@ namespace MiNET.Plugins.Commands
 		}
 
 		[Command(Name = "tp", Aliases = new[] {"teleport"}, Description = "Teleports self to given position.")]
+		[Authorize(Permission = 4)]
 		public string Teleport(Player commander, BlockPos destination, int yrot = 90, int xrot = 0)
 		{
 			var coordinates = commander.KnownPosition;
@@ -425,6 +432,7 @@ namespace MiNET.Plugins.Commands
 		}
 
 		[Command(Name = "tp", Aliases = new[] {"teleport"}, Description = "Teleports player to given coordinates.")]
+		[Authorize(Permission = 4)]
 		public string Teleport(Player commander, Target victim, BlockPos destination, int yrot = 90, int xrot = 0)
 		{
 			string body = victim.Selector;
@@ -476,6 +484,7 @@ namespace MiNET.Plugins.Commands
 
 
 		[Command(Name = "tp", Aliases = new[] {"teleport"}, Description = "Teleports player to other player.")]
+		[Authorize(Permission = 4)]
 		public string Teleport(Player commander, Target victim, Target target)
 		{
 			string body = victim.Selector;
@@ -513,6 +522,7 @@ namespace MiNET.Plugins.Commands
 		}
 
 		[Command(Name = "tp", Aliases = new[] {"teleport"}, Description = "Teleports self to other player.")]
+		[Authorize(Permission = 4)]
 		public string Teleport(Player commander, Target target)
 		{
 			if (target.Players == null || target.Players.Length != 1) return "Found not target for teleport";
@@ -538,7 +548,8 @@ namespace MiNET.Plugins.Commands
 			return $"Teleported to {targetPlayer.Username}.";
 		}
 
-		[Command]
+		[Command(Name = "enchant", Description = "Enchant item")]
+		[Authorize(Permission = 4)]
 		public void Enchant(Player commander, Target target, EnchantmentTypeEnum enchantmentTypeName, int level = 1)
 		{
 			Player targetPlayer = target.Players.First();
@@ -559,7 +570,8 @@ namespace MiNET.Plugins.Commands
 			targetPlayer.Inventory.SendSetSlot(targetPlayer.Inventory.InHandSlot);
 		}
 
-		[Command]
+		[Command(Name = "gamemode", Description = "Change worlds GameMode")]
+		[Authorize(Permission = 4)]
 		public string GameMode(Player commander, GameMode gameMode, Target target = null)
 		{
 			Player targetPlayer = commander;
@@ -580,13 +592,15 @@ namespace MiNET.Plugins.Commands
 			return $"Set {targetPlayer.Username} game mode to {gameMode}.";
 		}
 
-		[Command]
+		[Command(Name = "gamerule", Description = "Change world Rules")]
+		[Authorize(Permission = 4)]
 		public string GameRule(Player player, GameRulesEnum rule)
 		{
 			return $"{rule.ToString().ToLower()}={player.Level.GetGameRule(rule).ToString().ToLower()}.";
 		}
 
-		[Command]
+		[Command(Name = "gamerule", Description = "Change world Rules")]
+		[Authorize(Permission = 4)]
 		public string GameRule(Player player, GameRulesEnum rule, bool value)
 		{
 			player.Level.SetGameRule(rule, value);
@@ -594,7 +608,8 @@ namespace MiNET.Plugins.Commands
 			return $"{player.Username} set {rule.ToString().ToLower()} to {value.ToString().ToLower()}.";
 		}
 
-		[Command]
+		[Command(Name = "daylock", Description = "Always day")]
+		[Authorize(Permission = 4)]
 		public string Daylock(Player player, bool value)
 		{
 			Level level = player.Level;
@@ -610,9 +625,58 @@ namespace MiNET.Plugins.Commands
 			return $"{player.Username} set day to 5000 and locked time.";
 		}
 
-		[Command]
+		[Command(Name = "fill", Description = "Fill specific with blocks")]
+		[Authorize(Permission = 4)]
 		public void Fill(Player commander, BlockPos from, BlockPos to, BlockTypeEnum tileName, int tileData = 0)
 		{
+		}
+
+		[Command(Name = "kick", Description = "Remove player from the server")]
+		[Authorize(Permission = 4)]
+		public string Kick(Player commander, Target player, string reason = "")
+		{
+			if (player.Players != null)
+			{
+				foreach (var p in player.Players)
+				{
+					if (reason == "")
+					{
+						p.Disconnect($"You have been kicked by {commander}");
+					}
+					else
+					{
+						p.Disconnect($"You have been kicked by {commander} for {reason}");
+					}
+					return $"{p.Username} has been removed from the server.";
+				}
+			}
+			else
+			{
+				return $"Couldn't kick {player}";
+			}
+			return "";
+		}
+
+		[Command(Name = "tell", Description = "Send private message to player")]
+		public string Tell(Player commander, Target player, string msg = "")
+		{
+			if (msg == "")
+			{
+				return "Message can't be empty";
+			}
+			if (player.Players != null)
+			{
+				foreach (var p in player.Players)
+				{
+					p.SendMessage(string.Format(ChatFormatting.Italic + ChatColors.Gray + "{0} whisper to you: {1}", commander.Username, msg), type: MessageType.Raw);
+					return $"You whisper to {p.Username}: {msg}";
+				}
+			}
+			else
+			{
+				return "Couldn't send message";
+			}
+			return "";
 		}
 	}
 }

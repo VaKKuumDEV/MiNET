@@ -5,6 +5,6 @@ namespace MiNET.Net
 {
 	public class EmoteIds
 	{
-		public List<UUID> emoteId = new List<UUID>(); // = null;
+		public List<UUID> emoteId = new List<UUID>();
 	}
 }

@@ -37,6 +37,7 @@ using JetBrains.Annotations;
 using log4net;
 using MiNET.Net;
 using MiNET.Plugins.Attributes;
+using MiNET.Plugins.Commands;
 using MiNET.Utils;
 using MiNET.Worlds;
 using Newtonsoft.Json;
@@ -72,7 +73,7 @@ namespace MiNET.Plugins
 		internal void LoadPlugins()
 		{
 			if (Config.GetProperty("PluginDisabled", false)) return;
-
+			LoadCommands(new VanillaCommands());
 			// Default it is the directory we are executing, and below.
 			string pluginDirectoryPaths = Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath);
 			pluginDirectoryPaths = Config.GetProperty("PluginDirectory", pluginDirectoryPaths);
