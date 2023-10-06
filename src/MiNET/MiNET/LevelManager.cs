@@ -58,7 +58,7 @@ namespace MiNET
 
 				IWorldProvider worldProvider = null;
 
-				switch (Config.GetProperty("WorldProvider", "anvil").ToLower().Trim())
+				switch (Config.GetProperty("WorldProvider", "leveldb").ToLower().Trim())
 				{
 					case "leveldb":
 						worldProvider = new LevelDbProvider()

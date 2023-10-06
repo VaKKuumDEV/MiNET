@@ -885,34 +885,13 @@ namespace MiNET
 				Type = AbilityLayerType.Base,
 				Abilities = abilities,
 				Values = (uint) abilities,
-				FlySpeed = 0.05f,
-				WalkSpeed = 0.1f
+				FlySpeed = 0.1f,
+				WalkSpeed = 0.05f
 			};
 
 			layers.Add(baseLayer);
 
 			return layers;
-		}
-
-		private uint GetAdventureFlags()
-		{
-			uint flags = 0;
-			if (IsWorldImmutable || GameMode == GameMode.Adventure) flags |= 0x01; // Immutable World (Remove hit markers client-side).
-			if (IsNoPvp || IsSpectator || GameMode == GameMode.Spectator) flags |= 0x02; // No PvP (Remove hit markers client-side).
-			if (IsNoPvm || IsSpectator || GameMode == GameMode.Spectator) flags |= 0x04; // No PvM (Remove hit markers client-side).
-			if (IsNoMvp || IsSpectator || GameMode == GameMode.Spectator) flags |= 0x08;
-
-			if (IsAutoJump) flags |= 0x20;
-
-			if (AllowFly || GameMode == GameMode.Creative) flags |= 0x40;
-
-			if (IsNoClip || IsSpectator || GameMode == GameMode.Spectator) flags |= 0x80; // No clip
-
-			if (IsWorldBuilder) flags |= 0x100; // Worldbuilder
-
-			if (IsFlying) flags |= 0x200;
-			if (IsMuted) flags |= 0x400; // Mute
-			return flags;
 		}
 
 		public PermissionLevel PermissionLevel { get; set; } = PermissionLevel.Operator;
