@@ -28,6 +28,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiNET.Blocks;
@@ -36,9 +37,7 @@ using MiNET.Utils;
 
 namespace MiNET.Test
 {
-	[TestClass
-	, Ignore("Manual code generation")
-	]
+	[TestClass]
 	public class GenerateBlocksTests
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(GenerateBlocksTests));
@@ -149,13 +148,19 @@ namespace MiNET.Test
 			foreach (string name in blocksWithStates.OrderBy(n => n).Distinct())
 			{
 				Console.WriteLine($"{name}");
-				foreach (var state in BlockFactory.GetBlockByName(name).GetState().States)
+
+				if (BlockFactory.GetBlockByName(name) != null)
 				{
-					if (state.Name.Contains("direction")) Console.WriteLine($"\t{state.Name}");
-					if (state.Name.Contains("face")) Console.WriteLine($"\t{state.Name}");
+					foreach (var state in BlockFactory.GetBlockByName(name).GetState().States)
+					{
+						if (state.Name.Contains("direction"))
+							Console.WriteLine($"\t{state.Name}");
+						if (state.Name.Contains("face"))
+							Console.WriteLine($"\t{state.Name}");
+					}
+				}
 				}
 			}
-		}
 
 		[TestMethod]
 		public void GenerateMissingBlocks()
@@ -207,6 +212,9 @@ namespace MiNET.Test
 
 					string blockClassName = CodeName(currentBlockState.Name.Replace("minecraft:", ""), true);
 
+					if (BlockFactory.GetBlockByName(currentBlockState.Name) != null)
+					{
+
 					blocks.Add((blockById.Id, blockClassName));
 
 					writer.WriteLineNoTabs($"");
@@ -229,41 +237,41 @@ namespace MiNET.Test
 						switch (state)
 						{
 							case BlockStateByte blockStateByte:
-							{
-								var values = q.Where(s => s.Name == state.Name).Select(d => ((BlockStateByte) d).Value).Distinct().OrderBy(s => s).ToList();
-								byte defaultVal = ((BlockStateByte) defaultBlockState?.States.First(s => s.Name == state.Name))?.Value ?? 0;
-								if (values.Min() == 0 && values.Max() == 1)
 								{
-									bits.Add(blockStateByte);
-									writer.Write($"[StateBit] ");
-									writer.WriteLine($"public {(propOverride ? "override" : "")} bool {CodeName(state.Name, true)} {{ get; set; }} = {(defaultVal == 1 ? "true" : "false")};");
+									var values = q.Where(s => s.Name == state.Name).Select(d => ((BlockStateByte) d).Value).Distinct().OrderBy(s => s).ToList();
+									byte defaultVal = ((BlockStateByte) defaultBlockState?.States.First(s => s.Name == state.Name))?.Value ?? 0;
+									if (values.Min() == 0 && values.Max() == 1)
+									{
+										bits.Add(blockStateByte);
+										writer.Write($"[StateBit] ");
+										writer.WriteLine($"public {(propOverride ? "override" : "")} bool {CodeName(state.Name, true)} {{ get; set; }} = {(defaultVal == 1 ? "true" : "false")};");
+									}
+									else
+									{
+										writer.Write($"[StateRange({values.Min()}, {values.Max()})] ");
+										writer.WriteLine($"public {(propOverride ? "override" : "")} byte {CodeName(state.Name, true)} {{ get; set; }} = {defaultVal};");
+									}
+									break;
 								}
-								else
-								{
-									writer.Write($"[StateRange({values.Min()}, {values.Max()})] ");
-									writer.WriteLine($"public {(propOverride ? "override" : "")} byte {CodeName(state.Name, true)} {{ get; set; }} = {defaultVal};");
-								}
-								break;
-							}
 							case BlockStateInt blockStateInt:
-							{
-								var values = q.Where(s => s.Name == state.Name).Select(d => ((BlockStateInt) d).Value).Distinct().OrderBy(s => s).ToList();
-								int defaultVal = ((BlockStateInt) defaultBlockState?.States.First(s => s.Name == state.Name))?.Value ?? 0;
-								writer.Write($"[StateRange({values.Min()}, {values.Max()})] ");
-								writer.WriteLine($"public {(propOverride ? "override" : "")} int {CodeName(state.Name, true)} {{ get; set; }} = {defaultVal};");
-								break;
-							}
-							case BlockStateString blockStateString:
-							{
-								var values = q.Where(s => s.Name == state.Name).Select(d => ((BlockStateString) d).Value).Distinct().ToList();
-								string defaultVal = ((BlockStateString) defaultBlockState?.States.First(s => s.Name == state.Name))?.Value ?? "";
-								if (values.Count > 1)
 								{
-									writer.WriteLine($"[StateEnum({string.Join(',', values.Select(v => $"\"{v}\""))})]");
+									var values = q.Where(s => s.Name == state.Name).Select(d => ((BlockStateInt) d).Value).Distinct().OrderBy(s => s).ToList();
+									int defaultVal = ((BlockStateInt) defaultBlockState?.States.First(s => s.Name == state.Name))?.Value ?? 0;
+									writer.Write($"[StateRange({values.Min()}, {values.Max()})] ");
+									writer.WriteLine($"public {(propOverride ? "override" : "")} int {CodeName(state.Name, true)} {{ get; set; }} = {defaultVal};");
+									break;
 								}
-								writer.WriteLine($"public {(propOverride ? "override" : "")} string {CodeName(state.Name, true)} {{ get; set; }} = \"{defaultVal}\";");
-								break;
-							}
+							case BlockStateString blockStateString:
+								{
+									var values = q.Where(s => s.Name == state.Name).Select(d => ((BlockStateString) d).Value).Distinct().ToList();
+									string defaultVal = ((BlockStateString) defaultBlockState?.States.First(s => s.Name == state.Name))?.Value ?? "";
+									if (values.Count > 1)
+									{
+										writer.WriteLine($"[StateEnum({string.Join(',', values.Select(v => $"\"{v}\""))})]");
+									}
+									writer.WriteLine($"public {(propOverride ? "override" : "")} string {CodeName(state.Name, true)} {{ get; set; }} = \"{defaultVal}\";");
+									break;
+								}
 							default:
 								throw new ArgumentOutOfRangeException(nameof(state));
 						}
@@ -375,6 +383,7 @@ namespace MiNET.Test
 
 					writer.Indent--;
 					writer.WriteLine($"}} // class");
+					}
 				}
 
 				writer.Indent--;

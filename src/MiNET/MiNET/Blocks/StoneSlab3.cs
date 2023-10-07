@@ -35,14 +35,5 @@ namespace MiNET.Blocks
 			IsBlockingSkylight = false; // Partial - blocks light.
 		}
 
-		protected override bool AreSameType(Block obj)
-		{
-			if (ReferenceEquals(null, obj)) return false;
-			if (obj.GetType() != this.GetType()) return false;
-			var slab = obj as StoneSlab3;
-			if (slab == null) return false;
-
-			return slab.StoneSlabType3 == StoneSlabType3;
-		}
 	}
 }
