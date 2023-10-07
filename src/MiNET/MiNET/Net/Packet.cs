@@ -2226,7 +2226,7 @@ namespace MiNET.Net
 		public void Write(AbilityLayer layer)
 		{
 			Write((ushort)layer.Type);
-			Write((uint)262143);            //todo fix
+			Write((uint)layer.Abilities);
 			Write((uint)layer.Values);
 			Write(layer.FlySpeed);
 			Write(layer.WalkSpeed);

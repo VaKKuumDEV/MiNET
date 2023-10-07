@@ -70,5 +70,6 @@ public enum PlayerAbility : uint
 	Muted = 1 << 15,
 	WorldBuilder = 1 << 16,
 	NoClip = 1 << 17,
-	PrivilegedBuilder= 1 << 18
+	PrivilegedBuilder= 1 << 18,
+	All= (1 << 19) - 1
 }

@@ -841,41 +841,78 @@ namespace MiNET
 				{
 					abilities |= PlayerAbility.Flying;
 				}
+				else
+				{
+					abilities |= 0;
+				}
+			}
+			else
+			{
+				abilities |= 0;
 			}
 
 			if (!GameMode.HasCollision())
 			{
 				abilities |= PlayerAbility.NoClip;
 			}
+			else
+			{
+				abilities |= 0;
+			}
 
 			if (!GameMode.AllowsTakingDamage())
 			{
 				abilities |= PlayerAbility.Invulnerable;
+			}
+			else
+			{
+				abilities |= 0;
 			}
 
 			if (GameMode.HasCreativeInventory())
 			{
 				abilities |= PlayerAbility.InstantBuild;
 			}
+			else
+			{
+				abilities |= 0;
+			}
 
 			if (GameMode.AllowsEditing())
 			{
 				abilities |= PlayerAbility.Build | PlayerAbility.Mine;
 			}
+			else
+			{
+				abilities |= 0;
+			}
 
 			if (GameMode.AllowsInteraction())
 			{
 				abilities |= PlayerAbility.DoorsAndSwitches | PlayerAbility.OpenContainers | PlayerAbility.AttackPlayers | PlayerAbility.AttackMobs;
+
+			}
+			else
+			{
+				abilities |= 0;
 			}
 
 			if (PermissionLevel == PermissionLevel.Operator)
 			{
 				abilities |= PlayerAbility.OperatorCommands;
 			}
+			else
+			{
+				abilities |= 0;
+			}
 
 			if (IsMuted)
 			{
 				abilities |= PlayerAbility.Muted;
+			}
+			else
+			{
+				abilities |= 0;
 			}
 
 			var layers = new AbilityLayers();
@@ -883,10 +920,10 @@ namespace MiNET
 			var baseLayer = new AbilityLayer()
 			{
 				Type = AbilityLayerType.Base,
-				Abilities = abilities,
+				Abilities = PlayerAbility.All,
 				Values = (uint) abilities,
-				FlySpeed = 0.1f,
-				WalkSpeed = 0.05f
+				FlySpeed = 0.05f,
+				WalkSpeed = 0.1f
 			};
 
 			layers.Add(baseLayer);
