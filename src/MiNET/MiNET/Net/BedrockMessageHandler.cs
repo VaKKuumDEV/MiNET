@@ -243,6 +243,9 @@ namespace MiNET.Net
 				case McpeEmoteList msg:
 					handler.HandleMcpeEmoteList(msg);
 					break;
+				case McpePermissionRequest msg:
+					handler.HandleMcpePermissionRequest(msg);
+					break;
 
 				default:
 				{

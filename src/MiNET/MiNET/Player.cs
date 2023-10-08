@@ -33,6 +33,7 @@ using System.Linq;
 using System.Net;
 using System.Numerics;
 using System.Threading;
+using System.Transactions;
 using fNbt;
 using log4net;
 using Microsoft.IO;
@@ -878,7 +879,7 @@ namespace MiNET
 				abilities |= 0;
 			}
 
-			if (GameMode.AllowsEditing())
+			if (PermissionLevel == PermissionLevel.Operator || PermissionLevel == PermissionLevel.Member)
 			{
 				abilities |= PlayerAbility.Build | PlayerAbility.Mine;
 			}
@@ -887,7 +888,7 @@ namespace MiNET
 				abilities |= 0;
 			}
 
-			if (GameMode.AllowsInteraction())
+			if (PermissionLevel == PermissionLevel.Operator || PermissionLevel == PermissionLevel.Member)
 			{
 				abilities |= PlayerAbility.DoorsAndSwitches | PlayerAbility.OpenContainers | PlayerAbility.AttackPlayers | PlayerAbility.AttackMobs;
 
@@ -2959,6 +2960,43 @@ namespace MiNET
 
 		public void HandleMcpeEmoteList(McpeEmoteList message)
 		{
+		}
+
+		public void HandleMcpePermissionRequest(McpePermissionRequest message)
+		{
+			//Log.Debug($"runtimeEntityId: {message.runtimeEntityId} permission: {message.permission} flag: {message.flagss}");
+
+			//Level.TryGetEntity(message.runtimeEntityId, out Entity entity); 
+
+			//TODO Figure out how to get player from runtimeId to send abilities packet
+
+			switch (message.permission)
+			{
+				case 0:
+					{
+						ActionPermissions = 0;
+						CommandPermission = 0;
+						PermissionLevel = PermissionLevel.Visitor;
+						SendAbilities();
+						break;
+					}
+				case 2:
+					{
+						ActionPermissions = ActionPermissions.Default;
+						CommandPermission = 0;
+						PermissionLevel = PermissionLevel.Member;
+						SendAbilities();
+						break;
+					}
+				case 4:
+					{
+						ActionPermissions = ActionPermissions.All;
+						CommandPermission = 4;
+						PermissionLevel = PermissionLevel.Operator;
+						SendAbilities();
+						break;
+					}
+			}
 		}
 
 		/// <summary>

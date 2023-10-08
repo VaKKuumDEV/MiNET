@@ -757,6 +757,11 @@ namespace MiNET.Client
 		{
 
 		}
+
+		public void HandleMcpePermissionRequest(McpePermissionRequest message)
+		{
+
+		}
 	}
 
 	public class DefaultMessageHandler : McpeClientMessageHandlerBase

@@ -2253,7 +2253,7 @@ namespace MiNET.Net
 				Write(layer);
 			}
 		}
-		
+
 		public AbilityLayers ReadAbilityLayers()
 		{
 			AbilityLayers layers = new AbilityLayers();
@@ -2266,7 +2266,7 @@ namespace MiNET.Net
 			return layers;
 		}
 
-		public void Write(EntityLink link)
+			public void Write(EntityLink link)
 		{
 			WriteVarLong(link.FromEntityId);
 			WriteVarLong(link.ToEntityId);

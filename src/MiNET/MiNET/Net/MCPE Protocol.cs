@@ -115,6 +115,7 @@ namespace MiNET.Net
 		void HandleMcpeRequestNetworkSettings(McpeRequestNetworkSettings message);
 		void HandleMcpeEmote(McpeEmotePacket message);
 		void HandleMcpeEmoteList(McpeEmoteList message);
+		void HandleMcpePermissionRequest(McpePermissionRequest message);
 	}
 
 	public interface IMcpeClientMessageHandler
@@ -252,6 +253,7 @@ namespace MiNET.Net
 		void HandleFtlCreatePlayer(FtlCreatePlayer message);
 		void HandleMcpeEmote(McpeEmotePacket message);
 		void HandleMcpeEmoteList(McpeEmoteList message);
+		void HandleMcpePermissionRequest(McpePermissionRequest message);
 	}
 
 	public class McpeClientMessageDispatcher
@@ -1041,6 +1043,8 @@ namespace MiNET.Net
 						return McpeEmotePacket.CreateObject().Decode(buffer);
 					case 0x98:
 						return McpeEmoteList.CreateObject().Decode(buffer);
+					case 0xb9:
+						return McpePermissionRequest.CreateObject().Decode(buffer);
 				}
 			}
 
@@ -10715,6 +10719,59 @@ namespace MiNET.Net
 
 			runtimeEntityId = default(long);
 			emoteIds = default(EmoteIds);
+
+		}
+
+	}
+
+	public partial class McpePermissionRequest : Packet<McpePermissionRequest>
+	{
+
+		public long runtimeEntityId; // = null;
+		public uint permission; // = null;
+		public short flagss; // = null;
+
+		public McpePermissionRequest()
+		{
+			Id = 0xb9;
+			IsMcpe = true;
+		}
+
+		protected override void EncodePacket()
+		{
+			base.EncodePacket();
+
+			BeforeEncode();
+
+			AfterEncode();
+		}
+
+		partial void BeforeEncode();
+		partial void AfterEncode();
+
+		protected override void DecodePacket()
+		{
+			base.DecodePacket();
+
+			BeforeDecode();
+
+			runtimeEntityId = ReadLong();
+			permission = ReadUnsignedVarInt();
+			flagss = ReadShort();
+
+			AfterDecode();
+		}
+
+		partial void BeforeDecode();
+		partial void AfterDecode();
+
+		protected override void ResetPacket()
+		{
+			base.ResetPacket();
+
+			runtimeEntityId = default(long);
+			permission = default(int);
+			flagss = default(short);
 
 		}
 

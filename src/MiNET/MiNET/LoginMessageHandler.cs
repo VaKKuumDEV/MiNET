@@ -787,6 +787,10 @@ namespace MiNET
 		public void HandleMcpeEmoteList(McpeEmoteList message)
 		{
 		}
+
+		public void HandleMcpePermissionRequest(McpePermissionRequest message)
+		{
+		}
 	}
 
 	public interface IServerManager
