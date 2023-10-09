@@ -70,7 +70,7 @@ namespace MiNET
 			{
 				var nbtItem = (NbtCompound) slots[i];
 
-				Item item = ItemFactory.GetItem(nbtItem["Name"].StringValue, nbtItem["Damage"].ShortValue, nbtItem["Count"].ByteValue);
+				Item item = ItemFactory.GetItem(nbtItem["id"].StringValue, nbtItem["Damage"].ShortValue, nbtItem["Count"].ByteValue);
 				byte slotIdx = nbtItem["Slot"].ByteValue;
 				Log.Debug($"Chest item {slotIdx}: {item}");
 				Slots[slotIdx] = item;
