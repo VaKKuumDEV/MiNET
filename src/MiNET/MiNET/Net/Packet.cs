@@ -2672,6 +2672,7 @@ namespace MiNET.Net
 		const byte ShapelessChemistry = 6;
 		const byte ShapedChemistry = 7;
 		const byte SmithingTransform = 8;
+		const byte SmithingTrim = 9;
 
 		public void Write(Recipes recipes)
 		{
@@ -2859,6 +2860,19 @@ namespace MiNET.Net
 						recipe.Input = ReadRecipeIngredient();
 						recipe.Addition = ReadRecipeIngredient();
 						recipe.Output = ReadItem(false);
+						recipe.Id = ReadUUID(); // Id
+						recipe.Block = ReadString(); // block?
+						recipe.UniqueId = ReadVarInt(); // unique id
+						recipes.Add(recipe);
+						//Log.Error("Read smithing recipe");
+						break;
+					}
+					case SmithingTrim:
+					{
+						var recipe = new SmithingTransformRecipe();
+						ReadString(); // some unique id
+						recipe.Input = ReadRecipeIngredient();
+						recipe.Addition = ReadRecipeIngredient();
 						recipe.Id = ReadUUID(); // Id
 						recipe.Block = ReadString(); // block?
 						recipe.UniqueId = ReadVarInt(); // unique id

@@ -155,7 +155,7 @@ namespace MiNET.Utils.Cryptography
 				Iat = iat,
 				ExtraData = new ExtraData
 				{
-					Xuid = "",
+					//Xuid = "",
 					DisplayName = username,
 					Identity = isEmulator ? Guid.NewGuid().ToString() : "85e4febd-3d33-4008-b044-1ad9fb85b26c",
 					TitleId = "89692877"
@@ -166,16 +166,6 @@ namespace MiNET.Utils.Cryptography
 				Nbf = iat,
 				RandomNonce = new Random().Next(),
 			};
-
-			//			string txt = $@"{{
-			//	""exp"": 1467508449,
-			//	""extraData"": {{
-			//		""displayName"": ""gurunxx"",
-			//		""identity"": ""4e0199c6-7cfd-3550-b676-74398e0a5f1a""
-			//	}},
-			//	""identityPublicKey"": ""{b64Key}"",
-			//	""nbf"": 1467508448
-			//}}";
 
 			string val = JWT.Encode(certificateData, signKey, JwsAlgorithm.ES384, new Dictionary<string, object> {{"x5u", b64Key}});
 
@@ -236,7 +226,7 @@ namespace MiNET.Utils.Cryptography
 	""SkinAnimationData"": """",
 	""SkinColor"": ""#0"",
 	""SkinData"": ""{skin64}"",
-	""SkinGeometryData"": """",
+	""SkinGeometryData"": ""bnVsbAo="",
 	""SkinId"": ""{skin.SkinId}"",
 	""SkinImageHeight"": {skin.Height},
 	""SkinImageWidth"": {skin.Width},
