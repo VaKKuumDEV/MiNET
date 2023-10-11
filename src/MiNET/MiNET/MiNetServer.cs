@@ -115,8 +115,6 @@ namespace MiNET
 		
 		public bool StartServer()
 		{
-			DisplayTimerProperties();
-
 			if (_listener != null) return false; // Already started
 
 			try

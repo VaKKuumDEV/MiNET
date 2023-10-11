@@ -33,6 +33,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MiNET.Client\MiNET.Client.csproj" />
     <ProjectReference Include="..\MiNET\MiNET.csproj" />
   </ItemGroup>
 </Project>
