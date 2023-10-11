@@ -1901,9 +1901,11 @@ namespace MiNET
 
 		public virtual void SendCraftingRecipes()
 		{
-			McpeCraftingData craftingData = McpeCraftingData.CreateObject();
+			//TODO: Fix crafting recipe sending.
+			
+			/*McpeCraftingData craftingData = McpeCraftingData.CreateObject();
 			craftingData.recipes = RecipeManager.Recipes;
-			SendPacket(craftingData);
+			SendPacket(craftingData);*/
 		}
 
 		public virtual void SendCreativeInventory()
