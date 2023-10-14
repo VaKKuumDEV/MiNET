@@ -17,13 +17,12 @@
 // The Original Developer is the Initial Developer.  The Initial Developer of
 // the Original Code is Niclas Olofsson.
 // 
-// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2021 Niclas Olofsson.
+// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2023 Niclas Olofsson.
 // All Rights Reserved.
 #endregion
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using log4net;
 using MiNET.Items;
 using MiNET.Utils;
@@ -42,6 +41,10 @@ namespace MiNET.Net.Items
 		private Dictionary<int, int> _simpleInternalIdToNetwork;
 
 		private Dictionary<string, string> _internalNameToNetworkName;
+		private metaToName<string, int, string> _metaToName;
+		private Dictionary<string, int> _metaList;
+		private Dictionary<string, string> _metaMapList;
+
 		public ItemTranslator(Itemstates itemstates)
 		{
 			var internalNameToNetworkName = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -49,6 +52,9 @@ namespace MiNET.Net.Items
 			var r16Mapping = ResourceUtil.ReadResource<R16ToCurrentMap>("r16_to_current_item_map.json", typeof(Item), "Data");
 
 			var simpleMappings = new Dictionary<string, short>();
+			var metaToNameList = new metaToName<string, int, string>();
+			var metaList = new Dictionary<string, int>();
+			var metaMapList = new Dictionary<string, string>();
 
 			foreach (var entry in r16Mapping.Simple)
 			{
@@ -90,10 +96,13 @@ namespace MiNET.Net.Items
 				string oldId = entry.Key;
 				if (!legacyTranslations.ContainsKey(oldId))
 					continue;
-				
+				metaToNameList[entry.Key] = new metaToName<int, string>();
 				var legacyIntegerId = legacyTranslations[oldId];
 				foreach (var mappingEntry in entry.Value)
 				{
+					metaToNameList[entry.Key].TryAdd(int.Parse(mappingEntry.Key), mappingEntry.Value);
+					metaList.TryAdd(mappingEntry.Value, int.Parse(mappingEntry.Key));
+					metaMapList.TryAdd(mappingEntry.Value, entry.Key);
 					var newId = mappingEntry.Value;
 					if (short.TryParse(mappingEntry.Key, out var meta))
 					{
@@ -144,6 +153,36 @@ namespace MiNET.Net.Items
 			_networkIdToInternal = networkIdToInternal;
 			_simpleNetworkIdToInternal = simpleNetworkIdToInternal;
 			_internalNameToNetworkName = internalNameToNetworkName;
+			_metaToName = metaToNameList;
+			_metaList = metaList;
+			_metaMapList = metaMapList;
+		}
+
+		public string GetNameByMeta(string cname, int meta)
+		{
+			if (_metaToName[cname].TryGetValue(meta, out var name))
+			{
+				return name;
+			}
+			return null;
+		}
+
+		public byte GetMetaByName(string name)
+		{
+			if (_metaList.TryGetValue(name, out var meta))
+			{
+				return (byte)meta;
+			}
+			return 255;
+		}
+
+		public string GetMetaMapByName(string name)
+		{
+			if (_metaMapList.TryGetValue(name, out var mapName))
+			{
+				return mapName;
+			}
+			return null;
 		}
 
 		internal bool TryGetNetworkId(int id, short meta, out TranslatedItem item)
@@ -199,6 +238,16 @@ namespace MiNET.Net.Items
 		{
 			return _internalNameToNetworkName.TryGetValue(input, out output);
 		}
+	}
+
+	public class metaToName<metaId, name> :
+		Dictionary<metaId, name>
+	{
+	}
+
+	public class metaToName<map, meta, name> :
+		Dictionary<map, metaToName<meta, name>>
+	{
 	}
 
 	internal class TranslatedItem : IEquatable<TranslatedItem>

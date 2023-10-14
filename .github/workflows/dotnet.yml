@@ -25,6 +25,15 @@ jobs:
       working-directory: src/MiNET/MiNET.Console
       run: dotnet test --no-build --verbosity normal
 
+on:
+  push:
+    branches: [ "release" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
   release:
     permissions: write-all
     name: Publish

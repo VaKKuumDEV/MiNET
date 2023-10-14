@@ -34,5 +34,15 @@ namespace MiNET.Blocks
 			IsTransparent = true; // Partial - blocks light.
 			IsBlockingSkylight = false; // Partial - blocks light.
 		}
+
+		protected override bool AreSameType(Block obj)
+		{
+			if (ReferenceEquals(null, obj)) return false;
+			if (obj.GetType() != this.GetType()) return false;
+			var slab = obj as StoneSlab2;
+			if (slab == null) return false;
+
+			return slab.StoneSlabType2 == StoneSlabType2;
+		}
 	}
 }

@@ -97,32 +97,32 @@ namespace MiNET.Blocks
 				switch (SaplingType)
 				{
 					case "oak":
-						log = new Log {OldLogType = SaplingType};
+						//log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 4);
 						break;
 					case "spruce":
-						log = new Log {OldLogType = SaplingType};
+						//log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						//generator = new SmallTreeGenerator(log, leaves, 4);
 						break;
 					case "birch":
-						log = new Log {OldLogType = SaplingType};
+						//log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 5);
 						break;
 					case "jungle":
-						log = new Log {OldLogType = SaplingType};
+						//log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						//generator = new SmallTreeGenerator(log, leaves, 4 + new Random().Next(7));
 						break;
 					case "acacia":
-						log = new Log {OldLogType = SaplingType};
+						//log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						//generator = new SmallTreeGenerator(log, leaves, 5);
 						break;
 					case "dark_oak":
-						log = new Log {OldLogType = SaplingType};
+						//log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						//generator = new SmallTreeGenerator(log, leaves, 5);
 						break;

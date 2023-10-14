@@ -25,17 +25,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Text.RegularExpressions;
 using fNbt;
 using log4net;
-using MiNET.Items;
 using MiNET.Net;
 using MiNET.Utils;
-using Newtonsoft.Json;
 
 namespace MiNET.Blocks
 {
@@ -338,6 +334,7 @@ namespace MiNET.Blocks
 			{
 				return GetBlockById(NameToId[blockName]);
 			}
+
 
 			return null;
 		}
@@ -746,6 +743,7 @@ namespace MiNET.Blocks
 				383 => new Element117(),
 				384 => new Element118(),
 				385 => new Seagrass(),
+				386 => new Coral(),
 				387 => new CoralBlock(),
 				388 => new CoralFan(),
 				389 => new CoralFanDead(),
@@ -856,7 +854,7 @@ namespace MiNET.Blocks
 				497 => new CrimsonPlanks(),
 				498 => new WarpedPlanks(),
 				499 => new CrimsonDoor(),
-				//500 => new WarpedDoor(),
+				500 => new WarpedDoor(),
 				501 => new CrimsonTrapdoor(),
 				502 => new WarpedTrapdoor(),
 				505 => new CrimsonStandingSign(),

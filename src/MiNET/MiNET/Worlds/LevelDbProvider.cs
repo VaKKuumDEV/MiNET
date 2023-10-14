@@ -40,6 +40,7 @@ using System.Threading.Tasks;
 using fNbt;
 using log4net;
 using MiNET.Blocks;
+using MiNET.Items;
 using MiNET.LevelDB;
 using MiNET.Utils;
 using MiNET.Utils.IO;
@@ -283,19 +284,27 @@ namespace MiNET.Worlds
 					};
 					file.LoadFromStream(reader, NbtCompression.None);
 					var tag = (NbtCompound) file.RootTag;
+					var blockName = tag["name"].StringValue;
 
-					Block block = BlockFactory.GetBlockByName(tag["name"].StringValue);
+					Block block = BlockFactory.GetBlockByName(blockName); //for blocks without metadata
+					var metaBlockId = ItemFactory.Translator.GetMetaByName(blockName); //for blocks with metadata
+
 					if (block != null && block.GetType() != typeof(Block) && !(block is Air))
 					{
 						List<IBlockState> blockState = ReadBlockState(tag);
 						block.SetState(blockState);
+						palette.Add(block.GetRuntimeId());
+					}
+					else if(metaBlockId != 255)
+					{
+						var runtimeId = BlockFactory.GetRuntimeId(BlockFactory.GetBlockIdByName(ItemFactory.Translator.GetMetaMapByName(blockName)), metaBlockId);
+						palette.Add((int) runtimeId);
 					}
 					else
 					{
 						block = new Air();
+						palette.Add(block.GetRuntimeId());
 					}
-
-					palette.Add(block.GetRuntimeId());
 				}
 
 				long nextStore = reader.Position;

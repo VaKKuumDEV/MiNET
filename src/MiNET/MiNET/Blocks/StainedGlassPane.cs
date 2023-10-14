@@ -22,6 +22,10 @@
 // All Rights Reserved.
 
 #endregion
+using System.Numerics;
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
 
 using MiNET.Items;
 
@@ -33,6 +37,13 @@ namespace MiNET.Blocks
 		{
 			IsTransparent = true; // I should hope so at least
 			BlastResistance = 1.5f;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Name = ItemFactory.Translator.GetNameByMeta("minecraft:stained_glass_pane", itemInHand.Metadata);
+			return false;
 		}
 
 		public override Item[] GetDrops(Item tool)

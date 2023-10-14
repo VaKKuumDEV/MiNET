@@ -18,19 +18,30 @@
 // The Original Developer is the Initial Developer.  The Initial Developer of
 // the Original Code is Niclas Olofsson.
 // 
-// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2023 Niclas Olofsson. 
+// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2018 Niclas Olofsson. 
 // All Rights Reserved.
 
 #endregion
+using System.Numerics;
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
-	public partial class BlackstoneWall : Block
+	public partial class Terracotta : Block
 	{
-		public BlackstoneWall() : base(532)
+		public Terracotta() : base(159)
 		{
-			BlastResistance = 15;
-			Hardness = 2;
+			BlastResistance = 30;
+			Hardness = 1.25f;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Name = ItemFactory.Translator.GetNameByMeta("minecraft:stained_hardened_clay", itemInHand.Metadata);
+			return false;
 		}
 	}
 }

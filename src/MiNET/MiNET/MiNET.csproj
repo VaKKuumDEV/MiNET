@@ -25,14 +25,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Blocks\blockstates.json" />
     <None Remove="Blocks\legacy_id_map.json" />
     <None Remove="Items\itemstates.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Blocks\blockstates.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Blocks\Data\block_id_map.json" />
     <EmbeddedResource Include="Blocks\Data\canonical_block_states.nbt" />
     <EmbeddedResource Include="Blocks\Data\item_id_map.json" />
@@ -64,7 +60,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="SharpAvi" Version="3.0.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
     <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta14" />
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="6.0.0" />
   </ItemGroup>

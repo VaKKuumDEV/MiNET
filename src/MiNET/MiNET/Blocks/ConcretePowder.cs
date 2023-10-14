@@ -22,6 +22,10 @@
 // All Rights Reserved.
 
 #endregion
+using System.Numerics;
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
@@ -31,6 +35,13 @@ namespace MiNET.Blocks
 		{
 			BlastResistance = 15;
 			Hardness = 3;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Name = ItemFactory.Translator.GetNameByMeta("minecraft:concrete_powder", itemInHand.Metadata);
+			return false;
 		}
 	}
 }

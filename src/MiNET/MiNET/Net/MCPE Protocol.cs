@@ -8701,6 +8701,8 @@ namespace MiNET.Net
 		public BlockCoordinates coordinates; // = null;
 		public uint radius; // = null;
 		public int savedChunks; // = null;
+		public uint x; // = null;
+		public uint z; // = null;
 
 		public McpeNetworkChunkPublisherUpdate()
 		{
@@ -8733,8 +8735,14 @@ namespace MiNET.Net
 			coordinates = ReadBlockCoordinates();
 			radius = ReadUnsignedVarInt();
 			savedChunks = ReadInt();
+			for (int i = 0; i < savedChunks; i++)
+			{
+				x = ReadUnsignedVarInt();
+				z = ReadUnsignedVarInt();
+				//todo saved chunk list
+			}
 
-			AfterDecode();
+				AfterDecode();
 		}
 
 		partial void BeforeDecode();
@@ -8747,6 +8755,8 @@ namespace MiNET.Net
 			coordinates=default(BlockCoordinates);
 			radius=default(uint);
 			savedChunks=default(int);
+			x = default(int);
+			z = default(int);
 		}
 
 	}

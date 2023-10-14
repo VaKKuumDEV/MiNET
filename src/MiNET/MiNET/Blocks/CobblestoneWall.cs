@@ -22,6 +22,9 @@
 // All Rights Reserved.
 
 #endregion
+using System.Numerics;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
@@ -32,6 +35,13 @@ namespace MiNET.Blocks
 			IsTransparent = true;
 			BlastResistance = 30;
 			Hardness = 2;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Name = nameValues[itemInHand.Metadata];
+			return false;
 		}
 	}
 }

@@ -22,22 +22,29 @@
 // All Rights Reserved.
 
 #endregion
+using System.Numerics;
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
 	public partial class Fence : Block
 	{
-		public Fence() : this(85)
-		{
-		}
-
-		public Fence(byte id) : base(id)
+		public Fence() : base(85)
 		{
 			FuelEfficiency = 15;
 			IsTransparent = true;
 			BlastResistance = 15;
 			Hardness = 2;
 			IsFlammable = true;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Name = ItemFactory.Translator.GetNameByMeta("minecraft:fence", itemInHand.Metadata);
+			return false;
 		}
 	}
 }

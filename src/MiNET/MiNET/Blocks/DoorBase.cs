@@ -24,6 +24,7 @@
 #endregion
 
 using System.Numerics;
+using log4net;
 using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
@@ -32,6 +33,7 @@ namespace MiNET.Blocks
 {
 	public abstract class DoorBase : Block
 	{
+		private static readonly ILog Log = LogManager.GetLogger(typeof(DoorBase));
 		[StateRange(0, 3)] public virtual int Direction { get; set; }
 		[StateBit] public virtual bool DoorHingeBit { get; set; }
 		[StateBit] public virtual bool OpenBit { get; set; }
@@ -46,7 +48,20 @@ namespace MiNET.Blocks
 
 		protected override bool CanPlace(Level world, Player player, BlockCoordinates blockCoordinates, BlockCoordinates targetCoordinates, BlockFace face)
 		{
+			if (Direction == 1 || Direction == 3)
+			{
+				Direction = 0;
+				DoorBase block = this;
+				block.OpenBit = true;
+				world.SetBlock(block);
+			}
+			Log.Debug($"doorbase  {Direction}");
 			return world.GetBlock(blockCoordinates).IsReplaceable && world.GetBlock(blockCoordinates + Level.Up).IsReplaceable;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			return false;
 		}
 
 		public override void BreakBlock(Level level, BlockFace face, bool silent = false)

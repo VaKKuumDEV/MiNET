@@ -39,7 +39,7 @@ namespace MiNET.Test
 			}
 		}
 
-		[TestMethod, DataRow("127.0.0.1", 19132, "TheGrey"), Timeout(10 * 1000), Ignore("Used to get blockstates data from the vanilla server")]
+		[TestMethod, DataRow("127.0.0.1", 19132, "TheGrey"), Timeout(10 * 1000)]
 		public void GenerateBlockstates(string ip, int port, string username)
 		{
 			if (!IPAddress.TryParse(ip, out IPAddress address))

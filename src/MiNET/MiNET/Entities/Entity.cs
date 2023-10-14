@@ -720,6 +720,11 @@ namespace MiNET.Entities
 			return DirectionByRotationFlat(KnownPosition.Yaw);
 		}
 
+		public String GetDirectionString()
+		{
+			return DirectionByRotationFlatString(KnownPosition.Yaw);
+		}
+
 		public byte GetProperDirection()
 		{
 			return DirectionByRotationFlat(KnownPosition.Yaw) switch
@@ -764,6 +769,19 @@ namespace MiNET.Entities
 				2 => 3,
 				3 => 0,
 				_ => 0
+			};
+		}
+
+		public static string DirectionByRotationFlatString(float yaw)
+		{
+			byte direction = (byte) ((int) Math.Floor((yaw * 4F) / 360F + 0.5D) & 0x03);
+			return direction switch
+			{
+				2 => "South",
+				1 => "West",
+				3 => "North",
+				0 => "East",
+				_ => "South"
 			};
 		}
 

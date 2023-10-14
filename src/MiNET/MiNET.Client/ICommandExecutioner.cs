@@ -94,6 +94,10 @@ namespace MiNET.Client
 			{
 				DiscoverItems(caller);
 			}
+			else if (text.Contains("test"))
+			{
+				SendCommand(caller.Client, $"/gamerule showcoordinates true");
+			}
 			else
 			{
 				Log.Debug($"Found no matching method for '{text}'");
@@ -376,11 +380,11 @@ namespace MiNET.Client
 						for (int yd = yStart - 1; yd < yStart + 34; yd++)
 						{
 							{
-								SendCommand(client, $"/setblock {xd} {yd} {zd} glass 0 replace");
+								SendCommand(client, $"/setblock {xd} {yd} {zd} glass replace");
 							}
 
 							{
-								SendCommand(client, $"/setblock {xd} {yd} {zd} barrier 0 replace");
+								SendCommand(client, $"/setblock {xd} {yd} {zd} barrier replace");
 							}
 						}
 					}
@@ -411,7 +415,7 @@ namespace MiNET.Client
 							bs.Data = -1;
 						});
 					
-					SendCommand(client, $"/setblock {x} {y} {z} air 0 replace");
+					SendCommand(client, $"/setblock {x} {y} {z} air replace");
 					Log.Warn($"Setting block {id} {name}");
 
 					for (int meta = 0; meta <= 15; meta++)
@@ -420,7 +424,7 @@ namespace MiNET.Client
 						{
 							Log.Debug($"Setting block {id} {meta} {name}");
 							SendCommand(client, $"/setblock {x} {y} {z} {name} {meta} replace");
-							SendCommand(client, $"/setblock {x} {y} {z} air 0 destroy");
+							SendCommand(client, $"/setblock {x} {y} {z} air destroy");
 							
 							if (!_resetEventAddItemEntity.WaitOne(1000))
 								break;
@@ -445,7 +449,10 @@ namespace MiNET.Client
 		{
 			var request = McpeCommandRequest.CreateObject();
 			request.command = command;
+			request.commandType = 0;
 			request.unknownUuid = new UUID(Guid.NewGuid().ToString());
+			request.isinternal = false;
+			request.version = 36;
 			client.SendPacket(request);
 		}
 
@@ -478,7 +485,6 @@ namespace MiNET.Client
 			void Report(string message)
 			{
 				Log.Warn(message);
-				client.SendChat(message);
 			}
 
 			var width = (int)MathF.Ceiling(MathF.Sqrt(count));
@@ -508,18 +514,18 @@ namespace MiNET.Client
 					for (int yd = yStart; yd < yStart + 33; yd++)
 					{
 
-						SendCommand(client, $"/setblock {bx} {yd} {bz} log 0 replace");
+						SendCommand(client, $"/setblock {bx} {yd} {bz} log replace");
 							//if (!_resetEventUpdateBlock.WaitOne(250)) Log.Warn("wait timeout");
 
-						SendCommand(client, $"/setblock {bx} {yd} {bz} barrier 0 replace");
+						SendCommand(client, $"/setblock {bx} {yd} {bz} barrier replace");
 							//if (!_resetEventUpdateBlock.WaitOne(250)) Log.Warn("wait timeout");
 
 						for (int xd = bx - 1; xd <= bx + 1; xd++)
 						{
 							for (int zd = bz - 1; zd <= bz + 1; zd++)
 							{
-								SendCommand(client, $"/setblock {xd} {yd} {zd} air 0 replace");
-								SendCommand(client, $"/setblock {xd} {yd} {zd} barrier 0 replace");
+								SendCommand(client, $"/setblock {xd} {yd} {zd} air replace");
+								SendCommand(client, $"/setblock {xd} {yd} {zd} barrier replace");
 							}
 						}
 					}
@@ -592,13 +598,13 @@ namespace MiNET.Client
 					int y = yStart;
 					for (int meta = 0; meta <= 15; meta++)
 					{
-					//	Log.Warn($"Setting block {id} {meta} {name}");
+						Log.Warn($"Setting block {id} {meta} {name}");
 
 						SendCommand(client, $"/setblock {c.X} {y} {c.Z} {name} {meta} replace");
 
 						if (!_resetEventUpdateBlock.WaitOne(500))
 						{
-							SendCommand(client, $"/setblock {c.X} {y} {c.Z} air 0 replace");
+							SendCommand(client, $"/setblock {c.X} {y} {c.Z} air replace");
 							//break;
 						}
 

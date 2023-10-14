@@ -22,10 +22,8 @@
 // All Rights Reserved.
 
 #endregion
-
 using System.Numerics;
 using MiNET.Items;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -43,19 +41,12 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			PillarAxis = ItemBlock.GetPillarAxisFromFace(face).ToString();
+			var itemInHand = player.Inventory.GetItemInHand();
+			Name = ItemFactory.Translator.GetNameByMeta("minecraft:Wool", itemInHand.Metadata);
 			return false;
 		}
 
 
-		//public override Item[] GetDrops(Item tool)
-		//{
-		//	return new[] {ItemFactory.GetItem((short) Id, (short) (Metadata & 0x03), 1)};
-		//}
 
-		public override Item GetSmelt()
-		{
-			return ItemFactory.GetItem(263, 1);
-		}
 	}
 }

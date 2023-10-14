@@ -24,6 +24,7 @@
 #endregion
 
 using System.Collections.Generic;
+using System.Net;
 using log4net;
 using MiNET.Blocks;
 
@@ -42,6 +43,7 @@ namespace MiNET.Net
 		public bool cacheEnabled;
 		//public bool subChunkRequestsEnabled;
 		public uint subChunkCount;
+		public uint count;
 		public SubChunkRequestMode subChunkRequestMode = SubChunkRequestMode.SubChunkRequestModeLegacy;
 
 		partial void AfterEncode()
@@ -49,31 +51,36 @@ namespace MiNET.Net
 			switch (subChunkRequestMode)
 			{
 				case SubChunkRequestMode.SubChunkRequestModeLegacy:
-				{
-					WriteUnsignedVarInt(subChunkCount);
+					{
+						WriteUnsignedVarInt(subChunkCount);
 
-					break;
-				}
+						break;
+					}
 
 				case SubChunkRequestMode.SubChunkRequestModeLimitless:
-				{
-					WriteUnsignedVarInt(uint.MaxValue);
-					break;
-				}
+					{
+						WriteUnsignedVarInt(uint.MaxValue);
+						break;
+					}
 
 				case SubChunkRequestMode.SubChunkRequestModeLimited:
-				{
-					WriteUnsignedVarInt(uint.MaxValue -1);
-					Write((ushort)subChunkCount);
-					break;
-				}
+					{
+						WriteUnsignedVarInt(uint.MaxValue - 1);
+						Write((ushort) subChunkCount);
+						break;
+					}
 			}
 
 			Write(cacheEnabled);
-			
-			if (cacheEnabled) 
-				Write(blobHashes);
-			
+
+			if (cacheEnabled)
+			{
+				foreach (var blobHashe in blobHashes)
+				{
+					Write(blobHashe);
+				}
+			}
+
 			WriteByteArray(chunkData);
 		}
 
@@ -97,11 +104,17 @@ namespace MiNET.Net
 			}
 
 			cacheEnabled = ReadBool();
-			
-			if (cacheEnabled) 
-				blobHashes = ReadUlongs();
-			
-			chunkData = ReadByteArray();
+
+			if (cacheEnabled)
+			{
+				count = ReadUnsignedVarInt();
+				for (int i = 0; i < count; i++)
+				{
+					blobHashes[i] = ReadUlong();
+				}
+			}
+
+				chunkData = ReadByteArray();
 		}
 	}
 
