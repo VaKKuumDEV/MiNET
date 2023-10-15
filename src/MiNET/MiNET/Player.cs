@@ -1107,7 +1107,7 @@ namespace MiNET
 			SendPacket(pk);
 		}
 
-		public bool EnableCommands { get; set; } = Config.GetProperty("EnableCommands", false);
+		public bool EnableCommands { get; set; } = Config.GetProperty("EnableCommands", true);
 
 		protected virtual void SendSetCommandsEnabled()
 		{
