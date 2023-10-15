@@ -500,6 +500,13 @@ namespace MiNET.Net
 			WriteSignedVarInt(coord.Z);
 		}
 
+		public void WritePaintingCoordinates(BlockCoordinates coord)
+		{
+			Write((float) coord.X);
+			Write((float) coord.Y);
+			Write((float) coord.Z);
+		}
+
 		public BlockCoordinates ReadBlockCoordinates()
 		{
 			return new BlockCoordinates(ReadSignedVarInt(), (int) ReadUnsignedVarInt(), ReadSignedVarInt());

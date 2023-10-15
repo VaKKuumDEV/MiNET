@@ -3290,7 +3290,7 @@ namespace MiNET.Net
 
 			WriteSignedVarLong(entityIdSelf);
 			WriteUnsignedVarLong(runtimeEntityId);
-			Write(coordinates);
+			WritePaintingCoordinates(coordinates);
 			WriteSignedVarInt(direction);
 			Write(title);
 
