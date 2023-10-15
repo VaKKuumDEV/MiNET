@@ -41,7 +41,7 @@ namespace MiNET.Blocks
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var itemInHand = player.Inventory.GetItemInHand();
-			Name = ItemFactory.Translator.GetNameByMeta("minecraft:wool", itemInHand.Metadata);
+			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:wool", itemInHand.Metadata);
 			return false;
 		}
 	}

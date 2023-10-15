@@ -163,7 +163,7 @@ namespace MiNET.Worlds
 
 			if (Dimension == Dimension.Overworld)
 			{
-				if (Config.GetProperty("CheckForSafeSpawn", false))
+				if (Config.GetProperty("CheckForSafeSpawn", true))
 				{
 					SpawnPoint.Y = GetHeight((BlockCoordinates) SpawnPoint) + 1;
 					Log.Debug("Checking for safe spawn");

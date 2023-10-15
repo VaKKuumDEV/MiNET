@@ -345,9 +345,6 @@ namespace MiNET.Items
 			else if (id == 451) item = new ItemBleach();
 			else if (id == 452) item = new ItemIronNugget();
 			else if (id == 453) item = new ItemIceBomb();
-			else if (id == 454 && metadata == 0) item = new ItemSlate();
-			else if (id == 454 && metadata == 1) item = new ItemPoster();
-			else if (id == 454 && metadata == 2) item = new ItemBoard();
 			else if (id == 455) item = new ItemTrident();
 			else if (id == 457) item = new ItemBeetroot();
 			else if (id == 458) item = new ItemBeetrootSeeds();

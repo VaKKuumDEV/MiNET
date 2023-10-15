@@ -27,8 +27,6 @@ using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
-using MiNET.Items;
-
 namespace MiNET.Blocks
 {
 	public partial class StainedGlassPane : Block
@@ -42,7 +40,7 @@ namespace MiNET.Blocks
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var itemInHand = player.Inventory.GetItemInHand();
-			Name = ItemFactory.Translator.GetNameByMeta("minecraft:stained_glass_pane", itemInHand.Metadata);
+			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:stained_glass_pane", itemInHand.Metadata);
 			return false;
 		}
 
