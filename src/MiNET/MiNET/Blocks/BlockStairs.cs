@@ -74,9 +74,4 @@ namespace MiNET.Blocks
 	public partial class NormalStoneStairs : BlockStairs { public NormalStoneStairs() : base(435) { IsGenerated = false; } }
 	public partial class RedNetherBrickStairs : BlockStairs { public RedNetherBrickStairs() : base(439) { IsGenerated = false; } }
 	public partial class SmoothQuartzStairs : BlockStairs { public SmoothQuartzStairs() : base(440) { IsGenerated = false; } }
-	public partial class CrimsonStairs : BlockStairs { public CrimsonStairs() : base(509) { IsGenerated = false; } }
-	public partial class WarpedStairs : BlockStairs { public WarpedStairs() : base(510) { IsGenerated = false; } }
-	public partial class PolishedBlackstoneBrickStairs : BlockStairs { public PolishedBlackstoneBrickStairs() : base(530) { IsGenerated = false; } }
-	public partial class BlackstoneStairs : BlockStairs { public BlackstoneStairs() : base(531) { IsGenerated = false; } }
-	public partial class PolishedBlackstoneStairs : BlockStairs { public PolishedBlackstoneStairs() : base(547) { IsGenerated = false; } }
 }

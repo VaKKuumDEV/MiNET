@@ -97,14 +97,4 @@ namespace MiNET.Blocks
 	{
 		public SpruceTrapdoor() : base(404) { }
 	}
-
-	public partial class CrimsonTrapdoor : TrapdoorBase
-	{
-		public CrimsonTrapdoor() : base(501) { }
-	}
-
-	public partial class WarpedTrapdoor : TrapdoorBase
-	{
-		public WarpedTrapdoor() : base(502) { }
-	}
 }

@@ -111,15 +111,4 @@ namespace MiNET.Blocks
 		}
 	}
 
-	public partial class CrimsonSlab : SlabBase { public CrimsonSlab() : base(519) { IsGenerated = false; } }
-	public partial class WarpedSlab : SlabBase { public WarpedSlab() : base(520) { IsGenerated = false; } }
-	public partial class BlackstoneSlab : SlabBase { public BlackstoneSlab() : base(537) { IsGenerated = false; } }
-	public partial class PolishedBlackstoneBrickSlab : SlabBase { public PolishedBlackstoneBrickSlab() : base(539) { IsGenerated = false; } }
-	public partial class PolishedBlackstoneSlab : SlabBase { public PolishedBlackstoneSlab() : base(548) { IsGenerated = false; } }
-	public partial class CrimsonDoubleSlab : Block { public CrimsonDoubleSlab() : base(521) { IsGenerated = false; } }
-	public partial class WarpedDoubleSlab : Block { public WarpedDoubleSlab() : base(522) { IsGenerated = false; } }
-	public partial class BlackstoneDoubleSlab : Block { public BlackstoneDoubleSlab() : base(538) { IsGenerated = false; } }
-	public partial class PolishedBlackstoneBrickDoubleSlab : Block { public PolishedBlackstoneBrickDoubleSlab() : base(540) { IsGenerated = false; } }
-	public partial class PolishedBlackstoneDoubleSlab : Block { public PolishedBlackstoneDoubleSlab() : base(549) { IsGenerated = false; } }
-
 }

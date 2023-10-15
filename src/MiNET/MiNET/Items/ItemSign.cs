@@ -100,9 +100,4 @@ namespace MiNET.Items
 	{
 		public ItemCrimsonSign() : base("minecraft:crimson_sign", 753, 505, 507) { }
 	}
-
-	public class ItemWarpedSign : ItemSignBase
-	{
-		public ItemWarpedSign() : base("minecraft:warped_sign", 754, 506, 508) { }
-	}
 }

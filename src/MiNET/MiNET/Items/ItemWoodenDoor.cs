@@ -140,20 +140,6 @@ namespace MiNET.Items
 		}
 	}
 
-	public class ItemWarpedDoor : ItemWoodenDoor
-	{
-		public ItemWarpedDoor() : base("minecraft:warped_door", 756)
-		{
-		}
-	}
-
-	public class ItemCrimsonDoor : ItemWoodenDoor
-	{
-		public ItemCrimsonDoor() : base("minecraft:crimson_door", 755)
-		{
-		}
-	}
-
 	public class ItemIronDoor : ItemWoodenDoor
 	{
 		public ItemIronDoor() : base("minecraft:iron_door", 330)

@@ -110,13 +110,4 @@ namespace MiNET.Blocks
 		public DarkoakStandingSign() : base(447, 476) { }
 	}
 
-	public partial class CrimsonStandingSign : StandingSignBase
-	{
-		public CrimsonStandingSign() : base(505, 753) { }
-	}
-
-	public partial class WarpedStandingSign : StandingSignBase
-	{
-		public WarpedStandingSign() : base(506, 754) { }
-	}
 }

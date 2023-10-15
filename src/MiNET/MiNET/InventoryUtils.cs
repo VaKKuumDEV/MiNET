@@ -45,7 +45,6 @@ namespace MiNET
 		}
 
 		// GENERATED CODE. DON'T EDIT BY HAND
-		// GENERATED CODE. DON'T EDIT BY HAND
 		public static List<Item> CreativeInventoryItems = new List<Item>()
 		{
 			new Item(5, 0, 1){ RuntimeId=10430, NetworkId=1, ExtraData = null }, /**/
@@ -54,8 +53,6 @@ namespace MiNET
             new Item(5, 3, 1){ RuntimeId=10433, NetworkId=4, ExtraData = null }, /**/
             new Item(5, 4, 1){ RuntimeId=10434, NetworkId=5, ExtraData = null }, /**/
             new Item(5, 5, 1){ RuntimeId=10435, NetworkId=6, ExtraData = null }, /**/
-            new Item(-242, 0, 1){ RuntimeId=7990, NetworkId=7, ExtraData = null }, /**/
-            new Item(-243, 0, 1){ RuntimeId=2038, NetworkId=8, ExtraData = null }, /**/
             new Item(139, 0, 1){ RuntimeId=2282, NetworkId=9, ExtraData = null }, /**/
             new Item(139, 1, 1){ RuntimeId=2283, NetworkId=10, ExtraData = null }, /**/
             new Item(139, 2, 1){ RuntimeId=2284, NetworkId=11, ExtraData = null }, /**/
@@ -70,9 +67,6 @@ namespace MiNET
             new Item(139, 11, 1){ RuntimeId=2295, NetworkId=20, ExtraData = null }, /**/
             new Item(139, 12, 1){ RuntimeId=2292, NetworkId=21, ExtraData = null }, /**/
             new Item(139, 13, 1){ RuntimeId=2293, NetworkId=22, ExtraData = null }, /**/
-            new Item(-277, 0, 1){ RuntimeId=6182, NetworkId=23, ExtraData = null }, /**/
-            new Item(-297, 0, 1){ RuntimeId=11087, NetworkId=24, ExtraData = null }, /**/
-            new Item(-278, 0, 1){ RuntimeId=2077, NetworkId=25, ExtraData = null }, /**/
             new Item(85, 0, 1){ RuntimeId=8900, NetworkId=26, ExtraData = null }, /**/
             new Item(85, 1, 1){ RuntimeId=1127, NetworkId=27, ExtraData = null }, /**/
             new Item(85, 2, 1){ RuntimeId=12895, NetworkId=28, ExtraData = null }, /**/
@@ -80,16 +74,12 @@ namespace MiNET
             new Item(85, 4, 1){ RuntimeId=12899, NetworkId=30, ExtraData = null }, /**/
             new Item(85, 5, 1){ RuntimeId=11462, NetworkId=31, ExtraData = null }, /**/
             new Item(113, 0, 1){ RuntimeId=6554, NetworkId=32, ExtraData = null }, /**/
-            new Item(-256, 0, 1){ RuntimeId=12809, NetworkId=33, ExtraData = null }, /**/
-            new Item(-257, 0, 1){ RuntimeId=9407, NetworkId=34, ExtraData = null }, /**/
             new Item(107, 0, 1){ RuntimeId=82, NetworkId=35, ExtraData = null }, /**/
             new Item(183, 0, 1){ RuntimeId=10951, NetworkId=36, ExtraData = null }, /**/
             new Item(184, 0, 1){ RuntimeId=5650, NetworkId=37, ExtraData = null }, /**/
             new Item(185, 0, 1){ RuntimeId=8513, NetworkId=38, ExtraData = null }, /**/
             new Item(187, 0, 1){ RuntimeId=12392, NetworkId=39, ExtraData = null }, /**/
             new Item(186, 0, 1){ RuntimeId=6427, NetworkId=40, ExtraData = null }, /**/
-            new Item(-258, 0, 1){ RuntimeId=7405, NetworkId=41, ExtraData = null }, /**/
-            new Item(-259, 0, 1){ RuntimeId=8548, NetworkId=42, ExtraData = null }, /**/
             new Item(-180, 0, 1){ RuntimeId=1352, NetworkId=43, ExtraData = null }, /**/
             new Item(67, 0, 1){ RuntimeId=5574, NetworkId=44, ExtraData = null }, /**/
             new Item(-179, 0, 1){ RuntimeId=6344, NetworkId=45, ExtraData = null }, /**/
@@ -121,11 +111,6 @@ namespace MiNET
             new Item(-2, 0, 1){ RuntimeId=12065, NetworkId=71, ExtraData = null }, /**/
             new Item(-3, 0, 1){ RuntimeId=12233, NetworkId=72, ExtraData = null }, /**/
             new Item(-4, 0, 1){ RuntimeId=618, NetworkId=73, ExtraData = null }, /**/
-            new Item(-254, 0, 1){ RuntimeId=10639, NetworkId=74, ExtraData = null }, /**/
-            new Item(-255, 0, 1){ RuntimeId=5586, NetworkId=75, ExtraData = null }, /**/
-            new Item(-276, 0, 1){ RuntimeId=11395, NetworkId=76, ExtraData = null }, /**/
-            new Item(-292, 0, 1){ RuntimeId=6595, NetworkId=77, ExtraData = null }, /**/
-            new Item(-275, 0, 1){ RuntimeId=6788, NetworkId=78, ExtraData = null }, /**/
             new Item(324, 0, 1){ RuntimeId=0, NetworkId=79, ExtraData = null }, /*minecraft:wooden_door*/
             new Item(427, 0, 1){ RuntimeId=0, NetworkId=80, ExtraData = null }, /*minecraft:spruce_door*/
             new Item(428, 0, 1){ RuntimeId=0, NetworkId=81, ExtraData = null }, /*minecraft:birch_door*/
@@ -133,8 +118,6 @@ namespace MiNET
             new Item(430, 0, 1){ RuntimeId=0, NetworkId=83, ExtraData = null }, /*minecraft:acacia_door*/
             new Item(431, 0, 1){ RuntimeId=0, NetworkId=84, ExtraData = null }, /*minecraft:dark_oak_door*/
             new Item(330, 0, 1){ RuntimeId=0, NetworkId=85, ExtraData = null }, /*minecraft:iron_door*/
-            new Item(755, 0, 1){ RuntimeId=0, NetworkId=86, ExtraData = null }, /*minecraft:crimson_door*/
-            new Item(756, 0, 1){ RuntimeId=0, NetworkId=87, ExtraData = null }, /*minecraft:warped_door*/
             new Item(96, 0, 1){ RuntimeId=647, NetworkId=88, ExtraData = null }, /**/
             new Item(-149, 0, 1){ RuntimeId=10919, NetworkId=89, ExtraData = null }, /**/
             new Item(-146, 0, 1){ RuntimeId=11017, NetworkId=90, ExtraData = null }, /**/
@@ -142,8 +125,6 @@ namespace MiNET
             new Item(-145, 0, 1){ RuntimeId=8739, NetworkId=92, ExtraData = null }, /**/
             new Item(-147, 0, 1){ RuntimeId=12306, NetworkId=93, ExtraData = null }, /**/
             new Item(167, 0, 1){ RuntimeId=1051, NetworkId=94, ExtraData = null }, /**/
-            new Item(-246, 0, 1){ RuntimeId=6635, NetworkId=95, ExtraData = null }, /**/
-            new Item(-247, 0, 1){ RuntimeId=7485, NetworkId=96, ExtraData = null }, /**/
             new Item(101, 0, 1){ RuntimeId=7554, NetworkId=97, ExtraData = null }, /**/
             new Item(20, 0, 1){ RuntimeId=10540, NetworkId=98, ExtraData = null }, /**/
             new Item(241, 0, 1){ RuntimeId=7992, NetworkId=99, ExtraData = null }, /**/
@@ -215,14 +196,7 @@ namespace MiNET
             new Item(182, 1, 1){ RuntimeId=8944, NetworkId=165, ExtraData = null }, /**/
             new Item(182, 2, 1){ RuntimeId=8945, NetworkId=166, ExtraData = null }, /**/
             new Item(182, 3, 1){ RuntimeId=8946, NetworkId=167, ExtraData = null }, /**/
-            new Item(-264, 0, 1){ RuntimeId=9856, NetworkId=168, ExtraData = null }, /**/
-            new Item(-265, 0, 1){ RuntimeId=10857, NetworkId=169, ExtraData = null }, /**/
-            new Item(-282, 0, 1){ RuntimeId=2028, NetworkId=170, ExtraData = null }, /**/
-            new Item(-293, 0, 1){ RuntimeId=10364, NetworkId=171, ExtraData = null }, /**/
-            new Item(-284, 0, 1){ RuntimeId=6449, NetworkId=172, ExtraData = null }, /**/
             new Item(45, 0, 1){ RuntimeId=7517, NetworkId=173, ExtraData = null }, /**/
-            new Item(-302, 0, 1){ RuntimeId=12043, NetworkId=174, ExtraData = null }, /**/
-            new Item(-303, 0, 1){ RuntimeId=6865, NetworkId=175, ExtraData = null }, /**/
             new Item(-304, 0, 1){ RuntimeId=10710, NetworkId=176, ExtraData = null }, /**/
             new Item(98, 0, 1){ RuntimeId=10914, NetworkId=177, ExtraData = null }, /**/
             new Item(98, 1, 1){ RuntimeId=10915, NetworkId=178, ExtraData = null }, /**/
@@ -230,10 +204,6 @@ namespace MiNET
             new Item(98, 3, 1){ RuntimeId=10917, NetworkId=180, ExtraData = null }, /**/
             new Item(206, 0, 1){ RuntimeId=721, NetworkId=181, ExtraData = null }, /**/
             new Item(168, 0, 1){ RuntimeId=10462, NetworkId=182, ExtraData = null }, /**/
-            new Item(-275, 0, 1){ RuntimeId=7424, NetworkId=183, ExtraData = null }, /**/
-            new Item(-280, 0, 1){ RuntimeId=11993, NetworkId=184, ExtraData = null }, /**/
-            new Item(-281, 0, 1){ RuntimeId=6901, NetworkId=185, ExtraData = null }, /**/
-            new Item(-279, 0, 1){ RuntimeId=8207, NetworkId=186, ExtraData = null }, /**/
             new Item(4, 0, 1){ RuntimeId=5477, NetworkId=187, ExtraData = null }, /**/
             new Item(48, 0, 1){ RuntimeId=670, NetworkId=188, ExtraData = null }, /**/
             new Item(-183, 0, 1){ RuntimeId=6895, NetworkId=189, ExtraData = null }, /**/
@@ -265,8 +235,6 @@ namespace MiNET
             new Item(216, 0, 1){ RuntimeId=6492, NetworkId=215, ExtraData = null }, /**/
             new Item(112, 0, 1){ RuntimeId=12077, NetworkId=216, ExtraData = null }, /**/
             new Item(215, 0, 1){ RuntimeId=557, NetworkId=217, ExtraData = null }, /**/
-            new Item(-270, 0, 1){ RuntimeId=5647, NetworkId=218, ExtraData = null }, /**/
-            new Item(-222, 0, 1){ RuntimeId=13096, NetworkId=219, ExtraData = null }, /**/
             new Item(35, 0, 1){ RuntimeId=8547, NetworkId=220, ExtraData = null }, /**/
             new Item(35, 8, 1){ RuntimeId=12870, NetworkId=221, ExtraData = null }, /**/
             new Item(35, 7, 1){ RuntimeId=638, NetworkId=222, ExtraData = null }, /**/
@@ -368,14 +336,8 @@ namespace MiNET
             new Item(201, 0, 1){ RuntimeId=12520, NetworkId=318, ExtraData = null }, /**/
             new Item(201, 0, 1){ RuntimeId=12522, NetworkId=319, ExtraData = null }, /**/
             new Item(214, 0, 1){ RuntimeId=6559, NetworkId=320, ExtraData = null }, /**/
-            new Item(-227, 0, 1){ RuntimeId=9861, NetworkId=321, ExtraData = null }, /**/
             new Item(-230, 0, 1){ RuntimeId=8190, NetworkId=322, ExtraData = null }, /**/
-            new Item(-232, 0, 1){ RuntimeId=6445, NetworkId=323, ExtraData = null }, /**/
-            new Item(-233, 0, 1){ RuntimeId=10708, NetworkId=324, ExtraData = null }, /**/
             new Item(87, 0, 1){ RuntimeId=11414, NetworkId=325, ExtraData = null }, /**/
-            new Item(-234, 0, 1){ RuntimeId=6651, NetworkId=326, ExtraData = null }, /**/
-            new Item(-235, 0, 1){ RuntimeId=25, NetworkId=327, ExtraData = null }, /**/
-            new Item(-236, 0, 1){ RuntimeId=8984, NetworkId=328, ExtraData = null }, /**/
             new Item(3, 0, 1){ RuntimeId=8903, NetworkId=329, ExtraData = null }, /**/
             new Item(3, 0, 1){ RuntimeId=8904, NetworkId=330, ExtraData = null }, /**/
             new Item(60, 0, 1){ RuntimeId=6164, NetworkId=331, ExtraData = null }, /**/
@@ -392,17 +354,14 @@ namespace MiNET
             new Item(16, 0, 1){ RuntimeId=6548, NetworkId=342, ExtraData = null }, /**/
             new Item(129, 0, 1){ RuntimeId=12152, NetworkId=343, ExtraData = null }, /**/
             new Item(153, 0, 1){ RuntimeId=6812, NetworkId=344, ExtraData = null }, /**/
-            new Item(-288, 0, 1){ RuntimeId=28, NetworkId=345, ExtraData = null }, /**/
             new Item(-271, 0, 1){ RuntimeId=10483, NetworkId=346, ExtraData = null }, /**/
             new Item(13, 0, 1){ RuntimeId=13127, NetworkId=347, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1758, NetworkId=348, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1760, NetworkId=349, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1762, NetworkId=350, ExtraData = null }, /**/
-            new Item(-273, 0, 1){ RuntimeId=12391, NetworkId=351, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1759, NetworkId=352, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1761, NetworkId=353, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1763, NetworkId=354, ExtraData = null }, /**/
-            new Item(-274, 0, 1){ RuntimeId=5548, NetworkId=355, ExtraData = null }, /**/
             new Item(12, 0, 1){ RuntimeId=6453, NetworkId=356, ExtraData = null }, /**/
             new Item(12, 0, 1){ RuntimeId=6454, NetworkId=357, ExtraData = null }, /**/
             new Item(81, 0, 1){ RuntimeId=11358, NetworkId=358, ExtraData = null }, /**/
@@ -418,10 +377,6 @@ namespace MiNET
             new Item(-8, 0, 1){ RuntimeId=9402, NetworkId=368, ExtraData = null }, /**/
             new Item(162, 1, 1){ RuntimeId=4560, NetworkId=369, ExtraData = null }, /**/
             new Item(-9, 0, 1){ RuntimeId=628, NetworkId=370, ExtraData = null }, /**/
-            new Item(-225, 0, 1){ RuntimeId=9852, NetworkId=371, ExtraData = null }, /**/
-            new Item(-240, 0, 1){ RuntimeId=11319, NetworkId=372, ExtraData = null }, /**/
-            new Item(-226, 0, 1){ RuntimeId=10859, NetworkId=373, ExtraData = null }, /**/
-            new Item(-241, 0, 1){ RuntimeId=12202, NetworkId=374, ExtraData = null }, /**/
             new Item(-212, 0, 1){ RuntimeId=4563, NetworkId=375, ExtraData = null }, /**/
             new Item(-212, 1, 1){ RuntimeId=4569, NetworkId=376, ExtraData = null }, /**/
             new Item(-212, 2, 1){ RuntimeId=4564, NetworkId=377, ExtraData = null }, /**/
@@ -434,10 +389,6 @@ namespace MiNET
             new Item(-212, 9, 1){ RuntimeId=4573, NetworkId=384, ExtraData = null }, /**/
             new Item(-212, 10, 1){ RuntimeId=4568, NetworkId=385, ExtraData = null }, /**/
             new Item(-212, 11, 1){ RuntimeId=4574, NetworkId=386, ExtraData = null }, /**/
-            new Item(-299, 0, 1){ RuntimeId=6592, NetworkId=387, ExtraData = null }, /**/
-            new Item(-300, 0, 1){ RuntimeId=10863, NetworkId=388, ExtraData = null }, /**/
-            new Item(-298, 0, 1){ RuntimeId=9858, NetworkId=389, ExtraData = null }, /**/
-            new Item(-301, 0, 1){ RuntimeId=8729, NetworkId=390, ExtraData = null }, /**/
             new Item(18, 0, 1){ RuntimeId=10466, NetworkId=391, ExtraData = null }, /**/
             new Item(18, 0, 1){ RuntimeId=10467, NetworkId=392, ExtraData = null }, /**/
             new Item(18, 0, 1){ RuntimeId=10468, NetworkId=393, ExtraData = null }, /**/
@@ -497,8 +448,6 @@ namespace MiNET
             new Item(-134, 0, 1){ RuntimeId=73, NetworkId=447, ExtraData = null }, /**/
             new Item(-134, 0, 1){ RuntimeId=71, NetworkId=448, ExtraData = null }, /**/
             new Item(-134, 0, 1){ RuntimeId=75, NetworkId=449, ExtraData = null }, /**/
-            new Item(-223, 0, 1){ RuntimeId=12376, NetworkId=450, ExtraData = null }, /**/
-            new Item(-224, 0, 1){ RuntimeId=6665, NetworkId=451, ExtraData = null }, /**/
             new Item(37, 0, 1){ RuntimeId=1031, NetworkId=452, ExtraData = null }, /**/
             new Item(38, 0, 1){ RuntimeId=5481, NetworkId=453, ExtraData = null }, /**/
             new Item(38, 1, 1){ RuntimeId=5482, NetworkId=454, ExtraData = null }, /**/
@@ -539,7 +488,6 @@ namespace MiNET
             new Item(351, 15, 1){ RuntimeId=0, NetworkId=489, ExtraData = null }, /*minecraft:dye*/
             new Item(106, 0, 1){ RuntimeId=1996, NetworkId=490, ExtraData = null }, /**/
             new Item(-231, 0, 1){ RuntimeId=8629, NetworkId=491, ExtraData = null }, /**/
-            new Item(-287, 0, 1){ RuntimeId=8842, NetworkId=492, ExtraData = null }, /**/
             new Item(111, 0, 1){ RuntimeId=2248, NetworkId=493, ExtraData = null }, /**/
             new Item(-130, 0, 1){ RuntimeId=664, NetworkId=494, ExtraData = null }, /**/
             new Item(335, 0, 1){ RuntimeId=0, NetworkId=495, ExtraData = null }, /*minecraft:kelp*/
@@ -561,8 +509,6 @@ namespace MiNET
             new Item(462, 0, 1){ RuntimeId=0, NetworkId=511, ExtraData = null }, /*minecraft:pufferfish*/
             new Item(39, 0, 1){ RuntimeId=5404, NetworkId=512, ExtraData = null }, /**/
             new Item(40, 0, 1){ RuntimeId=6900, NetworkId=513, ExtraData = null }, /**/
-            new Item(-228, 0, 1){ RuntimeId=12566, NetworkId=514, ExtraData = null }, /**/
-            new Item(-229, 0, 1){ RuntimeId=728, NetworkId=515, ExtraData = null }, /**/
             new Item(99, 0, 1){ RuntimeId=12167, NetworkId=516, ExtraData = null }, /**/
             new Item(100, 0, 1){ RuntimeId=5473, NetworkId=517, ExtraData = null }, /**/
             new Item(99, 0, 1){ RuntimeId=12168, NetworkId=518, ExtraData = null }, /**/
@@ -656,7 +602,7 @@ namespace MiNET
             new Item(383, 20, 1){ RuntimeId=0, NetworkId=606, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 21, 1){ RuntimeId=0, NetworkId=607, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(49, 0, 1){ RuntimeId=1166, NetworkId=608, ExtraData = null }, /**/
-            new Item(-299, 0, 1){ RuntimeId=11080, NetworkId=609, ExtraData = null }, /**/
+
             new Item(7, 0, 1){ RuntimeId=11393, NetworkId=610, ExtraData = null }, /**/
             new Item(88, 0, 1){ RuntimeId=8985, NetworkId=611, ExtraData = null }, /**/
             new Item(213, 0, 1){ RuntimeId=12823, NetworkId=612, ExtraData = null }, /**/
@@ -683,55 +629,46 @@ namespace MiNET
             new Item(306, 0, 1){ RuntimeId=0, NetworkId=633, ExtraData = null }, /*minecraft:iron_helmet*/
             new Item(314, 0, 1){ RuntimeId=0, NetworkId=634, ExtraData = null }, /*minecraft:golden_helmet*/
             new Item(310, 0, 1){ RuntimeId=0, NetworkId=635, ExtraData = null }, /*minecraft:diamond_helmet*/
-            new Item(748, 0, 1){ RuntimeId=0, NetworkId=636, ExtraData = null }, /*minecraft:netherite_helmet*/
             new Item(299, 0, 1){ RuntimeId=0, NetworkId=637, ExtraData = null }, /*minecraft:leather_chestplate*/
             new Item(303, 0, 1){ RuntimeId=0, NetworkId=638, ExtraData = null }, /*minecraft:chainmail_chestplate*/
             new Item(307, 0, 1){ RuntimeId=0, NetworkId=639, ExtraData = null }, /*minecraft:iron_chestplate*/
             new Item(315, 0, 1){ RuntimeId=0, NetworkId=640, ExtraData = null }, /*minecraft:golden_chestplate*/
             new Item(311, 0, 1){ RuntimeId=0, NetworkId=641, ExtraData = null }, /*minecraft:diamond_chestplate*/
-            new Item(749, 0, 1){ RuntimeId=0, NetworkId=642, ExtraData = null }, /*minecraft:netherite_chestplate*/
             new Item(300, 0, 1){ RuntimeId=0, NetworkId=643, ExtraData = null }, /*minecraft:leather_leggings*/
             new Item(304, 0, 1){ RuntimeId=0, NetworkId=644, ExtraData = null }, /*minecraft:chainmail_leggings*/
             new Item(308, 0, 1){ RuntimeId=0, NetworkId=645, ExtraData = null }, /*minecraft:iron_leggings*/
             new Item(316, 0, 1){ RuntimeId=0, NetworkId=646, ExtraData = null }, /*minecraft:golden_leggings*/
             new Item(312, 0, 1){ RuntimeId=0, NetworkId=647, ExtraData = null }, /*minecraft:diamond_leggings*/
-            new Item(750, 0, 1){ RuntimeId=0, NetworkId=648, ExtraData = null }, /*minecraft:netherite_leggings*/
             new Item(301, 0, 1){ RuntimeId=0, NetworkId=649, ExtraData = null }, /*minecraft:leather_boots*/
             new Item(305, 0, 1){ RuntimeId=0, NetworkId=650, ExtraData = null }, /*minecraft:chainmail_boots*/
             new Item(309, 0, 1){ RuntimeId=0, NetworkId=651, ExtraData = null }, /*minecraft:iron_boots*/
             new Item(317, 0, 1){ RuntimeId=0, NetworkId=652, ExtraData = null }, /*minecraft:golden_boots*/
             new Item(313, 0, 1){ RuntimeId=0, NetworkId=653, ExtraData = null }, /*minecraft:diamond_boots*/
-            new Item(751, 0, 1){ RuntimeId=0, NetworkId=654, ExtraData = null }, /*minecraft:netherite_boots*/
             new Item(268, 0, 1){ RuntimeId=0, NetworkId=655, ExtraData = null }, /*minecraft:wooden_sword*/
             new Item(272, 0, 1){ RuntimeId=0, NetworkId=656, ExtraData = null }, /*minecraft:stone_sword*/
             new Item(267, 0, 1){ RuntimeId=0, NetworkId=657, ExtraData = null }, /*minecraft:iron_sword*/
             new Item(283, 0, 1){ RuntimeId=0, NetworkId=658, ExtraData = null }, /*minecraft:golden_sword*/
             new Item(276, 0, 1){ RuntimeId=0, NetworkId=659, ExtraData = null }, /*minecraft:diamond_sword*/
-            new Item(743, 0, 1){ RuntimeId=0, NetworkId=660, ExtraData = null }, /*minecraft:netherite_sword*/
             new Item(271, 0, 1){ RuntimeId=0, NetworkId=661, ExtraData = null }, /*minecraft:wooden_axe*/
             new Item(275, 0, 1){ RuntimeId=0, NetworkId=662, ExtraData = null }, /*minecraft:stone_axe*/
             new Item(258, 0, 1){ RuntimeId=0, NetworkId=663, ExtraData = null }, /*minecraft:iron_axe*/
             new Item(286, 0, 1){ RuntimeId=0, NetworkId=664, ExtraData = null }, /*minecraft:golden_axe*/
             new Item(279, 0, 1){ RuntimeId=0, NetworkId=665, ExtraData = null }, /*minecraft:diamond_axe*/
-            new Item(746, 0, 1){ RuntimeId=0, NetworkId=666, ExtraData = null }, /*minecraft:netherite_axe*/
             new Item(270, 0, 1){ RuntimeId=0, NetworkId=667, ExtraData = null }, /*minecraft:wooden_pickaxe*/
             new Item(274, 0, 1){ RuntimeId=0, NetworkId=668, ExtraData = null }, /*minecraft:stone_pickaxe*/
             new Item(257, 0, 1){ RuntimeId=0, NetworkId=669, ExtraData = null }, /*minecraft:iron_pickaxe*/
             new Item(285, 0, 1){ RuntimeId=0, NetworkId=670, ExtraData = null }, /*minecraft:golden_pickaxe*/
             new Item(278, 0, 1){ RuntimeId=0, NetworkId=671, ExtraData = null }, /*minecraft:diamond_pickaxe*/
-            new Item(745, 0, 1){ RuntimeId=0, NetworkId=672, ExtraData = null }, /*minecraft:netherite_pickaxe*/
             new Item(269, 0, 1){ RuntimeId=0, NetworkId=673, ExtraData = null }, /*minecraft:wooden_shovel*/
             new Item(273, 0, 1){ RuntimeId=0, NetworkId=674, ExtraData = null }, /*minecraft:stone_shovel*/
             new Item(256, 0, 1){ RuntimeId=0, NetworkId=675, ExtraData = null }, /*minecraft:iron_shovel*/
             new Item(284, 0, 1){ RuntimeId=0, NetworkId=676, ExtraData = null }, /*minecraft:golden_shovel*/
             new Item(277, 0, 1){ RuntimeId=0, NetworkId=677, ExtraData = null }, /*minecraft:diamond_shovel*/
-            new Item(744, 0, 1){ RuntimeId=0, NetworkId=678, ExtraData = null }, /*minecraft:netherite_shovel*/
             new Item(290, 0, 1){ RuntimeId=0, NetworkId=679, ExtraData = null }, /*minecraft:wooden_hoe*/
             new Item(291, 0, 1){ RuntimeId=0, NetworkId=680, ExtraData = null }, /*minecraft:stone_hoe*/
             new Item(292, 0, 1){ RuntimeId=0, NetworkId=681, ExtraData = null }, /*minecraft:iron_hoe*/
             new Item(294, 0, 1){ RuntimeId=0, NetworkId=682, ExtraData = null }, /*minecraft:golden_hoe*/
             new Item(293, 0, 1){ RuntimeId=0, NetworkId=683, ExtraData = null }, /*minecraft:diamond_hoe*/
-            new Item(747, 0, 1){ RuntimeId=0, NetworkId=684, ExtraData = null }, /*minecraft:netherite_hoe*/
             new Item(261, 0, 1){ RuntimeId=0, NetworkId=685, ExtraData = null }, /*minecraft:bow*/
             new Item(471, 0, 1){ RuntimeId=0, NetworkId=686, ExtraData = null }, /*minecraft:crossbow*/
             new Item(262, 0, 1){ RuntimeId=0, NetworkId=687, ExtraData = null }, /*minecraft:arrow*/
@@ -792,14 +729,12 @@ namespace MiNET
             new Item(464, 0, 1){ RuntimeId=0, NetworkId=742, ExtraData = null }, /*minecraft:dried_kelp*/
             new Item(346, 0, 1){ RuntimeId=0, NetworkId=743, ExtraData = null }, /*minecraft:fishing_rod*/
             new Item(398, 0, 1){ RuntimeId=0, NetworkId=744, ExtraData = null }, /*minecraft:carrot_on_a_stick*/
-            new Item(757, 0, 1){ RuntimeId=0, NetworkId=745, ExtraData = null }, /*minecraft:warped_fungus_on_a_stick*/
             new Item(332, 0, 1){ RuntimeId=0, NetworkId=746, ExtraData = null }, /*minecraft:snowball*/
             new Item(359, 0, 1){ RuntimeId=0, NetworkId=747, ExtraData = null }, /*minecraft:shears*/
             new Item(259, 0, 1){ RuntimeId=0, NetworkId=748, ExtraData = null }, /*minecraft:flint_and_steel*/
             new Item(420, 0, 1){ RuntimeId=0, NetworkId=749, ExtraData = null }, /*minecraft:lead*/
             new Item(347, 0, 1){ RuntimeId=0, NetworkId=750, ExtraData = null }, /*minecraft:clock*/
             new Item(345, 0, 1){ RuntimeId=0, NetworkId=751, ExtraData = null }, /*minecraft:compass*/
-            new Item(634, 0, 1){ RuntimeId=0, NetworkId=752, ExtraData = null }, /**/
             new Item(634, 1, 1){ RuntimeId=0, NetworkId=753, ExtraData = null }, /**/
             new Item(634, 2, 1){ RuntimeId=0, NetworkId=754, ExtraData = null }, /**/
             new Item(634, 3, 1){ RuntimeId=0, NetworkId=755, ExtraData = null }, /**/
@@ -968,20 +903,16 @@ namespace MiNET
             new Item(355, 2, 1){ RuntimeId=0, NetworkId=918, ExtraData = null }, /*minecraft:bed*/
             new Item(355, 6, 1){ RuntimeId=0, NetworkId=919, ExtraData = null }, /*minecraft:bed*/
             new Item(50, 0, 1){ RuntimeId=1826, NetworkId=920, ExtraData = null }, /**/
-            new Item(-268, 0, 1){ RuntimeId=7388, NetworkId=921, ExtraData = null }, /**/
             new Item(-156, 0, 1){ RuntimeId=9409, NetworkId=922, ExtraData = null }, /**/
             new Item(-208, 0, 1){ RuntimeId=11452, NetworkId=923, ExtraData = null }, /**/
-            new Item(-269, 0, 1){ RuntimeId=8901, NetworkId=924, ExtraData = null }, /**/
             new Item(58, 0, 1){ RuntimeId=9408, NetworkId=925, ExtraData = null }, /**/
             new Item(-200, 0, 1){ RuntimeId=13128, NetworkId=926, ExtraData = null }, /**/
             new Item(-201, 0, 1){ RuntimeId=9371, NetworkId=927, ExtraData = null }, /**/
             new Item(-202, 0, 1){ RuntimeId=5594, NetworkId=928, ExtraData = null }, /**/
             new Item(720, 0, 1){ RuntimeId=0, NetworkId=929, ExtraData = null }, /*minecraft:campfire*/
-            new Item(801, 0, 1){ RuntimeId=0, NetworkId=930, ExtraData = null }, /*minecraft:soul_campfire*/
             new Item(61, 0, 1){ RuntimeId=12617, NetworkId=931, ExtraData = null }, /**/
             new Item(-196, 0, 1){ RuntimeId=12372, NetworkId=932, ExtraData = null }, /**/
             new Item(-198, 0, 1){ RuntimeId=1751, NetworkId=933, ExtraData = null }, /**/
-            new Item(-272, 0, 1){ RuntimeId=1774, NetworkId=934, ExtraData = null }, /**/
             new Item(379, 0, 1){ RuntimeId=0, NetworkId=935, ExtraData = null }, /*minecraft:brewing_stand*/
             new Item(145, 0, 1){ RuntimeId=11001, NetworkId=936, ExtraData = null }, /**/
             new Item(145, 0, 1){ RuntimeId=11005, NetworkId=937, ExtraData = null }, /**/
@@ -1029,9 +960,6 @@ namespace MiNET
             new Item(510, 0, 1){ RuntimeId=0, NetworkId=979, ExtraData = null }, /*minecraft:music_disc_11*/
             new Item(511, 0, 1){ RuntimeId=0, NetworkId=980, ExtraData = null }, /*minecraft:music_disc_wait*/
             new Item(633, 0, 1){ RuntimeId=0, NetworkId=981, ExtraData = null }, /**/
-            new Item(643, 0, 1){ RuntimeId=0, NetworkId=982, ExtraData = null }, /**/
-            new Item(759, 0, 1){ RuntimeId=0, NetworkId=983, ExtraData = null }, /*minecraft:music_disc_pigstep*/
-            new Item(701, 0, 1){ RuntimeId=0, NetworkId=984, ExtraData = null }, /**/
             new Item(644, 0, 1){ RuntimeId=0, NetworkId=985, ExtraData = null }, /**/
             new Item(348, 0, 1){ RuntimeId=0, NetworkId=986, ExtraData = null }, /*minecraft:glowstone_dust*/
             new Item(89, 0, 1){ RuntimeId=6137, NetworkId=987, ExtraData = null }, /**/
@@ -1043,8 +971,6 @@ namespace MiNET
             new Item(474, 0, 1){ RuntimeId=0, NetworkId=993, ExtraData = null }, /*minecraft:jungle_sign*/
             new Item(475, 0, 1){ RuntimeId=0, NetworkId=994, ExtraData = null }, /*minecraft:acacia_sign*/
             new Item(476, 0, 1){ RuntimeId=0, NetworkId=995, ExtraData = null }, /*minecraft:dark_oak_sign*/
-            new Item(753, 0, 1){ RuntimeId=0, NetworkId=996, ExtraData = null }, /*minecraft:crimson_sign*/
-            new Item(754, 0, 1){ RuntimeId=0, NetworkId=997, ExtraData = null }, /*minecraft:warped_sign*/
             new Item(321, 0, 1){ RuntimeId=0, NetworkId=998, ExtraData = null }, /*minecraft:painting*/
             new Item(389, 0, 1){ RuntimeId=0, NetworkId=999, ExtraData = null }, /*minecraft:frame*/
             new Item(737, 0, 1){ RuntimeId=0, NetworkId=1000, ExtraData = null }, /*minecraft:honey_bottle*/
@@ -1082,7 +1008,6 @@ namespace MiNET
             new Item(514, 0, 1){ RuntimeId=0, NetworkId=1032, ExtraData = null }, /**/
             new Item(265, 0, 1){ RuntimeId=0, NetworkId=1033, ExtraData = null }, /*minecraft:iron_ingot*/
             new Item(752, 0, 1){ RuntimeId=0, NetworkId=1034, ExtraData = null }, /*minecraft:netherite_scrap*/
-            new Item(742, 0, 1){ RuntimeId=0, NetworkId=1035, ExtraData = null }, /*minecraft:netherite_ingot*/
             new Item(371, 0, 1){ RuntimeId=0, NetworkId=1036, ExtraData = null }, /*minecraft:gold_nugget*/
             new Item(266, 0, 1){ RuntimeId=0, NetworkId=1037, ExtraData = null }, /*minecraft:gold_ingot*/
             new Item(388, 0, 1){ RuntimeId=0, NetworkId=1038, ExtraData = null }, /*minecraft:emerald*/
@@ -1265,9 +1190,6 @@ namespace MiNET
             new Item(-140, 0, 1){ RuntimeId=12027, NetworkId=1215, ExtraData = null }, /**/
             new Item(-142, 0, 1){ RuntimeId=99, NetworkId=1216, ExtraData = null }, /**/
             new Item(77, 0, 1){ RuntimeId=1335, NetworkId=1217, ExtraData = null }, /**/
-            new Item(-260, 0, 1){ RuntimeId=6742, NetworkId=1218, ExtraData = null }, /**/
-            new Item(-261, 0, 1){ RuntimeId=12044, NetworkId=1219, ExtraData = null }, /**/
-            new Item(-256, 0, 1){ RuntimeId=12605, NetworkId=1220, ExtraData = null }, /**/
             new Item(131, 0, 1){ RuntimeId=9875, NetworkId=1221, ExtraData = null }, /**/
             new Item(72, 0, 1){ RuntimeId=12879, NetworkId=1222, ExtraData = null }, /**/
             new Item(-154, 0, 1){ RuntimeId=5631, NetworkId=1223, ExtraData = null }, /**/
@@ -1275,12 +1197,9 @@ namespace MiNET
             new Item(-153, 0, 1){ RuntimeId=5500, NetworkId=1225, ExtraData = null }, /**/
             new Item(-150, 0, 1){ RuntimeId=8393, NetworkId=1226, ExtraData = null }, /**/
             new Item(-152, 0, 1){ RuntimeId=9917, NetworkId=1227, ExtraData = null }, /**/
-            new Item(-262, 0, 1){ RuntimeId=13108, NetworkId=1228, ExtraData = null }, /**/
-            new Item(-263, 0, 1){ RuntimeId=692, NetworkId=1229, ExtraData = null }, /**/
             new Item(70, 0, 1){ RuntimeId=6138, NetworkId=1230, ExtraData = null }, /**/
             new Item(147, 0, 1){ RuntimeId=5531, NetworkId=1231, ExtraData = null }, /**/
             new Item(148, 0, 1){ RuntimeId=2258, NetworkId=1232, ExtraData = null }, /**/
-            new Item(-295, 0, 1){ RuntimeId=10605, NetworkId=1233, ExtraData = null }, /**/
             new Item(251, 0, 1){ RuntimeId=4986, NetworkId=1234, ExtraData = null }, /**/
             new Item(151, 0, 1){ RuntimeId=6455, NetworkId=1235, ExtraData = null }, /**/
             new Item(356, 0, 1){ RuntimeId=0, NetworkId=1236, ExtraData = null }, /*minecraft:repeater*/
@@ -1352,8 +1271,6 @@ namespace MiNET
             new Item(402, 2, 1){ RuntimeId=0, NetworkId=1302, ExtraData = new NbtCompound { new NbtCompound("FireworksItem") { new NbtByteArray("FireworkColor", new byte[1]{2}), new NbtByteArray("FireworkFade", new byte[0]{}), new NbtByte("FireworkFlicker", 0), new NbtByte("FireworkTrail", 0), new NbtByte("FireworkType", 0) }, new NbtInt("customColor", -10585066) } }, /*minecraft:firework_star*/
             new Item(402, 6, 1){ RuntimeId=0, NetworkId=1303, ExtraData = new NbtCompound { new NbtCompound("FireworksItem") { new NbtByteArray("FireworkColor", new byte[1]{6}), new NbtByteArray("FireworkFade", new byte[0]{}), new NbtByte("FireworkFlicker", 0), new NbtByte("FireworkTrail", 0), new NbtByte("FireworkType", 0) }, new NbtInt("customColor", -15295332) } }, /*minecraft:firework_star*/
             new Item(758, 0, 1){ RuntimeId=0, NetworkId=1304, ExtraData = null }, /*minecraft:chain*/
-            new Item(-239, 0, 1){ RuntimeId=10750, NetworkId=1305, ExtraData = null }, /**/
-            new Item(741, 0, 1){ RuntimeId=0, NetworkId=1306, ExtraData = null }, /*minecraft:lodestone_compass*/
         };
 
 

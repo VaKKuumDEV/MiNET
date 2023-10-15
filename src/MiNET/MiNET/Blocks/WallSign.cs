@@ -105,14 +105,4 @@ namespace MiNET.Blocks
 	{
 		public DarkoakWallSign() : base(448, 476) { }
 	}
-
-	public partial class CrimsonWallSign : WallSignBase
-	{
-		public CrimsonWallSign() : base(507, 505) { }
-	}
-
-	public partial class WarpedWallSign : WallSignBase
-	{
-		public WarpedWallSign() : base(508, 506) { }
-	}
 }

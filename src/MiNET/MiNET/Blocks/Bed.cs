@@ -60,6 +60,8 @@ namespace MiNET.Blocks
 
 		protected override bool CanPlace(Level world, Player player, BlockCoordinates blockCoordinates, BlockCoordinates targetCoordinates, BlockFace face)
 		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Color = Convert.ToByte(itemInHand.Metadata);
 			Direction = player.GetDirectionEmum() switch
 			{
 				Entity.Direction.West => 0,

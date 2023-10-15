@@ -400,11 +400,6 @@ namespace MiNET.Items
 			else if (id == 750) item = new ItemNetheriteLeggings();
 			else if (id == 751) item = new ItemNetheriteBoots();
 			else if (id == 752) item = new ItemNetheriteScrap();
-			else if (id == 753) item = new ItemCrimsonSign();
-			else if (id == 754) item = new ItemWarpedSign();
-			else if (id == 755) item = new ItemCrimsonDoor();
-			else if (id == 756) item = new ItemWarpedDoor();
-			else if (id == 757) item = new ItemWarpedFungusOnAStick();
 			else if (id == 758) item = new ItemChain();
 			else if (id == 759) item = new ItemMusicDiscPigstep();
 			else if (id == 760) item = new ItemNetherSprouts();
@@ -612,7 +607,6 @@ namespace MiNET.Items
 	public class ItemNetheriteIngot : Item { public ItemNetheriteIngot() : base("minecraft:netherite_ingot", 742) {} }
 	public class ItemNetheriteScrap : Item { public ItemNetheriteScrap() : base("minecraft:netherite_scrap", 752) {} }
 	public class ItemChain : Item { public ItemChain() : base("minecraft:chain", 758) {} }
-	public class ItemWarpedFungusOnAStick : Item { public ItemWarpedFungusOnAStick() : base("minecraft:warped_fungus_on_a_stick", 757) {} }
 	public class ItemNetherSprouts : Item { public ItemNetherSprouts() : base("minecraft:nether_sprouts", 760) {} }
 	public class ItemSoulCampfire : Item { public ItemSoulCampfire() : base("minecraft:soul_campfire", 801) {} }
 	public class ItemEndCrystal : Item { public ItemEndCrystal() : base("minecraft:end_crystal", 426) {} }

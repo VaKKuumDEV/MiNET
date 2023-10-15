@@ -27,7 +27,6 @@ using System;
 using System.Numerics;
 using fNbt;
 using MiNET.BlockEntities;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -54,6 +53,8 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates targetCoordinates, BlockFace face, Vector3 faceCoords)
 		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			Base = Convert.ToByte(itemInHand.Metadata);
 			// metadata for banner is a value 0-15 that signify the orientation of the banner. Same as PC metadata.
 			GroundSignDirection = (byte) ((int) (Math.Floor((player.KnownPosition.Yaw + 180) * 16 / 360) + 0.5) & 0x0f);
 
