@@ -47,6 +47,7 @@ namespace MiNET
 		// GENERATED CODE. DON'T EDIT BY HAND
 		public static List<Item> CreativeInventoryItems = new List<Item>()
 		{
+			/*====================================construction====================================*/
 			new Item(5, 0, 1){ RuntimeId=10430, NetworkId=1, ExtraData = null }, /*oak_planks*/
             new Item(5, 1, 1){ RuntimeId=10431, NetworkId=2, ExtraData = null }, /*spruce_planks*/
             new Item(5, 2, 1){ RuntimeId=10432, NetworkId=3, ExtraData = null }, /*birch_planks*/
@@ -120,13 +121,13 @@ namespace MiNET
             new Item(330, 0, 1){ RuntimeId=0, NetworkId=85, ExtraData = null }, /*minecraft:iron_door*/
             new Item(96, 0, 1){ RuntimeId=647, NetworkId=88, ExtraData = null }, /*oak_trapdoor*/
             new Item(-149, 0, 1){ RuntimeId=10919, NetworkId=89, ExtraData = null }, /*spruce_trapdoor*/
-            new Item(-146, 0, 1){ RuntimeId=11017, NetworkId=90, ExtraData = null }, /**/
-            new Item(-148, 0, 1){ RuntimeId=8529, NetworkId=91, ExtraData = null }, /**/
-            new Item(-145, 0, 1){ RuntimeId=8739, NetworkId=92, ExtraData = null }, /**/
-            new Item(-147, 0, 1){ RuntimeId=12306, NetworkId=93, ExtraData = null }, /**/
-            new Item(167, 0, 1){ RuntimeId=1051, NetworkId=94, ExtraData = null }, /**/
-            new Item(101, 0, 1){ RuntimeId=7554, NetworkId=97, ExtraData = null }, /**/
-            new Item(20, 0, 1){ RuntimeId=10540, NetworkId=98, ExtraData = null }, /**/
+            new Item(-146, 0, 1){ RuntimeId=11017, NetworkId=90, ExtraData = null }, /*birch_trapdoor*/
+            new Item(-148, 0, 1){ RuntimeId=8529, NetworkId=91, ExtraData = null }, /*jungle_trapdoor*/
+            new Item(-145, 0, 1){ RuntimeId=8739, NetworkId=92, ExtraData = null }, /*acacia_trapdoor*/
+            new Item(-147, 0, 1){ RuntimeId=12306, NetworkId=93, ExtraData = null }, /*dark_oak_trapdoor*/
+            new Item(167, 0, 1){ RuntimeId=1051, NetworkId=94, ExtraData = null }, /*iron_trapdoor*/
+            new Item(101, 0, 1){ RuntimeId=7554, NetworkId=97, ExtraData = null }, /*iron_bars*/
+            new Item(20, 0, 1){ RuntimeId=10540, NetworkId=98, ExtraData = null }, /*glass*/
             new Item(241, 0, 1){ RuntimeId=7992, NetworkId=99, ExtraData = null }, /**/
             new Item(241, 8, 1){ RuntimeId=1165, NetworkId=100, ExtraData = null }, /**/
             new Item(241, 7, 1){ RuntimeId=5582, NetworkId=101, ExtraData = null }, /**/
@@ -143,7 +144,7 @@ namespace MiNET
             new Item(241, 10, 1){ RuntimeId=2274, NetworkId=112, ExtraData = null }, /**/
             new Item(241, 2, 1){ RuntimeId=12026, NetworkId=113, ExtraData = null }, /**/
             new Item(241, 6, 1){ RuntimeId=6619, NetworkId=114, ExtraData = null }, /**/
-            new Item(102, 0, 1){ RuntimeId=8378, NetworkId=115, ExtraData = null }, /**/
+            new Item(102, 0, 1){ RuntimeId=8378, NetworkId=115, ExtraData = null }, /*glass_pane*/
             new Item(160, 0, 1){ RuntimeId=6864, NetworkId=116, ExtraData = null }, /**/
             new Item(160, 8, 1){ RuntimeId=1167, NetworkId=117, ExtraData = null }, /**/
             new Item(160, 7, 1){ RuntimeId=11266, NetworkId=118, ExtraData = null }, /**/
@@ -160,82 +161,82 @@ namespace MiNET
             new Item(160, 10, 1){ RuntimeId=7993, NetworkId=129, ExtraData = null }, /**/
             new Item(160, 2, 1){ RuntimeId=7553, NetworkId=130, ExtraData = null }, /**/
             new Item(160, 6, 1){ RuntimeId=11459, NetworkId=131, ExtraData = null }, /**/
-            new Item(65, 0, 1){ RuntimeId=13102, NetworkId=132, ExtraData = null }, /**/
-            new Item(-165, 0, 1){ RuntimeId=5430, NetworkId=133, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6531, NetworkId=134, ExtraData = null }, /**/
-            new Item(-166, 0, 1){ RuntimeId=8976, NetworkId=135, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6534, NetworkId=136, ExtraData = null }, /**/
-            new Item(182, 0, 1){ RuntimeId=8947, NetworkId=137, ExtraData = null }, /**/
-            new Item(158, 0, 1){ RuntimeId=8432, NetworkId=138, ExtraData = null }, /**/
-            new Item(158, 0, 1){ RuntimeId=8433, NetworkId=139, ExtraData = null }, /**/
-            new Item(158, 0, 1){ RuntimeId=8434, NetworkId=140, ExtraData = null }, /**/
-            new Item(158, 0, 1){ RuntimeId=8435, NetworkId=141, ExtraData = null }, /**/
-            new Item(158, 0, 1){ RuntimeId=8436, NetworkId=142, ExtraData = null }, /**/
-            new Item(158, 0, 1){ RuntimeId=8437, NetworkId=143, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6536, NetworkId=144, ExtraData = null }, /**/
-            new Item(-166, 0, 1){ RuntimeId=8974, NetworkId=145, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6532, NetworkId=146, ExtraData = null }, /**/
-            new Item(-166, 0, 1){ RuntimeId=8977, NetworkId=147, ExtraData = null }, /**/
-            new Item(182, 0, 1){ RuntimeId=8948, NetworkId=148, ExtraData = null }, /**/
-            new Item(182, 0, 1){ RuntimeId=8942, NetworkId=149, ExtraData = null }, /**/
-            new Item(-166, 0, 1){ RuntimeId=8978, NetworkId=150, ExtraData = null }, /**/
-            new Item(-162, 0, 1){ RuntimeId=8959, NetworkId=151, ExtraData = null }, /**/
-            new Item(-162, 1, 1){ RuntimeId=8964, NetworkId=152, ExtraData = null }, /**/
-            new Item(-162, 2, 1){ RuntimeId=8965, NetworkId=153, ExtraData = null }, /**/
-            new Item(-162, 3, 1){ RuntimeId=8962, NetworkId=154, ExtraData = null }, /**/
-            new Item(-162, 4, 1){ RuntimeId=8963, NetworkId=155, ExtraData = null }, /**/
-            new Item(-162, 5, 1){ RuntimeId=8961, NetworkId=156, ExtraData = null }, /**/
-            new Item(-162, 6, 1){ RuntimeId=8960, NetworkId=157, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6535, NetworkId=158, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6538, NetworkId=159, ExtraData = null }, /**/
-            new Item(182, 0, 1){ RuntimeId=8949, NetworkId=160, ExtraData = null }, /**/
-            new Item(-162, 0, 1){ RuntimeId=8958, NetworkId=161, ExtraData = null }, /**/
-            new Item(44, 0, 1){ RuntimeId=6537, NetworkId=162, ExtraData = null }, /**/
-            new Item(-166, 0, 1){ RuntimeId=8975, NetworkId=163, ExtraData = null }, /**/
-            new Item(182, 0, 1){ RuntimeId=8943, NetworkId=164, ExtraData = null }, /**/
-            new Item(182, 1, 1){ RuntimeId=8944, NetworkId=165, ExtraData = null }, /**/
-            new Item(182, 2, 1){ RuntimeId=8945, NetworkId=166, ExtraData = null }, /**/
-            new Item(182, 3, 1){ RuntimeId=8946, NetworkId=167, ExtraData = null }, /**/
-            new Item(45, 0, 1){ RuntimeId=7517, NetworkId=173, ExtraData = null }, /**/
-            new Item(-304, 0, 1){ RuntimeId=10710, NetworkId=176, ExtraData = null }, /**/
-            new Item(98, 0, 1){ RuntimeId=10914, NetworkId=177, ExtraData = null }, /**/
-            new Item(98, 1, 1){ RuntimeId=10915, NetworkId=178, ExtraData = null }, /**/
-            new Item(98, 2, 1){ RuntimeId=10916, NetworkId=179, ExtraData = null }, /**/
-            new Item(98, 3, 1){ RuntimeId=10917, NetworkId=180, ExtraData = null }, /**/
-            new Item(206, 0, 1){ RuntimeId=721, NetworkId=181, ExtraData = null }, /**/
-            new Item(168, 0, 1){ RuntimeId=10462, NetworkId=182, ExtraData = null }, /**/
-            new Item(4, 0, 1){ RuntimeId=5477, NetworkId=187, ExtraData = null }, /**/
-            new Item(48, 0, 1){ RuntimeId=670, NetworkId=188, ExtraData = null }, /**/
-            new Item(-183, 0, 1){ RuntimeId=6895, NetworkId=189, ExtraData = null }, /**/
-            new Item(24, 0, 1){ RuntimeId=5519, NetworkId=190, ExtraData = null }, /**/
-            new Item(24, 1, 1){ RuntimeId=5520, NetworkId=191, ExtraData = null }, /**/
-            new Item(24, 2, 1){ RuntimeId=5521, NetworkId=192, ExtraData = null }, /**/
-            new Item(24, 3, 1){ RuntimeId=5522, NetworkId=193, ExtraData = null }, /**/
-            new Item(179, 0, 1){ RuntimeId=10947, NetworkId=194, ExtraData = null }, /**/
-            new Item(179, 1, 1){ RuntimeId=10948, NetworkId=195, ExtraData = null }, /**/
-            new Item(179, 2, 1){ RuntimeId=10949, NetworkId=196, ExtraData = null }, /**/
-            new Item(179, 3, 1){ RuntimeId=10950, NetworkId=197, ExtraData = null }, /**/
-            new Item(173, 0, 1){ RuntimeId=8546, NetworkId=198, ExtraData = null }, /**/
-            new Item(-139, 0, 1){ RuntimeId=12792, NetworkId=199, ExtraData = null }, /**/
-            new Item(41, 0, 1){ RuntimeId=764, NetworkId=200, ExtraData = null }, /**/
-            new Item(42, 0, 1){ RuntimeId=13101, NetworkId=201, ExtraData = null }, /**/
-            new Item(133, 0, 1){ RuntimeId=2249, NetworkId=202, ExtraData = null }, /**/
-            new Item(57, 0, 1){ RuntimeId=708, NetworkId=203, ExtraData = null }, /**/
-            new Item(22, 0, 1){ RuntimeId=6547, NetworkId=204, ExtraData = null }, /**/
-            new Item(155, 0, 1){ RuntimeId=5562, NetworkId=205, ExtraData = null }, /**/
-            new Item(155, 1, 1){ RuntimeId=5564, NetworkId=206, ExtraData = null }, /**/
-            new Item(155, 2, 1){ RuntimeId=5563, NetworkId=207, ExtraData = null }, /**/
-            new Item(155, 3, 1){ RuntimeId=5565, NetworkId=208, ExtraData = null }, /**/
-            new Item(168, 0, 1){ RuntimeId=10460, NetworkId=209, ExtraData = null }, /**/
-            new Item(168, 1, 1){ RuntimeId=10461, NetworkId=210, ExtraData = null }, /**/
-            new Item(165, 0, 1){ RuntimeId=6491, NetworkId=211, ExtraData = null }, /**/
-            new Item(-220, 0, 1){ RuntimeId=1994, NetworkId=212, ExtraData = null }, /**/
-            new Item(-221, 0, 1){ RuntimeId=6787, NetworkId=213, ExtraData = null }, /**/
-            new Item(170, 0, 1){ RuntimeId=1789, NetworkId=214, ExtraData = null }, /**/
-            new Item(216, 0, 1){ RuntimeId=6492, NetworkId=215, ExtraData = null }, /**/
-            new Item(112, 0, 1){ RuntimeId=12077, NetworkId=216, ExtraData = null }, /**/
-            new Item(215, 0, 1){ RuntimeId=557, NetworkId=217, ExtraData = null }, /**/
-            new Item(35, 0, 1){ RuntimeId=8547, NetworkId=220, ExtraData = null }, /**/
+            new Item(65, 0, 1){ RuntimeId=13102, NetworkId=132, ExtraData = null }, /*ladder*/
+            new Item(-165, 0, 1){ RuntimeId=5430, NetworkId=133, ExtraData = null }, /*scaffolding*/
+            new Item(44, 0, 1){ RuntimeId=6531, NetworkId=134, ExtraData = null }, /*smooth_stone_slab*/
+            new Item(-166, 0, 1){ RuntimeId=8976, NetworkId=135, ExtraData = null }, /*stone_slab*/
+            new Item(44, 0, 1){ RuntimeId=6534, NetworkId=136, ExtraData = null }, /*cobblestone_slab*/
+            new Item(182, 0, 1){ RuntimeId=8947, NetworkId=137, ExtraData = null }, /*mossy_cobblestone_slab*/
+            new Item(158, 0, 1){ RuntimeId=8432, NetworkId=138, ExtraData = null }, /*oak_slab*/
+            new Item(158, 0, 1){ RuntimeId=8433, NetworkId=139, ExtraData = null }, /*spruce_slab*/
+            new Item(158, 0, 1){ RuntimeId=8434, NetworkId=140, ExtraData = null }, /*birch_slab*/
+            new Item(158, 0, 1){ RuntimeId=8435, NetworkId=141, ExtraData = null }, /*jungle_slab*/
+            new Item(158, 0, 1){ RuntimeId=8436, NetworkId=142, ExtraData = null }, /*acacia_slab*/
+            new Item(158, 0, 1){ RuntimeId=8437, NetworkId=143, ExtraData = null }, /*dark_oak_slab*/
+            new Item(44, 0, 1){ RuntimeId=6536, NetworkId=144, ExtraData = null }, /*stone_brick_slab*/
+            new Item(-166, 0, 1){ RuntimeId=8974, NetworkId=145, ExtraData = null }, /*mossy_stone_brick_slab*/
+            new Item(44, 0, 1){ RuntimeId=6532, NetworkId=146, ExtraData = null }, /*_slab*/
+            new Item(-166, 0, 1){ RuntimeId=8977, NetworkId=147, ExtraData = null }, /*_slab*/
+            new Item(182, 0, 1){ RuntimeId=8948, NetworkId=148, ExtraData = null }, /*_slab*/
+            new Item(182, 0, 1){ RuntimeId=8942, NetworkId=149, ExtraData = null }, /*_slab*/
+            new Item(-166, 0, 1){ RuntimeId=8978, NetworkId=150, ExtraData = null }, /*_slab*/
+            new Item(-162, 0, 1){ RuntimeId=8959, NetworkId=151, ExtraData = null }, /*_slab*/
+            new Item(-162, 1, 1){ RuntimeId=8964, NetworkId=152, ExtraData = null }, /*_slab*/
+            new Item(-162, 2, 1){ RuntimeId=8965, NetworkId=153, ExtraData = null }, /*_slab*/
+            new Item(-162, 3, 1){ RuntimeId=8962, NetworkId=154, ExtraData = null }, /*_slab*/
+            new Item(-162, 4, 1){ RuntimeId=8963, NetworkId=155, ExtraData = null }, /*_slab*/
+            new Item(-162, 5, 1){ RuntimeId=8961, NetworkId=156, ExtraData = null }, /*_slab*/
+            new Item(-162, 6, 1){ RuntimeId=8960, NetworkId=157, ExtraData = null }, /*_slab*/
+            new Item(44, 0, 1){ RuntimeId=6535, NetworkId=158, ExtraData = null }, /*_slab*/
+            new Item(44, 0, 1){ RuntimeId=6538, NetworkId=159, ExtraData = null }, /*_slab*/
+            new Item(182, 0, 1){ RuntimeId=8949, NetworkId=160, ExtraData = null }, /*_slab*/
+            new Item(-162, 0, 1){ RuntimeId=8958, NetworkId=161, ExtraData = null }, /*_slab*/
+            new Item(44, 0, 1){ RuntimeId=6537, NetworkId=162, ExtraData = null }, /*_slab*/
+            new Item(-166, 0, 1){ RuntimeId=8975, NetworkId=163, ExtraData = null }, /*_slab*/
+            new Item(182, 0, 1){ RuntimeId=8943, NetworkId=164, ExtraData = null }, /*_slab*/
+            new Item(182, 1, 1){ RuntimeId=8944, NetworkId=165, ExtraData = null }, /*_slab*/
+            new Item(182, 2, 1){ RuntimeId=8945, NetworkId=166, ExtraData = null }, /*_slab*/
+            new Item(182, 3, 1){ RuntimeId=8946, NetworkId=167, ExtraData = null }, /*_slab*/
+            new Item(45, 0, 1){ RuntimeId=7517, NetworkId=173, ExtraData = null }, /*brick_block*/
+            new Item(-304, 0, 1){ RuntimeId=10710, NetworkId=176, ExtraData = null }, /*quartz_bricks*/
+            new Item(98, 0, 1){ RuntimeId=10914, NetworkId=177, ExtraData = null }, /*stone_bricks*/
+            new Item(98, 1, 1){ RuntimeId=10915, NetworkId=178, ExtraData = null }, /*mossy_stone_bricks*/
+            new Item(98, 2, 1){ RuntimeId=10916, NetworkId=179, ExtraData = null }, /*cracked_stone_bricks*/
+            new Item(98, 3, 1){ RuntimeId=10917, NetworkId=180, ExtraData = null }, /*chiseled_stone_bricks*/
+            new Item(206, 0, 1){ RuntimeId=721, NetworkId=181, ExtraData = null }, /*end_stone_bricks*/
+            new Item(168, 0, 1){ RuntimeId=10462, NetworkId=182, ExtraData = null }, /*prismarine_bricks*/
+            new Item(4, 0, 1){ RuntimeId=5477, NetworkId=187, ExtraData = null }, /*cobblestone*/
+            new Item(48, 0, 1){ RuntimeId=670, NetworkId=188, ExtraData = null }, /*mossy_cobblestone*/
+            new Item(-183, 0, 1){ RuntimeId=6895, NetworkId=189, ExtraData = null }, /*smooth_stone*/
+            new Item(24, 0, 1){ RuntimeId=5519, NetworkId=190, ExtraData = null }, /*sandstone*/
+            new Item(24, 1, 1){ RuntimeId=5520, NetworkId=191, ExtraData = null }, /*chiseled_sandstone*/
+            new Item(24, 2, 1){ RuntimeId=5521, NetworkId=192, ExtraData = null }, /*cut_sandstone*/
+            new Item(24, 3, 1){ RuntimeId=5522, NetworkId=193, ExtraData = null }, /*smooth_sandstone*/
+            new Item(179, 0, 1){ RuntimeId=10947, NetworkId=194, ExtraData = null }, /*red_sandstone*/
+            new Item(179, 1, 1){ RuntimeId=10948, NetworkId=195, ExtraData = null }, /*chiseled_red_sandstone*/
+            new Item(179, 2, 1){ RuntimeId=10949, NetworkId=196, ExtraData = null }, /*cut_red_sandstone*/
+            new Item(179, 3, 1){ RuntimeId=10950, NetworkId=197, ExtraData = null }, /*smooth_red_sandstone*/
+            new Item(173, 0, 1){ RuntimeId=8546, NetworkId=198, ExtraData = null }, /*coal_block*/
+            new Item(-139, 0, 1){ RuntimeId=12792, NetworkId=199, ExtraData = null }, /*dried_kelp_block*/
+            new Item(41, 0, 1){ RuntimeId=764, NetworkId=200, ExtraData = null }, /*gold_block*/
+            new Item(42, 0, 1){ RuntimeId=13101, NetworkId=201, ExtraData = null }, /*iron_block*/
+            new Item(133, 0, 1){ RuntimeId=2249, NetworkId=202, ExtraData = null }, /*emerald_block*/
+            new Item(57, 0, 1){ RuntimeId=708, NetworkId=203, ExtraData = null }, /*diamond_block*/
+            new Item(22, 0, 1){ RuntimeId=6547, NetworkId=204, ExtraData = null }, /*lapis_lazuli_block*/
+            new Item(155, 0, 1){ RuntimeId=5562, NetworkId=205, ExtraData = null }, /*quartz_block*/
+            new Item(155, 1, 1){ RuntimeId=5564, NetworkId=206, ExtraData = null }, /*pillar_quartz_block*/
+            new Item(155, 2, 1){ RuntimeId=5563, NetworkId=207, ExtraData = null }, /*chiseled_quartz_block*/
+            new Item(155, 3, 1){ RuntimeId=5565, NetworkId=208, ExtraData = null }, /*smooth_quartz_block*/
+            new Item(168, 0, 1){ RuntimeId=10460, NetworkId=209, ExtraData = null }, /*prismarine*/
+            new Item(168, 1, 1){ RuntimeId=10461, NetworkId=210, ExtraData = null }, /*dark_prismarine*/
+            new Item(165, 0, 1){ RuntimeId=6491, NetworkId=211, ExtraData = null }, /*slime_block*/
+            new Item(-220, 0, 1){ RuntimeId=1994, NetworkId=212, ExtraData = null }, /*honey_block*/
+            new Item(-221, 0, 1){ RuntimeId=6787, NetworkId=213, ExtraData = null }, /*honeycomb_block*/
+            new Item(170, 0, 1){ RuntimeId=1789, NetworkId=214, ExtraData = null }, /*haybale*/
+            new Item(216, 0, 1){ RuntimeId=6492, NetworkId=215, ExtraData = null }, /*bone_block*/
+            new Item(112, 0, 1){ RuntimeId=12077, NetworkId=216, ExtraData = null }, /*nether_brick_block*/
+            new Item(215, 0, 1){ RuntimeId=557, NetworkId=217, ExtraData = null }, /*red_nether_brick*/
+            new Item(35, 0, 1){ RuntimeId=8547, NetworkId=220, ExtraData = null }, /*white_wool*/
             new Item(35, 8, 1){ RuntimeId=12870, NetworkId=221, ExtraData = null }, /**/
             new Item(35, 7, 1){ RuntimeId=638, NetworkId=222, ExtraData = null }, /**/
             new Item(35, 15, 1){ RuntimeId=1095, NetworkId=223, ExtraData = null }, /**/
@@ -251,7 +252,7 @@ namespace MiNET
             new Item(35, 10, 1){ RuntimeId=13100, NetworkId=233, ExtraData = null }, /**/
             new Item(35, 2, 1){ RuntimeId=2070, NetworkId=234, ExtraData = null }, /**/
             new Item(35, 6, 1){ RuntimeId=5648, NetworkId=235, ExtraData = null }, /**/
-            new Item(171, 0, 1){ RuntimeId=12073, NetworkId=236, ExtraData = null }, /**/
+            new Item(171, 0, 1){ RuntimeId=12073, NetworkId=236, ExtraData = null }, /*white_carpet*/
             new Item(171, 8, 1){ RuntimeId=13099, NetworkId=237, ExtraData = null }, /**/
             new Item(171, 7, 1){ RuntimeId=640, NetworkId=238, ExtraData = null }, /**/
             new Item(171, 15, 1){ RuntimeId=10392, NetworkId=239, ExtraData = null }, /**/
@@ -267,7 +268,7 @@ namespace MiNET
             new Item(171, 10, 1){ RuntimeId=12563, NetworkId=249, ExtraData = null }, /**/
             new Item(171, 2, 1){ RuntimeId=674, NetworkId=250, ExtraData = null }, /**/
             new Item(171, 6, 1){ RuntimeId=12505, NetworkId=251, ExtraData = null }, /**/
-            new Item(237, 0, 1){ RuntimeId=7941, NetworkId=252, ExtraData = null }, /**/
+            new Item(237, 0, 1){ RuntimeId=7941, NetworkId=252, ExtraData = null }, /*white_concrete_powder*/
             new Item(237, 8, 1){ RuntimeId=12057, NetworkId=253, ExtraData = null }, /**/
             new Item(237, 7, 1){ RuntimeId=12169, NetworkId=254, ExtraData = null }, /**/
             new Item(237, 15, 1){ RuntimeId=1129, NetworkId=255, ExtraData = null }, /**/
@@ -283,7 +284,7 @@ namespace MiNET
             new Item(237, 10, 1){ RuntimeId=10905, NetworkId=265, ExtraData = null }, /**/
             new Item(237, 2, 1){ RuntimeId=6754, NetworkId=266, ExtraData = null }, /**/
             new Item(237, 6, 1){ RuntimeId=6557, NetworkId=267, ExtraData = null }, /**/
-            new Item(236, 0, 1){ RuntimeId=12898, NetworkId=268, ExtraData = null }, /**/
+            new Item(236, 0, 1){ RuntimeId=12898, NetworkId=268, ExtraData = null }, /*white_concrete*/
             new Item(236, 8, 1){ RuntimeId=1779, NetworkId=269, ExtraData = null }, /**/
             new Item(236, 7, 1){ RuntimeId=12170, NetworkId=270, ExtraData = null }, /**/
             new Item(236, 15, 1){ RuntimeId=11062, NetworkId=271, ExtraData = null }, /**/
@@ -299,9 +300,9 @@ namespace MiNET
             new Item(236, 10, 1){ RuntimeId=6448, NetworkId=281, ExtraData = null }, /**/
             new Item(236, 2, 1){ RuntimeId=6666, NetworkId=282, ExtraData = null }, /**/
             new Item(236, 6, 1){ RuntimeId=5018, NetworkId=283, ExtraData = null }, /**/
-            new Item(82, 0, 1){ RuntimeId=11510, NetworkId=284, ExtraData = null }, /**/
-            new Item(172, 0, 1){ RuntimeId=1360, NetworkId=285, ExtraData = null }, /**/
-            new Item(159, 0, 1){ RuntimeId=7555, NetworkId=286, ExtraData = null }, /**/
+            new Item(82, 0, 1){ RuntimeId=11510, NetworkId=284, ExtraData = null }, /*clay_block*/
+            new Item(172, 0, 1){ RuntimeId=1360, NetworkId=285, ExtraData = null }, /*terracotta*/
+            new Item(159, 0, 1){ RuntimeId=7555, NetworkId=286, ExtraData = null }, /*white_terracotta*/
             new Item(159, 8, 1){ RuntimeId=1750, NetworkId=287, ExtraData = null }, /**/
             new Item(159, 7, 1){ RuntimeId=6896, NetworkId=288, ExtraData = null }, /**/
             new Item(159, 15, 1){ RuntimeId=10465, NetworkId=289, ExtraData = null }, /**/
@@ -317,7 +318,7 @@ namespace MiNET
             new Item(159, 10, 1){ RuntimeId=10749, NetworkId=299, ExtraData = null }, /**/
             new Item(159, 2, 1){ RuntimeId=6902, NetworkId=300, ExtraData = null }, /**/
             new Item(159, 6, 1){ RuntimeId=6411, NetworkId=301, ExtraData = null }, /**/
-            new Item(220, 0, 1){ RuntimeId=8723, NetworkId=302, ExtraData = null }, /**/
+            new Item(220, 0, 1){ RuntimeId=8723, NetworkId=302, ExtraData = null }, /*white_glazed_terracotta*/
             new Item(228, 0, 1){ RuntimeId=5004, NetworkId=303, ExtraData = null }, /**/
             new Item(227, 0, 1){ RuntimeId=13090, NetworkId=304, ExtraData = null }, /**/
             new Item(235, 0, 1){ RuntimeId=9376, NetworkId=305, ExtraData = null }, /**/
@@ -327,43 +328,44 @@ namespace MiNET
             new Item(224, 0, 1){ RuntimeId=2031, NetworkId=309, ExtraData = null }, /**/
             new Item(225, 0, 1){ RuntimeId=641, NetworkId=310, ExtraData = null }, /**/
             new Item(233, 0, 1){ RuntimeId=10977, NetworkId=311, ExtraData = null }, /**/
-            new Item(229, 0, 1){ RuntimeId=8506, NetworkId=312, ExtraData = null }, /**/
-            new Item(223, 0, 1){ RuntimeId=8620, NetworkId=313, ExtraData = null }, /**/
-            new Item(231, 0, 1){ RuntimeId=8614, NetworkId=314, ExtraData = null }, /**/
-            new Item(219, 0, 1){ RuntimeId=11386, NetworkId=315, ExtraData = null }, /**/
-            new Item(222, 0, 1){ RuntimeId=2071, NetworkId=316, ExtraData = null }, /**/
-            new Item(226, 0, 1){ RuntimeId=10906, NetworkId=317, ExtraData = null }, /**/
-            new Item(201, 0, 1){ RuntimeId=12520, NetworkId=318, ExtraData = null }, /**/
-            new Item(201, 0, 1){ RuntimeId=12522, NetworkId=319, ExtraData = null }, /**/
-            new Item(214, 0, 1){ RuntimeId=6559, NetworkId=320, ExtraData = null }, /**/
-            new Item(-230, 0, 1){ RuntimeId=8190, NetworkId=322, ExtraData = null }, /**/
-            new Item(87, 0, 1){ RuntimeId=11414, NetworkId=325, ExtraData = null }, /**/
-            new Item(3, 0, 1){ RuntimeId=8903, NetworkId=329, ExtraData = null }, /**/
-            new Item(3, 0, 1){ RuntimeId=8904, NetworkId=330, ExtraData = null }, /**/
-            new Item(60, 0, 1){ RuntimeId=6164, NetworkId=331, ExtraData = null }, /**/
-            new Item(2, 0, 1){ RuntimeId=11347, NetworkId=332, ExtraData = null }, /**/
-            new Item(198, 0, 1){ RuntimeId=12900, NetworkId=333, ExtraData = null }, /**/
-            new Item(243, 0, 1){ RuntimeId=7394, NetworkId=334, ExtraData = null }, /**/
-            new Item(110, 0, 1){ RuntimeId=5549, NetworkId=335, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1757, NetworkId=336, ExtraData = null }, /**/
-            new Item(15, 0, 1){ RuntimeId=7434, NetworkId=337, ExtraData = null }, /**/
-            new Item(14, 0, 1){ RuntimeId=2030, NetworkId=338, ExtraData = null }, /**/
-            new Item(56, 0, 1){ RuntimeId=6664, NetworkId=339, ExtraData = null }, /**/
-            new Item(21, 0, 1){ RuntimeId=12503, NetworkId=340, ExtraData = null }, /**/
-            new Item(73, 0, 1){ RuntimeId=6550, NetworkId=341, ExtraData = null }, /**/
-            new Item(16, 0, 1){ RuntimeId=6548, NetworkId=342, ExtraData = null }, /**/
-            new Item(129, 0, 1){ RuntimeId=12152, NetworkId=343, ExtraData = null }, /**/
-            new Item(153, 0, 1){ RuntimeId=6812, NetworkId=344, ExtraData = null }, /**/
-            new Item(13, 0, 1){ RuntimeId=13127, NetworkId=347, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1758, NetworkId=348, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1760, NetworkId=349, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1762, NetworkId=350, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1759, NetworkId=352, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1761, NetworkId=353, ExtraData = null }, /**/
-            new Item(1, 0, 1){ RuntimeId=1763, NetworkId=354, ExtraData = null }, /**/
-            new Item(12, 0, 1){ RuntimeId=6453, NetworkId=356, ExtraData = null }, /**/
-            new Item(12, 0, 1){ RuntimeId=6454, NetworkId=357, ExtraData = null }, /**/
-            new Item(81, 0, 1){ RuntimeId=11358, NetworkId=358, ExtraData = null }, /**/
+            new Item(229, 0, 1){ RuntimeId=8506, NetworkId=312, ExtraData = null }, /*cyan_glazed_terracotta*/
+            new Item(223, 0, 1){ RuntimeId=8620, NetworkId=313, ExtraData = null }, /*light_blue_glazed_terracotta*/
+            new Item(231, 0, 1){ RuntimeId=8614, NetworkId=314, ExtraData = null }, /*_glazed_terracotta*/
+            new Item(219, 0, 1){ RuntimeId=11386, NetworkId=315, ExtraData = null }, /*_glazed_terracotta*/
+            new Item(222, 0, 1){ RuntimeId=2071, NetworkId=316, ExtraData = null }, /*_glazed_terracotta*/
+            new Item(226, 0, 1){ RuntimeId=10906, NetworkId=317, ExtraData = null }, /*pink_glazed_terracotta*/
+            new Item(201, 0, 1){ RuntimeId=12520, NetworkId=318, ExtraData = null }, /*purpur_block*/
+            new Item(201, 0, 1){ RuntimeId=12522, NetworkId=319, ExtraData = null }, /*purpur_pillar*/
+			/*====================================nature====================================*/
+            new Item(214, 0, 1){ RuntimeId=6559, NetworkId=320, ExtraData = null }, /*nether_wart_block*/
+            new Item(-230, 0, 1){ RuntimeId=8190, NetworkId=322, ExtraData = null }, /*shroomlight*/
+            new Item(87, 0, 1){ RuntimeId=11414, NetworkId=325, ExtraData = null }, /*netherrack*/
+            new Item(3, 0, 1){ RuntimeId=8903, NetworkId=329, ExtraData = null }, /*dirt*/
+            new Item(3, 0, 1){ RuntimeId=8904, NetworkId=330, ExtraData = null }, /*coarse_dirt*/
+            new Item(60, 0, 1){ RuntimeId=6164, NetworkId=331, ExtraData = null }, /*farmland*/
+            new Item(2, 0, 1){ RuntimeId=11347, NetworkId=332, ExtraData = null }, /*grass_block*/
+            new Item(198, 0, 1){ RuntimeId=12900, NetworkId=333, ExtraData = null }, /*dirt_path*/
+            new Item(243, 0, 1){ RuntimeId=7394, NetworkId=334, ExtraData = null }, /*podzol*/
+            new Item(110, 0, 1){ RuntimeId=5549, NetworkId=335, ExtraData = null }, /*mycelium*/
+            new Item(1, 0, 1){ RuntimeId=1757, NetworkId=336, ExtraData = null }, /*stone*/
+            new Item(15, 0, 1){ RuntimeId=7434, NetworkId=337, ExtraData = null }, /*iron_ore*/
+            new Item(14, 0, 1){ RuntimeId=2030, NetworkId=338, ExtraData = null }, /*gold_ore*/
+            new Item(56, 0, 1){ RuntimeId=6664, NetworkId=339, ExtraData = null }, /*diamond_ore*/
+            new Item(21, 0, 1){ RuntimeId=12503, NetworkId=340, ExtraData = null }, /*lapis_lazuli_ore*/
+            new Item(73, 0, 1){ RuntimeId=6550, NetworkId=341, ExtraData = null }, /*redstone_ore*/
+            new Item(16, 0, 1){ RuntimeId=6548, NetworkId=342, ExtraData = null }, /*coal_ore*/
+            new Item(129, 0, 1){ RuntimeId=12152, NetworkId=343, ExtraData = null }, /*emerald_ore*/
+            new Item(153, 0, 1){ RuntimeId=6812, NetworkId=344, ExtraData = null }, /*nether_quartz_ore*/
+            new Item(13, 0, 1){ RuntimeId=13127, NetworkId=347, ExtraData = null }, /*gravel*/
+            new Item(1, 0, 1){ RuntimeId=1758, NetworkId=348, ExtraData = null }, /*granite*/
+            new Item(1, 0, 1){ RuntimeId=1760, NetworkId=349, ExtraData = null }, /*diorite*/
+            new Item(1, 0, 1){ RuntimeId=1762, NetworkId=350, ExtraData = null }, /*andesite*/
+            new Item(1, 0, 1){ RuntimeId=1759, NetworkId=352, ExtraData = null }, /*polished_granite*/
+            new Item(1, 0, 1){ RuntimeId=1761, NetworkId=353, ExtraData = null }, /*polished_diorite*/
+            new Item(1, 0, 1){ RuntimeId=1763, NetworkId=354, ExtraData = null }, /*polished_andesite*/
+            new Item(12, 0, 1){ RuntimeId=6453, NetworkId=356, ExtraData = null }, /*sand*/
+            new Item(12, 0, 1){ RuntimeId=6454, NetworkId=357, ExtraData = null }, /*red_sand*/
+            new Item(81, 0, 1){ RuntimeId=11358, NetworkId=358, ExtraData = null }, /*cactus*/
             new Item(17, 0, 1){ RuntimeId=717, NetworkId=359, ExtraData = null }, /*oak_log*/
             new Item(-10, 0, 1){ RuntimeId=12348, NetworkId=360, ExtraData = null }, /*stripped_oak_log*/
             new Item(17, 1, 1){ RuntimeId=6528, NetworkId=361, ExtraData = null }, /*spruce_log*/
@@ -1241,32 +1243,6 @@ namespace MiNET
             new Item(402, 10, 1){ RuntimeId=0, NetworkId=1301, ExtraData = new NbtCompound { new NbtCompound("FireworksItem") { new NbtByteArray("FireworkColor", new byte[1]{10}), new NbtByteArray("FireworkFade", new byte[0]{}), new NbtByte("FireworkFlicker", 0), new NbtByte("FireworkTrail", 0), new NbtByte("FireworkType", 0) }, new NbtInt("customColor", -8337633) } }, /*minecraft:firework_star*/
             new Item(402, 2, 1){ RuntimeId=0, NetworkId=1302, ExtraData = new NbtCompound { new NbtCompound("FireworksItem") { new NbtByteArray("FireworkColor", new byte[1]{2}), new NbtByteArray("FireworkFade", new byte[0]{}), new NbtByte("FireworkFlicker", 0), new NbtByte("FireworkTrail", 0), new NbtByte("FireworkType", 0) }, new NbtInt("customColor", -10585066) } }, /*minecraft:firework_star*/
             new Item(402, 6, 1){ RuntimeId=0, NetworkId=1303, ExtraData = new NbtCompound { new NbtCompound("FireworksItem") { new NbtByteArray("FireworkColor", new byte[1]{6}), new NbtByteArray("FireworkFade", new byte[0]{}), new NbtByte("FireworkFlicker", 0), new NbtByte("FireworkTrail", 0), new NbtByte("FireworkType", 0) }, new NbtInt("customColor", -15295332) } }, /*minecraft:firework_star*/
-            new Item(758, 0, 1){ RuntimeId=0, NetworkId=1304, ExtraData = null }, /*minecraft:chain*/
-			new Item(-379, 0, 1){ RuntimeId=0, NetworkId=985, ExtraData = null }, /*cobbled_deepslate*/
-
-			new Item(512, 0, 1){ RuntimeId=0, NetworkId=1030, ExtraData = null }, /*???*/
-            new Item(514, 0, 1){ RuntimeId=0, NetworkId=1032, ExtraData = null }, /*???*/
-			new Item(631, 0, 1){ RuntimeId=0, NetworkId=1044, ExtraData = null }, /*???*/
-			new Item(632, 0, 1){ RuntimeId=0, NetworkId=902, ExtraData = null }, /*???*/
-			new Item(633, 0, 1){ RuntimeId=0, NetworkId=981, ExtraData = null }, /*???*/
-			new Item(634, 1, 1){ RuntimeId=0, NetworkId=753, ExtraData = null }, /*???*/
-            new Item(634, 2, 1){ RuntimeId=0, NetworkId=754, ExtraData = null }, /*???*/
-            new Item(634, 3, 1){ RuntimeId=0, NetworkId=755, ExtraData = null }, /*???*/
-            new Item(634, 4, 1){ RuntimeId=0, NetworkId=756, ExtraData = null }, /*???*/
-            new Item(634, 5, 1){ RuntimeId=0, NetworkId=757, ExtraData = null }, /*???*/
-            new Item(634, 6, 1){ RuntimeId=0, NetworkId=758, ExtraData = null }, /*???*/
-            new Item(634, 7, 1){ RuntimeId=0, NetworkId=759, ExtraData = null }, /*???*/
-			new Item(645, 0, 1){ RuntimeId=0, NetworkId=1192, ExtraData = null }, /*???*/
-			new Item(646, 0, 1){ RuntimeId=0, NetworkId=1194, ExtraData = null }, /*???*/
-            new Item(647, 0, 1){ RuntimeId=0, NetworkId=1195, ExtraData = null }, /*???*/
-			new Item(648, 0, 1){ RuntimeId=0, NetworkId=1193, ExtraData = null }, /*???*/
-            new Item(649, 0, 1){ RuntimeId=0, NetworkId=1196, ExtraData = null }, /*???*/
-            new Item(650, 0, 1){ RuntimeId=0, NetworkId=1197, ExtraData = null }, /*???*/
-            new Item(651, 0, 1){ RuntimeId=0, NetworkId=1198, ExtraData = null }, /*???*/
-			new Item(654, 0, 1){ RuntimeId=0, NetworkId=1062, ExtraData = null }, /*???*/
-			new Item(719, 0, 1){ RuntimeId=0, NetworkId=420, ExtraData = null }, /*???*/
-			
-			
         };
 	}
 }
