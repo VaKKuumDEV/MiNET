@@ -23,6 +23,12 @@
 
 #endregion
 
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System;
+using System.Numerics;
+
 namespace MiNET.Blocks
 {
 	public partial class EndPortalFrame : Block
@@ -32,6 +38,21 @@ namespace MiNET.Blocks
 			LightLevel = 1;
 			BlastResistance = 18000000;
 			Hardness = 60000;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
+
+			cardinalDirection = FacingDirection switch
+			{
+				5 => "east",
+				3 => "south",
+				4 => "west",
+				2 => "north",
+				_ => throw new ArgumentOutOfRangeException()
+			};
+			return false;
 		}
 	}
 }

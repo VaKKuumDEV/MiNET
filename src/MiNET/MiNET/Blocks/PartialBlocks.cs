@@ -920,13 +920,8 @@ namespace MiNET.Blocks
 
     public partial class Barrel : Block // 458 typeof=Barrel
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
-        [StateBit] public  bool OpenBit { get; set; } = false;
-        
-        public Barrel() : base(458)
-        {
-            IsGenerated = true;
-        }
+        public int FacingDirection { get; set; } = 2;
+        public bool OpenBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -934,12 +929,6 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateInt s when s.Name == "facing_direction":
-                        FacingDirection = s.Value;
-                        break;
-                    case BlockStateByte s when s.Name == "open_bit":
-                        OpenBit = Convert.ToBoolean(s.Value);
-                        break;
                 } // switch
             } // foreach
         } // method
@@ -1497,18 +1486,14 @@ namespace MiNET.Blocks
 
     public partial class BlastFurnace  // 451 typeof=BlastFurnace
     {
-        [StateEnum("north","west","east","south")]
-        public  string cardinalDirection { get; set; } = "";
+		public string cardinalDirection { get; set; } = "north";
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
                 } // switch
             } // foreach
         } // method
@@ -7084,10 +7069,9 @@ namespace MiNET.Blocks
     public partial class EndPortalFrame  // 120 typeof=EndPortalFrame
     {
         [StateBit] public  bool EndPortalEyeBit { get; set; } = false;
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
+		public string cardinalDirection { get; set; } = "north";
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
@@ -7455,8 +7439,7 @@ namespace MiNET.Blocks
 
     public partial class Furnace  // 61 typeof=Furnace
     {
-        [StateEnum("north","west","east","south")]
-        public  string cardinalDirection { get; set; } = "";
+        public string cardinalDirection { get; set; } = "north";
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7464,9 +7447,6 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
                 } // switch
             } // foreach
         } // method
@@ -8916,14 +8896,8 @@ namespace MiNET.Blocks
 
     public partial class Lectern : Block // 449 typeof=Lectern
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        [StateBit] public  bool PoweredBit { get; set; } = false;
-        
-        public Lectern() : base(449)
-        {
-            IsGenerated = true;
-        }
+		public string cardinalDirection { get; set; } = "north";
+		public  bool PoweredBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8931,12 +8905,6 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                    case BlockStateByte s when s.Name == "powered_bit":
-                        PoweredBit = Convert.ToBoolean(s.Value);
-                        break;
                 } // switch
             } // foreach
         } // method
@@ -11447,13 +11415,7 @@ namespace MiNET.Blocks
 
     public partial class Smoker : Block // 453 typeof=Smoker
     {
-        [StateEnum("north","west","east","south")]
-        public  string cardinalDirection { get; set; } = "";
-        
-        public Smoker() : base(453)
-        {
-            IsGenerated = true;
-        }
+		public string cardinalDirection { get; set; } = "north";
 
         public override void SetState(List<IBlockState> states)
         {
@@ -11461,9 +11423,6 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
                 } // switch
             } // foreach
         } // method
