@@ -47,79 +47,79 @@ namespace MiNET
 		// GENERATED CODE. DON'T EDIT BY HAND
 		public static List<Item> CreativeInventoryItems = new List<Item>()
 		{
-			new Item(5, 0, 1){ RuntimeId=10430, NetworkId=1, ExtraData = null }, /**/
-            new Item(5, 1, 1){ RuntimeId=10431, NetworkId=2, ExtraData = null }, /**/
-            new Item(5, 2, 1){ RuntimeId=10432, NetworkId=3, ExtraData = null }, /**/
-            new Item(5, 3, 1){ RuntimeId=10433, NetworkId=4, ExtraData = null }, /**/
-            new Item(5, 4, 1){ RuntimeId=10434, NetworkId=5, ExtraData = null }, /**/
-            new Item(5, 5, 1){ RuntimeId=10435, NetworkId=6, ExtraData = null }, /**/
-            new Item(139, 0, 1){ RuntimeId=2282, NetworkId=9, ExtraData = null }, /**/
-            new Item(139, 1, 1){ RuntimeId=2283, NetworkId=10, ExtraData = null }, /**/
-            new Item(139, 2, 1){ RuntimeId=2284, NetworkId=11, ExtraData = null }, /**/
-            new Item(139, 3, 1){ RuntimeId=2285, NetworkId=12, ExtraData = null }, /**/
-            new Item(139, 4, 1){ RuntimeId=2286, NetworkId=13, ExtraData = null }, /**/
-            new Item(139, 5, 1){ RuntimeId=2287, NetworkId=14, ExtraData = null }, /**/
-            new Item(139, 6, 1){ RuntimeId=2294, NetworkId=15, ExtraData = null }, /**/
-            new Item(139, 7, 1){ RuntimeId=2289, NetworkId=16, ExtraData = null }, /**/
-            new Item(139, 8, 1){ RuntimeId=2290, NetworkId=17, ExtraData = null }, /**/
-            new Item(139, 9, 1){ RuntimeId=2288, NetworkId=18, ExtraData = null }, /**/
-            new Item(139, 10, 1){ RuntimeId=2291, NetworkId=19, ExtraData = null }, /**/
-            new Item(139, 11, 1){ RuntimeId=2295, NetworkId=20, ExtraData = null }, /**/
-            new Item(139, 12, 1){ RuntimeId=2292, NetworkId=21, ExtraData = null }, /**/
-            new Item(139, 13, 1){ RuntimeId=2293, NetworkId=22, ExtraData = null }, /**/
-            new Item(85, 0, 1){ RuntimeId=8900, NetworkId=26, ExtraData = null }, /**/
-            new Item(85, 1, 1){ RuntimeId=1127, NetworkId=27, ExtraData = null }, /**/
-            new Item(85, 2, 1){ RuntimeId=12895, NetworkId=28, ExtraData = null }, /**/
-            new Item(85, 3, 1){ RuntimeId=1120, NetworkId=29, ExtraData = null }, /**/
-            new Item(85, 4, 1){ RuntimeId=12899, NetworkId=30, ExtraData = null }, /**/
-            new Item(85, 5, 1){ RuntimeId=11462, NetworkId=31, ExtraData = null }, /**/
-            new Item(113, 0, 1){ RuntimeId=6554, NetworkId=32, ExtraData = null }, /**/
-            new Item(107, 0, 1){ RuntimeId=82, NetworkId=35, ExtraData = null }, /**/
-            new Item(183, 0, 1){ RuntimeId=10951, NetworkId=36, ExtraData = null }, /**/
-            new Item(184, 0, 1){ RuntimeId=5650, NetworkId=37, ExtraData = null }, /**/
-            new Item(185, 0, 1){ RuntimeId=8513, NetworkId=38, ExtraData = null }, /**/
-            new Item(187, 0, 1){ RuntimeId=12392, NetworkId=39, ExtraData = null }, /**/
-            new Item(186, 0, 1){ RuntimeId=6427, NetworkId=40, ExtraData = null }, /**/
-            new Item(-180, 0, 1){ RuntimeId=1352, NetworkId=43, ExtraData = null }, /**/
-            new Item(67, 0, 1){ RuntimeId=5574, NetworkId=44, ExtraData = null }, /**/
-            new Item(-179, 0, 1){ RuntimeId=6344, NetworkId=45, ExtraData = null }, /**/
-            new Item(53, 0, 1){ RuntimeId=709, NetworkId=46, ExtraData = null }, /**/
-            new Item(134, 0, 1){ RuntimeId=137, NetworkId=47, ExtraData = null }, /**/
-            new Item(135, 0, 1){ RuntimeId=11378, NetworkId=48, ExtraData = null }, /**/
-            new Item(136, 0, 1){ RuntimeId=11339, NetworkId=49, ExtraData = null }, /**/
-            new Item(163, 0, 1){ RuntimeId=10560, NetworkId=50, ExtraData = null }, /**/
-            new Item(164, 0, 1){ RuntimeId=8208, NetworkId=51, ExtraData = null }, /**/
-            new Item(109, 0, 1){ RuntimeId=2050, NetworkId=52, ExtraData = null }, /**/
-            new Item(-175, 0, 1){ RuntimeId=9838, NetworkId=53, ExtraData = null }, /**/
-            new Item(128, 0, 1){ RuntimeId=5446, NetworkId=54, ExtraData = null }, /**/
-            new Item(-177, 0, 1){ RuntimeId=5492, NetworkId=55, ExtraData = null }, /**/
-            new Item(180, 0, 1){ RuntimeId=8498, NetworkId=56, ExtraData = null }, /**/
-            new Item(-176, 0, 1){ RuntimeId=8696, NetworkId=57, ExtraData = null }, /**/
-            new Item(-169, 0, 1){ RuntimeId=5010, NetworkId=58, ExtraData = null }, /**/
-            new Item(-172, 0, 1){ RuntimeId=6403, NetworkId=59, ExtraData = null }, /**/
-            new Item(-170, 0, 1){ RuntimeId=6697, NetworkId=60, ExtraData = null }, /**/
-            new Item(-173, 0, 1){ RuntimeId=11070, NetworkId=61, ExtraData = null }, /**/
-            new Item(-171, 0, 1){ RuntimeId=8470, NetworkId=62, ExtraData = null }, /**/
-            new Item(-174, 0, 1){ RuntimeId=11405, NetworkId=63, ExtraData = null }, /**/
-            new Item(108, 0, 1){ RuntimeId=10896, NetworkId=64, ExtraData = null }, /**/
-            new Item(114, 0, 1){ RuntimeId=112, NetworkId=65, ExtraData = null }, /**/
-            new Item(-184, 0, 1){ RuntimeId=10969, NetworkId=66, ExtraData = null }, /**/
-            new Item(-178, 0, 1){ RuntimeId=10741, NetworkId=67, ExtraData = null }, /**/
-            new Item(156, 0, 1){ RuntimeId=7519, NetworkId=68, ExtraData = null }, /**/
-            new Item(-185, 0, 1){ RuntimeId=12506, NetworkId=69, ExtraData = null }, /**/
-            new Item(203, 0, 1){ RuntimeId=12569, NetworkId=70, ExtraData = null }, /**/
-            new Item(-2, 0, 1){ RuntimeId=12065, NetworkId=71, ExtraData = null }, /**/
-            new Item(-3, 0, 1){ RuntimeId=12233, NetworkId=72, ExtraData = null }, /**/
-            new Item(-4, 0, 1){ RuntimeId=618, NetworkId=73, ExtraData = null }, /**/
-            new Item(324, 0, 1){ RuntimeId=0, NetworkId=79, ExtraData = null }, /*minecraft:wooden_door*/
+			new Item(5, 0, 1){ RuntimeId=10430, NetworkId=1, ExtraData = null }, /*oak_planks*/
+            new Item(5, 1, 1){ RuntimeId=10431, NetworkId=2, ExtraData = null }, /*spruce_planks*/
+            new Item(5, 2, 1){ RuntimeId=10432, NetworkId=3, ExtraData = null }, /*birch_planks*/
+            new Item(5, 3, 1){ RuntimeId=10433, NetworkId=4, ExtraData = null }, /*jungle_planks*/
+            new Item(5, 4, 1){ RuntimeId=10434, NetworkId=5, ExtraData = null }, /*acacia_planks*/
+            new Item(5, 5, 1){ RuntimeId=10435, NetworkId=6, ExtraData = null }, /*dark_oak_planks*/
+            new Item(139, 0, 1){ RuntimeId=2282, NetworkId=9, ExtraData = null }, /*cobblestone_wall*/
+            new Item(139, 1, 1){ RuntimeId=2283, NetworkId=10, ExtraData = null }, /*mossy_cobblestone_wall*/
+            new Item(139, 2, 1){ RuntimeId=2284, NetworkId=11, ExtraData = null }, /*granite_wall*/
+            new Item(139, 3, 1){ RuntimeId=2285, NetworkId=12, ExtraData = null }, /*diorite_wall*/
+            new Item(139, 4, 1){ RuntimeId=2286, NetworkId=13, ExtraData = null }, /*andesite_wall*/
+            new Item(139, 5, 1){ RuntimeId=2287, NetworkId=14, ExtraData = null }, /*sandstone_wall*/
+            new Item(139, 6, 1){ RuntimeId=2294, NetworkId=15, ExtraData = null }, /*red_sandstone_wall*/
+            new Item(139, 7, 1){ RuntimeId=2289, NetworkId=16, ExtraData = null }, /*stone_brick_wall*/
+            new Item(139, 8, 1){ RuntimeId=2290, NetworkId=17, ExtraData = null }, /*mossy_stone_brick_wall*/
+            new Item(139, 9, 1){ RuntimeId=2288, NetworkId=18, ExtraData = null }, /*brick_wall*/
+            new Item(139, 10, 1){ RuntimeId=2291, NetworkId=19, ExtraData = null }, /*nether_brick_wall*/
+            new Item(139, 11, 1){ RuntimeId=2295, NetworkId=20, ExtraData = null }, /*red_nether_brick_wall*/
+            new Item(139, 12, 1){ RuntimeId=2292, NetworkId=21, ExtraData = null }, /*end_stone_wall*/
+            new Item(139, 13, 1){ RuntimeId=2293, NetworkId=22, ExtraData = null }, /*prismarine_wall*/
+            new Item(85, 0, 1){ RuntimeId=8900, NetworkId=26, ExtraData = null }, /*oak_fence*/
+            new Item(85, 1, 1){ RuntimeId=1127, NetworkId=27, ExtraData = null }, /*spruce_fence*/
+            new Item(85, 2, 1){ RuntimeId=12895, NetworkId=28, ExtraData = null }, /*birch_fence*/
+            new Item(85, 3, 1){ RuntimeId=1120, NetworkId=29, ExtraData = null }, /*jungle_fence*/
+            new Item(85, 4, 1){ RuntimeId=12899, NetworkId=30, ExtraData = null }, /*acacia_fence*/
+            new Item(85, 5, 1){ RuntimeId=11462, NetworkId=31, ExtraData = null }, /*dark_oak_fence*/
+            new Item(113, 0, 1){ RuntimeId=6554, NetworkId=32, ExtraData = null }, /*nether_brick_fence*/
+            new Item(107, 0, 1){ RuntimeId=82, NetworkId=35, ExtraData = null }, /*oak_fence_gate*/
+            new Item(183, 0, 1){ RuntimeId=10951, NetworkId=36, ExtraData = null }, /*spruce_fence_gate*/
+            new Item(184, 0, 1){ RuntimeId=5650, NetworkId=37, ExtraData = null }, /*birch_fence_gate*/
+            new Item(185, 0, 1){ RuntimeId=8513, NetworkId=38, ExtraData = null }, /*jungle_fence_gate*/
+            new Item(187, 0, 1){ RuntimeId=12392, NetworkId=39, ExtraData = null }, /*acacia_fence_gate*/
+            new Item(186, 0, 1){ RuntimeId=6427, NetworkId=40, ExtraData = null }, /*dark_oak_fence_gate*/
+            new Item(-180, 0, 1){ RuntimeId=1352, NetworkId=43, ExtraData = null }, /*stone_stairs*/
+            new Item(67, 0, 1){ RuntimeId=5574, NetworkId=44, ExtraData = null }, /*cobblestone_stairs*/
+            new Item(-179, 0, 1){ RuntimeId=6344, NetworkId=45, ExtraData = null }, /*mossy_cobblestone_stairs*/
+            new Item(53, 0, 1){ RuntimeId=709, NetworkId=46, ExtraData = null }, /*oak_stairs*/
+            new Item(134, 0, 1){ RuntimeId=137, NetworkId=47, ExtraData = null }, /*spruce_stairs*/
+            new Item(135, 0, 1){ RuntimeId=11378, NetworkId=48, ExtraData = null }, /*birch_stairs*/
+            new Item(136, 0, 1){ RuntimeId=11339, NetworkId=49, ExtraData = null }, /*jungle_stairs*/
+            new Item(163, 0, 1){ RuntimeId=10560, NetworkId=50, ExtraData = null }, /*acacia_stairs*/
+            new Item(164, 0, 1){ RuntimeId=8208, NetworkId=51, ExtraData = null }, /*dark_oak_stairs*/
+            new Item(109, 0, 1){ RuntimeId=2050, NetworkId=52, ExtraData = null }, /*stone_brick_stairs*/
+            new Item(-175, 0, 1){ RuntimeId=9838, NetworkId=53, ExtraData = null }, /*mossy_stone_brick_stairs*/
+            new Item(128, 0, 1){ RuntimeId=5446, NetworkId=54, ExtraData = null }, /*sandstone_stairs*/
+            new Item(-177, 0, 1){ RuntimeId=5492, NetworkId=55, ExtraData = null }, /*smooth_sandstone_stairs*/
+            new Item(180, 0, 1){ RuntimeId=8498, NetworkId=56, ExtraData = null }, /*red_sandstone_stairs*/
+            new Item(-176, 0, 1){ RuntimeId=8696, NetworkId=57, ExtraData = null }, /*smooth_red_sandstone_stairs*/
+            new Item(-169, 0, 1){ RuntimeId=5010, NetworkId=58, ExtraData = null }, /*granite_stairs*/
+            new Item(-172, 0, 1){ RuntimeId=6403, NetworkId=59, ExtraData = null }, /*polished_granite_stairs*/
+            new Item(-170, 0, 1){ RuntimeId=6697, NetworkId=60, ExtraData = null }, /*diorite_stairs*/
+            new Item(-173, 0, 1){ RuntimeId=11070, NetworkId=61, ExtraData = null }, /*polished_diorite_stairs*/
+            new Item(-171, 0, 1){ RuntimeId=8470, NetworkId=62, ExtraData = null }, /*andesite_stairs*/
+            new Item(-174, 0, 1){ RuntimeId=11405, NetworkId=63, ExtraData = null }, /*polished_andesite_stairs*/
+            new Item(108, 0, 1){ RuntimeId=10896, NetworkId=64, ExtraData = null }, /*brick_stairs*/
+            new Item(114, 0, 1){ RuntimeId=112, NetworkId=65, ExtraData = null }, /*nether_brick_stairs*/
+            new Item(-184, 0, 1){ RuntimeId=10969, NetworkId=66, ExtraData = null }, /*red_nether_brick_stairs*/
+            new Item(-178, 0, 1){ RuntimeId=10741, NetworkId=67, ExtraData = null }, /*end_stone_brick_stairs*/
+            new Item(156, 0, 1){ RuntimeId=7519, NetworkId=68, ExtraData = null }, /*quartz_stairs*/
+            new Item(-185, 0, 1){ RuntimeId=12506, NetworkId=69, ExtraData = null }, /*smooth_quartz_stairs*/
+            new Item(203, 0, 1){ RuntimeId=12569, NetworkId=70, ExtraData = null }, /*purpur_stairs*/
+            new Item(-2, 0, 1){ RuntimeId=12065, NetworkId=71, ExtraData = null }, /*prismarine_stairs*/
+            new Item(-3, 0, 1){ RuntimeId=12233, NetworkId=72, ExtraData = null }, /*dark_prismarine_stairs*/
+            new Item(-4, 0, 1){ RuntimeId=618, NetworkId=73, ExtraData = null }, /*prismarine_brick_stairs*/
+            new Item(324, 0, 1){ RuntimeId=0, NetworkId=79, ExtraData = null }, /*oak_door*/
             new Item(427, 0, 1){ RuntimeId=0, NetworkId=80, ExtraData = null }, /*minecraft:spruce_door*/
             new Item(428, 0, 1){ RuntimeId=0, NetworkId=81, ExtraData = null }, /*minecraft:birch_door*/
             new Item(429, 0, 1){ RuntimeId=0, NetworkId=82, ExtraData = null }, /*minecraft:jungle_door*/
             new Item(430, 0, 1){ RuntimeId=0, NetworkId=83, ExtraData = null }, /*minecraft:acacia_door*/
             new Item(431, 0, 1){ RuntimeId=0, NetworkId=84, ExtraData = null }, /*minecraft:dark_oak_door*/
             new Item(330, 0, 1){ RuntimeId=0, NetworkId=85, ExtraData = null }, /*minecraft:iron_door*/
-            new Item(96, 0, 1){ RuntimeId=647, NetworkId=88, ExtraData = null }, /**/
-            new Item(-149, 0, 1){ RuntimeId=10919, NetworkId=89, ExtraData = null }, /**/
+            new Item(96, 0, 1){ RuntimeId=647, NetworkId=88, ExtraData = null }, /*oak_trapdoor*/
+            new Item(-149, 0, 1){ RuntimeId=10919, NetworkId=89, ExtraData = null }, /*spruce_trapdoor*/
             new Item(-146, 0, 1){ RuntimeId=11017, NetworkId=90, ExtraData = null }, /**/
             new Item(-148, 0, 1){ RuntimeId=8529, NetworkId=91, ExtraData = null }, /**/
             new Item(-145, 0, 1){ RuntimeId=8739, NetworkId=92, ExtraData = null }, /**/
@@ -354,7 +354,6 @@ namespace MiNET
             new Item(16, 0, 1){ RuntimeId=6548, NetworkId=342, ExtraData = null }, /**/
             new Item(129, 0, 1){ RuntimeId=12152, NetworkId=343, ExtraData = null }, /**/
             new Item(153, 0, 1){ RuntimeId=6812, NetworkId=344, ExtraData = null }, /**/
-            new Item(-271, 0, 1){ RuntimeId=10483, NetworkId=346, ExtraData = null }, /**/
             new Item(13, 0, 1){ RuntimeId=13127, NetworkId=347, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1758, NetworkId=348, ExtraData = null }, /**/
             new Item(1, 0, 1){ RuntimeId=1760, NetworkId=349, ExtraData = null }, /**/
@@ -365,42 +364,42 @@ namespace MiNET
             new Item(12, 0, 1){ RuntimeId=6453, NetworkId=356, ExtraData = null }, /**/
             new Item(12, 0, 1){ RuntimeId=6454, NetworkId=357, ExtraData = null }, /**/
             new Item(81, 0, 1){ RuntimeId=11358, NetworkId=358, ExtraData = null }, /**/
-            new Item(17, 0, 1){ RuntimeId=717, NetworkId=359, ExtraData = null }, /*minecraft:log*/
-            new Item(-10, 0, 1){ RuntimeId=12348, NetworkId=360, ExtraData = null }, /**/
-            new Item(17, 1, 1){ RuntimeId=6528, NetworkId=361, ExtraData = null }, /*minecraft:log*/
-            new Item(-5, 0, 1){ RuntimeId=10647, NetworkId=362, ExtraData = null }, /**/
-            new Item(17, 2, 1){ RuntimeId=1764, NetworkId=363, ExtraData = null }, /*minecraft:log*/
-            new Item(-6, 0, 1){ RuntimeId=9933, NetworkId=364, ExtraData = null }, /**/
-            new Item(17, 3, 1){ RuntimeId=631, NetworkId=365, ExtraData = null }, /*minecraft:log*/
-            new Item(-7, 0, 1){ RuntimeId=1745, NetworkId=366, ExtraData = null }, /**/
-            new Item(162, 0, 1){ RuntimeId=6632, NetworkId=367, ExtraData = null }, /**/
-            new Item(-8, 0, 1){ RuntimeId=9402, NetworkId=368, ExtraData = null }, /**/
-            new Item(162, 1, 1){ RuntimeId=4560, NetworkId=369, ExtraData = null }, /**/
-            new Item(-9, 0, 1){ RuntimeId=628, NetworkId=370, ExtraData = null }, /**/
-            new Item(-212, 0, 1){ RuntimeId=4563, NetworkId=375, ExtraData = null }, /**/
-            new Item(-212, 1, 1){ RuntimeId=4569, NetworkId=376, ExtraData = null }, /**/
-            new Item(-212, 2, 1){ RuntimeId=4564, NetworkId=377, ExtraData = null }, /**/
-            new Item(-212, 3, 1){ RuntimeId=4570, NetworkId=378, ExtraData = null }, /**/
-            new Item(-212, 4, 1){ RuntimeId=4565, NetworkId=379, ExtraData = null }, /**/
-            new Item(-212, 5, 1){ RuntimeId=4571, NetworkId=380, ExtraData = null }, /**/
-            new Item(-212, 6, 1){ RuntimeId=4566, NetworkId=381, ExtraData = null }, /**/
-            new Item(-212, 7, 1){ RuntimeId=4572, NetworkId=382, ExtraData = null }, /**/
-            new Item(-212, 8, 1){ RuntimeId=4567, NetworkId=383, ExtraData = null }, /**/
-            new Item(-212, 9, 1){ RuntimeId=4573, NetworkId=384, ExtraData = null }, /**/
-            new Item(-212, 10, 1){ RuntimeId=4568, NetworkId=385, ExtraData = null }, /**/
-            new Item(-212, 11, 1){ RuntimeId=4574, NetworkId=386, ExtraData = null }, /**/
-            new Item(18, 0, 1){ RuntimeId=10466, NetworkId=391, ExtraData = null }, /**/
-            new Item(18, 0, 1){ RuntimeId=10467, NetworkId=392, ExtraData = null }, /**/
-            new Item(18, 0, 1){ RuntimeId=10468, NetworkId=393, ExtraData = null }, /**/
-            new Item(18, 0, 1){ RuntimeId=10469, NetworkId=394, ExtraData = null }, /**/
-            new Item(161, 0, 1){ RuntimeId=6656, NetworkId=395, ExtraData = null }, /**/
-            new Item(161, 0, 1){ RuntimeId=6657, NetworkId=396, ExtraData = null }, /**/
-            new Item(6, 0, 1){ RuntimeId=1806, NetworkId=397, ExtraData = null }, /**/
-            new Item(6, 1, 1){ RuntimeId=1807, NetworkId=398, ExtraData = null }, /**/
-            new Item(6, 2, 1){ RuntimeId=1808, NetworkId=399, ExtraData = null }, /**/
-            new Item(6, 3, 1){ RuntimeId=1809, NetworkId=400, ExtraData = null }, /**/
-            new Item(6, 4, 1){ RuntimeId=1810, NetworkId=401, ExtraData = null }, /**/
-            new Item(6, 5, 1){ RuntimeId=1811, NetworkId=402, ExtraData = null }, /**/
+            new Item(17, 0, 1){ RuntimeId=717, NetworkId=359, ExtraData = null }, /*oak_log*/
+            new Item(-10, 0, 1){ RuntimeId=12348, NetworkId=360, ExtraData = null }, /*stripped_oak_log*/
+            new Item(17, 1, 1){ RuntimeId=6528, NetworkId=361, ExtraData = null }, /*spruce_log*/
+            new Item(-5, 0, 1){ RuntimeId=10647, NetworkId=362, ExtraData = null }, /*stripped_spruce_log*/
+            new Item(17, 2, 1){ RuntimeId=1764, NetworkId=363, ExtraData = null }, /*birch_log*/
+            new Item(-6, 0, 1){ RuntimeId=9933, NetworkId=364, ExtraData = null }, /*stripped_birch_log*/
+            new Item(17, 3, 1){ RuntimeId=631, NetworkId=365, ExtraData = null }, /*jungle_log*/
+            new Item(-7, 0, 1){ RuntimeId=1745, NetworkId=366, ExtraData = null }, /*stripped_jungle_log*/
+            new Item(162, 0, 1){ RuntimeId=6632, NetworkId=367, ExtraData = null }, /*acacia_log*/
+            new Item(-8, 0, 1){ RuntimeId=9402, NetworkId=368, ExtraData = null }, /*stripped_acacia_log*/
+            new Item(162, 1, 1){ RuntimeId=4560, NetworkId=369, ExtraData = null }, /*dark_oak_log*/
+            new Item(-9, 0, 1){ RuntimeId=628, NetworkId=370, ExtraData = null }, /*stripped_dark_oak_log*/
+            new Item(-212, 0, 1){ RuntimeId=4563, NetworkId=375, ExtraData = null }, /*oak_wood*/
+            new Item(-212, 1, 1){ RuntimeId=4569, NetworkId=376, ExtraData = null }, /*stripped_oak_wood*/
+            new Item(-212, 2, 1){ RuntimeId=4564, NetworkId=377, ExtraData = null }, /*spruce_wood*/
+            new Item(-212, 3, 1){ RuntimeId=4570, NetworkId=378, ExtraData = null }, /*stripped_spruce_wood*/
+            new Item(-212, 4, 1){ RuntimeId=4565, NetworkId=379, ExtraData = null }, /*birch_wood*/
+            new Item(-212, 5, 1){ RuntimeId=4571, NetworkId=380, ExtraData = null }, /*stripped_birch_wood*/
+            new Item(-212, 6, 1){ RuntimeId=4566, NetworkId=381, ExtraData = null }, /*jungle_wood*/
+            new Item(-212, 7, 1){ RuntimeId=4572, NetworkId=382, ExtraData = null }, /*stripped_jungle_wood*/
+            new Item(-212, 8, 1){ RuntimeId=4567, NetworkId=383, ExtraData = null }, /*acacia_wood*/
+            new Item(-212, 9, 1){ RuntimeId=4573, NetworkId=384, ExtraData = null }, /*stripped_acacia_wood*/
+            new Item(-212, 10, 1){ RuntimeId=4568, NetworkId=385, ExtraData = null }, /*dark_oak_wood*/
+            new Item(-212, 11, 1){ RuntimeId=4574, NetworkId=386, ExtraData = null }, /*stripped_dark_oak_wood*/
+            new Item(18, 0, 1){ RuntimeId=10466, NetworkId=391, ExtraData = null }, /*oak_leaves*/
+            new Item(18, 0, 1){ RuntimeId=10467, NetworkId=392, ExtraData = null }, /*spruce_leaves*/
+            new Item(18, 0, 1){ RuntimeId=10468, NetworkId=393, ExtraData = null }, /*birch_leaves*/
+            new Item(18, 0, 1){ RuntimeId=10469, NetworkId=394, ExtraData = null }, /*jungle_leaves*/
+            new Item(161, 0, 1){ RuntimeId=6656, NetworkId=395, ExtraData = null }, /*acacia_leaves*/
+            new Item(161, 0, 1){ RuntimeId=6657, NetworkId=396, ExtraData = null }, /*dark_oak_leaves*/
+            new Item(6, 0, 1){ RuntimeId=1806, NetworkId=397, ExtraData = null }, /*oak_sapling*/
+            new Item(6, 1, 1){ RuntimeId=1807, NetworkId=398, ExtraData = null }, /*spruce_sapling*/
+            new Item(6, 2, 1){ RuntimeId=1808, NetworkId=399, ExtraData = null }, /*birch_sapling*/
+            new Item(6, 3, 1){ RuntimeId=1809, NetworkId=400, ExtraData = null }, /*jungle_sapling*/
+            new Item(6, 4, 1){ RuntimeId=1810, NetworkId=401, ExtraData = null }, /*acacia_sapling*/
+            new Item(6, 5, 1){ RuntimeId=1811, NetworkId=402, ExtraData = null }, /*dark_oak_sapling*/
             new Item(295, 0, 1){ RuntimeId=0, NetworkId=403, ExtraData = null }, /*minecraft:wheat_seeds*/
             new Item(361, 0, 1){ RuntimeId=0, NetworkId=404, ExtraData = null }, /*minecraft:pumpkin_seeds*/
             new Item(362, 0, 1){ RuntimeId=0, NetworkId=405, ExtraData = null }, /*minecraft:melon_seeds*/
@@ -414,20 +413,21 @@ namespace MiNET
             new Item(260, 0, 1){ RuntimeId=0, NetworkId=413, ExtraData = null }, /*minecraft:apple*/
             new Item(322, 0, 1){ RuntimeId=0, NetworkId=414, ExtraData = null }, /*minecraft:golden_apple*/
             new Item(466, 0, 1){ RuntimeId=0, NetworkId=415, ExtraData = null }, /*minecraft:enchanted_golden_apple*/
-            new Item(103, 0, 1){ RuntimeId=1128, NetworkId=416, ExtraData = null }, /**/
+            new Item(103, 0, 1){ RuntimeId=1128, NetworkId=416, ExtraData = null }, /*melon*/
             new Item(360, 0, 1){ RuntimeId=0, NetworkId=417, ExtraData = null }, /*minecraft:melon_slice*/
             new Item(382, 0, 1){ RuntimeId=0, NetworkId=418, ExtraData = null }, /*minecraft:glistering_melon_slice*/
             new Item(477, 0, 1){ RuntimeId=0, NetworkId=419, ExtraData = null }, /*minecraft:sweet_berries*/
-            new Item(719, 0, 1){ RuntimeId=0, NetworkId=420, ExtraData = null }, /**/
-            new Item(86, 0, 1){ RuntimeId=6890, NetworkId=421, ExtraData = null }, /**/
-            new Item(-155, 0, 1){ RuntimeId=12180, NetworkId=422, ExtraData = null }, /**/
-            new Item(91, 0, 1){ RuntimeId=11040, NetworkId=423, ExtraData = null }, /**/
+
+            new Item(719, 0, 1){ RuntimeId=0, NetworkId=420, ExtraData = null }, /*???*/
+
+            new Item(86, 0, 1){ RuntimeId=6890, NetworkId=421, ExtraData = null }, /*pumpkin*/
+            new Item(-155, 0, 1){ RuntimeId=12180, NetworkId=422, ExtraData = null }, /*carved_pumpkin*/
+            new Item(91, 0, 1){ RuntimeId=11040, NetworkId=423, ExtraData = null }, /*lit_pumpkin*/
             new Item(736, 0, 1){ RuntimeId=0, NetworkId=424, ExtraData = null }, /*minecraft:honeycomb*/
             new Item(31, 0, 1){ RuntimeId=2048, NetworkId=425, ExtraData = null }, /**/
             new Item(175, 0, 1){ RuntimeId=8604, NetworkId=426, ExtraData = null }, /**/
             new Item(31, 0, 1){ RuntimeId=2047, NetworkId=427, ExtraData = null }, /**/
             new Item(175, 0, 1){ RuntimeId=8603, NetworkId=428, ExtraData = null }, /**/
-            new Item(760, 0, 1){ RuntimeId=0, NetworkId=429, ExtraData = null }, /*minecraft:nether_sprouts*/
             new Item(-131, 3, 1){ RuntimeId=1756, NetworkId=430, ExtraData = null }, /**/
             new Item(-131, 1, 1){ RuntimeId=1768, NetworkId=431, ExtraData = null }, /**/
             new Item(-131, 2, 1){ RuntimeId=10595, NetworkId=432, ExtraData = null }, /**/
@@ -482,22 +482,21 @@ namespace MiNET
             new Item(351, 13, 1){ RuntimeId=0, NetworkId=483, ExtraData = null }, /*minecraft:dye*/
             new Item(351, 9, 1){ RuntimeId=0, NetworkId=484, ExtraData = null }, /*minecraft:dye*/
             new Item(351, 0, 1){ RuntimeId=0, NetworkId=485, ExtraData = null }, /*minecraft:dye*/
-            new Item(510, 0, 1){ RuntimeId=0, NetworkId=486, ExtraData = null }, /*minecraft:music_disc_11*/
             new Item(351, 3, 1){ RuntimeId=0, NetworkId=487, ExtraData = null }, /*minecraft:dye*/
             new Item(351, 4, 1){ RuntimeId=0, NetworkId=488, ExtraData = null }, /*minecraft:dye*/
             new Item(351, 15, 1){ RuntimeId=0, NetworkId=489, ExtraData = null }, /*minecraft:dye*/
-            new Item(106, 0, 1){ RuntimeId=1996, NetworkId=490, ExtraData = null }, /**/
-            new Item(-231, 0, 1){ RuntimeId=8629, NetworkId=491, ExtraData = null }, /**/
-            new Item(111, 0, 1){ RuntimeId=2248, NetworkId=493, ExtraData = null }, /**/
-            new Item(-130, 0, 1){ RuntimeId=664, NetworkId=494, ExtraData = null }, /**/
+            new Item(106, 0, 1){ RuntimeId=1996, NetworkId=490, ExtraData = null }, /*vines*/
+            new Item(-231, 0, 1){ RuntimeId=8629, NetworkId=491, ExtraData = null }, /*weeping_vines*/
+            new Item(111, 0, 1){ RuntimeId=2248, NetworkId=493, ExtraData = null }, /*lilypad*/
+            new Item(-130, 0, 1){ RuntimeId=664, NetworkId=494, ExtraData = null }, /*seagrass*/
             new Item(335, 0, 1){ RuntimeId=0, NetworkId=495, ExtraData = null }, /*minecraft:kelp*/
-            new Item(32, 0, 1){ RuntimeId=7421, NetworkId=496, ExtraData = null }, /**/
-            new Item(-163, 0, 1){ RuntimeId=5550, NetworkId=497, ExtraData = null }, /**/
-            new Item(80, 0, 1){ RuntimeId=6452, NetworkId=498, ExtraData = null }, /**/
-            new Item(79, 0, 1){ RuntimeId=11044, NetworkId=499, ExtraData = null }, /**/
-            new Item(174, 0, 1){ RuntimeId=723, NetworkId=500, ExtraData = null }, /**/
-            new Item(-11, 0, 1){ RuntimeId=11403, NetworkId=501, ExtraData = null }, /**/
-            new Item(78, 0, 1){ RuntimeId=566, NetworkId=502, ExtraData = null }, /**/
+            new Item(32, 0, 1){ RuntimeId=7421, NetworkId=496, ExtraData = null }, /*dead_bush*/
+            new Item(-163, 0, 1){ RuntimeId=5550, NetworkId=497, ExtraData = null }, /*bamboo*/
+            new Item(80, 0, 1){ RuntimeId=6452, NetworkId=498, ExtraData = null }, /*snow*/
+            new Item(79, 0, 1){ RuntimeId=11044, NetworkId=499, ExtraData = null }, /*ice*/
+            new Item(174, 0, 1){ RuntimeId=723, NetworkId=500, ExtraData = null }, /*packed_ice*/
+            new Item(-11, 0, 1){ RuntimeId=11403, NetworkId=501, ExtraData = null }, /*blue_ice*/
+            new Item(78, 0, 1){ RuntimeId=566, NetworkId=502, ExtraData = null }, /*top_snow*/
             new Item(365, 0, 1){ RuntimeId=0, NetworkId=503, ExtraData = null }, /*minecraft:chicken*/
             new Item(319, 0, 1){ RuntimeId=0, NetworkId=504, ExtraData = null }, /*minecraft:porkchop*/
             new Item(363, 0, 1){ RuntimeId=0, NetworkId=505, ExtraData = null }, /*minecraft:beef*/
@@ -507,28 +506,30 @@ namespace MiNET
             new Item(460, 0, 1){ RuntimeId=0, NetworkId=509, ExtraData = null }, /*minecraft:salmon*/
             new Item(461, 0, 1){ RuntimeId=0, NetworkId=510, ExtraData = null }, /*minecraft:tropical_fish*/
             new Item(462, 0, 1){ RuntimeId=0, NetworkId=511, ExtraData = null }, /*minecraft:pufferfish*/
-            new Item(39, 0, 1){ RuntimeId=5404, NetworkId=512, ExtraData = null }, /**/
-            new Item(40, 0, 1){ RuntimeId=6900, NetworkId=513, ExtraData = null }, /**/
-            new Item(99, 0, 1){ RuntimeId=12167, NetworkId=516, ExtraData = null }, /**/
-            new Item(100, 0, 1){ RuntimeId=5473, NetworkId=517, ExtraData = null }, /**/
-            new Item(99, 0, 1){ RuntimeId=12168, NetworkId=518, ExtraData = null }, /**/
-            new Item(99, 0, 1){ RuntimeId=12153, NetworkId=519, ExtraData = null }, /**/
+            new Item(39, 0, 1){ RuntimeId=5404, NetworkId=512, ExtraData = null }, /*brown_mushroom*/
+            new Item(40, 0, 1){ RuntimeId=6900, NetworkId=513, ExtraData = null }, /*red_mushroom*/
+            new Item(99, 0, 1){ RuntimeId=12167, NetworkId=516, ExtraData = null }, /*brown_mushroom_block*/
+            new Item(100, 0, 1){ RuntimeId=5473, NetworkId=517, ExtraData = null }, /*red_mushroom_block*/
+            new Item(99, 0, 1){ RuntimeId=12168, NetworkId=518, ExtraData = null }, /*mushroom_stem*/
+            new Item(99, 0, 1){ RuntimeId=12153, NetworkId=519, ExtraData = null }, /*mushroom*/
             new Item(344, 0, 1){ RuntimeId=0, NetworkId=520, ExtraData = null }, /*minecraft:egg*/
             new Item(338, 0, 1){ RuntimeId=0, NetworkId=521, ExtraData = null }, /*minecraft:item.reeds*/
             new Item(353, 0, 1){ RuntimeId=0, NetworkId=522, ExtraData = null }, /*minecraft:sugar*/
             new Item(367, 0, 1){ RuntimeId=0, NetworkId=523, ExtraData = null }, /*minecraft:rotten_flesh*/
             new Item(352, 0, 1){ RuntimeId=0, NetworkId=524, ExtraData = null }, /*minecraft:bone*/
-            new Item(30, 0, 1){ RuntimeId=11069, NetworkId=525, ExtraData = null }, /**/
+            new Item(30, 0, 1){ RuntimeId=11069, NetworkId=525, ExtraData = null }, /*cobweb*/
             new Item(375, 0, 1){ RuntimeId=0, NetworkId=526, ExtraData = null }, /*minecraft:spider_eye*/
-            new Item(52, 0, 1){ RuntimeId=1138, NetworkId=527, ExtraData = null }, /**/
-            new Item(97, 0, 1){ RuntimeId=6396, NetworkId=528, ExtraData = null }, /**/
-            new Item(97, 1, 1){ RuntimeId=6397, NetworkId=529, ExtraData = null }, /**/
-            new Item(97, 2, 1){ RuntimeId=6398, NetworkId=530, ExtraData = null }, /**/
-            new Item(97, 3, 1){ RuntimeId=6399, NetworkId=531, ExtraData = null }, /**/
-            new Item(97, 4, 1){ RuntimeId=6400, NetworkId=532, ExtraData = null }, /**/
-            new Item(97, 5, 1){ RuntimeId=6401, NetworkId=533, ExtraData = null }, /**/
-            new Item(122, 0, 1){ RuntimeId=12075, NetworkId=534, ExtraData = null }, /**/
-            new Item(-159, 0, 1){ RuntimeId=12811, NetworkId=535, ExtraData = null }, /**/
+            new Item(52, 0, 1){ RuntimeId=1138, NetworkId=527, ExtraData = null }, /*monster_spawner*/
+            new Item(97, 0, 1){ RuntimeId=6396, NetworkId=528, ExtraData = null }, /*infested_stone*/
+            new Item(97, 1, 1){ RuntimeId=6397, NetworkId=529, ExtraData = null }, /*infested_cobblestone*/
+            new Item(97, 2, 1){ RuntimeId=6398, NetworkId=530, ExtraData = null }, /*infested_stone_brick*/
+            new Item(97, 3, 1){ RuntimeId=6399, NetworkId=531, ExtraData = null }, /*infested_mossy_stone_brick*/
+            new Item(97, 4, 1){ RuntimeId=6400, NetworkId=532, ExtraData = null }, /*infested_chiseled_stone_brick*/
+            new Item(97, 5, 1){ RuntimeId=6401, NetworkId=533, ExtraData = null }, /*dragon_egg*/
+            new Item(122, 0, 1){ RuntimeId=12075, NetworkId=534, ExtraData = null }, /*sea_turtle_egg*/
+
+            new Item(-159, 0, 1){ RuntimeId=12811, NetworkId=535, ExtraData = null }, /*???*/
+
             new Item(383, 10, 1){ RuntimeId=0, NetworkId=536, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 122, 1){ RuntimeId=0, NetworkId=537, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 11, 1){ RuntimeId=0, NetworkId=538, ExtraData = null }, /*minecraft:spawn_egg*/
@@ -582,14 +583,13 @@ namespace MiNET
             new Item(383, 126, 1){ RuntimeId=0, NetworkId=586, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 127, 1){ RuntimeId=0, NetworkId=587, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 128, 1){ RuntimeId=0, NetworkId=588, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(503, 0, 1){ RuntimeId=0, NetworkId=589, ExtraData = null }, /*minecraft:music_disc_chirp*/
-            new Item(383, 131, 1){ RuntimeId=0, NetworkId=590, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(383, 134, 1){ RuntimeId=0, NetworkId=591, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(383, 132, 1){ RuntimeId=0, NetworkId=592, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(383, 133, 1){ RuntimeId=0, NetworkId=593, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(383, 41, 1){ RuntimeId=0, NetworkId=594, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(383, 43, 1){ RuntimeId=0, NetworkId=595, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(383, 54, 1){ RuntimeId=0, NetworkId=596, ExtraData = null }, /*minecraft:spawn_egg*/
+              new Item(383, 131, 1){ RuntimeId=0, NetworkId=590, ExtraData = null }, /*minecraft:spawn_egg_warden*/
+            new Item(383, 134, 1){ RuntimeId=0, NetworkId=591, ExtraData = null }, /*minecraft:spawn_egg_allay*/
+            new Item(383, 132, 1){ RuntimeId=0, NetworkId=592, ExtraData = null }, /*minecraft:spawn_egg_frog*/
+            new Item(383, 133, 1){ RuntimeId=0, NetworkId=593, ExtraData = null }, /*minecraft:spawn_egg_tadpole*/
+            new Item(383, 41, 1){ RuntimeId=0, NetworkId=594, ExtraData = null }, /*minecraft:spawn_egg_ghast*/
+            new Item(383, 43, 1){ RuntimeId=0, NetworkId=595, ExtraData = null }, /*minecraft:spawn_egg_blaze*/
+            new Item(383, 54, 1){ RuntimeId=0, NetworkId=596, ExtraData = null }, /*minecraft:spawn_egg_shulker*/
             new Item(383, 57, 1){ RuntimeId=0, NetworkId=597, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 104, 1){ RuntimeId=0, NetworkId=598, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 105, 1){ RuntimeId=0, NetworkId=599, ExtraData = null }, /*minecraft:spawn_egg*/
@@ -601,29 +601,29 @@ namespace MiNET
             new Item(383, 59, 1){ RuntimeId=0, NetworkId=605, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 20, 1){ RuntimeId=0, NetworkId=606, ExtraData = null }, /*minecraft:spawn_egg*/
             new Item(383, 21, 1){ RuntimeId=0, NetworkId=607, ExtraData = null }, /*minecraft:spawn_egg*/
-            new Item(49, 0, 1){ RuntimeId=1166, NetworkId=608, ExtraData = null }, /**/
-
-            new Item(7, 0, 1){ RuntimeId=11393, NetworkId=610, ExtraData = null }, /**/
-            new Item(88, 0, 1){ RuntimeId=8985, NetworkId=611, ExtraData = null }, /**/
-            new Item(213, 0, 1){ RuntimeId=12823, NetworkId=612, ExtraData = null }, /**/
+            new Item(49, 0, 1){ RuntimeId=1166, NetworkId=608, ExtraData = null }, /*obsidian*/
+            new Item(7, 0, 1){ RuntimeId=11393, NetworkId=610, ExtraData = null }, /*bedrock*/
+            new Item(88, 0, 1){ RuntimeId=8985, NetworkId=611, ExtraData = null }, /*soul_sand*/
+            new Item(213, 0, 1){ RuntimeId=12823, NetworkId=612, ExtraData = null }, /*magma_block*/
             new Item(372, 0, 1){ RuntimeId=0, NetworkId=613, ExtraData = null }, /*minecraft:nether_wart*/
-            new Item(121, 0, 1){ RuntimeId=6087, NetworkId=614, ExtraData = null }, /**/
-            new Item(200, 0, 1){ RuntimeId=6841, NetworkId=615, ExtraData = null }, /**/
-            new Item(240, 0, 1){ RuntimeId=8655, NetworkId=616, ExtraData = null }, /**/
+            new Item(121, 0, 1){ RuntimeId=6087, NetworkId=614, ExtraData = null }, /*end_stone*/
+            new Item(200, 0, 1){ RuntimeId=6841, NetworkId=615, ExtraData = null }, /*chorus_flower*/
+            new Item(240, 0, 1){ RuntimeId=8655, NetworkId=616, ExtraData = null }, /*chorus_plant*/
             new Item(432, 0, 1){ RuntimeId=0, NetworkId=617, ExtraData = null }, /*minecraft:chorus_fruit*/
             new Item(433, 0, 1){ RuntimeId=0, NetworkId=618, ExtraData = null }, /*minecraft:popped_chorus_fruit*/
-            new Item(19, 0, 1){ RuntimeId=1347, NetworkId=619, ExtraData = null }, /**/
-            new Item(19, 0, 1){ RuntimeId=1348, NetworkId=620, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8382, NetworkId=621, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8383, NetworkId=622, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8384, NetworkId=623, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8385, NetworkId=624, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8386, NetworkId=625, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8387, NetworkId=626, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8388, NetworkId=627, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8389, NetworkId=628, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8390, NetworkId=629, ExtraData = null }, /**/
-            new Item(-132, 0, 1){ RuntimeId=8391, NetworkId=630, ExtraData = null }, /**/
+            new Item(19, 0, 1){ RuntimeId=1347, NetworkId=619, ExtraData = null }, /*sponge*/
+            new Item(19, 0, 1){ RuntimeId=1348, NetworkId=620, ExtraData = null }, /*wet_sponge*/
+            new Item(-132, 0, 1){ RuntimeId=8382, NetworkId=621, ExtraData = null }, /*tube_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8383, NetworkId=622, ExtraData = null }, /*brain_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8384, NetworkId=623, ExtraData = null }, /*bubble_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8385, NetworkId=624, ExtraData = null }, /*fire_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8386, NetworkId=625, ExtraData = null }, /*horn_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8387, NetworkId=626, ExtraData = null }, /*dead_tube_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8388, NetworkId=627, ExtraData = null }, /*dead_brain_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8389, NetworkId=628, ExtraData = null }, /*dead_bubble_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8390, NetworkId=629, ExtraData = null }, /*dead_brain_coral_block*/
+            new Item(-132, 0, 1){ RuntimeId=8391, NetworkId=630, ExtraData = null }, /*dead_horn_coral_block*/
+			/*====================================equipment====================================*/
             new Item(298, 0, 1){ RuntimeId=0, NetworkId=631, ExtraData = null }, /*minecraft:leather_helmet*/
             new Item(302, 0, 1){ RuntimeId=0, NetworkId=632, ExtraData = null }, /*minecraft:chainmail_helmet*/
             new Item(306, 0, 1){ RuntimeId=0, NetworkId=633, ExtraData = null }, /*minecraft:iron_helmet*/
@@ -735,19 +735,21 @@ namespace MiNET
             new Item(420, 0, 1){ RuntimeId=0, NetworkId=749, ExtraData = null }, /*minecraft:lead*/
             new Item(347, 0, 1){ RuntimeId=0, NetworkId=750, ExtraData = null }, /*minecraft:clock*/
             new Item(345, 0, 1){ RuntimeId=0, NetworkId=751, ExtraData = null }, /*minecraft:compass*/
-            new Item(634, 1, 1){ RuntimeId=0, NetworkId=753, ExtraData = null }, /**/
-            new Item(634, 2, 1){ RuntimeId=0, NetworkId=754, ExtraData = null }, /**/
-            new Item(634, 3, 1){ RuntimeId=0, NetworkId=755, ExtraData = null }, /**/
-            new Item(634, 4, 1){ RuntimeId=0, NetworkId=756, ExtraData = null }, /**/
-            new Item(634, 5, 1){ RuntimeId=0, NetworkId=757, ExtraData = null }, /**/
-            new Item(634, 6, 1){ RuntimeId=0, NetworkId=758, ExtraData = null }, /**/
-            new Item(634, 7, 1){ RuntimeId=0, NetworkId=759, ExtraData = null }, /**/
+
+            new Item(634, 1, 1){ RuntimeId=0, NetworkId=753, ExtraData = null }, /*???*/
+            new Item(634, 2, 1){ RuntimeId=0, NetworkId=754, ExtraData = null }, /*???*/
+            new Item(634, 3, 1){ RuntimeId=0, NetworkId=755, ExtraData = null }, /*???*/
+            new Item(634, 4, 1){ RuntimeId=0, NetworkId=756, ExtraData = null }, /*???*/
+            new Item(634, 5, 1){ RuntimeId=0, NetworkId=757, ExtraData = null }, /*???*/
+            new Item(634, 6, 1){ RuntimeId=0, NetworkId=758, ExtraData = null }, /*???*/
+            new Item(634, 7, 1){ RuntimeId=0, NetworkId=759, ExtraData = null }, /*???*/
+
             new Item(395, 0, 1){ RuntimeId=0, NetworkId=760, ExtraData = null }, /*minecraft:empty_map*/
-            new Item(395, 2, 1){ RuntimeId=0, NetworkId=761, ExtraData = null }, /*minecraft:empty_map*/
+            new Item(395, 2, 1){ RuntimeId=0, NetworkId=761, ExtraData = null }, /*empty_locator_map*/
             new Item(329, 0, 1){ RuntimeId=0, NetworkId=762, ExtraData = null }, /*minecraft:saddle*/
             new Item(416, 0, 1){ RuntimeId=0, NetworkId=763, ExtraData = null }, /*minecraft:leather_horse_armor*/
             new Item(417, 0, 1){ RuntimeId=0, NetworkId=764, ExtraData = null }, /*minecraft:iron_horse_armor*/
-            new Item(417, 0, 1){ RuntimeId=0, NetworkId=765, ExtraData = null }, /*minecraft:golden_horse_armor*/
+            new Item(418, 0, 1){ RuntimeId=0, NetworkId=765, ExtraData = null }, /*minecraft:golden_horse_armor*/
             new Item(419, 0, 1){ RuntimeId=0, NetworkId=766, ExtraData = null }, /*minecraft:diamond_horse_armor*/
             new Item(455, 0, 1){ RuntimeId=0, NetworkId=767, ExtraData = null }, /*minecraft:trident*/
             new Item(469, 0, 1){ RuntimeId=0, NetworkId=768, ExtraData = null }, /*minecraft:turtle_helmet*/
@@ -884,7 +886,10 @@ namespace MiNET
             new Item(441, 40, 1){ RuntimeId=0, NetworkId=899, ExtraData = null }, /*minecraft:lingering_potion*/
             new Item(441, 41, 1){ RuntimeId=0, NetworkId=900, ExtraData = null }, /*minecraft:lingering_potion*/
             new Item(441, 42, 1){ RuntimeId=0, NetworkId=901, ExtraData = null }, /*minecraft:lingering_potion*/
-            new Item(632, 0, 1){ RuntimeId=0, NetworkId=902, ExtraData = null }, /**/
+
+            new Item(632, 0, 1){ RuntimeId=0, NetworkId=902, ExtraData = null }, /*???*/
+
+			/*====================================items====================================*/
             new Item(280, 0, 1){ RuntimeId=0, NetworkId=903, ExtraData = null }, /*minecraft:stick*/
             new Item(355, 0, 1){ RuntimeId=0, NetworkId=904, ExtraData = null }, /*minecraft:bed*/
             new Item(355, 8, 1){ RuntimeId=0, NetworkId=905, ExtraData = null }, /*minecraft:bed*/
@@ -902,51 +907,51 @@ namespace MiNET
             new Item(355, 10, 1){ RuntimeId=0, NetworkId=917, ExtraData = null }, /*minecraft:bed*/
             new Item(355, 2, 1){ RuntimeId=0, NetworkId=918, ExtraData = null }, /*minecraft:bed*/
             new Item(355, 6, 1){ RuntimeId=0, NetworkId=919, ExtraData = null }, /*minecraft:bed*/
-            new Item(50, 0, 1){ RuntimeId=1826, NetworkId=920, ExtraData = null }, /**/
-            new Item(-156, 0, 1){ RuntimeId=9409, NetworkId=922, ExtraData = null }, /**/
-            new Item(-208, 0, 1){ RuntimeId=11452, NetworkId=923, ExtraData = null }, /**/
-            new Item(58, 0, 1){ RuntimeId=9408, NetworkId=925, ExtraData = null }, /**/
-            new Item(-200, 0, 1){ RuntimeId=13128, NetworkId=926, ExtraData = null }, /**/
-            new Item(-201, 0, 1){ RuntimeId=9371, NetworkId=927, ExtraData = null }, /**/
-            new Item(-202, 0, 1){ RuntimeId=5594, NetworkId=928, ExtraData = null }, /**/
+            new Item(50, 0, 1){ RuntimeId=1826, NetworkId=920, ExtraData = null }, /*torch*/
+            new Item(-156, 0, 1){ RuntimeId=9409, NetworkId=922, ExtraData = null }, /*sea_pickle*/
+            new Item(-208, 0, 1){ RuntimeId=11452, NetworkId=923, ExtraData = null }, /*lantern*/
+            new Item(58, 0, 1){ RuntimeId=9408, NetworkId=925, ExtraData = null }, /*crafting_table*/
+            new Item(-200, 0, 1){ RuntimeId=13128, NetworkId=926, ExtraData = null }, /*cartography_table*/
+            new Item(-201, 0, 1){ RuntimeId=9371, NetworkId=927, ExtraData = null }, /*fletching_table*/
+            new Item(-202, 0, 1){ RuntimeId=5594, NetworkId=928, ExtraData = null }, /*smithing_table*/
             new Item(720, 0, 1){ RuntimeId=0, NetworkId=929, ExtraData = null }, /*minecraft:campfire*/
-            new Item(61, 0, 1){ RuntimeId=12617, NetworkId=931, ExtraData = null }, /**/
-            new Item(-196, 0, 1){ RuntimeId=12372, NetworkId=932, ExtraData = null }, /**/
-            new Item(-198, 0, 1){ RuntimeId=1751, NetworkId=933, ExtraData = null }, /**/
+            new Item(61, 0, 1){ RuntimeId=12617, NetworkId=931, ExtraData = null }, /*furnace*/
+            new Item(-196, 0, 1){ RuntimeId=12372, NetworkId=932, ExtraData = null }, /*blast_furnace*/
+            new Item(-198, 0, 1){ RuntimeId=1751, NetworkId=933, ExtraData = null }, /*smoker*/
             new Item(379, 0, 1){ RuntimeId=0, NetworkId=935, ExtraData = null }, /*minecraft:brewing_stand*/
-            new Item(145, 0, 1){ RuntimeId=11001, NetworkId=936, ExtraData = null }, /**/
-            new Item(145, 0, 1){ RuntimeId=11005, NetworkId=937, ExtraData = null }, /**/
-            new Item(145, 0, 1){ RuntimeId=11009, NetworkId=938, ExtraData = null }, /**/
-            new Item(-195, 0, 1){ RuntimeId=12854, NetworkId=939, ExtraData = null }, /**/
-            new Item(116, 0, 1){ RuntimeId=11086, NetworkId=940, ExtraData = null }, /**/
-            new Item(47, 0, 1){ RuntimeId=11038, NetworkId=941, ExtraData = null }, /**/
-            new Item(-194, 0, 1){ RuntimeId=11311, NetworkId=942, ExtraData = null }, /**/
+            new Item(145, 0, 1){ RuntimeId=11001, NetworkId=936, ExtraData = null }, /*anvil*/
+            new Item(145, 0, 1){ RuntimeId=11005, NetworkId=937, ExtraData = null }, /*slightly_damaged_anvil*/
+            new Item(145, 0, 1){ RuntimeId=11009, NetworkId=938, ExtraData = null }, /*very_damaged_anvil*/
+            new Item(-195, 0, 1){ RuntimeId=12854, NetworkId=939, ExtraData = null }, /*grindstone*/
+            new Item(116, 0, 1){ RuntimeId=11086, NetworkId=940, ExtraData = null }, /*enchantment_table*/
+            new Item(47, 0, 1){ RuntimeId=11038, NetworkId=941, ExtraData = null }, /*bookshelf*/
+            new Item(-194, 0, 1){ RuntimeId=11311, NetworkId=942, ExtraData = null }, /*lectern*/
             new Item(380, 0, 1){ RuntimeId=0, NetworkId=943, ExtraData = null }, /*minecraft:cauldron*/
-            new Item(-213, 0, 1){ RuntimeId=8564, NetworkId=944, ExtraData = null }, /**/
-            new Item(54, 0, 1){ RuntimeId=11495, NetworkId=945, ExtraData = null }, /**/
-            new Item(146, 0, 1){ RuntimeId=8733, NetworkId=946, ExtraData = null }, /**/
-            new Item(130, 0, 1){ RuntimeId=6673, NetworkId=947, ExtraData = null }, /**/
-            new Item(-203, 0, 1){ RuntimeId=6829, NetworkId=948, ExtraData = null }, /**/
-            new Item(205, 0, 1){ RuntimeId=5547, NetworkId=949, ExtraData = null }, /**/
-            new Item(218, 0, 1){ RuntimeId=1094, NetworkId=950, ExtraData = null }, /**/
-            new Item(218, 8, 1){ RuntimeId=9862, NetworkId=951, ExtraData = null }, /**/
-            new Item(218, 7, 1){ RuntimeId=8497, NetworkId=952, ExtraData = null }, /**/
-            new Item(218, 15, 1){ RuntimeId=10382, NetworkId=953, ExtraData = null }, /**/
-            new Item(218, 12, 1){ RuntimeId=11251, NetworkId=954, ExtraData = null }, /**/
-            new Item(218, 14, 1){ RuntimeId=6738, NetworkId=955, ExtraData = null }, /**/
-            new Item(218, 1, 1){ RuntimeId=10596, NetworkId=956, ExtraData = null }, /**/
-            new Item(218, 4, 1){ RuntimeId=120, NetworkId=957, ExtraData = null }, /**/
-            new Item(218, 5, 1){ RuntimeId=1032, NetworkId=958, ExtraData = null }, /**/
-            new Item(218, 13, 1){ RuntimeId=10862, NetworkId=959, ExtraData = null }, /**/
-            new Item(218, 9, 1){ RuntimeId=11404, NetworkId=960, ExtraData = null }, /**/
-            new Item(218, 3, 1){ RuntimeId=11338, NetworkId=961, ExtraData = null }, /**/
-            new Item(218, 11, 1){ RuntimeId=10637, NetworkId=962, ExtraData = null }, /**/
-            new Item(218, 10, 1){ RuntimeId=12179, NetworkId=963, ExtraData = null }, /**/
-            new Item(218, 2, 1){ RuntimeId=722, NetworkId=964, ExtraData = null }, /**/
-            new Item(218, 6, 1){ RuntimeId=6685, NetworkId=965, ExtraData = null }, /**/
+            new Item(-213, 0, 1){ RuntimeId=8564, NetworkId=944, ExtraData = null }, /*composter*/
+            new Item(54, 0, 1){ RuntimeId=11495, NetworkId=945, ExtraData = null }, /*chest*/
+            new Item(146, 0, 1){ RuntimeId=8733, NetworkId=946, ExtraData = null }, /*trapped_chest*/
+            new Item(130, 0, 1){ RuntimeId=6673, NetworkId=947, ExtraData = null }, /*ender_chest*/
+            new Item(-203, 0, 1){ RuntimeId=6829, NetworkId=948, ExtraData = null }, /*barrel*/
+            new Item(205, 0, 1){ RuntimeId=5547, NetworkId=949, ExtraData = null }, /*shulker_box*/
+            new Item(218, 0, 1){ RuntimeId=1094, NetworkId=950, ExtraData = null }, /*white_shulker_box*/
+            new Item(218, 8, 1){ RuntimeId=9862, NetworkId=951, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 7, 1){ RuntimeId=8497, NetworkId=952, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 15, 1){ RuntimeId=10382, NetworkId=953, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 12, 1){ RuntimeId=11251, NetworkId=954, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 14, 1){ RuntimeId=6738, NetworkId=955, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 1, 1){ RuntimeId=10596, NetworkId=956, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 4, 1){ RuntimeId=120, NetworkId=957, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 5, 1){ RuntimeId=1032, NetworkId=958, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 13, 1){ RuntimeId=10862, NetworkId=959, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 9, 1){ RuntimeId=11404, NetworkId=960, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 3, 1){ RuntimeId=11338, NetworkId=961, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 11, 1){ RuntimeId=10637, NetworkId=962, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 10, 1){ RuntimeId=12179, NetworkId=963, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 2, 1){ RuntimeId=722, NetworkId=964, ExtraData = null }, /*_shulker_box*/
+            new Item(218, 6, 1){ RuntimeId=6685, NetworkId=965, ExtraData = null }, /*_shulker_box*/
             new Item(425, 0, 1){ RuntimeId=0, NetworkId=966, ExtraData = null }, /*minecraft:armor_stand*/
-            new Item(25, 0, 1){ RuntimeId=1078, NetworkId=967, ExtraData = null }, /**/
-            new Item(84, 0, 1){ RuntimeId=8000, NetworkId=968, ExtraData = null }, /**/
+            new Item(25, 0, 1){ RuntimeId=1078, NetworkId=967, ExtraData = null }, /*note_block*/
+            new Item(84, 0, 1){ RuntimeId=8000, NetworkId=968, ExtraData = null }, /*jukebox*/
             new Item(500, 0, 1){ RuntimeId=0, NetworkId=969, ExtraData = null }, /*minecraft:music_disc_13*/
             new Item(501, 0, 1){ RuntimeId=0, NetworkId=970, ExtraData = null }, /*minecraft:music_disc_cat*/
             new Item(502, 0, 1){ RuntimeId=0, NetworkId=971, ExtraData = null }, /*minecraft:music_disc_blocks*/
@@ -959,12 +964,14 @@ namespace MiNET
             new Item(509, 0, 1){ RuntimeId=0, NetworkId=978, ExtraData = null }, /*minecraft:music_disc_ward*/
             new Item(510, 0, 1){ RuntimeId=0, NetworkId=979, ExtraData = null }, /*minecraft:music_disc_11*/
             new Item(511, 0, 1){ RuntimeId=0, NetworkId=980, ExtraData = null }, /*minecraft:music_disc_wait*/
-            new Item(633, 0, 1){ RuntimeId=0, NetworkId=981, ExtraData = null }, /**/
-            new Item(644, 0, 1){ RuntimeId=0, NetworkId=985, ExtraData = null }, /**/
+
+            new Item(633, 0, 1){ RuntimeId=0, NetworkId=981, ExtraData = null }, /*???*/
+            new Item(644, 0, 1){ RuntimeId=0, NetworkId=985, ExtraData = null }, /*???*/
+
             new Item(348, 0, 1){ RuntimeId=0, NetworkId=986, ExtraData = null }, /*minecraft:glowstone_dust*/
-            new Item(89, 0, 1){ RuntimeId=6137, NetworkId=987, ExtraData = null }, /**/
-            new Item(123, 0, 1){ RuntimeId=669, NetworkId=988, ExtraData = null }, /**/
-            new Item(169, 0, 1){ RuntimeId=12351, NetworkId=989, ExtraData = null }, /**/
+            new Item(89, 0, 1){ RuntimeId=6137, NetworkId=987, ExtraData = null }, /*glowstone*/
+            new Item(123, 0, 1){ RuntimeId=669, NetworkId=988, ExtraData = null }, /*redstone_lamp*/
+            new Item(169, 0, 1){ RuntimeId=12351, NetworkId=989, ExtraData = null }, /*sea_lantern*/
             new Item(323, 0, 1){ RuntimeId=0, NetworkId=990, ExtraData = null }, /*minecraft:oak_sign*/
             new Item(472, 0, 1){ RuntimeId=0, NetworkId=991, ExtraData = null }, /*minecraft:spruce_sign*/
             new Item(473, 0, 1){ RuntimeId=0, NetworkId=992, ExtraData = null }, /*minecraft:birch_sign*/
@@ -994,20 +1001,20 @@ namespace MiNET
             new Item(397, 0, 1){ RuntimeId=0, NetworkId=1018, ExtraData = null }, /*minecraft:skull*/
             new Item(397, 1, 1){ RuntimeId=0, NetworkId=1019, ExtraData = null }, /*minecraft:skull*/
             new Item(397, 6, 1){ RuntimeId=0, NetworkId=1020, ExtraData = null }, /*minecraft:skull*/
-            new Item(138, 0, 1){ RuntimeId=556, NetworkId=1021, ExtraData = null }, /**/
-            new Item(-206, 0, 1){ RuntimeId=11279, NetworkId=1022, ExtraData = null }, /**/
-            new Item(-157, 0, 1){ RuntimeId=6490, NetworkId=1023, ExtraData = null }, /**/
-            new Item(-197, 0, 1){ RuntimeId=12377, NetworkId=1024, ExtraData = null }, /**/
-            new Item(120, 0, 1){ RuntimeId=10436, NetworkId=1025, ExtraData = null }, /**/
+            new Item(138, 0, 1){ RuntimeId=556, NetworkId=1021, ExtraData = null }, /*beacon*/
+            new Item(-206, 0, 1){ RuntimeId=11279, NetworkId=1022, ExtraData = null }, /*bell*/
+            new Item(-157, 0, 1){ RuntimeId=6490, NetworkId=1023, ExtraData = null }, /*conduit*/
+            new Item(-197, 0, 1){ RuntimeId=12377, NetworkId=1024, ExtraData = null }, /*stonecutter*/
+            new Item(120, 0, 1){ RuntimeId=10436, NetworkId=1025, ExtraData = null }, /*end_portal_frame*/
             new Item(263, 0, 1){ RuntimeId=0, NetworkId=1026, ExtraData = null }, /*minecraft:coal*/
-            new Item(263, 1, 1){ RuntimeId=0, NetworkId=1027, ExtraData = null }, /*minecraft:coal*/
+            new Item(263, 1, 1){ RuntimeId=0, NetworkId=1027, ExtraData = null }, /*charcoal*/
             new Item(264, 0, 1){ RuntimeId=0, NetworkId=1028, ExtraData = null }, /*minecraft:diamond*/
             new Item(452, 0, 1){ RuntimeId=0, NetworkId=1029, ExtraData = null }, /*minecraft:iron_nugget*/
-            new Item(512, 0, 1){ RuntimeId=0, NetworkId=1030, ExtraData = null }, /**/
-            new Item(513, 0, 1){ RuntimeId=0, NetworkId=1031, ExtraData = null }, /*minecraft:shield*/
-            new Item(514, 0, 1){ RuntimeId=0, NetworkId=1032, ExtraData = null }, /**/
+
+            new Item(512, 0, 1){ RuntimeId=0, NetworkId=1030, ExtraData = null }, /*???*/
+            new Item(514, 0, 1){ RuntimeId=0, NetworkId=1032, ExtraData = null }, /*???*/
+
             new Item(265, 0, 1){ RuntimeId=0, NetworkId=1033, ExtraData = null }, /*minecraft:iron_ingot*/
-            new Item(752, 0, 1){ RuntimeId=0, NetworkId=1034, ExtraData = null }, /*minecraft:netherite_scrap*/
             new Item(371, 0, 1){ RuntimeId=0, NetworkId=1036, ExtraData = null }, /*minecraft:gold_nugget*/
             new Item(266, 0, 1){ RuntimeId=0, NetworkId=1037, ExtraData = null }, /*minecraft:gold_ingot*/
             new Item(388, 0, 1){ RuntimeId=0, NetworkId=1038, ExtraData = null }, /*minecraft:emerald*/
@@ -1016,7 +1023,9 @@ namespace MiNET
             new Item(336, 0, 1){ RuntimeId=0, NetworkId=1041, ExtraData = null }, /*minecraft:brick*/
             new Item(405, 0, 1){ RuntimeId=0, NetworkId=1042, ExtraData = null }, /*minecraft:netherbrick*/
             new Item(409, 0, 1){ RuntimeId=0, NetworkId=1043, ExtraData = null }, /*minecraft:prismarine_shard*/
-            new Item(631, 0, 1){ RuntimeId=0, NetworkId=1044, ExtraData = null }, /**/
+
+            new Item(631, 0, 1){ RuntimeId=0, NetworkId=1044, ExtraData = null }, /*???*/
+
             new Item(422, 0, 1){ RuntimeId=0, NetworkId=1045, ExtraData = null }, /*minecraft:prismarine_crystals*/
             new Item(465, 0, 1){ RuntimeId=0, NetworkId=1046, ExtraData = null }, /*minecraft:nautilus_shell*/
             new Item(467, 0, 1){ RuntimeId=0, NetworkId=1047, ExtraData = null }, /*minecraft:heart_of_the_sea*/
@@ -1034,7 +1043,9 @@ namespace MiNET
             new Item(377, 0, 1){ RuntimeId=0, NetworkId=1059, ExtraData = null }, /*minecraft:blaze_powder*/
             new Item(378, 0, 1){ RuntimeId=0, NetworkId=1060, ExtraData = null }, /*minecraft:magma_cream*/
             new Item(376, 0, 1){ RuntimeId=0, NetworkId=1061, ExtraData = null }, /*minecraft:fermented_spider_eye*/
-            new Item(654, 0, 1){ RuntimeId=0, NetworkId=1062, ExtraData = null }, /**/
+
+            new Item(654, 0, 1){ RuntimeId=0, NetworkId=1062, ExtraData = null }, /*???*/
+
             new Item(437, 0, 1){ RuntimeId=0, NetworkId=1063, ExtraData = null }, /*minecraft:dragon_breath*/
             new Item(445, 0, 1){ RuntimeId=0, NetworkId=1064, ExtraData = null }, /*minecraft:shulker_shell*/
             new Item(370, 0, 1){ RuntimeId=0, NetworkId=1065, ExtraData = null }, /*minecraft:ghast_tear*/
@@ -1042,7 +1053,7 @@ namespace MiNET
             new Item(368, 0, 1){ RuntimeId=0, NetworkId=1067, ExtraData = null }, /*minecraft:ender_pearl*/
             new Item(381, 0, 1){ RuntimeId=0, NetworkId=1068, ExtraData = null }, /*minecraft:ender_eye*/
             new Item(399, 0, 1){ RuntimeId=0, NetworkId=1069, ExtraData = null }, /*minecraft:nether_star*/
-            new Item(208, 0, 1){ RuntimeId=9846, NetworkId=1070, ExtraData = null }, /**/
+            new Item(208, 0, 1){ RuntimeId=9846, NetworkId=1070, ExtraData = null }, /*end_rod*/
             new Item(426, 0, 1){ RuntimeId=0, NetworkId=1071, ExtraData = null }, /*minecraft:end_crystal*/
             new Item(339, 0, 1){ RuntimeId=0, NetworkId=1072, ExtraData = null }, /*minecraft:paper*/
             new Item(340, 0, 1){ RuntimeId=0, NetworkId=1073, ExtraData = null }, /*minecraft:book*/
@@ -1163,55 +1174,56 @@ namespace MiNET
             new Item(333, 3, 1){ RuntimeId=0, NetworkId=1188, ExtraData = null }, /*minecraft:boat*/
             new Item(333, 4, 1){ RuntimeId=0, NetworkId=1189, ExtraData = null }, /*minecraft:boat*/
             new Item(333, 5, 1){ RuntimeId=0, NetworkId=1190, ExtraData = null }, /*minecraft:boat*/
-            new Item(333, 6, 1){ RuntimeId=0, NetworkId=1191, ExtraData = null }, /*minecraft:boat*/
-            new Item(645, 0, 1){ RuntimeId=0, NetworkId=1192, ExtraData = null }, /**/
-            new Item(648, 0, 1){ RuntimeId=0, NetworkId=1193, ExtraData = null }, /**/
-            new Item(646, 0, 1){ RuntimeId=0, NetworkId=1194, ExtraData = null }, /**/
-            new Item(647, 0, 1){ RuntimeId=0, NetworkId=1195, ExtraData = null }, /**/
-            new Item(649, 0, 1){ RuntimeId=0, NetworkId=1196, ExtraData = null }, /**/
-            new Item(650, 0, 1){ RuntimeId=0, NetworkId=1197, ExtraData = null }, /**/
-            new Item(651, 0, 1){ RuntimeId=0, NetworkId=1198, ExtraData = null }, /**/
-            new Item(66, 0, 1){ RuntimeId=6172, NetworkId=1199, ExtraData = null }, /**/
-            new Item(27, 0, 1){ RuntimeId=8478, NetworkId=1200, ExtraData = null }, /**/
-            new Item(28, 0, 1){ RuntimeId=6384, NetworkId=1201, ExtraData = null }, /**/
-            new Item(126, 0, 1){ RuntimeId=1039, NetworkId=1202, ExtraData = null }, /**/
+
+            new Item(645, 0, 1){ RuntimeId=0, NetworkId=1192, ExtraData = null }, /*???*/
+            new Item(648, 0, 1){ RuntimeId=0, NetworkId=1193, ExtraData = null }, /*???*/
+            new Item(646, 0, 1){ RuntimeId=0, NetworkId=1194, ExtraData = null }, /*???*/
+            new Item(647, 0, 1){ RuntimeId=0, NetworkId=1195, ExtraData = null }, /*???*/
+            new Item(649, 0, 1){ RuntimeId=0, NetworkId=1196, ExtraData = null }, /*???*/
+            new Item(650, 0, 1){ RuntimeId=0, NetworkId=1197, ExtraData = null }, /*???*/
+            new Item(651, 0, 1){ RuntimeId=0, NetworkId=1198, ExtraData = null }, /*???*/
+
+            new Item(66, 0, 1){ RuntimeId=6172, NetworkId=1199, ExtraData = null }, /*rail*/
+            new Item(27, 0, 1){ RuntimeId=8478, NetworkId=1200, ExtraData = null }, /*powered_rail*/
+            new Item(28, 0, 1){ RuntimeId=6384, NetworkId=1201, ExtraData = null }, /*detector_rail*/
+            new Item(126, 0, 1){ RuntimeId=1039, NetworkId=1202, ExtraData = null }, /*activator_rail*/
             new Item(328, 0, 1){ RuntimeId=0, NetworkId=1203, ExtraData = null }, /*minecraft:minecart*/
             new Item(342, 0, 1){ RuntimeId=0, NetworkId=1204, ExtraData = null }, /*minecraft:chest_minecart*/
             new Item(408, 0, 1){ RuntimeId=0, NetworkId=1205, ExtraData = null }, /*minecraft:hopper_minecart*/
             new Item(407, 0, 1){ RuntimeId=0, NetworkId=1206, ExtraData = null }, /*minecraft:tnt_minecart*/
             new Item(331, 0, 1){ RuntimeId=0, NetworkId=1207, ExtraData = null }, /*minecraft:redstone*/
-            new Item(152, 0, 1){ RuntimeId=5649, NetworkId=1208, ExtraData = null }, /**/
-            new Item(76, 0, 1){ RuntimeId=4998, NetworkId=1209, ExtraData = null }, /**/
-            new Item(69, 0, 1){ RuntimeId=10878, NetworkId=1210, ExtraData = null }, /**/
-            new Item(143, 0, 1){ RuntimeId=10751, NetworkId=1211, ExtraData = null }, /**/
-            new Item(-144, 0, 1){ RuntimeId=6620, NetworkId=1212, ExtraData = null }, /**/
-            new Item(-141, 0, 1){ RuntimeId=12581, NetworkId=1213, ExtraData = null }, /**/
-            new Item(-143, 0, 1){ RuntimeId=125, NetworkId=1214, ExtraData = null }, /**/
-            new Item(-140, 0, 1){ RuntimeId=12027, NetworkId=1215, ExtraData = null }, /**/
-            new Item(-142, 0, 1){ RuntimeId=99, NetworkId=1216, ExtraData = null }, /**/
-            new Item(77, 0, 1){ RuntimeId=1335, NetworkId=1217, ExtraData = null }, /**/
-            new Item(131, 0, 1){ RuntimeId=9875, NetworkId=1221, ExtraData = null }, /**/
-            new Item(72, 0, 1){ RuntimeId=12879, NetworkId=1222, ExtraData = null }, /**/
-            new Item(-154, 0, 1){ RuntimeId=5631, NetworkId=1223, ExtraData = null }, /**/
-            new Item(-151, 0, 1){ RuntimeId=5414, NetworkId=1224, ExtraData = null }, /**/
-            new Item(-153, 0, 1){ RuntimeId=5500, NetworkId=1225, ExtraData = null }, /**/
-            new Item(-150, 0, 1){ RuntimeId=8393, NetworkId=1226, ExtraData = null }, /**/
-            new Item(-152, 0, 1){ RuntimeId=9917, NetworkId=1227, ExtraData = null }, /**/
-            new Item(70, 0, 1){ RuntimeId=6138, NetworkId=1230, ExtraData = null }, /**/
-            new Item(147, 0, 1){ RuntimeId=5531, NetworkId=1231, ExtraData = null }, /**/
-            new Item(148, 0, 1){ RuntimeId=2258, NetworkId=1232, ExtraData = null }, /**/
-            new Item(251, 0, 1){ RuntimeId=4986, NetworkId=1234, ExtraData = null }, /**/
-            new Item(151, 0, 1){ RuntimeId=6455, NetworkId=1235, ExtraData = null }, /**/
+            new Item(152, 0, 1){ RuntimeId=5649, NetworkId=1208, ExtraData = null }, /*redstone_block*/
+            new Item(76, 0, 1){ RuntimeId=4998, NetworkId=1209, ExtraData = null }, /*redstone_torch*/
+            new Item(69, 0, 1){ RuntimeId=10878, NetworkId=1210, ExtraData = null }, /*lever*/
+            new Item(143, 0, 1){ RuntimeId=10751, NetworkId=1211, ExtraData = null }, /*oak_button*/
+            new Item(-144, 0, 1){ RuntimeId=6620, NetworkId=1212, ExtraData = null }, /*spruce_button*/
+            new Item(-141, 0, 1){ RuntimeId=12581, NetworkId=1213, ExtraData = null }, /*birch_button*/
+            new Item(-143, 0, 1){ RuntimeId=125, NetworkId=1214, ExtraData = null }, /*jungle_button*/
+            new Item(-140, 0, 1){ RuntimeId=12027, NetworkId=1215, ExtraData = null }, /*acacia_button*/
+            new Item(-142, 0, 1){ RuntimeId=99, NetworkId=1216, ExtraData = null }, /*dark_oak_button*/
+            new Item(77, 0, 1){ RuntimeId=1335, NetworkId=1217, ExtraData = null }, /*stone_button*/
+            new Item(131, 0, 1){ RuntimeId=9875, NetworkId=1221, ExtraData = null }, /*tripwire_hook*/
+            new Item(72, 0, 1){ RuntimeId=12879, NetworkId=1222, ExtraData = null }, /*oak_pressure_plate*/
+            new Item(-154, 0, 1){ RuntimeId=5631, NetworkId=1223, ExtraData = null }, /*spruce_pressure_plate*/
+            new Item(-151, 0, 1){ RuntimeId=5414, NetworkId=1224, ExtraData = null }, /*birch_pressure_plate*/
+            new Item(-153, 0, 1){ RuntimeId=5500, NetworkId=1225, ExtraData = null }, /*jungle_pressure_plate*/
+            new Item(-150, 0, 1){ RuntimeId=8393, NetworkId=1226, ExtraData = null }, /*acacia_pressure_plate*/
+            new Item(-152, 0, 1){ RuntimeId=9917, NetworkId=1227, ExtraData = null }, /*dark_oak_pressure_plate*/
+            new Item(70, 0, 1){ RuntimeId=6138, NetworkId=1230, ExtraData = null }, /*stone_pressure_plate*/
+            new Item(147, 0, 1){ RuntimeId=5531, NetworkId=1231, ExtraData = null }, /*light_weight_pressure_plate*/
+            new Item(148, 0, 1){ RuntimeId=2258, NetworkId=1232, ExtraData = null }, /*heavy_weight_pressure_plate*/
+            new Item(251, 0, 1){ RuntimeId=4986, NetworkId=1234, ExtraData = null }, /*observer*/
+            new Item(151, 0, 1){ RuntimeId=6455, NetworkId=1235, ExtraData = null }, /*daylight_sensor*/
             new Item(356, 0, 1){ RuntimeId=0, NetworkId=1236, ExtraData = null }, /*minecraft:repeater*/
             new Item(404, 0, 1){ RuntimeId=0, NetworkId=1237, ExtraData = null }, /*minecraft:comparator*/
             new Item(410, 0, 1){ RuntimeId=0, NetworkId=1238, ExtraData = null }, /*minecraft:hopper*/
-            new Item(125, 0, 1){ RuntimeId=12187, NetworkId=1239, ExtraData = null }, /**/
-            new Item(23, 0, 1){ RuntimeId=12827, NetworkId=1240, ExtraData = null }, /**/
-            new Item(33, 0, 1){ RuntimeId=2040, NetworkId=1241, ExtraData = null }, /**/
-            new Item(29, 0, 1){ RuntimeId=6668, NetworkId=1242, ExtraData = null }, /**/
-            new Item(46, 0, 1){ RuntimeId=11063, NetworkId=1243, ExtraData = null }, /**/
+            new Item(125, 0, 1){ RuntimeId=12187, NetworkId=1239, ExtraData = null }, /*dropper*/
+            new Item(23, 0, 1){ RuntimeId=12827, NetworkId=1240, ExtraData = null }, /*dispenser*/
+            new Item(33, 0, 1){ RuntimeId=2040, NetworkId=1241, ExtraData = null }, /*piston*/
+            new Item(29, 0, 1){ RuntimeId=6668, NetworkId=1242, ExtraData = null }, /*sticky_piston*/
+            new Item(46, 0, 1){ RuntimeId=11063, NetworkId=1243, ExtraData = null }, /*tnt*/
             new Item(421, 0, 1){ RuntimeId=0, NetworkId=1244, ExtraData = null }, /*minecraft:name_tag*/
-            new Item(-204, 0, 1){ RuntimeId=6083, NetworkId=1245, ExtraData = null }, /**/
+            new Item(-204, 0, 1){ RuntimeId=6083, NetworkId=1245, ExtraData = null }, /*loom*/
             new Item(446, 0, 1){ RuntimeId=0, NetworkId=1246, ExtraData = null }, /*minecraft:banner*/
             new Item(446, 8, 1){ RuntimeId=0, NetworkId=1247, ExtraData = null }, /*minecraft:banner*/
             new Item(446, 7, 1){ RuntimeId=0, NetworkId=1248, ExtraData = null }, /*minecraft:banner*/
@@ -1228,7 +1240,7 @@ namespace MiNET
             new Item(446, 10, 1){ RuntimeId=0, NetworkId=1259, ExtraData = null }, /*minecraft:banner*/
             new Item(446, 2, 1){ RuntimeId=0, NetworkId=1260, ExtraData = null }, /*minecraft:banner*/
             new Item(446, 6, 1){ RuntimeId=0, NetworkId=1261, ExtraData = null }, /*minecraft:banner*/
-            new Item(446, 15, 1){ RuntimeId=0, NetworkId=1262, ExtraData = new NbtCompound { new NbtInt("Type", 1) } }, /*minecraft:banner*/
+            new Item(446, 15, 1){ RuntimeId=0, NetworkId=1262, ExtraData = new NbtCompound { new NbtInt("Type", 1) } }, /*illager_banner*/
             new Item(434, 0, 1){ RuntimeId=0, NetworkId=1263, ExtraData = null }, /*minecraft:banner_pattern*/
             new Item(434, 1, 1){ RuntimeId=0, NetworkId=1264, ExtraData = null }, /*minecraft:banner_pattern*/
             new Item(434, 2, 1){ RuntimeId=0, NetworkId=1265, ExtraData = null }, /*minecraft:banner_pattern*/
@@ -1272,8 +1284,5 @@ namespace MiNET
             new Item(402, 6, 1){ RuntimeId=0, NetworkId=1303, ExtraData = new NbtCompound { new NbtCompound("FireworksItem") { new NbtByteArray("FireworkColor", new byte[1]{6}), new NbtByteArray("FireworkFade", new byte[0]{}), new NbtByte("FireworkFlicker", 0), new NbtByte("FireworkTrail", 0), new NbtByte("FireworkType", 0) }, new NbtInt("customColor", -15295332) } }, /*minecraft:firework_star*/
             new Item(758, 0, 1){ RuntimeId=0, NetworkId=1304, ExtraData = null }, /*minecraft:chain*/
         };
-
-
-
 	}
 }
