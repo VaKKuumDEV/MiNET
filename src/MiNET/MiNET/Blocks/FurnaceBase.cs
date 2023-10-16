@@ -25,8 +25,6 @@
 
 using System.Numerics;
 using MiNET.BlockEntities;
-using MiNET.Items;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -34,8 +32,6 @@ namespace MiNET.Blocks
 {
 	public abstract class FurnaceBase : Block
 	{
-		[StateRange(0, 5)] public virtual int FacingDirection { get; set; }
-
 		protected FurnaceBase(byte id) : base(id)
 		{
 			BlastResistance = 17.5f;
@@ -44,8 +40,6 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
-
 			var furnaceBlockEntity = new FurnaceBlockEntity {Coordinates = Coordinates};
 			world.SetBlockEntity(furnaceBlockEntity);
 

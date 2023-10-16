@@ -24,32 +24,38 @@
 #endregion
 
 using System.Numerics;
-using MiNET.BlockEntities;
+using log4net;
 using MiNET.Items;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
-	public abstract class BlastFurnaceBase : Block
+	public partial class Barrel : Block
 	{
-		protected BlastFurnaceBase(int id) : base(id)
+		private static readonly ILog Log = LogManager.GetLogger(typeof(ChestBase));
+
+		public Barrel() : base(458)
 		{
+			FuelEfficiency = 15;
+			BlastResistance = 12.5f;
+			Hardness = 2.5f;
 		}
+
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			var furnaceBlockEntity = new BlastFurnaceBlockEntity {Coordinates = Coordinates};
-			world.SetBlockEntity(furnaceBlockEntity);
+			FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
+
+			//TODO Berrel entity
 
 			return false;
 		}
 
+
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
-			player.OpenInventory(blockCoordinates);
-
+			Log.Debug($"Opening barrel {blockCoordinates}");
 			return true;
 		}
 	}
