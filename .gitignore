@@ -7,7 +7,7 @@
 *.sln.docstates
 
 # User-specific server config
-server.*.conf
+server.conf
 !server.nicke_000.conf
 !server.nicke.conf
 
@@ -191,6 +191,9 @@ FakesAssemblies/
 *.opendb
 .vs/
 
-/src/MiNET/MiNET.Console/dist
-/src/MiNET/Worlds
+src/MiNET/MiNET.Console/dist
+src/MiNET/MiNET.Console/Worlds
+src/MiNET/MiNET.Console/Plugins
 src/MiNET/MiNET.Console/start.bat
+src/MiNET/MiNET.Client/start.bat
+src/MiNET/MiNET.Console/server.conf
