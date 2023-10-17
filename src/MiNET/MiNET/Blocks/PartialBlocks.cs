@@ -18,28 +18,15 @@
 // The Original Developer is the Initial Developer.  The Initial Developer of
 // the Original Code is Niclas Olofsson.
 // 
-// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2020 Niclas Olofsson.
+// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2023 Niclas Olofsson.
 // All Rights Reserved.
 
 #endregion
 
 using System;
 using System.Collections.Generic;
-using MiNET.UI;
 using MiNET.Utils;
-using MiNET.Worlds;
 
-// ReSharper disable SuggestVarOrType_SimpleTypes
-// ReSharper disable PartialTypeWithSinglePart
-// ReSharper disable RedundantDefaultMemberInitializer
-// ReSharper disable UseObjectOrCollectionInitializer
-// ReSharper disable RemoveRedundantBraces
-// ReSharper disable IdentifierTypo
-// ReSharper disable CommentTypo
-// ReSharper disable StringLiteralTypo
-// ReSharper disable UnusedMember.Local
-// ReSharper disable PartialMethodWithSinglePart
-// ReSharper disable MemberCanBePrivate.Global
 #pragma warning disable 1522
 
 namespace MiNET.Blocks
@@ -55,6 +42,12 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "vertical_half":
+						verticalHalf = s.Value;
+						break;
+					case BlockStateString s when s.Name == "stone_slab_type":
+						StoneSlabType = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -64,7 +57,7 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab";
 			record.Id = 44;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type", Value = StoneSlabType });
 			return record;
 		} // method
@@ -81,6 +74,12 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "vertical_half":
+						verticalHalf = s.Value;
+						break;
+					case BlockStateString s when s.Name == "stone_slab_type_2":
+						StoneSlabType2 = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -90,7 +89,7 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab2";
 			record.Id = 182;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_2", Value = StoneSlabType2 });
 			return record;
 		} // method
@@ -107,6 +106,12 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "vertical_half":
+						verticalHalf = s.Value;
+						break;
+					case BlockStateString s when s.Name == "stone_slab_type_3":
+						StoneSlabType3 = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -116,7 +121,7 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab3";
 			record.Id = 417;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_3", Value = StoneSlabType3 });
 			return record;
 		} // method
@@ -133,6 +138,12 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "vertical_half":
+						verticalHalf = s.Value;
+						break;
+					case BlockStateString s when s.Name == "stone_slab_type_4":
+						StoneSlabType4 = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -142,7 +153,7 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab4";
 			record.Id = 421;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_4", Value = StoneSlabType4 });
 			return record;
 		} // method
@@ -335,6 +346,15 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "wood_type":
+						woodType = s.Value;
+						break;
+					case BlockStateString s when s.Name == "pillar_axis":
+						PillarAxis = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "stripped_bit":
+						StrippedBit = Convert.ToBoolean(s.Value);
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -361,6 +381,9 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "pillar_axis":
+						PillarAxis = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -385,6 +408,9 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "pillar_axis":
+						PillarAxis = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -820,9 +846,7 @@ namespace MiNET.Blocks
 
     public partial class Anvil  // 145 typeof=Anvil
     {
-        [StateEnum("undamaged","slightly_damaged","very_damaged","broken")]
-        public  string Damage { get; set; } = "undamaged";
-        [StateEnum("south","west","north","east")]
+		public  string Damage { get; set; } = "undamaged";
         public  string cardinalDirection { get; set; } = "south";
 
         public override void SetState(List<IBlockState> states)
@@ -834,7 +858,7 @@ namespace MiNET.Blocks
                     case BlockStateString s when s.Name == "damage":
                         Damage = s.Value;
                         break;
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
+                    case BlockStateString s when s.Name == "cardinal_direction":
                         cardinalDirection = s.Value;
                         break;
                 } // switch
@@ -847,7 +871,7 @@ namespace MiNET.Blocks
             record.Name = "minecraft:anvil";
             record.Id = 145;
             record.States.Add(new BlockStateString {Name = "damage", Value = Damage});
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -945,7 +969,13 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                } // switch
+					case BlockStateInt s when s.Name == "facing_direction":
+						FacingDirection = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "open_bit":
+						OpenBit = Convert.ToBoolean(s.Value);
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -1510,7 +1540,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                } // switch
+					case BlockStateString s when s.Name == "cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -1519,7 +1552,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:blast_furnace";
             record.Id = 451;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -3500,8 +3533,8 @@ namespace MiNET.Blocks
 
     public partial class Dispenser  // 23 typeof=Dispenser
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
-        [StateBit] public  bool TriggeredBit { get; set; } = false;
+        public int FacingDirection { get; set; } = 0;
+        public bool TriggeredBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -3648,8 +3681,8 @@ namespace MiNET.Blocks
 
     public partial class Dropper  // 125 typeof=Dropper
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
-        [StateBit] public  bool TriggeredBit { get; set; } = false;
+        public int FacingDirection { get; set; } = 0;
+        public bool TriggeredBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7093,7 +7126,13 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                } // switch
+					case BlockStateByte s when s.Name == "end_portal_eye_bit":
+						EndPortalEyeBit = Convert.ToBoolean(s.Value);
+						break;
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -7110,7 +7149,7 @@ namespace MiNET.Blocks
 
     public partial class EndRod  // 208 typeof=EndRod
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7457,7 +7496,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                } // switch
+					case BlockStateString s when s.Name == "cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -7466,7 +7508,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:furnace";
             record.Id = 61;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -8915,7 +8957,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                } // switch
+					case BlockStateString s when s.Name == "cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -8924,7 +8969,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lectern";
             record.Id = 449;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
             record.States.Add(new BlockStateByte {Name = "powered_bit", Value = Convert.ToByte(PoweredBit)});
             return record;
         } // method
@@ -9947,7 +9992,7 @@ namespace MiNET.Blocks
 
     public partial class Piston  // 33 typeof=Piston
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -11433,7 +11478,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                } // switch
+					case BlockStateString s when s.Name == "cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -11442,7 +11490,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:smoker";
             record.Id = 453;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -11998,7 +12046,7 @@ namespace MiNET.Blocks
 
     public partial class StickyPiston  // 29 typeof=StickyPiston
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {

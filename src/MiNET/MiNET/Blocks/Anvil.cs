@@ -23,12 +23,12 @@
 
 #endregion
 
-using System.Numerics;
 using MiNET.Items;
 using MiNET.Net;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
+using System;
+using System.Numerics;
 
 namespace MiNET.Blocks
 {
@@ -44,8 +44,16 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			cardinalDirection = player.GetDirectionString();
+			var FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
 
+			cardinalDirection = FacingDirection switch
+			{
+				5 => "east",
+				3 => "south",
+				4 => "west",
+				2 => "north",
+				_ => throw new ArgumentOutOfRangeException()
+			};
 			return false;
 		}
 

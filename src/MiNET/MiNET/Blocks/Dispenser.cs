@@ -24,6 +24,9 @@
 #endregion
 
 using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
 
 namespace MiNET.Blocks
 {
@@ -33,6 +36,13 @@ namespace MiNET.Blocks
 		{
 			BlastResistance = 17.5f;
 			Hardness = 3.5f;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
+
+			return false;
 		}
 
 		public override Item[] GetDrops(Item tool)

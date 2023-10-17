@@ -65,6 +65,11 @@ namespace MiNET.Blocks
 				EndPortalEyeBit = true;
 				world.SetBlock(this);
 			}
+			if (player.GameMode == GameMode.Survival)
+			{
+				itemInHand.Count--;
+				player.Inventory.SetInventorySlot(player.Inventory.InHandSlot, itemInHand);
+			}
 			return true;
 		}
 
