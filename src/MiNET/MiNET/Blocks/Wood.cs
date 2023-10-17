@@ -3,10 +3,10 @@
 // The contents of this file are subject to the Common Public Attribution
 // License Version 1.0. (the "License"); you may not use this file except in
 // compliance with the License. You may obtain a copy of the License at
-// https://github.com/NiclasOlofsson/MiNET/blob/master/LICENSE.
-// The License is based on the Mozilla Public License Version 1.1, but Sections 14
-// and 15 have been added to cover use of software over a computer network and
-// provide for limited attribution for the Original Developer. In addition, Exhibit A has
+// https://github.com/NiclasOlofsson/MiNET/blob/master/LICENSE. 
+// The License is based on the Mozilla Public License Version 1.1, but Sections 14 
+// and 15 have been added to cover use of software over a computer network and 
+// provide for limited attribution for the Original Developer. In addition, Exhibit A has 
 // been modified to be consistent with Exhibit B.
 // 
 // Software distributed under the License is distributed on an "AS IS" basis,
@@ -18,41 +18,50 @@
 // The Original Developer is the Initial Developer.  The Initial Developer of
 // the Original Code is Niclas Olofsson.
 // 
-// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2020 Niclas Olofsson.
+// All portions of the code written by Niclas Olofsson are Copyright (c) 2014-2018 Niclas Olofsson. 
 // All Rights Reserved.
 
 #endregion
-
+using System;
+using System.Numerics;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
-using System.Numerics;
-using System;
 
 namespace MiNET.Blocks
 {
-	public partial class StoneSlab4 : Block
+	public partial class Wood : Block
 	{
-		public StoneSlab4() : base(421)
+		public Wood() : base(467)
 		{
-			BlastResistance = 30;
+			FuelEfficiency = 15;
+			BlastResistance = 10;
 			Hardness = 2;
-			IsTransparent = true; // Partial - blocks light.
-			IsBlockingSkylight = false; // Partial - blocks light.
+			IsFlammable = true;
 		}
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var itemInHand = player.Inventory.GetItemInHand();
-			StoneSlabType4 = itemInHand.Metadata switch
+			woodType = itemInHand.Metadata switch
 			{
-				0 => "stone",
-				1 => "mossy_stone_brick",
-				2 => "cut_sandstone",
-				3 => "cut_red_sandstone",
-				4 => "smooth_quartz",
+				0 or 1 => "oak",
+				2 or 3 => "spruce",
+				4 or 5 => "birch",
+				6 or 7 => "jungle",
+				8 or 9 => "acacia",
+				10 or 11 => "dark_oak",
 				_ => throw new ArgumentOutOfRangeException()
+			};
+
+			StrippedBit = itemInHand.Metadata switch
+			{
+				1 or 3 or 5 or 7 or 9 or 11 => true,
+				_ => false
 			};
 			return false;
 		}
+
+
+
 	}
 }

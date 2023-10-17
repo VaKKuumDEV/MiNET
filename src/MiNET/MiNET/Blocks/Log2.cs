@@ -22,6 +22,10 @@
 // All Rights Reserved.
 
 #endregion
+using System.Numerics;
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
@@ -29,9 +33,20 @@ namespace MiNET.Blocks
 	{
 		public Log2() : base(162)
 		{
+			FuelEfficiency = 15;
 			BlastResistance = 10;
 			Hardness = 2;
 			IsFlammable = true;
 		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:log2", itemInHand.Metadata);
+			return false;
+		}
+
+
+
 	}
 }

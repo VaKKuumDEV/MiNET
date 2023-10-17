@@ -22,10 +22,10 @@
 // All Rights Reserved.
 
 #endregion
-using System.Numerics;
 using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
+using System.Numerics;
 
 namespace MiNET.Blocks
 {

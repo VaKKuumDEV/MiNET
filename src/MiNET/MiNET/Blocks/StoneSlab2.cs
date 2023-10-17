@@ -23,11 +23,16 @@
 
 #endregion
 
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
+using System;
+
 namespace MiNET.Blocks
 {
-	public partial class StoneSlab2 : SlabBase
+	public partial class StoneSlab2 : Block
 	{
-		public StoneSlab2() : base(182, 181)
+		public StoneSlab2() : base(182)
 		{
 			BlastResistance = 30;
 			Hardness = 2;
@@ -35,14 +40,22 @@ namespace MiNET.Blocks
 			IsBlockingSkylight = false; // Partial - blocks light.
 		}
 
-		protected override bool AreSameType(Block obj)
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			if (ReferenceEquals(null, obj)) return false;
-			if (obj.GetType() != this.GetType()) return false;
-			var slab = obj as StoneSlab2;
-			if (slab == null) return false;
-
-			return slab.StoneSlabType2 == StoneSlabType2;
+			var itemInHand = player.Inventory.GetItemInHand();
+			StoneSlabType2 = itemInHand.Metadata switch
+			{
+				0 => "mossy_cobblestone",
+				1 => "smooth_sandstone",
+				2 => "red_sandstone",
+				3 => "red_nether_brick",
+				4 => "purpur",
+				5 => "prismarine_rough",
+				6 => "prismarine_dark",
+				7 => "prismarine_brick",
+				_ => throw new ArgumentOutOfRangeException()
+			};
+			return false;
 		}
 	}
 }

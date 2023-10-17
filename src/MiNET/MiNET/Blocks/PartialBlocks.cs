@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections.Generic;
+using MiNET.UI;
 using MiNET.Utils;
 using MiNET.Worlds;
 
@@ -45,13 +46,8 @@ namespace MiNET.Blocks
 {
 	public partial class StoneSlab // 44 typeof=StoneSlab
 	{
-		public override string Name => "minecraft:stone_slab";
-
-		[StateEnum("brick", "cobblestone", "wood", "stone_brick", "sandstone", "quartz", "smooth_stone", "nether_brick")]
 		public string StoneSlabType { get; set; } = "smooth_stone";
-
-		[StateEnum("bottom", "top")]
-		public string verticalHalf { get; set; } = "";
+		public string verticalHalf { get; set; } = "bottom";
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -59,12 +55,6 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "stone_slab_type":
-						StoneSlabType = s.Value;
-						break;
-					case BlockStateString s when s.Name == "minecraft:vertical_half":
-						verticalHalf = s.Value;
-						break;
 				} // switch
 			} // foreach
 		} // method
@@ -72,21 +62,18 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_slab";
+			record.Name = "minecraft:stone_block_slab";
 			record.Id = 44;
 			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
-			record.States.Add(new BlockStateString { Name = "wood_type", Value = StoneSlabType });
+			record.States.Add(new BlockStateString { Name = "stone_slab_type", Value = StoneSlabType });
 			return record;
 		} // method
 	} // class
 
 	public partial class StoneSlab2 // 182 typeof=StoneSlab2
 	{
-		public override string Name => "minecraft:stone_slab2";
-
-		[StateEnum("red_sandstone", "red_nether_brick", "mossy_cobblestone", "prismarine_dark", "prismarine_rough", "smooth_sandstone", "prismarine_brick", "purpur")]
-		public string StoneSlabType2 { get; set; } = "red_sandstone";
-		[StateBit] public override bool TopSlotBit { get; set; } = false;
+		public string StoneSlabType2 { get; set; } = "mossy_cobblestone";
+		public string verticalHalf { get; set; } = "bottom";
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -94,12 +81,6 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "stone_slab_type_2":
-						StoneSlabType2 = s.Value;
-						break;
-					case BlockStateByte s when s.Name == "top_slot_bit":
-						TopSlotBit = Convert.ToBoolean(s.Value);
-						break;
 				} // switch
 			} // foreach
 		} // method
@@ -107,21 +88,18 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_slab2";
+			record.Name = "minecraft:stone_block_slab2";
 			record.Id = 182;
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_2", Value = StoneSlabType2 });
-			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
 			return record;
 		} // method
 	} // class
 
 	public partial class StoneSlab3 // 417 typeof=StoneSlab3
 	{
-		public override string Name => "minecraft:stone_slab3";
-
-		[StateEnum("end_stone_brick", "granite", "andesite", "polished_granite", "diorite", "polished_andesite", "smooth_red_sandstone", "polished_diorite")]
-		public string StoneSlabType3 { get; set; } = "end_stone_brick";
-		[StateBit] public override bool TopSlotBit { get; set; } = false;
+	public string StoneSlabType3 { get; set; } = "smooth_red_sandstone";
+	public string verticalHalf { get; set; } = "bottom";
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -129,12 +107,6 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "stone_slab_type_3":
-						StoneSlabType3 = s.Value;
-						break;
-					case BlockStateByte s when s.Name == "top_slot_bit":
-						TopSlotBit = Convert.ToBoolean(s.Value);
-						break;
 				} // switch
 			} // foreach
 		} // method
@@ -142,21 +114,18 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_slab3";
+			record.Name = "minecraft:stone_block_slab3";
 			record.Id = 417;
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_3", Value = StoneSlabType3 });
-			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
 			return record;
 		} // method
 	} // class
 
 	public partial class StoneSlab4 // 421 typeof=StoneSlab4
 	{
-		public override string Name => "minecraft:stone_slab4";
-
-		[StateEnum("cut_sandstone", "stone", "smooth_quartz", "cut_red_sandstone", "mossy_stone_brick")]
-		public string StoneSlabType4 { get; set; } = "mossy_stone_brick";
-		[StateBit] public override bool TopSlotBit { get; set; } = false;
+		public string StoneSlabType4 { get; set; } = "stone";
+		public string verticalHalf { get; set; } = "bottom";
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -164,12 +133,6 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "stone_slab_type_4":
-						StoneSlabType4 = s.Value;
-						break;
-					case BlockStateByte s when s.Name == "top_slot_bit":
-						TopSlotBit = Convert.ToBoolean(s.Value);
-						break;
 				} // switch
 			} // foreach
 		} // method
@@ -177,10 +140,10 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_slab4";
+			record.Name = "minecraft:stone_block_slab4";
 			record.Id = 421;
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_4", Value = StoneSlabType4 });
-			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
 			return record;
 		} // method
 	} // class
@@ -361,9 +324,37 @@ namespace MiNET.Blocks
 		} // method
 	} // class
 
+	public partial class Wood // 467 typeof=Wood
+	{
+		public string woodType { get; set; } = "oak";
+		public string PillarAxis { get; set; } = "y";
+		public bool StrippedBit { get; set; } = false;
+		public override void SetState(List<IBlockState> states)
+		{
+			foreach (var state in states)
+			{
+				switch (state)
+				{
+				} // switch
+			} // foreach
+		} // method
+
+		public override BlockStateContainer GetState()
+		{
+			var record = new BlockStateContainer();
+			record.Name = "minecraft:wood";
+			record.Id = 467;
+			record.States.Add(new BlockStateString { Name = "pillar_axis", Value = PillarAxis });
+			record.States.Add(new BlockStateByte { Name = "stripped_bit", Value = Convert.ToByte(StrippedBit) });
+			record.States.Add(new BlockStateString { Name = "wood_type", Value = woodType });
+			return record;
+		} // method
+	} // class
+
 	public partial class Log // 17 typeof=Log
 	{
 		public string blockName { get; set; } = "minecraft:oak_log";
+		public string PillarAxis { get; set; } = "y";
 		public override void SetState(List<IBlockState> states)
 		{
 			foreach (var state in states)
@@ -378,7 +369,32 @@ namespace MiNET.Blocks
 		{
 			var record = new BlockStateContainer();
 			record.Name = blockName;
-			record.Id = 17;
+			record.Id = 17; 
+			record.States.Add(new BlockStateString { Name = "pillar_axis", Value = PillarAxis });
+			return record;
+		} // method
+	} // class
+
+	public partial class Log2 // 162 typeof=Log2
+	{
+		public string blockName { get; set; } = "minecraft:acacia_log";
+		public string PillarAxis { get; set; } = "y";
+		public override void SetState(List<IBlockState> states)
+		{
+			foreach (var state in states)
+			{
+				switch (state)
+				{
+				} // switch
+			} // foreach
+		} // method
+
+		public override BlockStateContainer GetState()
+		{
+			var record = new BlockStateContainer();
+			record.Name = blockName;
+			record.Id = 162;
+			record.States.Add(new BlockStateString { Name = "pillar_axis", Value = PillarAxis });
 			return record;
 		} // method
 	} // class
@@ -13193,44 +13209,6 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class Wood  // 0 typeof=Air
-    {
-        [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "x";
-        [StateBit] public  bool StrippedBit { get; set; } = false;
-        [StateEnum("oak","spruce","birch","jungle","acacia","dark_oak")]
-        public  string WoodType { get; set; } = "oak";
-
-        public override void SetState(List<IBlockState> states)
-        {
-            foreach (var state in states)
-            {
-                switch(state)
-                {
-                    case BlockStateString s when s.Name == "pillar_axis":
-                        PillarAxis = s.Value;
-                        break;
-                    case BlockStateByte s when s.Name == "stripped_bit":
-                        StrippedBit = Convert.ToBoolean(s.Value);
-                        break;
-                    case BlockStateString s when s.Name == "wood_type":
-                        WoodType = s.Value;
-                        break;
-                } // switch
-            } // foreach
-        } // method
-
-        public override BlockStateContainer GetState()
-        {
-            var record = new BlockStateContainer();
-            record.Name = "minecraft:wood";
-            record.Id = 0;
-            record.States.Add(new BlockStateString {Name = "pillar_axis", Value = PillarAxis});
-            record.States.Add(new BlockStateByte {Name = "stripped_bit", Value = Convert.ToByte(StrippedBit)});
-            record.States.Add(new BlockStateString {Name = "wood_type", Value = WoodType});
-            return record;
-        } // method
-    } // class
 
     public partial class WoodenButton  // 143 typeof=WoodenButton
     {
@@ -13423,7 +13401,6 @@ namespace MiNET.Blocks
 	public partial class Camera : Block { public Camera() : base(242) { IsGenerated = true; } }
 	public partial class Coral : Block { public Coral() : base(386) { IsGenerated = true; } }
 	public partial class Jigsaw : Block { public Jigsaw() : base(466) { IsGenerated = true; } }
-	public partial class Wood : Block { public Wood() : base(467) { IsGenerated = true; } }
 	public partial class LightBlock : Block { public LightBlock() : base(470) { IsGenerated = true; } }
 	public partial class WitherRose : Block { public WitherRose() : base(471) { IsGenerated = true; } }
 	public partial class StickyPistonArmCollision : Block { public StickyPistonArmCollision() : base(472) { IsGenerated = true; } }
