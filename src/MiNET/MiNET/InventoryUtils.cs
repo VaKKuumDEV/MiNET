@@ -334,12 +334,12 @@ namespace MiNET
             new Item(222, 0, 1){ RuntimeId=2071, NetworkId=316, ExtraData = null },  /*_glazed_terracotta*/ 
             new Item(226, 0, 1){ RuntimeId=10906, NetworkId=317, ExtraData = null },  /*pink_glazed_terracotta*/ 
             new Item(201, 0, 1){ RuntimeId=12520, NetworkId=318, ExtraData = null },  /*purpur_block*/ 
-            new Item(201, 0, 1){ RuntimeId=12522, NetworkId=319, ExtraData = null },  /*purpur_pillar*/ 
+            new Item(201, 1, 1){ RuntimeId=12522, NetworkId=319, ExtraData = null },  /*purpur_pillar*/ 
             new Item(214, 0, 1){ RuntimeId=6559, NetworkId=320, ExtraData = null },  /*nether_wart_block*/ 
             new Item(-230, 0, 1){ RuntimeId=8190, NetworkId=322, ExtraData = null },  /*shroomlight*/ 
             new Item(87, 0, 1){ RuntimeId=11414, NetworkId=325, ExtraData = null },  /*netherrack*/ 
             new Item(3, 0, 1){ RuntimeId=8903, NetworkId=329, ExtraData = null },  /*dirt*/ 
-            new Item(3, 0, 1){ RuntimeId=8904, NetworkId=330, ExtraData = null },  /*coarse_dirt*/ 
+            new Item(3, 1, 1){ RuntimeId=8904, NetworkId=330, ExtraData = null },  /*coarse_dirt*/ 
             new Item(60, 0, 1){ RuntimeId=6164, NetworkId=331, ExtraData = null },  /*farmland*/ 
             new Item(2, 0, 1){ RuntimeId=11347, NetworkId=332, ExtraData = null },  /*grass_block*/ 
             new Item(198, 0, 1){ RuntimeId=12900, NetworkId=333, ExtraData = null },  /*dirt_path*/ 

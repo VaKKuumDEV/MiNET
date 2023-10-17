@@ -518,7 +518,7 @@ namespace MiNET.Blocks
 				156 => new QuartzStairs(),
 				157 => new DoubleWoodenSlab(),
 				158 => new WoodenSlab(),
-				159 => new StainedHardenedClay(),
+				159 => new Terracotta(),
 				160 => new StainedGlassPane(),
 				161 => new Leaves2(),
 				162 => new Log2(),
