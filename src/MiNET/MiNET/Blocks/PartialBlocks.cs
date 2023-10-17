@@ -7084,7 +7084,7 @@ namespace MiNET.Blocks
 
     public partial class EndPortalFrame  // 120 typeof=EndPortalFrame
     {
-        [StateBit] public  bool EndPortalEyeBit { get; set; } = false;
+        public  bool EndPortalEyeBit { get; set; } = false;
 		public string cardinalDirection { get; set; } = "north";
 
 		public override void SetState(List<IBlockState> states)
@@ -7093,12 +7093,6 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateByte s when s.Name == "end_portal_eye_bit":
-                        EndPortalEyeBit = Convert.ToBoolean(s.Value);
-                        break;
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
                 } // switch
             } // foreach
         } // method
