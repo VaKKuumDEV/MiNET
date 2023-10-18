@@ -26,8 +26,6 @@
 using System;
 using System.Collections.Generic;
 using MiNET.Items;
-using MiNET.Net;
-using MiNET.Net.RakNet;
 using MiNET.Utils;
 
 namespace MiNET.Crafting
@@ -144,6 +142,7 @@ namespace MiNET.Crafting
 
 	public class SmithingTransformRecipe : Recipe
 	{
+		public String RecipeId { get; set; }
 		public int UniqueId { get; set; }
 		public Item Template { get; set; }
 		public Item Input { get; set; }
@@ -154,8 +153,9 @@ namespace MiNET.Crafting
 		{
 		}
 
-		public SmithingTransformRecipe(Item output, Item template, Item input, Item addition, string block = null) : this()
+		public SmithingTransformRecipe(String recipeid, Item output, Item template, Item input, Item addition, string block) : this()
 		{
+			RecipeId = recipeid;
 			Output = output;
 			Template = template;
 			Input = input;
@@ -166,6 +166,7 @@ namespace MiNET.Crafting
 
 	public class SmithingTrimRecipe : Recipe
 	{
+		public String RecipeId { get; set; }
 		public int UniqueId { get; set; }
 		public Item Template { get; set; }
 		public Item Input { get; set; }
@@ -176,8 +177,9 @@ namespace MiNET.Crafting
 		{
 		}
 
-		public SmithingTrimRecipe(Item output, Item template, Item input, Item addition, string block = null) : this()
+		public SmithingTrimRecipe(string recipeid, Item output, Item template, Item input, Item addition, string block) : this()
 		{
+			RecipeId = recipeid;
 			Output = output;
 			Template = template;
 			Input = input;

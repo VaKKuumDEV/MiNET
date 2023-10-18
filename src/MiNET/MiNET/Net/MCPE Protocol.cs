@@ -5034,7 +5034,7 @@ namespace MiNET.Net
 			Write(recipes);
 			Write(potionTypeRecipes);
 			Write(potionContainerRecipes);
-			Write(materialReducerRecipes);
+			WriteUnsignedVarInt(0);//0 recipes TODO fix //Write(materialReducerRecipes);
 			Write(isClean);
 
 			AfterEncode();

@@ -158,18 +158,6 @@ namespace MiNET.Blocks
 			other.OccupiedBit = isOccupied;
 			world.SetBlock(this);
 			world.SetBlock(other);
-
-			//if (isOccupied)
-			//{
-			//	OccupiedBit = false;
-			//	world.SetData(Coordinates, (byte) (Metadata | 0x04));
-			//	world.SetData(other.Coordinates, (byte) (other.Metadata | 0x04));
-			//}
-			//else
-			//{
-			//	world.SetData(Coordinates, (byte) (Metadata & ~0x04));
-			//	world.SetData(other.Coordinates, (byte) (other.Metadata & ~0x04));
-			//}
 		}
 	}
 }

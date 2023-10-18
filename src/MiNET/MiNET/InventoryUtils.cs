@@ -229,8 +229,6 @@ namespace MiNET
             new Item(168, 0, 1){ RuntimeId=10460, NetworkId=209, ExtraData = null },  /*prismarine*/ 
             new Item(168, 1, 1){ RuntimeId=10461, NetworkId=210, ExtraData = null },  /*dark_prismarine*/ 
             new Item(165, 2, 1){ RuntimeId=6491, NetworkId=211, ExtraData = null },  /*slime_block*/ 
-            new Item(-220, 0, 1){ RuntimeId=1994, NetworkId=212, ExtraData = null },  /*honey_block*/ 
-            new Item(-221, 0, 1){ RuntimeId=6787, NetworkId=213, ExtraData = null },  /*honeycomb_block*/ 
             new Item(170, 0, 1){ RuntimeId=1789, NetworkId=214, ExtraData = null },  /*haybale*/ 
             new Item(216, 0, 1){ RuntimeId=6492, NetworkId=215, ExtraData = null },  /*bone_block*/ 
             new Item(112, 0, 1){ RuntimeId=12077, NetworkId=216, ExtraData = null },  /*nether_brick_block*/ 
@@ -421,11 +419,10 @@ namespace MiNET
             new Item(86, 0, 1){ RuntimeId=6890, NetworkId=421, ExtraData = null },  /*pumpkin*/ 
             new Item(-155, 0, 1){ RuntimeId=12180, NetworkId=422, ExtraData = null },  /*carved_pumpkin*/ 
             new Item(91, 0, 1){ RuntimeId=11040, NetworkId=423, ExtraData = null },  /*lit_pumpkin*/ 
-            new Item(736, 0, 1){ RuntimeId=0, NetworkId=424, ExtraData = null },  /*minecraft:honeycomb*/ 
             new Item(31, 0, 1){ RuntimeId=2048, NetworkId=425, ExtraData = null },  /*fern*/ 
             new Item(175, 0, 1){ RuntimeId=8604, NetworkId=426, ExtraData = null },  /*large_fern*/ 
-            new Item(31, 0, 1){ RuntimeId=2047, NetworkId=427, ExtraData = null },  /*grass*/ 
-            new Item(175, 0, 1){ RuntimeId=8603, NetworkId=428, ExtraData = null },  /*tall_grass*/ 
+            new Item(31, 1, 1){ RuntimeId=2047, NetworkId=427, ExtraData = null },  /*grass*/ 
+            new Item(175, 1, 1){ RuntimeId=8603, NetworkId=428, ExtraData = null },  /*tall_grass*/ 
             new Item(-131, 0, 1){ RuntimeId=1756, NetworkId=430, ExtraData = null },  /*fire_coral*/ 
             new Item(-131, 1, 1){ RuntimeId=1768, NetworkId=431, ExtraData = null },  /*brain_coral*/ 
             new Item(-131, 2, 1){ RuntimeId=10595, NetworkId=432, ExtraData = null },  /*bubble_coral*/ 
@@ -458,10 +455,10 @@ namespace MiNET
             new Item(38, 8, 1){ RuntimeId=5489, NetworkId=461, ExtraData = null },  /*oxeye_daisy*/ 
             new Item(38, 9, 1){ RuntimeId=5490, NetworkId=462, ExtraData = null },  /*cornflower*/ 
             new Item(38, 10, 1){ RuntimeId=5491, NetworkId=463, ExtraData = null },  /*lily_of_the_valley*/ 
-            new Item(175, 0, 1){ RuntimeId=8601, NetworkId=464, ExtraData = null },  /*sunflower*/ 
-            new Item(175, 1, 1){ RuntimeId=8602, NetworkId=465, ExtraData = null },  /*lilac*/ 
-            new Item(175, 2, 1){ RuntimeId=8605, NetworkId=466, ExtraData = null },  /*rose_bush*/ 
-            new Item(175, 3, 1){ RuntimeId=8606, NetworkId=467, ExtraData = null },  /*peony*/ 
+            new Item(175, 2, 1){ RuntimeId=8601, NetworkId=464, ExtraData = null },  /*sunflower*/ 
+            new Item(175, 3, 1){ RuntimeId=8602, NetworkId=465, ExtraData = null },  /*lilac*/ 
+            new Item(175, 4, 1){ RuntimeId=8605, NetworkId=466, ExtraData = null },  /*rose_bush*/ 
+            new Item(175, 5, 1){ RuntimeId=8606, NetworkId=467, ExtraData = null },  /*peony*/ 
             new Item(-216, 0, 1){ RuntimeId=10541, NetworkId=468, ExtraData = null },  /*wither_rose*/ 
             new Item(351, 0, 1){ RuntimeId=0, NetworkId=469, ExtraData = null },  /*minecraft:dye*/ 
             new Item(351, 1, 1){ RuntimeId=0, NetworkId=470, ExtraData = null },  /*minecraft:dye*/ 
@@ -508,8 +505,8 @@ namespace MiNET
             new Item(40, 0, 1){ RuntimeId=6900, NetworkId=513, ExtraData = null },  /*red_mushroom*/ 
             new Item(99, 0, 1){ RuntimeId=12167, NetworkId=516, ExtraData = null },  /*brown_mushroom_block*/ 
             new Item(100, 0, 1){ RuntimeId=5473, NetworkId=517, ExtraData = null },  /*red_mushroom_block*/ 
-            new Item(99, 0, 1){ RuntimeId=12168, NetworkId=518, ExtraData = null },  /*mushroom_stem*/ 
-            new Item(99, 1, 1){ RuntimeId=12153, NetworkId=519, ExtraData = null },  /*mushroom*/ 
+            new Item(99, 1, 1){ RuntimeId=12168, NetworkId=518, ExtraData = null },  /*mushroom_stem*/ 
+            new Item(99, 2, 1){ RuntimeId=12153, NetworkId=519, ExtraData = null },  /*mushroom*/ 
             new Item(344, 0, 1){ RuntimeId=0, NetworkId=520, ExtraData = null },  /*minecraft:egg*/ 
             new Item(338, 0, 1){ RuntimeId=0, NetworkId=521, ExtraData = null },  /*sugar_canes*/ 
             new Item(353, 0, 1){ RuntimeId=0, NetworkId=522, ExtraData = null },  /*minecraft:sugar*/ 
@@ -958,7 +955,6 @@ namespace MiNET
             new Item(476, 0, 1){ RuntimeId=0, NetworkId=995, ExtraData = null },  /*minecraft:dark_oak_sign*/ 
             new Item(321, 0, 1){ RuntimeId=0, NetworkId=998, ExtraData = null },  /*minecraft:painting*/ 
             new Item(389, 0, 1){ RuntimeId=0, NetworkId=999, ExtraData = null },  /*item_frame*/ 
-            new Item(737, 0, 1){ RuntimeId=0, NetworkId=1000, ExtraData = null },  /*minecraft:honey_bottle*/ 
             new Item(390, 0, 1){ RuntimeId=0, NetworkId=1001, ExtraData = null },  /*minecraft:flower_pot*/ 
             new Item(281, 0, 1){ RuntimeId=0, NetworkId=1002, ExtraData = null },  /*minecraft:bowl*/ 
             new Item(325, 0, 1){ RuntimeId=0, NetworkId=1003, ExtraData = null },  /*minecraft:bucket*/ 
