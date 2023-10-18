@@ -4,7 +4,7 @@ MiNET
 =====
 
 [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/xCNrhDd) 
-[![Build status](https://github.com/NiclasOlofsson/MiNET/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/NiclasOlofsson/MiNET/actions/workflows/dotnetcore.yml)
+[![Build status](https://github.com/CobwebSMP/MiNET/actions/workflows/dotnet.yml/badge.svg)](https://github.com/CobwebSMP/MiNET/actions/workflows/dotnet.yml)
 [![NuGet Version and Downloads count](https://buildstats.info/nuget/MiNET)](https://www.nuget.org/packages/MiNET) 
 
 ## What is this?
