@@ -1780,16 +1780,16 @@ namespace MiNET.Net
 		public Item ReadItem(bool readUniqueId = true)
 		{
 			int id = ReadSignedVarInt();
-			Log.Error($"Shaped item id: {id}");
+			//Log.Error($"Shaped item id: {id}");
 			if (id == 0)
 			{
 				return new ItemAir();
 			}
 
 			short count = (short) ReadShort();
-			Log.Error($"Shaped item count: {count}");
+			//Log.Error($"Shaped item count: {count}");
 			var metadata = ReadUnsignedVarInt();
-			Log.Error($"Shaped item metadata: {metadata}");
+			//Log.Error($"Shaped item metadata: {metadata}");
 			var translated = ItemFactory.Translator.FromNetworkId(id, (short)metadata);
 
 			Item stack = ItemFactory.GetItem((short)translated.Id, translated.Meta, count);
