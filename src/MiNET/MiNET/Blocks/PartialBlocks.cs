@@ -8977,11 +8977,10 @@ namespace MiNET.Blocks
 
     public partial class Lever  // 69 typeof=Lever
     {
-        [StateEnum("down_east_west","east","west","south","north","up_north_south","up_east_west","down_north_south")]
-        public  string LeverDirection { get; set; } = "down_east_west";
-        [StateBit] public  bool OpenBit { get; set; } = false;
+        public string LeverDirection { get; set; } = "down_east_west";
+		public bool OpenBit { get; set; } = false;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {

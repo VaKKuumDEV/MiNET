@@ -23,8 +23,10 @@
 
 #endregion
 
+using System;
 using System.Numerics;
-using MiNET.Utils;
+using log4net;
+using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -32,6 +34,8 @@ namespace MiNET.Blocks
 {
 	public partial class Lever : Block
 	{
+		static string RedstoneSignalDirection { get; set; } = "north";
+		private static readonly ILog Log = LogManager.GetLogger(typeof(Lever));
 		public Lever() : base(69)
 		{
 			IsTransparent = true;
@@ -42,41 +46,99 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			byte direction = player.GetDirection();
-
-			switch (face)
+			var FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
+			Log.Debug(FacingDirection);
+			if (face == BlockFace.Down)
 			{
-				case BlockFace.Down:
-					if (direction == 1 || direction == 3) LeverDirection = "down_north_south";
-					else LeverDirection = "down_east_west";
-					break;
-				case BlockFace.North:
-					LeverDirection = "north";
-					break;
-				case BlockFace.South:
-					LeverDirection = "south";
-					break;
-				case BlockFace.West:
-					LeverDirection = "west";
-					break;
-				case BlockFace.East:
-					LeverDirection = "east";
-					break;
-				case BlockFace.Up:
-					if (direction == 1 || direction == 3) LeverDirection = "up_north_south";
-					else LeverDirection = "up_east_west";
-					break;
+				LeverDirection = FacingDirection switch
+				{
+					5 or 4 => "down_east_west",
+					2 or 3 => "down_north_south",
+					_ => throw new ArgumentOutOfRangeException()
+				};
 			}
+			else if (face == BlockFace.Up)
+			{
+				LeverDirection = FacingDirection switch
+				{
+					5 or 4 => "up_east_west",
+					2 or 3 => "up_north_south",
+					_ => throw new ArgumentOutOfRangeException()
+				};
+			}
+			else
+			{
+				LeverDirection = FacingDirection switch
+				{
+					5 => "east",
+					3 => "south",
+					4 => "west",
+					2 => "north",
+					_ => throw new ArgumentOutOfRangeException()
+				};
+			}
+
+			RedstoneSignalDirection = face switch
+			{
+				BlockFace.North => "south",
+				BlockFace.South => "north",
+				BlockFace.West => "east",
+				BlockFace.East => "west",
+				BlockFace.Up => "down",
+				BlockFace.Down => "up",
+				_ => throw new ArgumentOutOfRangeException()
+			};
 
 			return false;
 		}
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
+			BlockCoordinates cord = blockCoordinates.BlockNorth();
+			if (RedstoneSignalDirection == "north")
+			{
+				cord = blockCoordinates.BlockNorth();
+			}
+			else if (RedstoneSignalDirection == "south")
+			{
+				cord = blockCoordinates.BlockSouth();
+			}
+			else if (RedstoneSignalDirection == "west")
+			{
+				cord = blockCoordinates.BlockWest();
+			}
+			else if (RedstoneSignalDirection == "east")
+			{
+				cord = blockCoordinates.BlockEast();
+			}
+			else if (RedstoneSignalDirection == "up")
+			{
+				cord = blockCoordinates.BlockUp();
+			}
+			else if (RedstoneSignalDirection == "down")
+			{
+				cord = blockCoordinates.BlockDown();
+			}
+			if (!OpenBit)
+			{
+				var blockk = world.GetBlock(cord);
+				if (blockk is RedstoneLamp)
+				{
+					world.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(cord) });
+				}
+			}
+			else
+			{
+				var blockk = world.GetBlock(cord);
+				if (blockk is RedstoneLamp)
+				{
+					world.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });
+				}
+			}
 			OpenBit = !OpenBit;
 			world.SetBlock(this);
-
 			return true;
 		}
+
 	}
 }
