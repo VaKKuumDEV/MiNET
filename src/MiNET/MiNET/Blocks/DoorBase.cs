@@ -55,7 +55,6 @@ namespace MiNET.Blocks
 				block.OpenBit = true;
 				world.SetBlock(block);
 			}
-			Log.Debug($"doorbase  {Direction}");
 			return world.GetBlock(blockCoordinates).IsReplaceable && world.GetBlock(blockCoordinates + Level.Up).IsReplaceable;
 		}
 

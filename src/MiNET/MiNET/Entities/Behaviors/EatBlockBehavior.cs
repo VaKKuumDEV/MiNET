@@ -78,19 +78,19 @@ namespace MiNET.Entities.Behaviors
 
 			BlockCoordinates coord = new Vector3(coordinates.X + direction.X, coordinates.Y, coordinates.Z + direction.Z);
 
-			Block broken = null;
+			int runtimeId = 0;
 			if (_entity.Level.GetBlock(coord) is Tallgrass)
 			{
-				broken = _entity.Level.GetBlock(coord);
+				runtimeId = _entity.Level.GetBlock(coord).GetRuntimeId();
 				_entity.Level.SetAir(coord);
 			}
 			else
 			{
 				coord += BlockCoordinates.Down;
-				broken = _entity.Level.GetBlock(coord);
+				runtimeId = _entity.Level.GetBlock(coord).GetRuntimeId();
 				_entity.Level.SetBlock(new Dirt {Coordinates = coord});
 			}
-			DestroyBlockParticle particle = new DestroyBlockParticle(_entity.Level, broken);
+			DestroyBlockParticle particle = new DestroyBlockParticle(_entity.Level, coord, (uint) runtimeId);
 			particle.Spawn();
 		}
 	}

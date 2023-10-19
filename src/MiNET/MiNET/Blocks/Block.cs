@@ -46,8 +46,6 @@ namespace MiNET.Blocks
 
 		public virtual string Name { get; protected set; }
 		public int Id { get; }
-
-		[Obsolete("Use block states instead.")]
 		public byte Metadata { get; set; }
 
 		public float Hardness { get; protected set; } = 0;
@@ -255,14 +253,14 @@ namespace MiNET.Blocks
 
 		public virtual void BreakBlock(Level world, BlockFace face, bool silent = false)
 		{
-			world.SetAir(Coordinates);
-
+			var runtimeId = BlockFactory.GetRuntimeId(this.Id, this.Metadata);
 			if (!silent)
 			{
-				var particle = new DestroyBlockParticle(world, this);
+				var particle = new DestroyBlockParticle(world, Coordinates, runtimeId);
 				particle.Spawn();
 			}
 
+			world.SetAir(Coordinates);
 			UpdateBlocks(world);
 			world.BroadcastSound(Coordinates, LevelSoundEventType.BreakBlock, Id);
 		}

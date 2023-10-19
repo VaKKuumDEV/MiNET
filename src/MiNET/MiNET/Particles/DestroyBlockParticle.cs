@@ -25,16 +25,17 @@
 
 using MiNET.Blocks;
 using MiNET.Net;
+using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
 namespace MiNET.Particles
 {
 	public class DestroyBlockParticle : LegacyParticle
 	{
-		public DestroyBlockParticle(Level level, Block block) : base(0, level)
+		public DestroyBlockParticle(Level level, BlockCoordinates coordinates, uint runtimeid) : base(0, level)
 		{
-			Data = (int) block.GetRuntimeId();
-			Position = block.Coordinates;
+			Data = (int) runtimeid;
+			Position = coordinates;
 		}
 
 		public override void Spawn()

@@ -1054,9 +1054,7 @@ namespace MiNET.Worlds
 			byte skyLight = chunk.GetSkylight(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
 			byte biomeId = chunk.GetBiome(blockCoordinates.X & 0x0f, blockCoordinates.Z & 0x0f);
 
-			//Block block = BlockFactory.GetBlockById(bid);
 			block.Coordinates = blockCoordinates;
-			//block.Metadata = metadata;
 			block.BlockLight = blockLight;
 			block.SkyLight = skyLight;
 			block.BiomeId = biomeId;
