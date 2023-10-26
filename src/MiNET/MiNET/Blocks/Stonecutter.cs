@@ -22,6 +22,11 @@
 // All Rights Reserved.
 
 #endregion
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
+using System;
 
 namespace MiNET.Blocks
 {
@@ -30,6 +35,21 @@ namespace MiNET.Blocks
 		public Stonecutter() : base(245)
 		{
 			BlastResistance = 17.5f;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
+
+			cardinalDirection = FacingDirection switch
+			{
+				5 => "east",
+				3 => "south",
+				4 => "west",
+				2 => "north",
+				_ => throw new ArgumentOutOfRangeException()
+			};
+			return false;
 		}
 	}
 }

@@ -34,7 +34,7 @@ jobs:
       env:
         NUM: ${{ github.run_number }}
       run: |
-       echo "OFFSET=$(($NUM - 40))" >> $GITHUB_ENV
+       echo "OFFSET=$(($NUM - 42))" >> $GITHUB_ENV
     - uses: actions/checkout@v3
     - name: Upload
       uses: svenstaro/upload-release-action@v2
@@ -43,5 +43,5 @@ jobs:
         file: src/MiNET/MiNET.Console/minet.zip
         asset_name: MiNET.zip
         tag: ${{ github.ref }}
-        release_name: MiNET 1.20.30.${{env.OFFSET}}
+        release_name: MiNET 1.20.40.${{env.OFFSET}}
         body: ${{ github.event.head_commit.message }}

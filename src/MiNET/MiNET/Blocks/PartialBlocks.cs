@@ -858,7 +858,7 @@ namespace MiNET.Blocks
                     case BlockStateString s when s.Name == "damage":
                         Damage = s.Value;
                         break;
-                    case BlockStateString s when s.Name == "cardinal_direction":
+                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
                         cardinalDirection = s.Value;
                         break;
                 } // switch
@@ -871,7 +871,7 @@ namespace MiNET.Blocks
             record.Name = "minecraft:anvil";
             record.Id = 145;
             record.States.Add(new BlockStateString {Name = "damage", Value = Damage});
-            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -1540,7 +1540,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "cardinal_direction":
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
 						cardinalDirection = s.Value;
 						break;
 				} // switch
@@ -1552,7 +1552,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:blast_furnace";
             record.Id = 451;
-            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -2287,18 +2287,18 @@ namespace MiNET.Blocks
 
     public partial class Chest  // 54 typeof=Chest
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+		public string cardinalDirection { get; set; } = "north";
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateInt s when s.Name == "facing_direction":
-                        FacingDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -2307,8 +2307,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:chest";
             record.Id = 54;
-            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
-            return record;
+			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			return record;
         } // method
     } // class
 
@@ -7198,18 +7198,18 @@ namespace MiNET.Blocks
 
     public partial class EnderChest  // 130 typeof=EnderChest
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+		public string cardinalDirection { get; set; } = "north";
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateInt s when s.Name == "facing_direction":
-                        FacingDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -7218,8 +7218,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:ender_chest";
             record.Id = 130;
-            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
-            return record;
+			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			return record;
         } // method
     } // class
 
@@ -7496,7 +7496,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "cardinal_direction":
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
 						cardinalDirection = s.Value;
 						break;
 				} // switch
@@ -7508,7 +7508,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:furnace";
             record.Id = 61;
-            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -8957,7 +8957,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "cardinal_direction":
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
 						cardinalDirection = s.Value;
 						break;
 				} // switch
@@ -8969,7 +8969,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lectern";
             record.Id = 449;
-            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
             record.States.Add(new BlockStateByte {Name = "powered_bit", Value = Convert.ToByte(PoweredBit)});
             return record;
         } // method
@@ -11477,7 +11477,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "cardinal_direction":
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
 						cardinalDirection = s.Value;
 						break;
 				} // switch
@@ -11489,7 +11489,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:smoker";
             record.Id = 453;
-            record.States.Add(new BlockStateString {Name = "cardinal_direction", Value = cardinalDirection});
+            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
             return record;
         } // method
     } // class
@@ -12278,8 +12278,8 @@ namespace MiNET.Blocks
 
     public partial class Stonecutter  // 245 typeof=Stonecutter
     {
-
-        public override void SetState(List<IBlockState> states)
+		public string cardinalDirection { get; set; } = "north";
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
@@ -12300,9 +12300,9 @@ namespace MiNET.Blocks
 
     public partial class StonecutterBlock : Block // 452 typeof=StonecutterBlock
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
-        
-        public StonecutterBlock() : base(452)
+		public string cardinalDirection { get; set; } = "north";
+
+		public StonecutterBlock() : base(452)
         {
             IsGenerated = true;
         }
@@ -12313,10 +12313,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateInt s when s.Name == "facing_direction":
-                        FacingDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -12325,8 +12325,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:stonecutter_block";
             record.Id = 452;
-            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
-            return record;
+			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			return record;
         } // method
     } // class
 
@@ -12745,18 +12745,18 @@ namespace MiNET.Blocks
 
     public partial class TrappedChest  // 146 typeof=TrappedChest
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+		public string cardinalDirection { get; set; } = "north";
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateInt s when s.Name == "facing_direction":
-                        FacingDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
+						cardinalDirection = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -12765,8 +12765,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:trapped_chest";
             record.Id = 146;
-            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
-            return record;
+			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			return record;
         } // method
     } // class
 
