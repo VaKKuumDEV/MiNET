@@ -506,6 +506,10 @@ namespace MiNET.Worlds
 				if (TickTime % (SaveInterval * 20) == 0)
 				{
 					WorldProvider.SaveChunks();
+					/*for (int i = 0; i < players.Length; i++)
+					{
+						players[i].SavePlayerInventory();
+					}*/
 				}
 
 				// Unload chunks not needed
@@ -1284,11 +1288,8 @@ namespace MiNET.Worlds
 			ChunkColumn chunk = GetChunk(new ChunkCoordinates(blockEntity.Coordinates.X >> 4, blockEntity.Coordinates.Z >> 4));
 			chunk.SetBlockEntity(blockEntity.Coordinates, blockEntity.GetCompound());
 
-			if (blockEntity.UpdatesOnTick)
-			{
-				BlockEntities.RemoveAll(entity => entity.Coordinates == blockEntity.Coordinates);
-				BlockEntities.Add(blockEntity);
-			}
+			BlockEntities.RemoveAll(entity => entity.Coordinates == blockEntity.Coordinates);
+			BlockEntities.Add(blockEntity);
 
 			if (!broadcast) return;
 
@@ -1315,13 +1316,17 @@ namespace MiNET.Worlds
 		{
 			ChunkColumn chunk = GetChunk(new ChunkCoordinates(blockCoordinates.X >> 4, blockCoordinates.Z >> 4));
 			var nbt = chunk.GetBlockEntity(blockCoordinates);
-
 			if (nbt == null) return;
 
 			var blockEntity = BlockEntities.FirstOrDefault(entity => entity.Coordinates == blockCoordinates);
 			if (blockEntity != null)
 			{
 				BlockEntities.Remove(blockEntity);
+				Log.Error("NOT NULL");
+			}
+			else
+			{
+				Log.Error("NULL");
 			}
 
 			chunk.RemoveBlockEntity(blockCoordinates);
@@ -1440,6 +1445,7 @@ namespace MiNET.Worlds
 			{
 				RemoveBlockEntity(block.Coordinates);
 				drops.AddRange(blockEntity.GetDrops());
+				//Log.Error(drops);
 			}
 
 			if ((player != null && player.GameMode == GameMode.Survival) || (player == null && GameMode == GameMode.Survival))

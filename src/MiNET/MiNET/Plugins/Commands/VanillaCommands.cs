@@ -641,11 +641,11 @@ namespace MiNET.Plugins.Commands
 				{
 					if (reason == "")
 					{
-						p.Disconnect($"You have been kicked by {commander}");
+						p.Disconnect($"You have been kicked by {commander.Username}");
 					}
 					else
 					{
-						p.Disconnect($"You have been kicked by {commander} for {reason}");
+						p.Disconnect($"You have been kicked by {commander.Username} for {reason}");
 					}
 					return $"{p.Username} has been removed from the server.";
 				}

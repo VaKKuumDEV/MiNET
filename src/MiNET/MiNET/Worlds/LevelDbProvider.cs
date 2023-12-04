@@ -381,7 +381,6 @@ namespace MiNET.Worlds
 		public int SaveChunks()
 		{
 			if (!Config.GetProperty("Save.Enabled", false)) return 0;
-
 			int count = 0;
 			try
 			{
@@ -459,31 +458,33 @@ namespace MiNET.Worlds
 			Db.Put(Combine(index, 0x2D), data2D);
 
 			//// Block entities
-			//byte[] blockEntityBytes = Db.Get(Combine(index, 0x31));
-			//if (blockEntityBytes != null)
-			//{
-			//	var data = blockEntityBytes.AsMemory();
+			byte[] blockEntityBytes = Db.Get(Combine(index, 0x31));
+			if (blockEntityBytes != null)
+			{
+				var data = blockEntityBytes.AsMemory();
 
-			//	var file = new NbtFile
-			//	{
-			//		BigEndian = false,
-			//		UseVarInt = false
-			//	};
-			//	int position = 0;
-			//	do
-			//	{
-			//		position += (int) file.LoadFromStream(new MemoryStreamReader(data.Slice(position)), NbtCompression.None);
+				var file = new NbtFile
+				{
+					BigEndian = false,
+					UseVarInt = false
+				};
+				int position = 0;
+				do
+				{
+					position += (int) file.LoadFromStream(new MemoryStreamReader(data.Slice(position)), NbtCompression.None);
 
-			//		NbtTag blockEntityTag = file.RootTag;
-			//		int x = blockEntityTag["x"].IntValue;
-			//		int y = blockEntityTag["y"].IntValue;
-			//		int z = blockEntityTag["z"].IntValue;
+					NbtTag blockEntityTag = file.RootTag;
+					int x = blockEntityTag["x"].IntValue;
+					int y = blockEntityTag["y"].IntValue;
+					int z = blockEntityTag["z"].IntValue;
 
-			//		chunkColumn.SetBlockEntity(new BlockCoordinates(x, y, z), (NbtCompound) blockEntityTag);
-			//	} while (position < data.Length);
-			//}
+					chunk.SetBlockEntity(new BlockCoordinates(x, y, z), (NbtCompound) blockEntityTag);
+				} while (position < data.Length);
+			}
 
-			//chunk.IsDirty = false;
+			//// Entities
+			//byte[] EntityBytes = Db.Get(Combine(index, 0x32));
+			chunk.IsDirty = false;
 			chunk.NeedSave = false;
 		}
 

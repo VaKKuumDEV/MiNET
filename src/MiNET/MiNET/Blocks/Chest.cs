@@ -23,6 +23,7 @@
 
 #endregion
 
+using MiNET.BlockEntities;
 using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
@@ -49,7 +50,11 @@ namespace MiNET.Blocks
 				2 => "north",
 				_ => throw new ArgumentOutOfRangeException()
 			};
+
+			var chestBlockEntity = new ChestBlockEntity { Coordinates = Coordinates };
+			world.SetBlockEntity(chestBlockEntity);
 			return false;
 		}
+
 	}
 }

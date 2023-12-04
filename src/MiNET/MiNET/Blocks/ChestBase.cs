@@ -44,14 +44,13 @@ namespace MiNET.Blocks
 		}
 
 
-		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		/*public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var chestBlockEntity = new ChestBlockEntity {Coordinates = Coordinates};
 			world.SetBlockEntity(chestBlockEntity);
 
 			return false;
-		}
-
+		}*/
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
