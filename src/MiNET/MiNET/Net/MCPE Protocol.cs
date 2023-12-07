@@ -41,13 +41,14 @@ using LongString = System.String;
 using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
 using MiNET.Utils.Nbt;
+using MiNET.Net;
 
 namespace MiNET.Net
 {
 	public class McpeProtocolInfo
 	{
-		public const int ProtocolVersion = 622;
-		public const string GameVersion = "1.20.40";
+		public const int ProtocolVersion = 630;
+		public const string GameVersion = "1.20.50";
 	}
 
 	public interface IMcpeMessageHandler
@@ -116,6 +117,7 @@ namespace MiNET.Net
 		void HandleMcpeEmote(McpeEmotePacket message);
 		void HandleMcpeEmoteList(McpeEmoteList message);
 		void HandleMcpePermissionRequest(McpePermissionRequest message);
+		void HandleMcpeSetInventoryOptions(McpeSetInventoryOptions message);
 	}
 
 	public interface IMcpeClientMessageHandler
@@ -1045,6 +1047,8 @@ namespace MiNET.Net
 						return McpeEmoteList.CreateObject().Decode(buffer);
 					case 0xb9:
 						return McpePermissionRequest.CreateObject().Decode(buffer);
+					case 0x133:
+						return McpeSetInventoryOptions.CreateObject().Decode(buffer);
 				}
 			}
 
@@ -1052,14 +1056,6 @@ namespace MiNET.Net
 		}
 	}
 
-	public enum AdventureFlags
-	{
-		Mayfly = 0x40,
-		Noclip = 0x80,
-		Worldbuilder = 0x100,
-		Flying = 0x200,
-		Muted = 0x400,
-	}
 	public enum CommandPermission
 	{
 		Normal = 0,
@@ -10791,6 +10787,63 @@ namespace MiNET.Net
 
 	}
 
+	public partial class McpeSetInventoryOptions : Packet<McpeSetInventoryOptions>
+	{
+
+		public int leftTab; // = null;
+		public int rightTab; // = null;
+		public bool filtering; // = null;
+		public int inventoryLayout; // = null;
+		public int craftingLayout; // = null;
+
+		public McpeSetInventoryOptions()
+		{
+			Id = 0x133;
+			IsMcpe = true;
+		}
+
+		protected override void EncodePacket()
+		{
+			base.EncodePacket();
+
+			BeforeEncode();
+
+			AfterEncode();
+		}
+
+		partial void BeforeEncode();
+		partial void AfterEncode();
+
+		protected override void DecodePacket()
+		{
+			base.DecodePacket();
+
+			BeforeDecode();
+
+			leftTab = ReadSignedVarInt();
+			rightTab = ReadSignedVarInt();
+			filtering = ReadBool();
+			inventoryLayout = ReadSignedVarInt();
+			craftingLayout = ReadSignedVarInt();
+
+			AfterDecode();
+		}
+
+		partial void BeforeDecode();
+		partial void AfterDecode();
+
+		protected override void ResetPacket()
+		{
+			base.ResetPacket();
+
+			leftTab = default(int);
+			rightTab = default(int);
+			filtering = default(bool);
+			inventoryLayout = default(int);
+			craftingLayout = default(int);
+
+		}
+
+	}
 
 }
-

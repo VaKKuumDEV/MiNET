@@ -246,6 +246,9 @@ namespace MiNET.Net
 				case McpePermissionRequest msg:
 					handler.HandleMcpePermissionRequest(msg);
 					break;
+				case McpeSetInventoryOptions msg:
+					handler.HandleMcpeSetInventoryOptions(msg);
+					break;
 
 				default:
 				{

@@ -10045,18 +10045,13 @@ namespace MiNET.Blocks
 
     public partial class Planks  // 5 typeof=Planks
     {
-        [StateEnum("spruce","birch","jungle","acacia","dark_oak","oak")]
-        public  string WoodType { get; set; } = "";
-
-        public override void SetState(List<IBlockState> states)
+		public string blockName { get; set; } = "minecraft:oak_planks";
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "wood_type":
-                        WoodType = s.Value;
-                        break;
                 } // switch
             } // foreach
         } // method
@@ -10064,9 +10059,8 @@ namespace MiNET.Blocks
         public override BlockStateContainer GetState()
         {
             var record = new BlockStateContainer();
-            record.Name = "minecraft:planks";
+            record.Name = blockName;
             record.Id = 5;
-            record.States.Add(new BlockStateString {Name = "wood_type", Value = WoodType});
             return record;
         } // method
     } // class
@@ -12099,18 +12093,14 @@ namespace MiNET.Blocks
 
     public partial class Stone  // 1 typeof=Stone
     {
-        [StateEnum("granite","granite_smooth","diorite","diorite_smooth","andesite","andesite_smooth","stone")]
-        public  string StoneType { get; set; } = "";
+		public string blockName { get; set; } = "minecraft:stone";
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "stone_type":
-                        StoneType = s.Value;
-                        break;
                 } // switch
             } // foreach
         } // method
@@ -12118,9 +12108,8 @@ namespace MiNET.Blocks
         public override BlockStateContainer GetState()
         {
             var record = new BlockStateContainer();
-            record.Name = "minecraft:stone";
-            record.Id = 1;
-            record.States.Add(new BlockStateString {Name = "stone_type", Value = StoneType});
+			record.Name = blockName;
+			record.Id = 1;
             return record;
         } // method
     } // class

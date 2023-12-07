@@ -23,6 +23,11 @@
 
 #endregion
 
+using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
+
 namespace MiNET.Blocks
 {
 	public partial class Planks : Block
@@ -33,6 +38,13 @@ namespace MiNET.Blocks
 			BlastResistance = 15;
 			Hardness = 2;
 			IsFlammable = true;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:planks", itemInHand.Metadata);
+			return false;
 		}
 	}
 }

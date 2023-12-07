@@ -791,6 +791,10 @@ namespace MiNET
 		public void HandleMcpePermissionRequest(McpePermissionRequest message)
 		{
 		}
+
+		public void HandleMcpeSetInventoryOptions(McpeSetInventoryOptions message)
+		{
+		}
 	}
 
 	public interface IServerManager

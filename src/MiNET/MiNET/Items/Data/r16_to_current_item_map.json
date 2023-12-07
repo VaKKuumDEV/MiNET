@@ -153,6 +153,14 @@
             "0": "minecraft:acacia_log",
             "1": "minecraft:dark_oak_log"
         },
+        "minecraft:planks": {
+            "0": "minecraft:oak_planks",
+            "1": "minecraft:spruce_planks",
+            "2": "minecraft:birch_planks",
+            "3": "minecraft:jungle_planks",
+            "4": "minecraft:acacia_planks",
+            "5": "minecraft:dark_oak_planks"
+        },
         "minecraft:shulker_box": {
             "0": "minecraft:white_shulker_box",
             "1": "minecraft:orange_shulker_box",
@@ -197,6 +205,7 @@
             "128": "minecraft:goat_spawn_egg",
             "129": "minecraft:glow_squid_spawn_egg",
             "13": "minecraft:sheep_spawn_egg",
+            "130": "minecraft:axolotl_bucket",
             "131": "minecraft:warden_spawn_egg",
             "132": "minecraft:frog_spawn_egg",
             "133": "minecraft:tadpole_spawn_egg",
@@ -204,6 +213,7 @@
             "138": "minecraft:camel_spawn_egg",
             "139": "minecraft:sniffer_spawn_egg",
             "14": "minecraft:wolf_spawn_egg",
+            "15": "minecraft:villager_spawn_egg",
             "157": "minecraft:trader_llama_spawn_egg",
             "16": "minecraft:mooshroom_spawn_egg",
             "17": "minecraft:squid_spawn_egg",
@@ -233,6 +243,7 @@
             "41": "minecraft:ghast_spawn_egg",
             "42": "minecraft:magma_cube_spawn_egg",
             "43": "minecraft:blaze_spawn_egg",
+            "44": "minecraft:zombie_villager_spawn_egg",
             "45": "minecraft:witch_spawn_egg",
             "46": "minecraft:stray_spawn_egg",
             "47": "minecraft:husk_spawn_egg",
@@ -305,6 +316,15 @@
             "8": "minecraft:light_gray_terracotta",
             "9": "minecraft:cyan_terracotta"
         },
+		"minecraft:stone": {
+			"0": "minecraft:stone",
+			"1": "minecraft:granite",
+			"2": "minecraft:polished_granite",
+			"3": "minecraft:diorite",
+			"4": "minecraft:polished_diorite",
+			"5": "minecraft:andesite",
+			"6": "minecraft:polished_andesite"
+		},
         "minecraft:wool": {
             "0": "minecraft:white_wool",
             "1": "minecraft:orange_wool",
@@ -397,6 +417,10 @@
         "minecraft:sign": "minecraft:oak_sign",
         "minecraft:speckled_melon": "minecraft:glistering_melon_slice",
         "minecraft:stickypistonarmcollision": "minecraft:sticky_piston_arm_collision",
+        "minecraft:stone_slab": "minecraft:stone_block_slab",
+        "minecraft:stone_slab2": "minecraft:stone_block_slab2",
+        "minecraft:stone_slab3": "minecraft:stone_block_slab3",
+        "minecraft:stone_slab4": "minecraft:stone_block_slab4",
         "minecraft:totem": "minecraft:totem_of_undying",
         "minecraft:turtle_shell_piece": "minecraft:scute"
     }

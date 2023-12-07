@@ -24,6 +24,9 @@
 #endregion
 
 using MiNET.Items;
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
 
 namespace MiNET.Blocks
 {
@@ -40,6 +43,13 @@ namespace MiNET.Blocks
 			if (tool.ItemType != ItemType.PickAxe) return new Item[0];
 
 			return new[] {new ItemBlock(new Cobblestone(), 0) {Count = 1}}; // Drop cobblestone
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			var itemInHand = player.Inventory.GetItemInHand();
+			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:stone", itemInHand.Metadata);
+			return false;
 		}
 	}
 }

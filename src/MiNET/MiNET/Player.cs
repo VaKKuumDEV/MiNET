@@ -4091,6 +4091,11 @@ namespace MiNET
 		{
 		}
 
+		public virtual void HandleMcpeSetInventoryOptions(McpeSetInventoryOptions message)
+		{
+			Log.Debug($"InventoryOptions: leftTab={message.leftTab}, rightTab={message.rightTab}, filtering={message.filtering}, inventoryLayout={message.inventoryLayout}, craftingLayout={message.craftingLayout}");
+		}
+
 	}
 
 	public class PlayerEventArgs : EventArgs
