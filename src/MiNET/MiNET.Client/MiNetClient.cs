@@ -546,17 +546,34 @@ namespace MiNET.Client
 			writer.WriteLine("{");
 			writer.Indent++;
 
+			int metaId = 0;
+			int idOffset = 0;
+
 			foreach (var entry in slots)
 			{
 				var slot = entry;
 
 				NbtCompound extraData = slot.ExtraData;
-
-				
-				//var matchingBlock = BlockFactory.BlockPalette[slot.RuntimeId];
 				
 				var serialized = SerializeCompound(extraData);
-				writer.WriteLine($"new Item({slot.Id}, {slot.Metadata}, {slot.Count}){{ RuntimeId={slot.RuntimeId}, NetworkId={slot.NetworkId}, ExtraData = {serialized} }}, ");
+				var items = InventoryUtils.CreativeInventoryItems;
+				foreach (Item item in items)
+				{
+					if (item.Id == slot.Id)
+					{
+						if (idOffset == slot.Id)
+						{
+							metaId++;
+						}
+						else
+						{
+							metaId = 0;
+						}
+						idOffset = slot.Id;
+						writer.WriteLine($"new Item({item.Id}, {metaId}, {item.Count}){{ RuntimeId={slot.RuntimeId}, NetworkId={slot.NetworkId}, ExtraData = {serialized} }}, ");
+						break;
+					}
+				}
 			}
 
 			// Template
