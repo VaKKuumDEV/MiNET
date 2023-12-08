@@ -458,7 +458,7 @@ namespace MiNET.Worlds
 			Db.Put(Combine(index, 0x2D), data2D);
 
 			//// Block entities
-			byte[] blockEntityBytes = Db.Get(Combine(index, 0x31));
+			/*byte[] blockEntityBytes = Db.Get(Combine(index, 0x31));
 			if (blockEntityBytes != null)
 			{
 				var data = blockEntityBytes.AsMemory();
@@ -484,7 +484,7 @@ namespace MiNET.Worlds
 
 			//// Entities
 			//byte[] EntityBytes = Db.Get(Combine(index, 0x32));
-			chunk.IsDirty = false;
+			chunk.IsDirty = false;*/
 			chunk.NeedSave = false;
 		}
 

@@ -149,9 +149,8 @@ namespace MiNET.Worlds
 
 				// Pre-cache chunks for spawn coordinates
 				int i = 0;
-				if (Dimension == Dimension.Nether)
+				if (Dimension == Dimension.Overworld)
 				{
-				}
 				var chunkCoordinates = new ChunkCoordinates(SpawnPoint) / 8;
 				foreach (var chunk in GenerateChunks(chunkCoordinates, new Dictionary<ChunkCoordinates, McpeWrapper>(), ViewDistance))
 				{
@@ -159,6 +158,7 @@ namespace MiNET.Worlds
 				}
 
 				Log.Info($"World pre-cache {i} chunks completed in {chunkLoading.ElapsedMilliseconds}ms");
+				}
 			}
 
 			if (Dimension == Dimension.Overworld)
@@ -1288,8 +1288,11 @@ namespace MiNET.Worlds
 			ChunkColumn chunk = GetChunk(new ChunkCoordinates(blockEntity.Coordinates.X >> 4, blockEntity.Coordinates.Z >> 4));
 			chunk.SetBlockEntity(blockEntity.Coordinates, blockEntity.GetCompound());
 
-			BlockEntities.RemoveAll(entity => entity.Coordinates == blockEntity.Coordinates);
-			BlockEntities.Add(blockEntity);
+			if (blockEntity.UpdatesOnTick)
+			{
+				BlockEntities.RemoveAll(entity => entity.Coordinates == blockEntity.Coordinates);
+				BlockEntities.Add(blockEntity);
+			}
 
 			if (!broadcast) return;
 
