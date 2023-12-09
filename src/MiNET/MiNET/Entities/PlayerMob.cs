@@ -109,6 +109,24 @@ namespace MiNET.Entities
 			return metadata;
 		}
 
+		private AbilityLayers GetAbilities()
+		{
+			var layers = new AbilityLayers();
+
+			var baseLayer = new AbilityLayer()
+			{
+				Type = AbilityLayerType.Base,
+				Abilities = PlayerAbility.All,
+				Values = 0,
+				FlySpeed = 0,
+				WalkSpeed = 0
+			};
+
+			layers.Add(baseLayer);
+
+			return layers;
+		}
+
 		public override void SpawnToPlayers(Player[] players)
 		{
 			{
@@ -147,7 +165,7 @@ namespace MiNET.Entities
 				message.headYaw = KnownPosition.HeadYaw;
 				message.pitch = KnownPosition.Pitch;
 				message.metadata = GetMetadata();
-			//	message.userId = -1;
+				message.layers = GetAbilities();
 				Level.RelayBroadcast(players, message);
 			}
 

@@ -55,7 +55,7 @@ namespace MiNET.Items
 			}
 			else
 			{
-				if (!(BlockFactory.GetBlockById(176) is WallBanner banner)) return;
+				if (!(BlockFactory.GetBlockById(177) is WallBanner banner)) return;
 				banner.ExtraData = ExtraData;
 				banner.Base = Metadata;
 				Block = banner;
