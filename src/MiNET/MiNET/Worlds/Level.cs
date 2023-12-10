@@ -168,15 +168,6 @@ namespace MiNET.Worlds
 					SpawnPoint.Y = GetHeight((BlockCoordinates) SpawnPoint) + 1;
 					Log.Debug("Checking for safe spawn");
 				}
-
-				if (LevelManager != null && WorldProvider.HaveNether())
-				{
-					NetherLevel = LevelManager.GetDimension(this, Dimension.Nether);
-				}
-				if (LevelManager != null && WorldProvider.HaveTheEnd())
-				{
-					TheEndLevel = LevelManager.GetDimension(this, Dimension.TheEnd);
-				}
 			}
 
 			//SpawnPoint.Y = 20;
@@ -198,9 +189,6 @@ namespace MiNET.Worlds
 		public virtual void Close()
 		{
 			WorldProvider?.SaveChunks();
-
-			NetherLevel?.Close();
-			TheEndLevel?.Close();
 
 			_tickerHighPrecisionTimer?.Dispose();
 			_tickerHighPrecisionTimer = null;
