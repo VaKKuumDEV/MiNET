@@ -419,7 +419,7 @@ namespace MiNET.Net.RakNet
 
 		public virtual void Disconnect(string reason, bool sendDisconnect = true)
 		{
-			CustomMessageHandler?.Disconnect(reason, sendDisconnect);
+			CustomMessageHandler?.Disconnect("RakSession: " + reason, sendDisconnect);
 			Close();
 		}
 
@@ -664,14 +664,13 @@ namespace MiNET.Net.RakNet
 				return;
 			}
 
-			State = ConnectionState.Unconnected;
-			Evicted = true;
-			CustomMessageHandler = null;
-
-			// Send with high priority, bypass queue
 			SendDirectPacket(DisconnectionNotification.CreateObject());
 
 			SendQueueAsync(500).Wait();
+
+			State = ConnectionState.Unconnected;
+			Evicted = true;
+			CustomMessageHandler = null;
 
 			_cancellationToken.Cancel();
 			_packetQueuedWaitEvent.Set();

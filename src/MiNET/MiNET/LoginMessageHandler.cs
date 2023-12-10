@@ -532,7 +532,7 @@ namespace MiNET
 			if (_playerInfo.ProtocolVersion != McpeProtocolInfo.ProtocolVersion)
 			{
 				Log.Warn($"Wrong version ({_playerInfo.ProtocolVersion}) of Minecraft. Upgrade to join this server.");
-				_session.Disconnect($"Wrong version ({_playerInfo.ProtocolVersion}) of Minecraft. Upgrade to join this server.");
+				_session.Disconnect($"Wrong version ({_playerInfo.ProtocolVersion}) of Minecraft. This server requires {McpeProtocolInfo.ProtocolVersion}");
 				return;
 			}
 

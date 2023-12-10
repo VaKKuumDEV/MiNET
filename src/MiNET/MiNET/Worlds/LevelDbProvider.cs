@@ -56,6 +56,7 @@ namespace MiNET.Worlds
 		public Database Db { get; private set; }
 
 		public string BasePath { get; private set; }
+
 		public LevelInfoBedrock LevelInfo { get; private set; }
 		public bool IsCaching { get; } = true;
 		public bool Locked { get; set; } = false;
@@ -74,7 +75,8 @@ namespace MiNET.Worlds
 
 		public void Initialize()
 		{
-			BasePath ??= Config.GetProperty("LevelDBWorldFolder", "World").Trim();
+			BasePath ??= Config.GetProperty("WorldDirectory", "Worlds").Trim();
+			var pluginDir = Config.GetProperty("PluginDirectory", "Plugins").Trim();
 
 			var directory = new DirectoryInfo(Path.Combine(BasePath, "db"));
 
@@ -98,6 +100,15 @@ namespace MiNET.Worlds
 			{
 				Log.Warn($"No level.dat found at {levelFileName}. Creating empty.");
 				LevelInfo = new LevelInfoBedrock();
+				if (!Directory.Exists(BasePath))
+				{
+					Directory.CreateDirectory(BasePath);
+				}
+				if (!Directory.Exists(pluginDir))
+				{
+					Directory.CreateDirectory(pluginDir);
+				}
+				SaveLevelInfo(LevelInfo);
 			}
 
 			// We must reuse the same DB for all providers (dimensions) in LevelDB.
@@ -386,7 +397,7 @@ namespace MiNET.Worlds
 			{
 				lock (_chunkCache)
 				{
-					if (Dimension == Dimension.Overworld) SaveLevelInfo(LevelInfo);
+				SaveLevelInfo(LevelInfo);
 
 					foreach (ChunkColumn chunkColumn in _chunkCache.Values)
 					{

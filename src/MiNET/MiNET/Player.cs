@@ -4032,6 +4032,7 @@ namespace MiNET
 			McpeRemoveEntity mcpeRemovePlayer = McpeRemoveEntity.CreateObject();
 			mcpeRemovePlayer.entityIdSelf = EntityId;
 			Level.RelayBroadcast(this, players, mcpeRemovePlayer);
+			Log.Debug($"remen {EntityId}");
 		}
 
 
