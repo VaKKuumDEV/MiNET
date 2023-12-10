@@ -63,7 +63,7 @@ namespace MiNET.Net.Items
 
 				if (simpleMappings.ContainsKey(newId))
 				{
-					Log.Warn($"Duplicate mapping for StringID. NewId={newId} OldId={oldId}");
+					Log.Debug($"Duplicate mapping for StringID. NewId={newId} OldId={oldId}");
 
 					continue;
 				}
@@ -71,7 +71,7 @@ namespace MiNET.Net.Items
 
 				if (!legacyTranslations.ContainsKey(oldId))
 				{
-					Log.Warn($"Could not translate item! OldId={oldId} NewId={newId}");
+					Log.Debug($"Could not translate item! OldId={oldId} NewId={newId}");
 					continue;
 				}
 				
@@ -108,7 +108,7 @@ namespace MiNET.Net.Items
 					{
 						if (!complexMapping.TryAdd(newId, new TranslatedItem(legacyIntegerId, meta)))
 						{
-							Log.Warn($"Duplicate complex... OldId={oldId} NewId={newId} (IntegerID={legacyIntegerId} Meta={meta})");
+							Log.Debug($"Duplicate complex... OldId={oldId} NewId={newId} (IntegerID={legacyIntegerId} Meta={meta})");
 						}
 					}
 				}

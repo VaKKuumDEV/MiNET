@@ -108,6 +108,8 @@ namespace MiNET.Worlds
 
 		public int ViewDistance { get; set; }
 
+		public int TickDistance { get; set; }
+
 		public Random Random { get; private set; }
 
 		public int SaveInterval { get; set; } = 300;
@@ -125,6 +127,7 @@ namespace MiNET.Worlds
 			GameMode = gameMode;
 			Difficulty = difficulty;
 			ViewDistance = viewDistance;
+			TickDistance = ViewDistance / 2;
 			WorldProvider = worldProvider;
 		}
 
@@ -152,7 +155,7 @@ namespace MiNET.Worlds
 				if (Dimension == Dimension.Overworld)
 				{
 				var chunkCoordinates = new ChunkCoordinates(SpawnPoint) / 8;
-				foreach (var chunk in GenerateChunks(chunkCoordinates, new Dictionary<ChunkCoordinates, McpeWrapper>(), ViewDistance))
+				foreach (var chunk in GenerateChunks(chunkCoordinates, new Dictionary<ChunkCoordinates, McpeWrapper>(), 1))
 				{
 					if (chunk != null) i++;
 				}
@@ -504,8 +507,20 @@ namespace MiNET.Worlds
 				if (UnloadInterval > 0 && TickTime % (UnloadInterval * 20) == 0)
 				{
 					var cacheProvider = WorldProvider as ICachingWorldProvider;
-					int removed = cacheProvider?.UnloadChunks(players, (ChunkCoordinates) (BlockCoordinates) SpawnPoint, ViewDistance) ?? 0;
-					if (removed > 0) Log.Warn($"Unloaded {removed} chunks, {cacheProvider?.GetCachedChunks().Length} chunks remain cached");
+					int removed = 0;
+					if (players.Length > 0)
+					{
+						foreach (var player in players)
+						{
+							ChunkCoordinates oldChunks = (ChunkCoordinates) (BlockCoordinates) player.KnownPosition;
+							removed += cacheProvider?.UnloadChunks(players, oldChunks, ViewDistance) ?? 0;
+						}
+					}
+					else
+					{
+						removed += cacheProvider?.UnloadChunks(players, (ChunkCoordinates) (BlockCoordinates) SpawnPoint, 1) ?? 0;
+					}
+						if (removed > 0) Log.Warn($"Unloaded {removed} chunks, {cacheProvider?.GetCachedChunks().Length} chunks remain cached");
 				}
 
 				var blockAndChunkTickMeasurement = worldTickMeasurement?.Begin("Block and chunk tick");
@@ -513,14 +528,14 @@ namespace MiNET.Worlds
 				Entity[] entities = Entities.Values.OrderBy(e => e.EntityId).ToArray();
 				if (EnableChunkTicking || EnableBlockTicking)
 				{
-					if (EnableChunkTicking) EntitySpawnManager.DespawnMobs(TickTime);
+					if (DoMobspawning) EntitySpawnManager.DespawnMobs(TickTime);
 
 					List<EntitySpawnManager.SpawnState> chunksWithinRadiusOfPlayer = new List<EntitySpawnManager.SpawnState>();
 					foreach (var player in players)
 					{
 						BlockCoordinates bCoord = (BlockCoordinates) player.KnownPosition;
 
-						chunksWithinRadiusOfPlayer = GetChunkCoordinatesForTick(new ChunkCoordinates(bCoord), chunksWithinRadiusOfPlayer, 17, Random); // Should actually be 15
+						chunksWithinRadiusOfPlayer = GetChunkCoordinatesForTick(new ChunkCoordinates(bCoord), chunksWithinRadiusOfPlayer, TickDistance, Random);
 					}
 
 					if (chunksWithinRadiusOfPlayer.Count > 0)

@@ -128,11 +128,11 @@ namespace MiNET.Entities
 			foreach (var entity in Level.Entities)
 			{
 				if (!entity.Value.CanDespawn) continue;
-
-				if (Level.Players.Count(player => player.Value.IsSpawned && Vector3.Distance(entity.Value.KnownPosition, player.Value.KnownPosition) < 128) == 0)
+				var tickBlockDistance = Level.TickDistance * 16;
+				if (Level.Players.Count(player => player.Value.IsSpawned && Vector3.Distance(entity.Value.KnownPosition, player.Value.KnownPosition) < tickBlockDistance) == 0)
 				{
 					if (Log.IsDebugEnabled)
-						Log.Debug($"Despawned entity because no players within 128 blocks distance");
+						Log.Debug($"Despawned entity because no players within {tickBlockDistance} blocks distance");
 
 					entity.Value.DespawnEntity();
 				}

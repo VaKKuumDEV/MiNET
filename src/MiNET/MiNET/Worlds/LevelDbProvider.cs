@@ -81,7 +81,7 @@ namespace MiNET.Worlds
 			var directory = new DirectoryInfo(Path.Combine(BasePath, "db"));
 
 			var levelFileName = Path.Combine(BasePath, "level.dat");
-			Log.Debug($"Loading level.dat from {levelFileName}");
+			Log.Warn($"Loading level.dat from {levelFileName}");
 			if (File.Exists(levelFileName))
 			{
 				var file = new NbtFile
@@ -421,7 +421,7 @@ namespace MiNET.Worlds
 		{
 			levelInfo.LastPlayed = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 			string levelFileName = Path.Combine(BasePath, "level.dat");
-			Log.Debug($"Saving level.dat to {levelFileName}");
+			Log.Warn($"Saving level.dat to {levelFileName}");
 
 			NbtTag nbt = levelInfo.Serialize();
 
