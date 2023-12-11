@@ -303,15 +303,7 @@ namespace MiNET.Worlds
 
 				Player[] sendList = spawnedPlayers.ToArray();
 
-				var playerListMessage = McpePlayerList.CreateObject();
-				playerListMessage.records = new PlayerAddRecords(spawnedPlayers);
-				newPlayer.SendPacket(CreateMcpeBatch(playerListMessage.Encode()));
-				playerListMessage.PutPool();
-
-				var playerList = McpePlayerList.CreateObject();
-				playerList.records = new PlayerAddRecords {newPlayer};
-				RelayBroadcast(newPlayer, sendList, CreateMcpeBatch(playerList.Encode()));
-				playerList.PutPool();
+				SendPlayerList();
 
 				newPlayer.SpawnToPlayers(players);
 
@@ -320,6 +312,17 @@ namespace MiNET.Worlds
 					spawnedPlayer.SpawnToPlayers(new[] {newPlayer});
 				}
 			}
+		}
+
+		public async void SendPlayerList()
+		{
+			await Task.Delay(4000);
+			Player[] players = GetAllPlayers();
+			var spawnedPlayers = players.ToList();
+			McpePlayerList playerListMessage = McpePlayerList.CreateObject();
+			playerListMessage.records = new PlayerAddRecords(spawnedPlayers);
+			RelayBroadcast(CreateMcpeBatch(playerListMessage.Encode()));
+			playerListMessage.PutPool();
 		}
 
 		public virtual void RemovePlayer(Player player, bool despawn = true)
