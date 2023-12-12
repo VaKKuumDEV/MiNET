@@ -127,7 +127,7 @@ namespace MiNET.Items
 				player.Inventory.SetInventorySlot(player.Inventory.InHandSlot, itemInHand);
 			}
 
-			world.BroadcastSound(newBlock.Coordinates, LevelSoundEventType.Place, newBlock.Id);
+			world.BroadcastSound(newBlock.Coordinates, LevelSoundEventType.Place, newBlock.GetRuntimeId());
 		}
 
 		public override string ToString()
