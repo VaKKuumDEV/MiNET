@@ -31,7 +31,7 @@ using MiNET.Utils;
 
 namespace MiNET.Blocks
 {
-	public partial class StoneSlab // 44 typeof=StoneSlab
+	public partial class StoneBlockSlab // 44 typeof=StoneBlockSlab
 	{
 		public string StoneSlabType { get; set; } = "smooth_stone";
 		public string verticalHalf { get; set; } = "bottom";
@@ -42,7 +42,7 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "vertical_half":
+					case BlockStateString s when s.Name == "minecraft:vertical_half":
 						verticalHalf = s.Value;
 						break;
 					case BlockStateString s when s.Name == "stone_slab_type":
@@ -57,13 +57,13 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab";
 			record.Id = 44;
-			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type", Value = StoneSlabType });
 			return record;
 		} // method
 	} // class
 
-	public partial class StoneSlab2 // 182 typeof=StoneSlab2
+	public partial class StoneBlockSlab2 // 182 typeof=StoneBlockSlab2
 	{
 		public string StoneSlabType2 { get; set; } = "mossy_cobblestone";
 		public string verticalHalf { get; set; } = "bottom";
@@ -74,7 +74,7 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "vertical_half":
+					case BlockStateString s when s.Name == "minecraft:vertical_half":
 						verticalHalf = s.Value;
 						break;
 					case BlockStateString s when s.Name == "stone_slab_type_2":
@@ -89,13 +89,13 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab2";
 			record.Id = 182;
-			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_2", Value = StoneSlabType2 });
 			return record;
 		} // method
 	} // class
 
-	public partial class StoneSlab3 // 417 typeof=StoneSlab3
+	public partial class StoneBlockSlab3 // 417 typeof=StoneBlockSlab3
 	{
 	public string StoneSlabType3 { get; set; } = "smooth_red_sandstone";
 	public string verticalHalf { get; set; } = "bottom";
@@ -106,7 +106,7 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "vertical_half":
+					case BlockStateString s when s.Name == "minecraft:vertical_half":
 						verticalHalf = s.Value;
 						break;
 					case BlockStateString s when s.Name == "stone_slab_type_3":
@@ -121,13 +121,13 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab3";
 			record.Id = 417;
-			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_3", Value = StoneSlabType3 });
 			return record;
 		} // method
 	} // class
 
-	public partial class StoneSlab4 // 421 typeof=StoneSlab4
+	public partial class StoneBlockSlab4 // 421 typeof=StoneBlockSlab4
 	{
 		public string StoneSlabType4 { get; set; } = "stone";
 		public string verticalHalf { get; set; } = "bottom";
@@ -138,7 +138,7 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "vertical_half":
+					case BlockStateString s when s.Name == "minecraft:vertical_half":
 						verticalHalf = s.Value;
 						break;
 					case BlockStateString s when s.Name == "stone_slab_type_4":
@@ -153,7 +153,7 @@ namespace MiNET.Blocks
 			var record = new BlockStateContainer();
 			record.Name = "minecraft:stone_block_slab4";
 			record.Id = 421;
-			record.States.Add(new BlockStateString { Name = "vertical_half", Value = verticalHalf });
+			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_4", Value = StoneSlabType4 });
 			return record;
 		} // method

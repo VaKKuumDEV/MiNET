@@ -23,6 +23,11 @@
 
 #endregion
 
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
+using System;
+
 namespace MiNET.Blocks
 {
 	public partial class WoodenSlab : SlabBase
@@ -34,6 +39,16 @@ namespace MiNET.Blocks
 			IsFlammable = true;
 			IsTransparent = true; // Partial - blocks light.
 			IsBlockingSkylight = false; // Partial - blocks light.
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			verticalHalf = (faceCoords.Y > 0.5 && face != BlockFace.Up) switch
+			{
+				true => "top",
+				false => "bottom"
+			};
+			return false;
 		}
 
 		protected override bool AreSameType(Block obj)

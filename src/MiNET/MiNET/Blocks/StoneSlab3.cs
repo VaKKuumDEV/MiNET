@@ -30,9 +30,9 @@ using System;
 
 namespace MiNET.Blocks
 {
-	public partial class StoneSlab3 : Block
+	public partial class StoneBlockSlab3 : Block
 	{
-		public StoneSlab3() : base(417)
+		public StoneBlockSlab3() : base(417)
 		{
 			BlastResistance = 30;
 			Hardness = 2;
@@ -54,6 +54,12 @@ namespace MiNET.Blocks
 				6 => "polished_andesite",
 				7 => "end_stone_brick",
 				_ => throw new ArgumentOutOfRangeException()
+			};
+
+			verticalHalf = (faceCoords.Y > 0.5 && face != BlockFace.Up) switch
+			{
+				true => "top",
+				false => "bottom"
 			};
 			return false;
 		}
