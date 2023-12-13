@@ -26,7 +26,6 @@ using System.Collections.Generic;
 using log4net;
 using MiNET.Items;
 using MiNET.Utils;
-using Newtonsoft.Json;
 
 namespace MiNET.Net.Items
 {
@@ -48,50 +47,25 @@ namespace MiNET.Net.Items
 		public ItemTranslator(Itemstates itemstates)
 		{
 			var internalNameToNetworkName = new Dictionary<string, string>(StringComparer.Ordinal);
-			var legacyTranslations = ResourceUtil.ReadResource<Dictionary<string, short>>("item_id_map.json", typeof(Item), "Data");
-			var r16Mapping = ResourceUtil.ReadResource<R16ToCurrentMap>("r16_to_current_item_map.json", typeof(Item), "Data");
+			var legacyTranslations = ResourceUtil.ReadResource<Dictionary<string, short>>("item_id_map.json", typeof(Item));
+			var metaMapRes = ResourceUtil.ReadResource<Dictionary<string, Dictionary<string, string>>>("block_meta_map.json", typeof(Item));
 
 			var simpleMappings = new Dictionary<string, short>();
 			var metaToNameList = new metaToName<string, int, string>();
 			var metaList = new Dictionary<string, int>();
 			var metaMapList = new Dictionary<string, string>();
 
-			foreach (var entry in r16Mapping.Simple)
-			{
-				var oldId = entry.Key;
-				var newId = entry.Value;
-
-				if (simpleMappings.ContainsKey(newId))
-				{
-					Log.Debug($"Duplicate mapping for StringID. NewId={newId} OldId={oldId}");
-
-					continue;
-				}
-
-
-				if (!legacyTranslations.ContainsKey(oldId))
-				{
-					Log.Debug($"Could not translate item! OldId={oldId} NewId={newId}");
-					continue;
-				}
-				
-				simpleMappings[newId] = legacyTranslations[oldId];
-				internalNameToNetworkName[oldId] = newId;
-			}
-
 			foreach (var entry in legacyTranslations)
 			{
 				var stringId = entry.Key;
 				var integerId = entry.Value;
 				
-				if (simpleMappings.ContainsKey(stringId))
-					continue;
-				
 				simpleMappings[stringId] = integerId;
+				internalNameToNetworkName[stringId] = stringId;
 			}
 
 			var complexMapping = new Dictionary<string, TranslatedItem>();
-			foreach (var entry in r16Mapping.Complex)
+			foreach (var entry in metaMapRes)
 			{
 				string oldId = entry.Key;
 				if (!legacyTranslations.ContainsKey(oldId))
@@ -285,15 +259,6 @@ namespace MiNET.Net.Items
 		{
 			return HashCode.Combine(Id, Meta);
 		}
-	}
-	
-	class R16ToCurrentMap
-	{
-		[JsonProperty("complex")]
-		public Dictionary<string, Dictionary<string, string>> Complex { get; set; }
-			
-		[JsonProperty("simple")]
-		public Dictionary<string, string> Simple { get; set; }
 	}
 
 	internal class ComplexMappingEntry

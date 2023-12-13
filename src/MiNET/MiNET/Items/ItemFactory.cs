@@ -61,7 +61,7 @@ namespace MiNET.Items
 		{
 			NameToId = BuildNameToId();
 
-			Itemstates = ResourceUtil.ReadResource<Itemstates>("itemstates.json", typeof(Item), "Data");
+			Itemstates = ResourceUtil.ReadResource<Itemstates>("itemstates.json", typeof(Item));
 			Translator = new ItemTranslator(Itemstates);
 		}
 
