@@ -2553,6 +2553,7 @@ namespace MiNET.Net
 
 	}
 
+	//Broken packet. Todo: Somehow packet is working but need to go through all fields and find field with wrong data type.
 	public partial class McpeAddPlayer : Packet<McpeAddPlayer>
 	{
 
@@ -2595,7 +2596,7 @@ namespace MiNET.Net
 
 			Write(uuid);
 			Write(username);
-			WriteUnsignedVarLong(runtimeEntityId);
+			WriteUnsignedVarLong(runtimeEntityId); //This shouldn't be here at all.
 			Write(platformChatId);
 			Write(x);
 			Write(y);
@@ -2610,7 +2611,7 @@ namespace MiNET.Net
 			WriteUnsignedVarInt(gameType);
 			Write(metadata);
 			Write(syncdata);
-			Write(entityIdSelf);
+			Write((ulong)entityIdSelf); //This is supposed to be SignedVarLong.
 			Write(playerPermissions);
 			Write(commandPermissions);
 			Write(layers);

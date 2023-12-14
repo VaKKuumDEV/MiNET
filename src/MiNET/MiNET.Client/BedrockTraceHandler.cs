@@ -611,6 +611,7 @@ namespace MiNET.Client
 
 		public override void HandleMcpeRemoveEntity(McpeRemoveEntity message)
 		{
+			Log.DebugFormat("McpeAddPlayer Entity ID: {0}", message.entityIdSelf);
 			Client.Entities.TryRemove(message.entityIdSelf, out _);
 		}
 
