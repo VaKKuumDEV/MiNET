@@ -2099,12 +2099,6 @@ namespace MiNET
 
 			// Hunger management
 			if (!IsGliding) HungerManager.Move(Vector3.Distance(new Vector3(KnownPosition.X, 0, KnownPosition.Z), new Vector3(message.x, 0, message.z)));
-			
-			if(isOnGround && IsGliding){
-				IsGliding = false;
-				Height = 1.8;
-				BroadcastSetEntityData();
-			}
 
 			KnownPosition = new PlayerLocation
 			{
