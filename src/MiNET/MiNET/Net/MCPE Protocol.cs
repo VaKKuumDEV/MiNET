@@ -7623,7 +7623,8 @@ namespace MiNET.Net
 	public partial class McpeModalFormRequest : Packet<McpeModalFormRequest>
 	{
 
-		public ModalFormInfo modalforminfo; // = null;
+		public uint formId; // = null;
+		public string formData; // = null;
 
 		public McpeModalFormRequest()
 		{
@@ -7637,7 +7638,8 @@ namespace MiNET.Net
 
 			BeforeEncode();
 
-			Write(modalforminfo);
+			WriteUnsignedVarInt(formId);
+			Write(formData);
 
 			AfterEncode();
 		}
@@ -7651,7 +7653,8 @@ namespace MiNET.Net
 
 			BeforeDecode();
 
-			modalforminfo = ReadModalFormInfo();
+			formId = ReadUnsignedVarInt();
+			formData = ReadString();
 
 			AfterDecode();
 		}
@@ -7663,7 +7666,9 @@ namespace MiNET.Net
 		{
 			base.ResetPacket();
 
-			modalforminfo=default(ModalFormInfo);
+
+			formId = default(uint);
+			formData = default(string);
 		}
 
 	}
@@ -7672,7 +7677,8 @@ namespace MiNET.Net
 	{
 
 		public uint formId; // = null;
-		public string data; // = null;
+		public string data = "";
+		public byte cancelReason; // = null;
 
 		public McpeModalFormResponse()
 		{
@@ -7702,7 +7708,14 @@ namespace MiNET.Net
 			BeforeDecode();
 
 			formId = ReadUnsignedVarInt();
-			data = ReadString();
+			if (ReadBool())
+			{
+				data = ReadString();
+			}
+			if (ReadBool())
+			{
+				cancelReason = ReadByte();
+			}
 
 			AfterDecode();
 		}
@@ -7716,6 +7729,7 @@ namespace MiNET.Net
 
 			formId=default(uint);
 			data=default(string);
+			cancelReason=default(byte);
 		}
 
 	}

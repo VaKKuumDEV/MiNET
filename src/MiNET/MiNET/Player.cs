@@ -3472,11 +3472,8 @@ namespace MiNET
 			CurrentForm = form;
 
 			McpeModalFormRequest message = McpeModalFormRequest.CreateObject();
-			message.modalforminfo.formId = form.Id; // whatever
-			message.modalforminfo.data = form.ToJson();
-			message.modalforminfo.isData = true;
-			message.modalforminfo.isCancelReason = false;//????
-			message.modalforminfo.cancelReason = 0;
+			message.formId = form.Id;
+			message.formData = form.ToJson();
 			SendPacket(message);
 		}
 
