@@ -40,6 +40,14 @@ namespace MiNET.Blocks
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
+			if (face == BlockFace.Up)
+			{
+				FacingDirection = 1;
+			}
+			if (face == BlockFace.Down)
+			{
+				FacingDirection = 0;
+			}
 
 			return false;
 		}
