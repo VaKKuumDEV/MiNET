@@ -1495,6 +1495,7 @@ namespace MiNET.Net
 				{
 					ReadString();
 				}
+				var filterStringCause = ReadUint();
 			}
 
 			return requests;
