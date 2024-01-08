@@ -468,34 +468,29 @@ namespace MiNET.Worlds
 			byte[] data2D = Combine(heightBytes, chunk.biomeId);
 			Db.Put(Combine(index, 0x2D), data2D);
 
-			//// Block entities
-			/*byte[] blockEntityBytes = Db.Get(Combine(index, 0x31));
-			if (blockEntityBytes != null)
+			// Block entities
+			foreach (NbtCompound blockEntityNbt in chunk.BlockEntities.Values)
 			{
-				var data = blockEntityBytes.AsMemory();
+				var nbtClone = (NbtCompound) blockEntityNbt.Clone();
+				nbtClone.Name = "";
 
-				var file = new NbtFile
+				var nbt = new NbtFile
 				{
 					BigEndian = false,
 					UseVarInt = false
 				};
-				int position = 0;
-				do
-				{
-					position += (int) file.LoadFromStream(new MemoryStreamReader(data.Slice(position)), NbtCompression.None);
+				nbt.RootTag = nbtClone;
 
-					NbtTag blockEntityTag = file.RootTag;
-					int x = blockEntityTag["x"].IntValue;
-					int y = blockEntityTag["y"].IntValue;
-					int z = blockEntityTag["z"].IntValue;
-
-					chunk.SetBlockEntity(new BlockCoordinates(x, y, z), (NbtCompound) blockEntityTag);
-				} while (position < data.Length);
+				byte[] blockEntity = nbt.SaveToBuffer(NbtCompression.None);
+				Db.Put(Combine(index, 0x31), blockEntity);
 			}
 
-			//// Entities
-			//byte[] EntityBytes = Db.Get(Combine(index, 0x32));
-			chunk.IsDirty = false;*/
+			// Entities  TODO
+			//foreach ()
+			//{
+			//	Db.Put(Combine(index, 0x32), saveToBuffer);
+			//}
+			chunk.IsDirty = false;
 			chunk.NeedSave = false;
 		}
 
