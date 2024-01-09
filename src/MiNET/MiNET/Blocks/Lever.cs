@@ -34,7 +34,7 @@ namespace MiNET.Blocks
 {
 	public partial class Lever : Block
 	{
-		static string RedstoneSignalDirection { get; set; } = "north";
+		public static string RedstoneSignalDirection { get; set; } = "north";
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Lever));
 		public Lever() : base(69)
 		{

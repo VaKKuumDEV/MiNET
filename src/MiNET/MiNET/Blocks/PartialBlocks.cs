@@ -10962,8 +10962,7 @@ namespace MiNET.Blocks
 
     public partial class RedstoneTorch  // 76 typeof=RedstoneTorch
     {
-        [StateEnum("west","east","north","south","top","unknown")]
-        public override string TorchFacingDirection { get; set; } = "";
+        public string TorchFacingDirection { get; set; } = "top";
 
         public override void SetState(List<IBlockState> states)
         {
@@ -12913,8 +12912,7 @@ namespace MiNET.Blocks
 
     public partial class UnlitRedstoneTorch  // 75 typeof=UnlitRedstoneTorch
     {
-        [StateEnum("west","east","north","south","top","unknown")]
-        public override string TorchFacingDirection { get; set; } = "";
+        public string TorchFacingDirection { get; set; } = "top";
 
         public override void SetState(List<IBlockState> states)
         {

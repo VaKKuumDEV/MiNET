@@ -24,16 +24,92 @@
 #endregion
 
 using System.Numerics;
-using MiNET.Utils;
+using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
-	public partial class RedstoneTorch : RedstoneTorchBase
+	public partial class RedstoneTorch : Block
 	{
 		public RedstoneTorch() : base(76)
 		{
 			LightLevel = 7;
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+
+			if (face == BlockFace.Down)
+				return true;
+
+			switch (face)
+			{
+				case BlockFace.Up:
+					TorchFacingDirection = "top";
+					break;
+				case BlockFace.North:
+					TorchFacingDirection = "south";
+					break;
+				case BlockFace.South:
+					TorchFacingDirection = "north";
+					break;
+				case BlockFace.West:
+					TorchFacingDirection = "east";
+					break;
+				case BlockFace.East:
+					TorchFacingDirection = "west";
+					break;
+			}
+
+			return false;
+		}
+
+		public override void BreakBlock(Level level, BlockFace face, bool silent = false)
+		{
+			level.CancelBlockTick(this);
+			BlockCoordinates cord = this.Coordinates.BlockNorth();
+			for (int i = 0; i < 5; i++)
+			{
+				if (i == 0)
+				{ cord = this.Coordinates.BlockNorth(); }
+				if (i == 1)
+				{ cord = this.Coordinates.BlockSouth(); }
+				if (i == 2)
+				{ cord = this.Coordinates.BlockWest(); }
+				if (i == 3)
+				{ cord = this.Coordinates.BlockEast(); }
+				if (i == 4)
+				{ cord = this.Coordinates.BlockUp(); }
+				var blockk = level.GetBlock(cord);
+				if (blockk is LitRedstoneLamp)
+				{
+					level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });
+				}
+			}
+		}
+
+		public override void BlockAdded(Level level)
+		{
+			level.ScheduleBlockTick(this, 10);
+		}
+
+		public override void OnTick(Level level, bool isRandom)
+		{
+			BlockCoordinates cord = this.Coordinates.BlockNorth();
+			for (int i = 0; i < 5; i++)
+			{
+				if (i == 0) { cord = this.Coordinates.BlockNorth(); }
+				if (i == 1) { cord = this.Coordinates.BlockSouth(); }
+				if (i == 2) { cord = this.Coordinates.BlockWest(); }
+				if (i == 3) { cord = this.Coordinates.BlockEast(); }
+				if (i == 4) { cord = this.Coordinates.BlockUp(); }
+				var blockk = level.GetBlock(cord);
+				if (blockk is RedstoneLamp)
+				{
+					level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(cord) });
+				}
+			}
+			level.ScheduleBlockTick(this, 10);
 		}
 	}
 }
