@@ -70,31 +70,28 @@ namespace MiNET.Blocks
 			BlockCoordinates cord = this.Coordinates.BlockNorth();
 			for (int i = 0; i < 5; i++)
 			{
-				if (i == 0)
-				{ cord = this.Coordinates.BlockNorth(); }
-				if (i == 1)
-				{ cord = this.Coordinates.BlockSouth(); }
-				if (i == 2)
-				{ cord = this.Coordinates.BlockWest(); }
-				if (i == 3)
-				{ cord = this.Coordinates.BlockEast(); }
-				if (i == 4)
-				{ cord = this.Coordinates.BlockUp(); }
+				if (i == 0) { cord = this.Coordinates.BlockNorth(); }
+				if (i == 1) { cord = this.Coordinates.BlockSouth(); }
+				if (i == 2) { cord = this.Coordinates.BlockWest(); }
+				if (i == 3) { cord = this.Coordinates.BlockEast(); }
+				if (i == 4) { cord = this.Coordinates.BlockUp(); }
 				var blockk = level.GetBlock(cord);
 				if (blockk is LitRedstoneLamp)
 				{
 					level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });
 				}
 			}
+			base.BreakBlock(level, face);
 		}
 
 		public override void BlockAdded(Level level)
 		{
-			level.ScheduleBlockTick(this, 10);
+			if (level.RedstoneEnabled) { level.ScheduleBlockTick(this, 10); }
 		}
 
 		public override void OnTick(Level level, bool isRandom)
 		{
+			if (isRandom) { return; }
 			BlockCoordinates cord = this.Coordinates.BlockNorth();
 			for (int i = 0; i < 5; i++)
 			{

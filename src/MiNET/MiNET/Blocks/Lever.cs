@@ -95,6 +95,7 @@ namespace MiNET.Blocks
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
 			BlockCoordinates cord = blockCoordinates.BlockNorth();
+			world.BroadcastSound(blockCoordinates, LevelSoundEventType.ButtonOn);
 			if (RedstoneSignalDirection == "north")
 			{
 				cord = blockCoordinates.BlockNorth();
@@ -121,6 +122,9 @@ namespace MiNET.Blocks
 			}
 			if (!OpenBit)
 			{
+				OpenBit = true;
+				world.SetBlock(this);
+				if (!world.RedstoneEnabled) { return true; }
 				var blockk = world.GetBlock(cord);
 				if (blockk is RedstoneLamp)
 				{
@@ -129,14 +133,15 @@ namespace MiNET.Blocks
 			}
 			else
 			{
+				OpenBit = false;
+				world.SetBlock(this);
+				if (!world.RedstoneEnabled) { return true; }
 				var blockk = world.GetBlock(cord);
 				if (blockk is RedstoneLamp)
 				{
 					world.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });
 				}
 			}
-			OpenBit = !OpenBit;
-			world.SetBlock(this);
 			return true;
 		}
 

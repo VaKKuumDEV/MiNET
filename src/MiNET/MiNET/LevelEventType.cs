@@ -413,6 +413,11 @@ namespace MiNET
 		BlockBarrelClose = 271,
 		RaidHorn = 272,
 		BlockLoomUse = 273,
-		Undefined = 274
+		Undefined = 274,
+
+		PressurePlateOff = 448,
+		PressurePlateOn = 449,
+		ButtonOff = 450,
+		ButtonOn = 451,
 	}
 }

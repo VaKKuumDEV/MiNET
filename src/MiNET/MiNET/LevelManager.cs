@@ -111,6 +111,7 @@ namespace MiNET
 					TntExplodes = Config.GetProperty("GameRule.TntExplodes", true),
 					SendCommandfeedback = Config.GetProperty("GameRule.SendCommandfeedback", true),
 					RandomTickSpeed = Config.GetProperty("GameRule.RandomTickSpeed", 3),
+					RedstoneEnabled = Config.GetProperty("RedstoneEnabled", true),
 				};
 				level.Initialize();
 

@@ -1583,6 +1583,7 @@ namespace MiNET.Worlds
 		public bool TntExplodes { get; set; } = true;
 		public bool SendCommandfeedback { get; set; } = true;
 		public int RandomTickSpeed { get; set; } = 3;
+		public bool RedstoneEnabled { get; set; } = true;
 
 		public virtual void BroadcastGameRules()
 		{

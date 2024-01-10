@@ -581,9 +581,9 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class AcaciaPressurePlate : Block // 405 typeof=AcaciaPressurePlate
-    {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+    public partial class AcaciaPressurePlate : PressurePlateBase // 405 typeof=AcaciaPressurePlate
+	{
+        public override int RedstoneSignal { get; set; } = 0;
         
         public AcaciaPressurePlate() : base(405)
         {
@@ -1348,9 +1348,9 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class BirchPressurePlate : Block // 406 typeof=BirchPressurePlate
-    {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+    public partial class BirchPressurePlate : PressurePlateBase // 406 typeof=BirchPressurePlate
+	{
+        public override int RedstoneSignal { get; set; } = 0;
         
         public BirchPressurePlate() : base(406)
         {
@@ -3110,9 +3110,9 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class DarkOakPressurePlate : Block // 407 typeof=DarkOakPressurePlate
-    {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+    public partial class DarkOakPressurePlate : PressurePlateBase // 407 typeof=DarkOakPressurePlate
+	{
+        public override int RedstoneSignal { get; set; } = 0;
         
         public DarkOakPressurePlate() : base(407)
         {
@@ -8553,9 +8553,9 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class JunglePressurePlate : Block // 408 typeof=JunglePressurePlate
-    {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+    public partial class JunglePressurePlate : PressurePlateBase // 408 typeof=JunglePressurePlate
+	{
+        public override int RedstoneSignal { get; set; } = 0;
         
         public JunglePressurePlate() : base(408)
         {
@@ -11827,9 +11827,9 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class SprucePressurePlate : Block // 409 typeof=SprucePressurePlate
-    {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+    public partial class SprucePressurePlate : PressurePlateBase // 409 typeof=SprucePressurePlate
+	{
+        public override int RedstoneSignal { get; set; } = 0;
         
         public SprucePressurePlate() : base(409)
         {
@@ -12179,7 +12179,7 @@ namespace MiNET.Blocks
 
     public partial class StonePressurePlate  // 70 typeof=StonePressurePlate
     {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+        public int RedstoneSignal { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -13314,7 +13314,7 @@ namespace MiNET.Blocks
 
     public partial class WoodenPressurePlate  // 72 typeof=WoodenPressurePlate
     {
-        [StateRange(0, 15)] public  int RedstoneSignal { get; set; } = 0;
+        public int RedstoneSignal { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {

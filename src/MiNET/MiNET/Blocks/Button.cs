@@ -68,10 +68,12 @@ namespace MiNET.Blocks
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
+			world.BroadcastSound(blockCoordinates, LevelSoundEventType.ButtonOn);
 			ButtonPressedBit = true;
 			world.SetBlock(this);
 			world.ScheduleBlockTick(this, TickRate);
 
+			if (!world.RedstoneEnabled) { return true; }
 			cord = blockCoordinates.BlockNorth();
 			if (RedstoneSignalDirection == "north")
 			{
@@ -112,7 +114,7 @@ namespace MiNET.Blocks
 		public override void OnTick(Level level, bool isRandom)
 		{
 			if (isRandom) return;
-
+			level.BroadcastSound(Coordinates, LevelSoundEventType.ButtonOff);
 			ButtonPressedBit = false;
 			level.SetBlock(this);
 		}
