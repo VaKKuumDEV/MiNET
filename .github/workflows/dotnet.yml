@@ -34,7 +34,7 @@ jobs:
       env:
         NUM: ${{ github.run_number }}
       run: |
-       echo "OFFSET=$(($NUM - 43))" >> $GITHUB_ENV
+       echo "OFFSET=$(($NUM - 46))" >> $GITHUB_ENV
     - uses: actions/checkout@v3
     - name: Upload
       uses: svenstaro/upload-release-action@v2
