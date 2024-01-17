@@ -30,11 +30,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: offset
-      env:
-        NUM: ${{ github.run_number }}
-      run: |
-       echo "OFFSET=$(($NUM - 46))" >> $GITHUB_ENV
     - uses: actions/checkout@v3
     - name: Upload
       uses: svenstaro/upload-release-action@v2
@@ -43,5 +38,5 @@ jobs:
         file: src/MiNET/MiNET.Console/minet.zip
         asset_name: MiNET.zip
         tag: ${{ github.ref }}
-        release_name: MiNET 1.20.50.${{env.OFFSET}}
+        release_name: MiNET-CobwebSMP 1.0.1 (1.20.50)
         body: ${{ github.event.head_commit.message }}
