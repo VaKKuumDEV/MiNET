@@ -46,12 +46,13 @@ namespace MiNET.Blocks
 			StoneSlabType = itemInHand.Metadata switch
 			{
 				0 => "smooth_stone",
-				1 => "cobblestone",
-				2 => "stone_brick",
-				3 => "sandstone",
+				1 => "sandstone",
+				2 => "wood",
+				3 => "cobblestone",
 				4 => "brick",
-				5 => "nether_brick",
+				5 => "stone_brick",
 				6 => "quartz",
+				7 => "nether_brick",
 				_ => throw new ArgumentOutOfRangeException()
 			};
 

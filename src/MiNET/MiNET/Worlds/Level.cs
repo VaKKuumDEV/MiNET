@@ -1356,6 +1356,11 @@ namespace MiNET.Worlds
 			if (!player.IsSneaking && target.Interact(this, player, blockCoordinates, face, faceCoords)) return; // Handled in block interaction
 
 			Log.Debug($"Item in hand: {itemInHand}");
+			if (itemInHand.Id == 356) { itemInHand = new ItemBlock(new UnpoweredRepeater()); }  //TODO: item translator
+			if (itemInHand.Id == 379) { itemInHand = new ItemBlock(new BrewingStand()); }  //TODO: item translator
+			if (itemInHand.Id == 404) { itemInHand = new ItemBlock(new UnpoweredComparator()); }  //TODO: item translator
+			if (itemInHand.Id == 410) { itemInHand = new ItemBlock(new Hopper()); }  //TODO: item translator
+			if (itemInHand.Id == 720) { itemInHand = new ItemBlock(new Campfire()); }  //TODO: item translator
 			if (itemInHand is ItemBlock)
 			{
 				Block block = GetBlock(blockCoordinates);

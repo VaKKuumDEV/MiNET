@@ -44,18 +44,18 @@ namespace MiNET.Blocks
 			var itemInHand = player.Inventory.GetItemInHand();
 			woodType = itemInHand.Metadata switch
 			{
-				0 or 1 => "oak",
-				2 or 3 => "spruce",
-				4 or 5 => "birch",
-				6 or 7 => "jungle",
-				8 or 9 => "acacia",
-				10 or 11 => "dark_oak",
+				7 or 15 => "oak",
+				1 or 9 => "spruce",
+				2 or 10 => "birch",
+				3 or 11 => "jungle",
+				4 or 12 => "acacia",
+				5 or 13 => "dark_oak",
 				_ => throw new ArgumentOutOfRangeException()
 			};
 
 			StrippedBit = itemInHand.Metadata switch
 			{
-				1 or 3 or 5 or 7 or 9 or 11 => true,
+				15 or 9 or 10 or 11 or 12 or 13 => true,
 				_ => false
 			};
 			return false;

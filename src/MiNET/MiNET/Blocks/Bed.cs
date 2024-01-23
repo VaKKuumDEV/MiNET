@@ -40,10 +40,6 @@ namespace MiNET.Blocks
 
 		public byte Color { get; set; }
 
-		//[StateRange(0, 3)] public int Direction { get; set; } = 0;
-		//[StateBit] public bool HeadPieceBit { get; set; } = true;
-		//[StateBit] public bool OccupiedBit { get; set; } = false;
-
 		public Bed() : base(26)
 		{
 			BlastResistance = 1;
@@ -76,7 +72,6 @@ namespace MiNET.Blocks
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			HeadPieceBit = false;
-			world.SetBlock(new GoldBlock() {Coordinates = Coordinates + BlockCoordinates.Down});
 			world.SetBlockEntity(new BedBlockEntity
 			{
 				Coordinates = Coordinates,
@@ -91,7 +86,6 @@ namespace MiNET.Blocks
 				HeadPieceBit = true,
 			};
 			world.SetBlock(blockOther);
-			world.SetBlock(new GoldBlock() {Coordinates = otherCoord + BlockCoordinates.Down});
 			world.SetBlockEntity(new BedBlockEntity
 			{
 				Coordinates = blockOther.Coordinates,

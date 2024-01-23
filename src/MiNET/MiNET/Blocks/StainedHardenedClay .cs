@@ -29,9 +29,9 @@ using MiNET.Worlds;
 
 namespace MiNET.Blocks
 {
-	public partial class Terracotta : Block
+	public partial class StainedHardenedClay : Block
 	{
-		public Terracotta() : base(159)
+		public StainedHardenedClay() : base(159)
 		{
 			BlastResistance = 30;
 			Hardness = 1.25f;

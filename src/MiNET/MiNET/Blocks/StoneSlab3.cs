@@ -45,14 +45,14 @@ namespace MiNET.Blocks
 			var itemInHand = player.Inventory.GetItemInHand();
 			StoneSlabType3 = itemInHand.Metadata switch
 			{
-				0 => "smooth_red_sandstone",
-				1 => "granite",
-				2 => "polished_granite",
-				3 => "diorite",
-				4 => "polished_diorite",
-				5 => "andesite",
-				6 => "polished_andesite",
-				7 => "end_stone_brick",
+				0 => "end_stone_brick",
+				1 => "smooth_red_sandstone",
+				2 => "polished_andesite",
+				3 => "andesite",
+				4 => "diorite",
+				5 => "polished_diorite",
+				6 => "granite",
+				7 => "polished_granite",
 				_ => throw new ArgumentOutOfRangeException()
 			};
 
