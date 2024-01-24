@@ -38,6 +38,7 @@ using System.Threading;
 using fNbt;
 using log4net;
 using Microsoft.IO;
+using MiNET.Blocks;
 using MiNET.Crafting;
 using MiNET.Items;
 using MiNET.Net.RakNet;
