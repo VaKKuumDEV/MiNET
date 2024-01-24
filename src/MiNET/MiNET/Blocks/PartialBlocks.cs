@@ -9108,7 +9108,7 @@ namespace MiNET.Blocks
     public partial class StrippedAcaciaLog : Block // 263 typeof=StrippedAcaciaLog
     {
         [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "";
+        public  string PillarAxis { get; set; } = "y";
         
         public StrippedAcaciaLog() : base(263)
         {
@@ -9141,7 +9141,7 @@ namespace MiNET.Blocks
     public partial class StrippedBirchLog : Block // 261 typeof=StrippedBirchLog
     {
         [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "";
+        public  string PillarAxis { get; set; } = "y";
         
         public StrippedBirchLog() : base(261)
         {
@@ -9175,7 +9175,7 @@ namespace MiNET.Blocks
     public partial class StrippedDarkOakLog : Block // 264 typeof=StrippedDarkOakLog
     {
         [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "";
+        public  string PillarAxis { get; set; } = "y";
         
         public StrippedDarkOakLog() : base(264)
         {
@@ -9208,7 +9208,7 @@ namespace MiNET.Blocks
     public partial class StrippedJungleLog : Block // 262 typeof=StrippedJungleLog
     {
         [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "";
+        public  string PillarAxis { get; set; } = "y";
         
         public StrippedJungleLog() : base(262)
         {
@@ -9241,7 +9241,7 @@ namespace MiNET.Blocks
     public partial class StrippedOakLog : Block // 265 typeof=StrippedOakLog
     {
         [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "";
+        public  string PillarAxis { get; set; } = "y";
         
         public StrippedOakLog() : base(265)
         {
@@ -9274,7 +9274,7 @@ namespace MiNET.Blocks
     public partial class StrippedSpruceLog : Block // 260 typeof=StrippedSpruceLog
     {
         [StateEnum("x","z","y")]
-        public  string PillarAxis { get; set; } = "";
+        public  string PillarAxis { get; set; } = "y";
         
         public StrippedSpruceLog() : base(260)
         {

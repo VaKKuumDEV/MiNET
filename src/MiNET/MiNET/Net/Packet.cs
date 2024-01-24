@@ -844,7 +844,7 @@ namespace MiNET.Net
 			var netId = 0;
 			foreach(var item in itemStacks)
 			{
-				item.RuntimeId = (int) BlockFactory.GetRuntimeId(item.Id, (byte)item.Metadata);
+				item.RuntimeId = (int) BlockFactory.GetCreativeRuntimeId(item.Id, (byte)item.Metadata);
 				WriteUnsignedVarInt((uint) netId);
 				Write(item, false);
 				netId++;

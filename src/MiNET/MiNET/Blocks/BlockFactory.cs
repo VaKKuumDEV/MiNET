@@ -509,6 +509,8 @@ namespace MiNET.Blocks
 				436 => new SpruceStandingSign(),
 				437 => new SpruceWallSign(),
 				438 => new SmoothStone(),
+				439 => new RedNetherBrickStairs(),
+				440 => new SmoothQuartzStairs(),
 				441 => new BirchStandingSign(),
 				442 => new BirchWallSign(),
 				443 => new JungleStandingSign(),
@@ -553,16 +555,11 @@ namespace MiNET.Blocks
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static uint GetRuntimeId(int blockId, byte metadata)
 		{
-			if (blockId < 0)
-			{
-				blockId = 255 + Math.Abs(blockId);
-			}
 			int idx = TryGetRuntimeId(blockId, metadata);
 			if (idx != -1)
 			{
 				return (uint) idx;
 			}
-
 			//block found with bad metadata, try getting with zero
 			int idx2 = TryGetRuntimeId(blockId, 0);
 			if (idx2 != -1)
@@ -571,6 +568,21 @@ namespace MiNET.Blocks
 			}
 
 			return (uint) TryGetRuntimeId(248, 0); //legacy id for info_update block (for unknown block)
+		}
+
+		public static uint GetCreativeRuntimeId(int blockId, byte metadata)
+		{
+			if (blockId < 0)
+			{
+				blockId = 255 + Math.Abs(blockId);
+			}
+
+			int idx = TryGetRuntimeId(blockId, metadata);
+			if (idx != -1)
+			{
+				return (uint) idx;
+			}
+			return (uint) TryGetRuntimeId(0, 0);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
