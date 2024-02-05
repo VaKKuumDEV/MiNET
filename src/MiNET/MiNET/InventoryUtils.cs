@@ -301,7 +301,7 @@ namespace MiNET
 			new Item(82, 0), //clay_block
             new Item(172, 0), //terracotta
             new Item(159, 0), //white_terracotta
-            new Item(159, 8), //light_terracotta
+            new Item(159, 8), //light_gray_terracotta
             new Item(159, 7), //gray_terracotta
             new Item(159, 15), //black_terracotta
             new Item(159, 12), //brown_terracotta
@@ -312,7 +312,7 @@ namespace MiNET
             new Item(159, 13), //green_terracotta
             new Item(159, 9), //cyan_terracotta
             new Item(159, 3), //light_blue_terracotta
-            new Item(159, 10), //blue_terracotta
+            new Item(159, 11), //blue_terracotta
             new Item(159, 10), //purple_terracotta
             new Item(159, 2), //magenta_terracotta
             new Item(159, 6), //pink_terracotta

@@ -45,8 +45,8 @@ namespace MiNET.Worlds
 	{
 		public const int WorldHeight = 384;
 		public const int WorldMaxY = WorldHeight + WorldMinY;
-		public const int WorldMinY = -64;
-		
+		public const int WorldMinY = 0;
+
 		private static readonly ILog Log = LogManager.GetLogger(typeof(ChunkColumn));
 
 		public int X { get; set; }
@@ -475,7 +475,7 @@ namespace MiNET.Worlds
 				fullChunkPacket.subChunkRequestMode = SubChunkRequestMode.SubChunkRequestModeLegacy;
 				fullChunkPacket.chunkX = X;
 				fullChunkPacket.chunkZ = Z;
-				fullChunkPacket.subChunkCount = (uint) topEmpty;
+				fullChunkPacket.subChunkCount = (uint) topEmpty + 4;
 				fullChunkPacket.chunkData = chunkData;
 				byte[] bytes = fullChunkPacket.Encode();
 				fullChunkPacket.PutPool();
@@ -494,6 +494,12 @@ namespace MiNET.Worlds
 		public byte[] GetBytes(int topEmpty)
 		{
 			using var stream = new MemoryStream();
+
+			for (int i = 0; i < 4; i++) //fill up negative chunks to support world format
+			{
+				stream.WriteByte(8);
+				stream.WriteByte(0); // empty
+			}
 
 			for (int ci = 0; ci < topEmpty; ci++)
 			{

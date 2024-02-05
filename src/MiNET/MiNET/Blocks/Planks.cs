@@ -26,6 +26,7 @@
 using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
+using System;
 using System.Numerics;
 
 namespace MiNET.Blocks
@@ -43,7 +44,16 @@ namespace MiNET.Blocks
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var itemInHand = player.Inventory.GetItemInHand();
-			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:planks", itemInHand.Metadata);
+			WoodType = itemInHand.Metadata switch
+			{
+				0 => "oak",
+				1 => "spruce",
+				2 => "birch",
+				3 => "jungle",
+				4 => "acacia",
+				5 => "dark_oak",
+				_ => throw new ArgumentOutOfRangeException()
+			};
 			return false;
 		}
 	}
