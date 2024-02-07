@@ -60,6 +60,8 @@ namespace MiNET.Net.RakNet
 
 		public bool EnableCompression { get; set; } = false;
 
+		public bool InitializedCompression { get; set; } = false;
+
 		public string Username { get; set; }
 		public IPEndPoint EndPoint { get; private set; }
 		public short MtuSize { get; set; }

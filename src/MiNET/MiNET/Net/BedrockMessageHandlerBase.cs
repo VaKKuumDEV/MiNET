@@ -66,7 +66,7 @@ namespace MiNET.Net
 					var wrapper = McpeWrapper.CreateObject();
 					wrapper.ReliabilityHeader.Reliability = Reliability.ReliableOrdered;
 					wrapper.ForceClear = true;
-					wrapper.payload = Compression.CompressPacketsForWrapper(new List<Packet> {packet}, _session.EnableCompression ? CompressionLevel.Fastest : CompressionLevel.NoCompression);
+					wrapper.payload = Compression.CompressPacketsForWrapper(new List<Packet> {packet}, _session.EnableCompression ? CompressionLevel.Fastest : CompressionLevel.NoCompression, _session.InitializedCompression);
 					wrapper.Encode(); // prepare
 					packet.PutPool();
 					sendList.Add(wrapper);
@@ -98,7 +98,7 @@ namespace MiNET.Net
 				var batch = McpeWrapper.CreateObject();
 				batch.ReliabilityHeader.Reliability = Reliability.ReliableOrdered;
 				if (_session != null && _session.EnableCompression) { compress = CompressionLevel.Fastest; }
-				batch.payload = Compression.CompressPacketsForWrapper(sendInBatch, compress);
+				batch.payload = Compression.CompressPacketsForWrapper(sendInBatch, compress, _session.InitializedCompression);
 				batch.Encode(); // prepare
 				sendList.Add(batch);
 			}
@@ -152,10 +152,14 @@ namespace MiNET.Net
 				//}
 				//stream.ReadByte();
 				var stream = new MemoryStreamReader(payload);
+				int сompress = 0xff;
+				if (_session.InitializedCompression)
+				{
+					сompress = stream.ReadByte();
+				}
 				try
 				{
-					bool сompress = _session != null ? _session.EnableCompression : false;
-					if (сompress)
+					if (сompress == 0x00)
 					{
 						using (var deflateStream = new DeflateStream(stream, CompressionMode.Decompress, false))
 						{

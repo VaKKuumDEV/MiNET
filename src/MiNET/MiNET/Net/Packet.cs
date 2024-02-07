@@ -528,6 +528,7 @@ namespace MiNET.Net
 					Write(record.Skin);
 					Write(false); // is teacher
 					Write(false); // is host
+					Write(false); // subclient?
 				}
 			}
 			else if (records is PlayerRemoveRecords)

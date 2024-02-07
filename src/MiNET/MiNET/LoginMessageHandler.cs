@@ -95,6 +95,7 @@ namespace MiNET
 			_session.SendPrepareDirectPacket(settingsPacket);
 			Thread.Sleep(1000);
 			_session.EnableCompression = true;
+			_session.InitializedCompression = true;
 		}
 
 		public virtual void HandleMcpeLogin(McpeLogin message)

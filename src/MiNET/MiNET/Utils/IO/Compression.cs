@@ -55,7 +55,7 @@ namespace MiNET.Utils.IO
 			}
 		}
 
-		public static byte[] CompressPacketsForWrapper(List<Packet> packets, CompressionLevel compressionLevel = CompressionLevel.Fastest)
+		public static byte[] CompressPacketsForWrapper(List<Packet> packets, CompressionLevel compressionLevel = CompressionLevel.Fastest, bool InitializedCompression = false)
 		{
 			long length = 0;
 			foreach (Packet packet in packets)
@@ -75,8 +75,14 @@ namespace MiNET.Utils.IO
 						}
 						packet.PutPool();
 					}
-
 					byte[] bytes = stream.ToArray();
+					if (InitializedCompression)
+					{
+						byte[] finalBytes = new byte[bytes.Length + 1];
+						finalBytes[0] = 0xff;
+						Array.Copy(bytes, 0, finalBytes, 1, bytes.Length);
+						return finalBytes;
+					}
 					return bytes;
 				}
 			}
@@ -99,8 +105,14 @@ namespace MiNET.Utils.IO
 						}
 						compressStream.Flush();
 					}
-
 					byte[] bytes = stream.ToArray();
+					if (InitializedCompression)
+					{
+						byte[] finalBytes = new byte[bytes.Length + 1];
+						finalBytes[0] = 0x00;
+						Array.Copy(bytes, 0, finalBytes, 1, bytes.Length);
+						return finalBytes;
+					}
 					return bytes;
 				}
 			}
