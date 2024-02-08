@@ -27,7 +27,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Numerics;
@@ -863,11 +862,10 @@ namespace MiNET.Worlds
 				if (players.Length == 1 && entiyMoveCount == 0) return;
 
 				if (movePackets.Count == 0) return;
-
 				//McpeWrapper batch = BatchUtils.CreateBatchPacket(new Memory<byte>(stream.GetBuffer(), 0, (int) stream.Length), CompressionLevel.Optimal, false);
 				var batch = McpeWrapper.CreateObject(players.Length);
 				batch.ReliabilityHeader.Reliability = Reliability.ReliableOrdered;
-				batch.payload = Compression.CompressPacketsForWrapper(movePackets);
+				batch.payload = Compression.CompressPacketsForWrapper(movePackets, CompressionLevel.Fastest, true);
 				batch.Encode();
 				foreach (Player player in players) MiNetServer.FastThreadPool.QueueUserWorkItem(() => player.SendPacket(batch));
 				_lastBroadcast = DateTime.UtcNow;

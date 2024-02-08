@@ -51,7 +51,10 @@ namespace MiNET.Utils.IO
 				}
 
 				byte[] bytes = stream.ToArray();
-				return bytes;
+				byte[] finalBytes = new byte[bytes.Length + 1];
+				finalBytes[0] = 0x00;
+				Array.Copy(bytes, 0, finalBytes, 1, bytes.Length);
+				return finalBytes;
 			}
 		}
 
