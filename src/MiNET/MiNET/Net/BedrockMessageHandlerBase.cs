@@ -97,8 +97,17 @@ namespace MiNET.Net
 				var compress = CompressionLevel.NoCompression;
 				var batch = McpeWrapper.CreateObject();
 				batch.ReliabilityHeader.Reliability = Reliability.ReliableOrdered;
-				if (_session != null && _session.EnableCompression) { compress = CompressionLevel.Fastest; }
-				batch.payload = Compression.CompressPacketsForWrapper(sendInBatch, compress, _session.InitializedCompression);
+				var initCompression = false;
+				if (_session != null && _session.EnableCompression)
+				{ 
+					compress = CompressionLevel.Fastest;
+					initCompression = _session.InitializedCompression;
+				}
+				else
+				{
+					initCompression = false;
+				}
+				batch.payload = Compression.CompressPacketsForWrapper(sendInBatch, compress, initCompression);
 				batch.Encode(); // prepare
 				sendList.Add(batch);
 			}
@@ -153,10 +162,14 @@ namespace MiNET.Net
 				//stream.ReadByte();
 				var stream = new MemoryStreamReader(payload);
 				int сompress = 0xff;
-				if (_session.InitializedCompression)
+				var initCompression = false;
+				if (_session != null)
+				{
+					initCompression = _session.InitializedCompression;
+				}
+				if (initCompression)
 				{
 					сompress = stream.ReadByte();
-					//Log.Debug(Packet.HexDump(payload));
 				}
 				try
 				{
