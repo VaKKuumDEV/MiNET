@@ -29,7 +29,7 @@ using Newtonsoft.Json;
 
 namespace MiNET.Utils
 {
-	public class BlockPalette : List<BlockStateContainer>
+	public class BlockPalette : Dictionary<int, BlockStateContainer>
 	{
 		public static int Version => 17694723;
 
@@ -38,14 +38,13 @@ namespace MiNET.Utils
 			var pallet = new BlockPalette();
 
 			dynamic result = JsonConvert.DeserializeObject<dynamic>(json);
-			int runtimeId = 0;
 			foreach (dynamic obj in result)
 			{
 				var record = new BlockStateContainer();
 				record.Id = obj.Id;
 				record.Name = obj.Name;
 				record.Data = obj.Data;
-				record.RuntimeId = runtimeId++;
+				record.RuntimeId = obj.RuntimeId;
 
 				foreach (dynamic stateObj in obj.States)
 				{
@@ -92,7 +91,7 @@ namespace MiNET.Utils
 					};
 				}
 
-				pallet.Add(record);
+				pallet.Add(record.RuntimeId, record);
 			}
 
 

@@ -7,11 +7,15 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="log4net.xml" />
+    <None Remove="schema.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="log4net.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="schema.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MiNET\MiNET.csproj" />

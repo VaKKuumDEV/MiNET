@@ -125,7 +125,7 @@ namespace MiNET.Blocks
 			// of states, and no easy way to map 1-1 with meta. Expensive, but rare.
 
 			// Only compare with states that actually have the values we checking for, and have meta.
-			var statesWithMeta = BlockFactory.BlockPalette.Where(b => b.Name == stateFromPick.Name && b.Data != -1).ToList();
+			var statesWithMeta = BlockFactory.BlockPalette.Values.Where(b => b.Name == stateFromPick.Name && b.Data != -1).ToList();
 			foreach (IBlockState state in stateFromPick.States.ToArray())
 			{
 				bool remove = true;

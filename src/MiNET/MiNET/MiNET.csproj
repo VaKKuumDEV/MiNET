@@ -28,7 +28,6 @@
     <None Remove="Resources\itemstates.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\block_id_map.json" />
     <EmbeddedResource Include="Resources\blockstates.json" />
     <EmbeddedResource Include="Resources\itemstates.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -36,8 +35,6 @@
     <EmbeddedResource Include="Resources\item_id_map.json" />
     <EmbeddedResource Include="Resources\block_meta_map.json" />
     <None Remove="Resources\blockstates.json" />
-    <None Remove="Resources\block_id_map.json" />
-    <None Remove="Resources\item_id_map.json" />
     <None Remove="Resources\item_id_map.json" />
     <None Remove="Resources\block_meta_map.json" />
   </ItemGroup>

@@ -103,13 +103,14 @@ namespace MiNET.Blocks
 					BlockPalette = BlockPalette.FromJson(reader.ReadToEnd());
 				}
 				int palletSize = BlockPalette.Count;
-				for (int i = 0; i < palletSize; i++)
+
+				foreach (var blockStateContainer in BlockPalette.Values)
 				{
-					LegacyToRuntimeId[(BlockPalette[i].Id << 4) | (byte) BlockPalette[i].Data] = i;
+					LegacyToRuntimeId[(blockStateContainer.Id << 4) | (byte) blockStateContainer.Data] = blockStateContainer.RuntimeId;
 				}
 			}
 			
-			BlockStates = new HashSet<BlockStateContainer>(BlockPalette);
+			BlockStates = new HashSet<BlockStateContainer>(BlockPalette.Values);
 		}
 
 		private static object lockObj = new object();

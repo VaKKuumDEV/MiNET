@@ -147,10 +147,9 @@ namespace MiNET.Worlds
 			if (_runtimeIds.Count == 0) return 0;
 
 			int paletteIndex = _blocks[GetIndex(bx, by, bz)];
-			if (paletteIndex >= _runtimeIds.Count || paletteIndex < 0) Log.Warn($"Unexpected paletteIndex of {paletteIndex} with size of palette is {_runtimeIds.Count}");
 			int runtimeId = _runtimeIds[paletteIndex];
-			if (runtimeId < 0 || runtimeId >= BlockFactory.BlockPalette.Count) Log.Warn($"Couldn't locate runtime id {runtimeId} for block");
-			int bid = BlockFactory.BlockPalette[runtimeId].Id;
+			BlockFactory.BlockPalette.TryGetValue(runtimeId, out BlockStateContainer blockState);
+			int bid = blockState.Id;
 			return bid == -1 ? 0 : bid;
 		}
 
@@ -160,7 +159,7 @@ namespace MiNET.Worlds
 
 			int index = _blocks[GetIndex(bx, by, bz)];
 			int runtimeId = _runtimeIds[index];
-			BlockStateContainer blockState = BlockFactory.BlockPalette[runtimeId];
+			BlockFactory.BlockPalette.TryGetValue(runtimeId, out BlockStateContainer blockState);
 			Block block = BlockFactory.GetBlockById(blockState.Id);
 			block.SetState(blockState.States);
 			block.Metadata = (byte) blockState.Data; //TODO: REMOVE metadata. Not needed.

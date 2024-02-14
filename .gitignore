@@ -194,5 +194,7 @@ src/MiNET/MiNET.Console/dist
 src/MiNET/MiNET.Console/Worlds
 src/MiNET/MiNET.Console/Plugins
 src/MiNET/MiNET.Console/start.bat
-src/MiNET/MiNET.Client/start.bat
 src/MiNET/MiNET.Console/server.conf
+
+src/MiNET/MiNET.Client/start.bat
+src/MiNET/MiNET.Client/newResources

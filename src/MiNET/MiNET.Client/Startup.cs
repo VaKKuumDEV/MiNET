@@ -51,6 +51,7 @@ namespace MiNET.Client
 			Log.Info(MiNET);
 			Console.WriteLine(MiNET);
 			Console.WriteLine("Starting client...");
+			BlockstateGenerator.preInit();
 
 			var client = new MiNetClient(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 19132), "TheGrey");
 			//var client = new MiNetClient(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 19132), "TheGrey");

@@ -135,7 +135,7 @@ namespace MiNET.Client
 
 		public override void HandleMcpeText(McpeText message)
 		{
-			if (Log.IsDebugEnabled) Log.Debug($"Text: {message.message}");
+			Log.Error($"From BDS: {message.message}");
 
 			string text = message.message;
 			if (string.IsNullOrEmpty(text)) return;
@@ -241,7 +241,7 @@ namespace MiNET.Client
 
 				var blocks = new List<(int, string)>();
 
-				foreach (IGrouping<string, BlockStateContainer> blockstateGrouping in blockPalette.OrderBy(record => record.Name).ThenBy(record => record.Data).ThenBy(record => record.RuntimeId) .GroupBy(record => record.Name))
+				foreach (IGrouping<string, BlockStateContainer> blockstateGrouping in blockPalette.Values.OrderBy(record => record.Name).ThenBy(record => record.Data).ThenBy(record => record.RuntimeId) .GroupBy(record => record.Name))
 				{
 					BlockStateContainer currentBlockState = blockstateGrouping.First();
 					Log.Debug($"{currentBlockState.Name}, Id={currentBlockState.Id}");

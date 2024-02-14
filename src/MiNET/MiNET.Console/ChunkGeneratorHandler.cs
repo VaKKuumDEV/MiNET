@@ -82,7 +82,7 @@ namespace MiNET.Console
 
 			BlockPalette = message.blockPalette;
 
-			_internalStates = new HashSet<BlockStateContainer>(BlockFactory.BlockPalette);
+			_internalStates = new HashSet<BlockStateContainer>(BlockFactory.BlockPalette.Values);
 
 			Log.Info($"Telling server to do 1 chunk radius");
 			var packet = McpeRequestChunkRadius.CreateObject();

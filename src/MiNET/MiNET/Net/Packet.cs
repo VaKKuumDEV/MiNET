@@ -2229,7 +2229,7 @@ namespace MiNET.Net
 				return;
 			}
 			WriteUnsignedVarInt((uint)palette.Count);
-			foreach (BlockStateContainer record in palette)
+			foreach (BlockStateContainer record in palette.Values)
 			{
 				Write(record.Name);
 				Write(record.StatesCacheNbt);
