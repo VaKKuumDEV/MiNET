@@ -573,6 +573,7 @@ namespace MiNET.Net
 						player.Skin = ReadSkin();
 						ReadBool(); // is teacher
 						ReadBool(); // is host
+						ReadBool(); // is subclient
 
 						player.PlayerInfo = new PlayerInfo()
 						{

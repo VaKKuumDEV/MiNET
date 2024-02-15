@@ -5381,6 +5381,7 @@ namespace MiNET.Net
 
 		public int chunkX; // = null;
 		public int chunkZ; // = null;
+		public int dimension; // = null;
 
 		public McpeLevelChunk()
 		{
@@ -5396,7 +5397,7 @@ namespace MiNET.Net
 
 			WriteSignedVarInt(chunkX);
 			WriteSignedVarInt(chunkZ);
-			WriteSignedVarInt(0);
+			WriteSignedVarInt(0);  //dimension id. TODO if dimensions will ever be added back again....
 
 			AfterEncode();
 		}
@@ -5412,6 +5413,7 @@ namespace MiNET.Net
 
 			chunkX = ReadSignedVarInt();
 			chunkZ = ReadSignedVarInt();
+			dimension = ReadSignedVarInt();
 
 			AfterDecode();
 		}
@@ -5425,6 +5427,7 @@ namespace MiNET.Net
 
 			chunkX=default(int);
 			chunkZ=default(int);
+			dimension=default(int);
 		}
 
 	}
