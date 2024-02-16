@@ -112,6 +112,11 @@ namespace MiNET.Client
 			foreach (var block in BlockstateGenerator.Schemas)
 			{
 				await Task.Delay(100);
+				SendCommand(client, $"/setblock {x} 49 0 barrier"); //add something below or a lot of thing will fail
+				await Task.Delay(100);
+				if (block.Name == "minecraft:redstone_wire") { SendCommand(client, $"/setblock {x} 50 0 {block.Command}"); } //hack for redstone wire. BDS won't activate signal until placed again
+				if (block.Id == 386 || block.Id == 388 || block.Id == 390 || block.Id == 391 || block.Id == 392 || block.Id == 393 || block.Id == 411) { SendCommand(client, $"/setblock {x} 50 0 water"); } //place water for sea things
+				await Task.Delay(100);
 				SendCommand(client, $"/setblock {x} 50 0 {block.Command}");
 				if (!BlockstateGenerator.blockPosition.ContainsKey(x)){ BlockstateGenerator.blockPosition.Add(x, block); }
 				x += 2;
@@ -134,7 +139,7 @@ namespace MiNET.Client
 
 		private void HandleMcpeUpdateBlock(BedrockTraceHandler caller, McpeUpdateBlock message)
 		{
-			if (BlockstateGenerator.blockPosition.TryGetValue(message.coordinates.X, out var state))
+			if (BlockstateGenerator.blockPosition.TryGetValue(message.coordinates.X, out var state) && message.coordinates.Y == 50)
 			{
 				Log.Warn($"Got runtimeID for {state.Name}");
 				BlockstateGenerator.createContainer(state.Name, message.blockRuntimeId, state.Id, state.Data, state.States);
