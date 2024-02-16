@@ -66,7 +66,18 @@ namespace MiNET.Client
 		public static void write()
 		{
 			File.WriteAllText("newResources/blockstates.json", JsonConvert.SerializeObject(BlockPalette.Values, Formatting.Indented));
-			Log.Warn($"Completed successfully. All blockstates exported to 'newResources/blockstates.json'");
+			if (blockPosition.Count > 0)
+			{
+				Log.Error($"Completed unsuccessfully with {blockPosition.Count} failed blocks. All blockstates exported to 'newResources/blockstates.json'");
+			}
+			else
+			{
+				Log.Warn($"Completed successfully. All blockstates exported to 'newResources/blockstates.json'");
+			}
+			foreach (var item in blockPosition)
+			{
+				Log.Error($"Failed block: {item.Value.Name} command: {item.Value.Command}");
+			}
 		}
 
 		private static List<IBlockState> createState(string name, string value, string type)

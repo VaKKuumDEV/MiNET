@@ -135,8 +135,6 @@ namespace MiNET.Client
 
 		public override void HandleMcpeText(McpeText message)
 		{
-			Log.Error($"From BDS: {message.message}");
-
 			string text = message.message;
 			if (string.IsNullOrEmpty(text)) return;
 

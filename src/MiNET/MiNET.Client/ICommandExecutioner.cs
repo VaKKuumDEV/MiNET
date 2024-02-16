@@ -26,6 +26,8 @@
 using System;
 using System.Threading.Tasks;
 using log4net;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using MiNET.Blocks;
 using MiNET.Net;
 using MiNET.Utils;
 
@@ -48,7 +50,7 @@ namespace MiNET.Client
 
 		public bool CanExecute(string text)
 		{
-			return text.Contains("blockstates");
+			return text.Contains("blockstates") || text.Contains("export");
 		}
 
 		private bool _runningBlockMetadataDiscovery;
@@ -59,9 +61,9 @@ namespace MiNET.Client
 			{
 				ExecuteBlockstates(caller);
 			}
-			else if (text.Contains("test"))
+			else if (text.Contains("export"))
 			{
-				SendCommand(caller.Client, $"/gamerule showcoordinates true");
+				ExportBlockstates();
 			}
 			else
 			{
@@ -99,15 +101,22 @@ namespace MiNET.Client
 			BlockstateGenerator.init();
 			var client = caller.Client;
 			Log.Warn("Starting blockstate generator wait....");
+			Log.Warn("If exporting not started automatically say 'export'");
+			SendCommand(client, $"/setblock 0 50 0 cobblestone"); //hack to place air
+			await Task.Delay(4000); //delay just to read this /|\
 			SetGameRules(caller);
-			SendCommand(client, $"/tp TheGrey 20 52 0");
+			SendCommand(client, $"/tp TheGrey 0 52 0");
+
 			var x = 0;
+			var tp = 0;
 			foreach (var block in BlockstateGenerator.Schemas)
 			{
 				await Task.Delay(100);
 				SendCommand(client, $"/setblock {x} 50 0 {block.Command}");
-				BlockstateGenerator.blockPosition.Add(x, block);
+				if (!BlockstateGenerator.blockPosition.ContainsKey(x)){ BlockstateGenerator.blockPosition.Add(x, block); }
 				x += 2;
+				tp++;
+				SendCommand(client, $"/tp TheGrey {x} 52 0");
 			}
 		}
 
@@ -129,15 +138,17 @@ namespace MiNET.Client
 			{
 				Log.Warn($"Got runtimeID for {state.Name}");
 				BlockstateGenerator.createContainer(state.Name, message.blockRuntimeId, state.Id, state.Data, state.States);
+				BlockstateGenerator.blockPosition.Remove(message.coordinates.X);
 				if (state.Name == "minecraft:barrier")
 				{
 					BlockstateGenerator.write();
 				}
 			}
-			else
-			{
-				Log.Error($"Got unknown block with runtimeID {message.blockRuntimeId}");
-			}
+		}
+
+		private void ExportBlockstates()
+		{
+			BlockstateGenerator.write();
 		}
 	}
 }

@@ -55,7 +55,7 @@ namespace MiNET.Client
 
 					if (subChunkCount < 1)
 					{
-						Log.Warn("Nothing to read");
+						//Log.Warn("Nothing to read");
 						return null;
 					}
 
