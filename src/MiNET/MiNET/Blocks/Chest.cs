@@ -42,14 +42,14 @@ namespace MiNET.Blocks
 		{
 			var FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
 
-			cardinalDirection = FacingDirection switch
+			/*cardinalDirection = FacingDirection switch
 			{
 				5 => "east",
 				3 => "south",
 				4 => "west",
 				2 => "north",
 				_ => throw new ArgumentOutOfRangeException()
-			};
+			};*/
 
 			var chestBlockEntity = new ChestBlockEntity { Coordinates = Coordinates };
 			world.SetBlockEntity(chestBlockEntity);

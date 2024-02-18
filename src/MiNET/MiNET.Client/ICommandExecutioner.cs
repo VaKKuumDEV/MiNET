@@ -111,7 +111,6 @@ namespace MiNET.Client
 			var tp = 0;
 			foreach (var block in BlockstateGenerator.Schemas)
 			{
-				await Task.Delay(100);
 				SendCommand(client, $"/setblock {x} 49 0 barrier"); //add something below or a lot of thing will fail
 				await Task.Delay(100);
 				if (block.Name == "minecraft:redstone_wire") { SendCommand(client, $"/setblock {x} 50 0 {block.Command}"); } //hack for redstone wire. BDS won't activate signal until placed again
@@ -122,6 +121,7 @@ namespace MiNET.Client
 				x += 2;
 				tp++;
 				SendCommand(client, $"/tp TheGrey {x} 52 0");
+				await Task.Delay(100);
 			}
 		}
 
@@ -132,21 +132,37 @@ namespace MiNET.Client
 				case McpeUpdateBlock mcpePacket:
 					HandleMcpeUpdateBlock(caller, mcpePacket);
 					break;
+				case McpeUpdateSubChunkBlocksPacket mcpePacket:
+					HandleMcpeUpdateSubChunkBlocksPacket(caller, mcpePacket);
+					break;
 				default:
 					return;
 			}
 		}
 
-		private void HandleMcpeUpdateBlock(BedrockTraceHandler caller, McpeUpdateBlock message)
+		private void HandleMcpeUpdateBlock(BedrockTraceHandler caller, McpeUpdateBlock message) //for blocks with one update
 		{
 			if (BlockstateGenerator.blockPosition.TryGetValue(message.coordinates.X, out var state) && message.coordinates.Y == 50)
 			{
-				Log.Warn($"Got runtimeID for {state.Name}");
+				Log.Warn($"Got runtimeID for {state.Name} (id: {state.Id} data: {state.Data})");
 				BlockstateGenerator.createContainer(state.Name, message.blockRuntimeId, state.Id, state.Data, state.States);
 				BlockstateGenerator.blockPosition.Remove(message.coordinates.X);
 				if (state.Name == "minecraft:barrier")
 				{
 					BlockstateGenerator.write();
+				}
+			}
+		}
+
+		private void HandleMcpeUpdateSubChunkBlocksPacket(BedrockTraceHandler caller, McpeUpdateSubChunkBlocksPacket message) //for blocks with two updates
+		{
+			foreach (var block in message.layerZeroUpdates)
+			{
+				if (BlockstateGenerator.blockPosition.TryGetValue(block.Coordinates.X, out var state) && block.Coordinates.Y == 50)
+				{
+					Log.Warn($"Got runtimeID for {state.Name} (id: {state.Id} data: {state.Data})");
+					BlockstateGenerator.createContainer(state.Name, block.BlockRuntimeId, state.Id, state.Data, state.States);
+					BlockstateGenerator.blockPosition.Remove(block.Coordinates.X);
 				}
 			}
 		}

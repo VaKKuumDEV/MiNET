@@ -198,6 +198,11 @@ namespace MiNET.Client
 			CallPacketHandlers(message);
 		}
 
+		public override void HandleMcpeUpdateSubChunkBlocksPacket(McpeUpdateSubChunkBlocksPacket message)
+		{
+			CallPacketHandlers(message);
+		}
+
 		public override void HandleMcpeStartGame(McpeStartGame message)
 		{
 			Client.EntityId = message.runtimeEntityId;

@@ -32,10 +32,48 @@ using MiNET.Utils;
 namespace MiNET.Blocks
 {
 	//Minecraft Bedrock Edition 1.13.0 Blockstates
-	public partial class StoneBlockSlab // 44 typeof=StoneBlockSlab
+    public partial class StoneBlockSlab // 44 typeof=StoneSlab
+    {
+        public override string Name => "minecraft:stone_slab";
+
+        [StateEnum("brick","cobblestone","wood","stone_brick","sandstone","quartz","smooth_stone","nether_brick")]
+        public string StoneSlabType { get; set; } = "smooth_stone";
+        [StateBit] public bool TopSlotBit { get; set; } = false;
+
+        public override void SetState(List<IBlockState> states)
+        {
+            foreach (var state in states)
+            {
+                switch(state)
+                {
+                    case BlockStateString s when s.Name == "stone_slab_type":
+                        StoneSlabType = s.Value;
+                        break;
+                    case BlockStateByte s when s.Name == "top_slot_bit":
+                        TopSlotBit = Convert.ToBoolean(s.Value);
+                        break;
+                } // switch
+            } // foreach
+        } // method
+
+        public override BlockStateContainer GetState()
+        {
+            var record = new BlockStateContainer();
+            record.Name = "minecraft:stone_slab";
+            record.Id = 44;
+            record.States.Add(new BlockStateString {Name = "stone_slab_type", Value = StoneSlabType});
+            record.States.Add(new BlockStateByte {Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit)});
+            return record;
+        } // method
+    } // class
+
+	public partial class StoneBlockSlab2 // 182 typeof=StoneSlab2
 	{
-		public string StoneSlabType { get; set; } = "smooth_stone";
-		public string verticalHalf { get; set; } = "bottom";
+		public string Name => "minecraft:stone_slab2";
+
+		[StateEnum("red_sandstone", "red_nether_brick", "mossy_cobblestone", "prismarine_dark", "prismarine_rough", "smooth_sandstone", "prismarine_brick", "purpur")]
+		public string StoneSlabType2 { get; set; } = "red_sandstone";
+		[StateBit] public bool TopSlotBit { get; set; } = false;
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -43,44 +81,12 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "minecraft:vertical_half":
-						verticalHalf = s.Value;
-						break;
-					case BlockStateString s when s.Name == "stone_slab_type":
-						StoneSlabType = s.Value;
-						break;
-				} // switch
-			} // foreach
-		} // method
-
-		public override BlockStateContainer GetState()
-		{
-			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_block_slab";
-			record.Id = 44;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
-			record.States.Add(new BlockStateString { Name = "stone_slab_type", Value = StoneSlabType });
-			return record;
-		} // method
-	} // class
-
-	public partial class StoneBlockSlab2 // 182 typeof=StoneBlockSlab2
-	{
-		public string StoneSlabType2 { get; set; } = "mossy_cobblestone";
-		public string verticalHalf { get; set; } = "bottom";
-
-		public override void SetState(List<IBlockState> states)
-		{
-			foreach (var state in states)
-			{
-				switch (state)
-				{
-					case BlockStateString s when s.Name == "minecraft:vertical_half":
-						verticalHalf = s.Value;
-						break;
 					case BlockStateString s when s.Name == "stone_slab_type_2":
 						StoneSlabType2 = s.Value;
 						break;
+					case BlockStateByte s when s.Name == "top_slot_bit":
+						TopSlotBit = Convert.ToBoolean(s.Value);
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -88,18 +94,21 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_block_slab2";
+			record.Name = "minecraft:stone_slab2";
 			record.Id = 182;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_2", Value = StoneSlabType2 });
+			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
 			return record;
 		} // method
 	} // class
 
-	public partial class StoneBlockSlab3 // 417 typeof=StoneBlockSlab3
+	public partial class StoneBlockSlab3 // 417 typeof=StoneSlab3
 	{
-	public string StoneSlabType3 { get; set; } = "smooth_red_sandstone";
-	public string verticalHalf { get; set; } = "bottom";
+		public string Name => "minecraft:stone_slab3";
+
+		[StateEnum("end_stone_brick", "granite", "andesite", "polished_granite", "diorite", "polished_andesite", "smooth_red_sandstone", "polished_diorite")]
+		public string StoneSlabType3 { get; set; } = "end_stone_brick";
+		[StateBit] public bool TopSlotBit { get; set; } = false;
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -107,12 +116,12 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "minecraft:vertical_half":
-						verticalHalf = s.Value;
-						break;
 					case BlockStateString s when s.Name == "stone_slab_type_3":
 						StoneSlabType3 = s.Value;
 						break;
+					case BlockStateByte s when s.Name == "top_slot_bit":
+						TopSlotBit = Convert.ToBoolean(s.Value);
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -120,18 +129,21 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_block_slab3";
+			record.Name = "minecraft:stone_slab3";
 			record.Id = 417;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_3", Value = StoneSlabType3 });
+			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
 			return record;
 		} // method
 	} // class
 
-	public partial class StoneBlockSlab4 // 421 typeof=StoneBlockSlab4
+	public partial class StoneBlockSlab4 // 421 typeof=StoneSlab4
 	{
-		public string StoneSlabType4 { get; set; } = "stone";
-		public string verticalHalf { get; set; } = "bottom";
+		public string Name => "minecraft:stone_slab4";
+
+		[StateEnum("cut_sandstone", "stone", "smooth_quartz", "cut_red_sandstone", "mossy_stone_brick")]
+		public string StoneSlabType4 { get; set; } = "mossy_stone_brick";
+		[StateBit] public bool TopSlotBit { get; set; } = false;
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -139,11 +151,11 @@ namespace MiNET.Blocks
 			{
 				switch (state)
 				{
-					case BlockStateString s when s.Name == "minecraft:vertical_half":
-						verticalHalf = s.Value;
-						break;
 					case BlockStateString s when s.Name == "stone_slab_type_4":
 						StoneSlabType4 = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "top_slot_bit":
+						TopSlotBit = Convert.ToBoolean(s.Value);
 						break;
 				} // switch
 			} // foreach
@@ -152,10 +164,10 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:stone_block_slab4";
+			record.Name = "minecraft:stone_slab4";
 			record.Id = 421;
-			record.States.Add(new BlockStateString { Name = "minecraft:vertical_half", Value = verticalHalf });
 			record.States.Add(new BlockStateString { Name = "stone_slab_type_4", Value = StoneSlabType4 });
+			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
 			return record;
 		} // method
 	} // class
@@ -898,9 +910,9 @@ namespace MiNET.Blocks
     public partial class Anvil  // 145 typeof=Anvil
     {
 		public  string Damage { get; set; } = "undamaged";
-        public  string cardinalDirection { get; set; } = "south";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
@@ -909,10 +921,10 @@ namespace MiNET.Blocks
                     case BlockStateString s when s.Name == "damage":
                         Damage = s.Value;
                         break;
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -922,8 +934,8 @@ namespace MiNET.Blocks
             record.Name = "minecraft:anvil";
             record.Id = 145;
             record.States.Add(new BlockStateString {Name = "damage", Value = Damage});
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -1583,7 +1595,7 @@ namespace MiNET.Blocks
 
     public partial class BlastFurnace  // 451 typeof=BlastFurnace
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -1591,8 +1603,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -1603,8 +1615,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:blast_furnace";
             record.Id = 451;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -2052,9 +2064,9 @@ namespace MiNET.Blocks
     {
         [StateBit] public  bool Extinguished { get; set; } = false;
         [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        
-        public Campfire() : base(464)
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+
+		public Campfire() : base(464)
         {
             IsGenerated = true;
         }
@@ -2068,10 +2080,10 @@ namespace MiNET.Blocks
                     case BlockStateByte s when s.Name == "extinguished":
                         Extinguished = Convert.ToBoolean(s.Value);
                         break;
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -2081,8 +2093,8 @@ namespace MiNET.Blocks
             record.Name = "minecraft:campfire";
             record.Id = 464;
             record.States.Add(new BlockStateByte {Name = "extinguished", Value = Convert.ToByte(Extinguished)});
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -2142,10 +2154,9 @@ namespace MiNET.Blocks
 
     public partial class CarvedPumpkin : Block // 410 typeof=CarvedPumpkin
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        
-        public CarvedPumpkin() : base(410)
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+
+		public CarvedPumpkin() : base(410)
         {
             IsGenerated = true;
         }
@@ -2156,10 +2167,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -2168,8 +2179,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:carved_pumpkin";
             record.Id = 410;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -2338,7 +2349,7 @@ namespace MiNET.Blocks
 
     public partial class Chest  // 54 typeof=Chest
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -2346,8 +2357,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -2358,7 +2369,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:chest";
             record.Id = 54;
-			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -2507,15 +2518,6 @@ namespace MiNET.Blocks
 
 		[StateEnum("mossy_cobblestone", "mossy_stone_brick", "andesite", "stone_brick", "granite", "red_nether_brick", "end_brick", "nether_brick", "diorite", "cobblestone", "prismarine", "brick", "red_sandstone", "sandstone")]
 		public string WallBlockType { get; set; } = "cobblestone";
-		[StateEnum("short", "tall", "none")]
-		public string WallConnectionTypeEast { get; set; } = "none";
-		[StateEnum("tall", "short", "none")]
-		public string WallConnectionTypeNorth { get; set; } = "none";
-		[StateEnum("short", "none", "tall")]
-		public string WallConnectionTypeSouth { get; set; } = "none";
-		[StateEnum("short", "tall", "none")]
-		public string WallConnectionTypeWest { get; set; } = "none";
-		[StateBit] public bool WallPostBit { get; set; } = true;
 
 		public override void SetState(List<IBlockState> states)
 		{
@@ -2525,21 +2527,6 @@ namespace MiNET.Blocks
 				{
 					case BlockStateString s when s.Name == "wall_block_type":
 						WallBlockType = s.Value;
-						break;
-					case BlockStateString s when s.Name == "wall_connection_type_east":
-						WallConnectionTypeEast = s.Value;
-						break;
-					case BlockStateString s when s.Name == "wall_connection_type_north":
-						WallConnectionTypeNorth = s.Value;
-						break;
-					case BlockStateString s when s.Name == "wall_connection_type_south":
-						WallConnectionTypeSouth = s.Value;
-						break;
-					case BlockStateString s when s.Name == "wall_connection_type_west":
-						WallConnectionTypeWest = s.Value;
-						break;
-					case BlockStateByte s when s.Name == "wall_post_bit":
-						WallPostBit = Convert.ToBoolean(s.Value);
 						break;
 				} // switch
 			} // foreach
@@ -2551,11 +2538,6 @@ namespace MiNET.Blocks
 			record.Name = "minecraft:cobblestone_wall";
 			record.Id = 139;
 			record.States.Add(new BlockStateString { Name = "wall_block_type", Value = WallBlockType });
-			record.States.Add(new BlockStateString { Name = "wall_connection_type_east", Value = WallConnectionTypeEast });
-			record.States.Add(new BlockStateString { Name = "wall_connection_type_north", Value = WallConnectionTypeNorth });
-			record.States.Add(new BlockStateString { Name = "wall_connection_type_south", Value = WallConnectionTypeSouth });
-			record.States.Add(new BlockStateString { Name = "wall_connection_type_west", Value = WallConnectionTypeWest });
-			record.States.Add(new BlockStateByte { Name = "wall_post_bit", Value = Convert.ToByte(WallPostBit) });
 			return record;
 		} // method
 	} // class
@@ -3651,41 +3633,42 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class DoubleWoodenSlab  // 157 typeof=DoubleWoodenSlab
-    {
-        [StateEnum("bottom","top")]
-        public  string verticalHalf { get; set; } = "";
-        [StateEnum("spruce","birch","jungle","acacia","dark_oak","oak")]
-        public  string WoodType { get; set; } = "";
+	public partial class DoubleWoodenSlab // 157 typeof=DoubleWoodenSlab
+	{
+		public override string Name => "minecraft:double_wooden_slab";
 
-        public override void SetState(List<IBlockState> states)
-        {
-            foreach (var state in states)
-            {
-                switch(state)
-                {
-                    case BlockStateString s when s.Name == "minecraft:vertical_half":
-                        verticalHalf = s.Value;
-                        break;
-                    case BlockStateString s when s.Name == "wood_type":
-                        WoodType = s.Value;
-                        break;
-                } // switch
-            } // foreach
-        } // method
+		[StateBit] public bool TopSlotBit { get; set; } = false;
+		[StateEnum("dark_oak", "spruce", "jungle", "oak", "acacia", "birch")]
+		public string WoodType { get; set; } = "oak";
 
-        public override BlockStateContainer GetState()
-        {
-            var record = new BlockStateContainer();
-            record.Name = "minecraft:double_wooden_slab";
-            record.Id = 157;
-            record.States.Add(new BlockStateString {Name = "minecraft:vertical_half", Value = verticalHalf});
-            record.States.Add(new BlockStateString {Name = "wood_type", Value = WoodType});
-            return record;
-        } // method
-    } // class
+		public override void SetState(List<IBlockState> states)
+		{
+			foreach (var state in states)
+			{
+				switch (state)
+				{
+					case BlockStateByte s when s.Name == "top_slot_bit":
+						TopSlotBit = Convert.ToBoolean(s.Value);
+						break;
+					case BlockStateString s when s.Name == "wood_type":
+						WoodType = s.Value;
+						break;
+				} // switch
+			} // foreach
+		} // method
 
-    public partial class DragonEgg  // 122 typeof=DragonEgg
+		public override BlockStateContainer GetState()
+		{
+			var record = new BlockStateContainer();
+			record.Name = "minecraft:double_wooden_slab";
+			record.Id = 157;
+			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
+			record.States.Add(new BlockStateString { Name = "wood_type", Value = WoodType });
+			return record;
+		} // method
+	} // class
+
+	public partial class DragonEgg  // 122 typeof=DragonEgg
     {
 
         public override void SetState(List<IBlockState> states)
@@ -3960,7 +3943,7 @@ namespace MiNET.Blocks
     public partial class EndPortalFrame  // 120 typeof=EndPortalFrame
     {
         public  bool EndPortalEyeBit { get; set; } = false;
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -3971,8 +3954,8 @@ namespace MiNET.Blocks
 					case BlockStateByte s when s.Name == "end_portal_eye_bit":
 						EndPortalEyeBit = Convert.ToBoolean(s.Value);
 						break;
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -3984,8 +3967,8 @@ namespace MiNET.Blocks
             record.Name = "minecraft:end_portal_frame";
             record.Id = 120;
             record.States.Add(new BlockStateByte {Name = "end_portal_eye_bit", Value = Convert.ToByte(EndPortalEyeBit)});
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -4040,7 +4023,7 @@ namespace MiNET.Blocks
 
     public partial class EnderChest  // 130 typeof=EnderChest
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -4048,8 +4031,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -4060,7 +4043,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:ender_chest";
             record.Id = 130;
-			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -4330,16 +4313,16 @@ namespace MiNET.Blocks
 
     public partial class Furnace  // 61 typeof=Furnace
     {
-        public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -4350,8 +4333,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:furnace";
             record.Id = 61;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -5790,7 +5773,7 @@ namespace MiNET.Blocks
 
     public partial class Lectern : Block // 449 typeof=Lectern
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 		public  bool PoweredBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
@@ -5799,8 +5782,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -5811,8 +5794,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lectern";
             record.Id = 449;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            record.States.Add(new BlockStateByte {Name = "powered_bit", Value = Convert.ToByte(PoweredBit)});
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateByte {Name = "powered_bit", Value = Convert.ToByte(PoweredBit)});
             return record;
         } // method
     } // class
@@ -5959,19 +5942,18 @@ namespace MiNET.Blocks
 
     public partial class LitBlastFurnace  // 469 typeof=LitBlastFurnace
     {
-        [StateEnum("north","west","east","south")]
-        public  string cardinalDirection { get; set; } = "";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -5980,26 +5962,25 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lit_blast_furnace";
             record.Id = 469;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
     public partial class LitFurnace  // 62 typeof=LitFurnace
     {
-        [StateEnum("north","west","east","south")]
-        public  string cardinalDirection { get; set; } = "";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -6008,26 +5989,25 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lit_furnace";
             record.Id = 62;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
     public partial class LitPumpkin  // 91 typeof=LitPumpkin
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -6036,8 +6016,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lit_pumpkin";
             record.Id = 91;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -6087,10 +6067,9 @@ namespace MiNET.Blocks
 
     public partial class LitSmoker : Block // 454 typeof=LitSmoker
     {
-        [StateEnum("north","west","east","south")]
-        public  string cardinalDirection { get; set; } = "";
-        
-        public LitSmoker() : base(454)
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+
+		public LitSmoker() : base(454)
         {
             IsGenerated = true;
         }
@@ -6101,10 +6080,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -6113,8 +6092,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lit_smoker";
             record.Id = 454;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -6700,40 +6679,41 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class Observer  // 251 typeof=Observer
-    {
-        [StateEnum("up","north","south","west","east","down")]
-        public  string ffacingDirection { get; set; } = "north";
-        [StateBit] public  bool PoweredBit { get; set; } = false;
+	public partial class Observer // 251 typeof=Observer
+	{
+		public override string Name => "minecraft:observer";
 
-        public override void SetState(List<IBlockState> states)
-        {
-            foreach (var state in states)
-            {
-                switch(state)
-                {
-                    case BlockStateString s when s.Name == "minecraft:facing_direction":
-                        ffacingDirection = s.Value;
-                        break;
-                    case BlockStateByte s when s.Name == "powered_bit":
-                        PoweredBit = Convert.ToBoolean(s.Value);
-                        break;
-                } // switch
-            } // foreach
-        } // method
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
+		[StateBit] public bool PoweredBit { get; set; } = false;
 
-        public override BlockStateContainer GetState()
-        {
-            var record = new BlockStateContainer();
-            record.Name = "minecraft:observer";
-            record.Id = 251;
-            record.States.Add(new BlockStateString {Name = "minecraft:facing_direction", Value = ffacingDirection});
-            record.States.Add(new BlockStateByte {Name = "powered_bit", Value = Convert.ToByte(PoweredBit)});
-            return record;
-        } // method
-    } // class
+		public override void SetState(List<IBlockState> states)
+		{
+			foreach (var state in states)
+			{
+				switch (state)
+				{
+					case BlockStateInt s when s.Name == "facing_direction":
+						FacingDirection = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "powered_bit":
+						PoweredBit = Convert.ToBoolean(s.Value);
+						break;
+				} // switch
+			} // foreach
+		} // method
 
-    public partial class Obsidian  // 49 typeof=Obsidian
+		public override BlockStateContainer GetState()
+		{
+			var record = new BlockStateContainer();
+			record.Name = "minecraft:observer";
+			record.Id = 251;
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = FacingDirection });
+			record.States.Add(new BlockStateByte { Name = "powered_bit", Value = Convert.ToByte(PoweredBit) });
+			return record;
+		} // method
+	} // class
+
+	public partial class Obsidian  // 49 typeof=Obsidian
     {
 
         public override void SetState(List<IBlockState> states)
@@ -7091,9 +7071,8 @@ namespace MiNET.Blocks
 
     public partial class PoweredComparator  // 150 typeof=PoweredComparator
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        [StateBit] public  bool OutputLitBit { get; set; } = false;
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateBit] public  bool OutputLitBit { get; set; } = false;
         [StateBit] public  bool OutputSubtractBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
@@ -7102,10 +7081,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                    case BlockStateByte s when s.Name == "output_lit_bit":
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "output_lit_bit":
                         OutputLitBit = Convert.ToBoolean(s.Value);
                         break;
                     case BlockStateByte s when s.Name == "output_subtract_bit":
@@ -7120,8 +7099,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:powered_comparator";
             record.Id = 150;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            record.States.Add(new BlockStateByte {Name = "output_lit_bit", Value = Convert.ToByte(OutputLitBit)});
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateByte {Name = "output_lit_bit", Value = Convert.ToByte(OutputLitBit)});
             record.States.Add(new BlockStateByte {Name = "output_subtract_bit", Value = Convert.ToByte(OutputSubtractBit)});
             return record;
         } // method
@@ -7129,9 +7108,8 @@ namespace MiNET.Blocks
 
     public partial class PoweredRepeater  // 94 typeof=PoweredRepeater
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        [StateRange(0, 3)] public  int RepeaterDelay { get; set; } = 0;
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 3)] public  int RepeaterDelay { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7139,10 +7117,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                    case BlockStateInt s when s.Name == "repeater_delay":
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+					case BlockStateInt s when s.Name == "repeater_delay":
                         RepeaterDelay = s.Value;
                         break;
                 } // switch
@@ -7154,8 +7132,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:powered_repeater";
             record.Id = 94;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            record.States.Add(new BlockStateInt {Name = "repeater_delay", Value = RepeaterDelay});
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt {Name = "repeater_delay", Value = RepeaterDelay});
             return record;
         } // method
     } // class
@@ -7254,19 +7232,18 @@ namespace MiNET.Blocks
 
     public partial class Pumpkin  // 86 typeof=Pumpkin
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                } // switch
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+				} // switch
             } // foreach
         } // method
 
@@ -7275,8 +7252,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:pumpkin";
             record.Id = 86;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -8312,16 +8289,16 @@ namespace MiNET.Blocks
 
     public partial class Smoker : Block // 453 typeof=Smoker
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -8332,8 +8309,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:smoker";
             record.Id = 453;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            return record;
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			return record;
         } // method
     } // class
 
@@ -9091,33 +9068,35 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-	public partial class Stonebrick // 98 typeof=Stonebrick
-	{
-		[StateEnum("smooth", "default", "chiseled", "cracked", "mossy")]
-		public string StoneBrickType { get; set; } = "default";
+    public partial class Stonebrick // 98 typeof=Stonebrick
+    {
+        public override string Name => "minecraft:stonebrick";
 
-		public override void SetState(List<IBlockState> states)
-		{
-			foreach (var state in states)
-			{
-				switch (state)
-				{
-					case BlockStateString s when s.Name == "stone_brick_type":
-						StoneBrickType = s.Value;
-						break;
-				} // switch
-			} // foreach
-		} // method
+        [StateEnum("smooth","default","chiseled","cracked","mossy")]
+        public string StoneBrickType { get; set; } = "default";
 
-		public override BlockStateContainer GetState()
-		{
-			var record = new BlockStateContainer();
-			record.Name = "minecraft:stonebrick";
-			record.Id = 98;
-			record.States.Add(new BlockStateString { Name = "stone_brick_type", Value = StoneBrickType });
-			return record;
-		} // method
-	} // class
+        public override void SetState(List<IBlockState> states)
+        {
+            foreach (var state in states)
+            {
+                switch(state)
+                {
+                    case BlockStateString s when s.Name == "stone_brick_type":
+                        StoneBrickType = s.Value;
+                        break;
+                } // switch
+            } // foreach
+        } // method
+
+        public override BlockStateContainer GetState()
+        {
+            var record = new BlockStateContainer();
+            record.Name = "minecraft:stonebrick";
+            record.Id = 98;
+            record.States.Add(new BlockStateString {Name = "stone_brick_type", Value = StoneBrickType});
+            return record;
+        } // method
+    } // class
 
 	public partial class Stonecutter  // 245 typeof=Stonecutter
     {
@@ -9143,7 +9122,7 @@ namespace MiNET.Blocks
 
     public partial class StonecutterBlock : Block // 452 typeof=StonecutterBlock
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
 		public StonecutterBlock() : base(452)
         {
@@ -9156,8 +9135,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -9168,7 +9147,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:stonecutter_block";
             record.Id = 452;
-			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -9588,7 +9567,7 @@ namespace MiNET.Blocks
 
     public partial class TrappedChest  // 146 typeof=TrappedChest
     {
-		public string cardinalDirection { get; set; } = "north";
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -9596,8 +9575,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-						cardinalDirection = s.Value;
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -9608,7 +9587,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:trapped_chest";
             record.Id = 146;
-			record.States.Add(new BlockStateString { Name = "minecraft:cardinal_direction", Value = cardinalDirection });
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -9794,9 +9773,8 @@ namespace MiNET.Blocks
 
     public partial class UnpoweredComparator  // 149 typeof=UnpoweredComparator
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        [StateBit] public  bool OutputLitBit { get; set; } = false;
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateBit] public  bool OutputLitBit { get; set; } = false;
         [StateBit] public  bool OutputSubtractBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
@@ -9805,10 +9783,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                    case BlockStateByte s when s.Name == "output_lit_bit":
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "output_lit_bit":
                         OutputLitBit = Convert.ToBoolean(s.Value);
                         break;
                     case BlockStateByte s when s.Name == "output_subtract_bit":
@@ -9823,8 +9801,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:unpowered_comparator";
             record.Id = 149;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            record.States.Add(new BlockStateByte {Name = "output_lit_bit", Value = Convert.ToByte(OutputLitBit)});
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateByte {Name = "output_lit_bit", Value = Convert.ToByte(OutputLitBit)});
             record.States.Add(new BlockStateByte {Name = "output_subtract_bit", Value = Convert.ToByte(OutputSubtractBit)});
             return record;
         } // method
@@ -9832,9 +9810,8 @@ namespace MiNET.Blocks
 
     public partial class UnpoweredRepeater  // 93 typeof=UnpoweredRepeater
     {
-        [StateEnum("south","west","north","east")]
-        public  string cardinalDirection { get; set; } = "south";
-        [StateRange(0, 3)] public  int RepeaterDelay { get; set; } = 0;
+		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 3)] public  int RepeaterDelay { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -9842,10 +9819,10 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-                    case BlockStateString s when s.Name == "minecraft:cardinal_direction":
-                        cardinalDirection = s.Value;
-                        break;
-                    case BlockStateInt s when s.Name == "repeater_delay":
+					case BlockStateInt s when s.Name == "direction":
+						Direction = s.Value;
+						break;
+					case BlockStateInt s when s.Name == "repeater_delay":
                         RepeaterDelay = s.Value;
                         break;
                 } // switch
@@ -9857,8 +9834,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:unpowered_repeater";
             record.Id = 93;
-            record.States.Add(new BlockStateString {Name = "minecraft:cardinal_direction", Value = cardinalDirection});
-            record.States.Add(new BlockStateInt {Name = "repeater_delay", Value = RepeaterDelay});
+			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt {Name = "repeater_delay", Value = RepeaterDelay});
             return record;
         } // method
     } // class
@@ -10194,41 +10171,42 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class WoodenSlab  // 158 typeof=WoodenSlab
-    {
-        [StateEnum("bottom","top")]
-        public  string verticalHalf { get; set; } = "";
-        [StateEnum("spruce","birch","jungle","acacia","dark_oak","oak")]
-        public  string WoodType { get; set; } = "";
+	public partial class WoodenSlab // 158 typeof=WoodenSlab
+	{
+		public override string Name => "minecraft:wooden_slab";
 
-        public override void SetState(List<IBlockState> states)
-        {
-            foreach (var state in states)
-            {
-                switch(state)
-                {
-                    case BlockStateString s when s.Name == "minecraft:vertical_half":
-                        verticalHalf = s.Value;
-                        break;
-                    case BlockStateString s when s.Name == "wood_type":
-                        WoodType = s.Value;
-                        break;
-                } // switch
-            } // foreach
-        } // method
+		[StateBit] public override bool TopSlotBit { get; set; } = false;
+		[StateEnum("spruce", "jungle", "birch", "dark_oak", "oak", "acacia")]
+		public string WoodType { get; set; } = "oak";
 
-        public override BlockStateContainer GetState()
-        {
-            var record = new BlockStateContainer();
-            record.Name = "minecraft:wooden_slab";
-            record.Id = 158;
-            record.States.Add(new BlockStateString {Name = "minecraft:vertical_half", Value = verticalHalf});
-            record.States.Add(new BlockStateString {Name = "wood_type", Value = WoodType});
-            return record;
-        } // method
-    } // class
+		public override void SetState(List<IBlockState> states)
+		{
+			foreach (var state in states)
+			{
+				switch (state)
+				{
+					case BlockStateByte s when s.Name == "top_slot_bit":
+						TopSlotBit = Convert.ToBoolean(s.Value);
+						break;
+					case BlockStateString s when s.Name == "wood_type":
+						WoodType = s.Value;
+						break;
+				} // switch
+			} // foreach
+		} // method
 
-    public partial class YellowFlower  // 37 typeof=YellowFlower
+		public override BlockStateContainer GetState()
+		{
+			var record = new BlockStateContainer();
+			record.Name = "minecraft:wooden_slab";
+			record.Id = 158;
+			record.States.Add(new BlockStateByte { Name = "top_slot_bit", Value = Convert.ToByte(TopSlotBit) });
+			record.States.Add(new BlockStateString { Name = "wood_type", Value = WoodType });
+			return record;
+		} // method
+	} // class
+
+	public partial class YellowFlower  // 37 typeof=YellowFlower
     {
 
         public override void SetState(List<IBlockState> states)
@@ -10277,15 +10255,24 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-	public partial class Coral // 386 typeof=Coral
+	public partial class Coral // 387 typeof=CoralBlock
 	{
-		public string blockName { get; set; } = "minecraft:fire_coral";
+		[StateEnum("pink", "purple", "red", "yellow", "blue")]
+		public string CoralColor { get; set; } = "";
+		[StateBit] public bool DeadBit { get; set; } = false;
+
 		public override void SetState(List<IBlockState> states)
 		{
 			foreach (var state in states)
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "coral_color":
+						CoralColor = s.Value;
+						break;
+					case BlockStateByte s when s.Name == "dead_bit":
+						DeadBit = Convert.ToBoolean(s.Value);
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -10293,8 +10280,10 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = blockName;
-			record.Id = 386;
+			record.Name = "minecraft:coral_block";
+			record.Id = 387;
+			record.States.Add(new BlockStateString { Name = "coral_color", Value = CoralColor });
+			record.States.Add(new BlockStateByte { Name = "dead_bit", Value = Convert.ToByte(DeadBit) });
 			return record;
 		} // method
 	} // class

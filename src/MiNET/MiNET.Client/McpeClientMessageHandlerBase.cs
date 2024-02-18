@@ -701,7 +701,7 @@ namespace MiNET.Client
 		}
 
 		/// <inheritdoc />
-		public void HandleMcpeUpdateSubChunkBlocksPacket(McpeUpdateSubChunkBlocksPacket message)
+		public virtual void HandleMcpeUpdateSubChunkBlocksPacket(McpeUpdateSubChunkBlocksPacket message)
 		{
 			
 		}

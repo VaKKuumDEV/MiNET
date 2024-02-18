@@ -53,11 +53,11 @@ namespace MiNET.Blocks
 				_ => throw new ArgumentOutOfRangeException()
 			};
 
-			verticalHalf = (faceCoords.Y > 0.5 && face != BlockFace.Up) switch
+			/*verticalHalf = (faceCoords.Y > 0.5 && face != BlockFace.Up) switch
 			{
 				true => "top",
 				false => "bottom"
-			};
+			};*/
 			return false;
 		}
 	}

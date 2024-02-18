@@ -7,6 +7,19 @@
     "States": []
   },
   {
+    "Command": "stone",
+    "Name": "minecraft:stone",
+    "Id": 1,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "stone_type",
+        "Value": "stone"
+      }
+    ]
+  },
+  {
     "Command": "granite",
     "Name": "minecraft:stone",
     "Id": 1,
@@ -125,6 +138,19 @@
     "States": []
   },
   {
+    "Command": "oak_planks",
+    "Name": "minecraft:planks",
+    "Id": 5,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "wood_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
     "Command": "spruce_planks",
     "Name": "minecraft:planks",
     "Id": 5,
@@ -186,6 +212,24 @@
         "Type": "8",
         "Name": "wood_type",
         "Value": "dark_oak"
+      }
+    ]
+  },
+  {
+    "Command": "sapling [\"age_bit\" = false, \"sapling_type\" = \"oak\"]",
+    "Name": "minecraft:sapling",
+    "Id": 6,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "age_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "sapling_type",
+        "Value": "oak"
       }
     ]
   },
@@ -1283,7 +1327,7 @@
   },
   {
     "Command": "oak_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 0,
     "States": [
@@ -1301,7 +1345,7 @@
   },
   {
     "Command": "spruce_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 1,
     "States": [
@@ -1319,7 +1363,7 @@
   },
   {
     "Command": "birch_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 2,
     "States": [
@@ -1337,7 +1381,7 @@
   },
   {
     "Command": "jungle_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 3,
     "States": [
@@ -1355,7 +1399,7 @@
   },
   {
     "Command": "oak_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 4,
     "States": [
@@ -1373,7 +1417,7 @@
   },
   {
     "Command": "spruce_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 5,
     "States": [
@@ -1391,7 +1435,7 @@
   },
   {
     "Command": "birch_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 6,
     "States": [
@@ -1409,7 +1453,7 @@
   },
   {
     "Command": "jungle_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 7,
     "States": [
@@ -1427,7 +1471,7 @@
   },
   {
     "Command": "oak_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 8,
     "States": [
@@ -1445,7 +1489,7 @@
   },
   {
     "Command": "spruce_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 9,
     "States": [
@@ -1463,7 +1507,7 @@
   },
   {
     "Command": "birch_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 10,
     "States": [
@@ -1481,7 +1525,7 @@
   },
   {
     "Command": "jungle_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:log",
+    "Name": "minecraft:oak_log",
     "Id": 17,
     "Data": 11,
     "States": [
@@ -2520,6 +2564,24 @@
     ]
   },
   {
+    "Command": "golden_rail [\"rail_data_bit\" = false, \"rail_direction\" = 0]",
+    "Name": "minecraft:golden_rail",
+    "Id": 27,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "rail_data_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "3",
+        "Name": "rail_direction",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "golden_rail [\"rail_data_bit\" = false, \"rail_direction\" = 1]",
     "Name": "minecraft:golden_rail",
     "Id": 27,
@@ -3142,7 +3204,7 @@
   },
   {
     "Command": "white_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 0,
     "States": [
@@ -3155,7 +3217,7 @@
   },
   {
     "Command": "orange_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 1,
     "States": [
@@ -3168,7 +3230,7 @@
   },
   {
     "Command": "magenta_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 2,
     "States": [
@@ -3181,7 +3243,7 @@
   },
   {
     "Command": "light_blue_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 3,
     "States": [
@@ -3194,7 +3256,7 @@
   },
   {
     "Command": "yellow_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 4,
     "States": [
@@ -3207,7 +3269,7 @@
   },
   {
     "Command": "lime_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 5,
     "States": [
@@ -3220,7 +3282,7 @@
   },
   {
     "Command": "pink_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 6,
     "States": [
@@ -3233,7 +3295,7 @@
   },
   {
     "Command": "gray_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 7,
     "States": [
@@ -3246,7 +3308,7 @@
   },
   {
     "Command": "light_gray_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 8,
     "States": [
@@ -3259,7 +3321,7 @@
   },
   {
     "Command": "cyan_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 9,
     "States": [
@@ -3272,7 +3334,7 @@
   },
   {
     "Command": "purple_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 10,
     "States": [
@@ -3285,7 +3347,7 @@
   },
   {
     "Command": "blue_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 11,
     "States": [
@@ -3298,7 +3360,7 @@
   },
   {
     "Command": "brown_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 12,
     "States": [
@@ -3311,7 +3373,7 @@
   },
   {
     "Command": "green_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 13,
     "States": [
@@ -3324,7 +3386,7 @@
   },
   {
     "Command": "red_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 14,
     "States": [
@@ -3337,7 +3399,7 @@
   },
   {
     "Command": "black_wool",
-    "Name": "minecraft:wool",
+    "Name": "minecraft:white_wool",
     "Id": 35,
     "Data": 15,
     "States": [
@@ -3354,6 +3416,19 @@
     "Id": 37,
     "Data": 0,
     "States": []
+  },
+  {
+    "Command": "red_flower [\"flower_type\" = \"poppy\"]",
+    "Name": "minecraft:red_flower",
+    "Id": 38,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "flower_type",
+        "Value": "poppy"
+      }
+    ]
   },
   {
     "Command": "red_flower [\"flower_type\" = \"orchid\"]",
@@ -5885,6 +5960,19 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "rail [\"rail_direction\" = 0]",
+    "Name": "minecraft:rail",
+    "Id": 66,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "rail_direction",
+        "Value": "0"
       }
     ]
   },
@@ -9681,6 +9769,19 @@
     ]
   },
   {
+    "Command": "monster_egg [\"monster_egg_stone_type\" = \"stone\"]",
+    "Name": "minecraft:monster_egg",
+    "Id": 97,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "monster_egg_stone_type",
+        "Value": "stone"
+      }
+    ]
+  },
+  {
     "Command": "monster_egg [\"monster_egg_stone_type\" = \"cobblestone\"]",
     "Name": "minecraft:monster_egg",
     "Id": 97,
@@ -9742,6 +9843,19 @@
         "Type": "8",
         "Name": "monster_egg_stone_type",
         "Value": "chiseled_stone_brick"
+      }
+    ]
+  },
+  {
+    "Command": "stonebrick [\"stone_brick_type\" = \"default\"]",
+    "Name": "minecraft:stonebrick",
+    "Id": 98,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "stone_brick_type",
+        "Value": "default"
       }
     ]
   },
@@ -12077,6 +12191,24 @@
         "Type": "1",
         "Name": "triggered_bit",
         "Value": "1"
+      }
+    ]
+  },
+  {
+    "Command": "activator_rail [\"rail_data_bit\" = false, \"rail_direction\" = 0]",
+    "Name": "minecraft:activator_rail",
+    "Id": 126,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "rail_data_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "3",
+        "Name": "rail_direction",
+        "Value": "0"
       }
     ]
   },
@@ -14705,6 +14837,24 @@
     ]
   },
   {
+    "Command": "skull [\"facing_direction\" = 0]",
+    "Name": "minecraft:skull",
+    "Id": 144,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "no_drop_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "skull [\"facing_direction\" = 1]",
     "Name": "minecraft:skull",
     "Id": 144,
@@ -16496,6 +16646,24 @@
     "States": []
   },
   {
+    "Command": "hopper [\"facing_direction\" = 0, \"toggle_bit\" = false]",
+    "Name": "minecraft:hopper",
+    "Id": 154,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "toggle_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "hopper [\"facing_direction\" = 1, \"toggle_bit\" = false]",
     "Name": "minecraft:hopper",
     "Id": 154,
@@ -16672,6 +16840,78 @@
         "Type": "1",
         "Name": "toggle_bit",
         "Value": "1"
+      }
+    ]
+  },
+  {
+    "Command": "quartz_block [\"chisel_type\" = \"default\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:quartz_block",
+    "Id": 155,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "default"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "quartz_block [\"chisel_type\" = \"chiseled\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:quartz_block",
+    "Id": 155,
+    "Data": 1,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "chiseled"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "quartz_block [\"chisel_type\" = \"lines\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:quartz_block",
+    "Id": 155,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "lines"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "quartz_block [\"chisel_type\" = \"smooth\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:quartz_block",
+    "Id": 155,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "smooth"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
       }
     ]
   },
@@ -17325,7 +17565,7 @@
   },
   {
     "Command": "white_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 0,
     "States": [
@@ -17338,7 +17578,7 @@
   },
   {
     "Command": "orange_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 1,
     "States": [
@@ -17351,7 +17591,7 @@
   },
   {
     "Command": "magenta_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 2,
     "States": [
@@ -17364,7 +17604,7 @@
   },
   {
     "Command": "light_blue_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 3,
     "States": [
@@ -17377,7 +17617,7 @@
   },
   {
     "Command": "yellow_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 4,
     "States": [
@@ -17390,7 +17630,7 @@
   },
   {
     "Command": "lime_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 5,
     "States": [
@@ -17403,7 +17643,7 @@
   },
   {
     "Command": "pink_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 6,
     "States": [
@@ -17416,7 +17656,7 @@
   },
   {
     "Command": "gray_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 7,
     "States": [
@@ -17429,7 +17669,7 @@
   },
   {
     "Command": "light_gray_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 8,
     "States": [
@@ -17442,7 +17682,7 @@
   },
   {
     "Command": "cyan_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 9,
     "States": [
@@ -17455,7 +17695,7 @@
   },
   {
     "Command": "purple_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 10,
     "States": [
@@ -17468,7 +17708,7 @@
   },
   {
     "Command": "blue_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 11,
     "States": [
@@ -17481,7 +17721,7 @@
   },
   {
     "Command": "brown_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 12,
     "States": [
@@ -17494,7 +17734,7 @@
   },
   {
     "Command": "green_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 13,
     "States": [
@@ -17507,7 +17747,7 @@
   },
   {
     "Command": "red_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 14,
     "States": [
@@ -17520,7 +17760,7 @@
   },
   {
     "Command": "black_terracotta",
-    "Name": "minecraft:stained_hardened_clay",
+    "Name": "minecraft:white_terracotta",
     "Id": 159,
     "Data": 15,
     "States": [
@@ -17533,7 +17773,7 @@
   },
   {
     "Command": "white_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 0,
     "States": [
@@ -17546,7 +17786,7 @@
   },
   {
     "Command": "orange_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 1,
     "States": [
@@ -17559,7 +17799,7 @@
   },
   {
     "Command": "magenta_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 2,
     "States": [
@@ -17572,7 +17812,7 @@
   },
   {
     "Command": "light_blue_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 3,
     "States": [
@@ -17585,7 +17825,7 @@
   },
   {
     "Command": "yellow_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 4,
     "States": [
@@ -17598,7 +17838,7 @@
   },
   {
     "Command": "lime_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 5,
     "States": [
@@ -17611,7 +17851,7 @@
   },
   {
     "Command": "pink_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 6,
     "States": [
@@ -17624,7 +17864,7 @@
   },
   {
     "Command": "gray_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 7,
     "States": [
@@ -17637,7 +17877,7 @@
   },
   {
     "Command": "light_gray_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 8,
     "States": [
@@ -17650,7 +17890,7 @@
   },
   {
     "Command": "cyan_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 9,
     "States": [
@@ -17663,7 +17903,7 @@
   },
   {
     "Command": "purple_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 10,
     "States": [
@@ -17676,7 +17916,7 @@
   },
   {
     "Command": "blue_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 11,
     "States": [
@@ -17689,7 +17929,7 @@
   },
   {
     "Command": "brown_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 12,
     "States": [
@@ -17702,7 +17942,7 @@
   },
   {
     "Command": "green_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 13,
     "States": [
@@ -17715,7 +17955,7 @@
   },
   {
     "Command": "red_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 14,
     "States": [
@@ -17728,7 +17968,7 @@
   },
   {
     "Command": "black_stained_glass_pane",
-    "Name": "minecraft:stained_glass_pane",
+    "Name": "minecraft:white_stained_glass_pane",
     "Id": 160,
     "Data": 15,
     "States": [
@@ -17736,6 +17976,29 @@
         "Type": "8",
         "Name": "color",
         "Value": "black"
+      }
+    ]
+  },
+  {
+    "Command": "leaves2 [\"new_leaf_type\" = \"acacia\", \"persistent_bit\" = false, \"update_bit\" = false]",
+    "Name": "minecraft:leaves2",
+    "Id": 161,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_leaf_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "1",
+        "Name": "persistent_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "update_bit",
+        "Value": "0"
       }
     ]
   },
@@ -18549,6 +18812,19 @@
     ]
   },
   {
+    "Command": "prismarine [\"prismarine_block_type\" = \"default\"]",
+    "Name": "minecraft:prismarine",
+    "Id": 168,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "prismarine_block_type",
+        "Value": "default"
+      }
+    ]
+  },
+  {
     "Command": "prismarine [\"prismarine_block_type\" = \"dark\"]",
     "Name": "minecraft:prismarine",
     "Id": 168,
@@ -18576,10 +18852,82 @@
   },
   {
     "Command": "sea_lantern",
-    "Name": "minecraft:seaLantern",
+    "Name": "minecraft:sea_lantern",
     "Id": 169,
     "Data": 0,
     "States": []
+  },
+  {
+    "Command": "hay_block [\"deprecated\" = 0, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:hay_block",
+    "Id": 170,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "hay_block [\"deprecated\" = 1, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:hay_block",
+    "Id": 170,
+    "Data": 1,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "1"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "hay_block [\"deprecated\" = 2, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:hay_block",
+    "Id": 170,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "2"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "hay_block [\"deprecated\" = 3, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:hay_block",
+    "Id": 170,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "3"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
   },
   {
     "Command": "hay_block [\"deprecated\" = 0, \"pillar_axis\" = \"x\"]",
@@ -18727,7 +19075,7 @@
   },
   {
     "Command": "white_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 0,
     "States": [
@@ -18740,7 +19088,7 @@
   },
   {
     "Command": "orange_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 1,
     "States": [
@@ -18753,7 +19101,7 @@
   },
   {
     "Command": "magenta_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 2,
     "States": [
@@ -18766,7 +19114,7 @@
   },
   {
     "Command": "light_blue_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 3,
     "States": [
@@ -18779,7 +19127,7 @@
   },
   {
     "Command": "yellow_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 4,
     "States": [
@@ -18792,7 +19140,7 @@
   },
   {
     "Command": "lime_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 5,
     "States": [
@@ -18805,7 +19153,7 @@
   },
   {
     "Command": "pink_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 6,
     "States": [
@@ -18818,7 +19166,7 @@
   },
   {
     "Command": "gray_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 7,
     "States": [
@@ -18831,7 +19179,7 @@
   },
   {
     "Command": "light_gray_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 8,
     "States": [
@@ -18844,7 +19192,7 @@
   },
   {
     "Command": "cyan_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 9,
     "States": [
@@ -18857,7 +19205,7 @@
   },
   {
     "Command": "purple_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 10,
     "States": [
@@ -18870,7 +19218,7 @@
   },
   {
     "Command": "blue_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 11,
     "States": [
@@ -18883,7 +19231,7 @@
   },
   {
     "Command": "brown_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 12,
     "States": [
@@ -18896,7 +19244,7 @@
   },
   {
     "Command": "green_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 13,
     "States": [
@@ -18909,7 +19257,7 @@
   },
   {
     "Command": "red_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 14,
     "States": [
@@ -18922,7 +19270,7 @@
   },
   {
     "Command": "black_carpet",
-    "Name": "minecraft:carpet",
+    "Name": "minecraft:white_carpet",
     "Id": 171,
     "Data": 15,
     "States": [
@@ -25201,6 +25549,19 @@
     ]
   },
   {
+    "Command": "chorus_flower [\"age\" = 0]",
+    "Name": "minecraft:chorus_flower",
+    "Id": 200,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "age",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "chorus_flower [\"age\" = 1]",
     "Name": "minecraft:chorus_flower",
     "Id": 200,
@@ -25262,6 +25623,78 @@
         "Type": "3",
         "Name": "age",
         "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "purpur_block [\"chisel_type\" = \"default\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:purpur_block",
+    "Id": 201,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "default"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "purpur_block [\"chisel_type\" = \"chiseled\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:purpur_block",
+    "Id": 201,
+    "Data": 1,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "chiseled"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "purpur_block [\"chisel_type\" = \"lines\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:purpur_block",
+    "Id": 201,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "lines"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "purpur_block [\"chisel_type\" = \"smooth\", \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:purpur_block",
+    "Id": 201,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "chisel_type",
+        "Value": "smooth"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
       }
     ]
   },
@@ -25719,6 +26152,78 @@
     "States": []
   },
   {
+    "Command": "bone_block [\"deprecated\" = 0, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:bone_block",
+    "Id": 216,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "bone_block [\"deprecated\" = 1, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:bone_block",
+    "Id": 216,
+    "Data": 1,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "1"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "bone_block [\"deprecated\" = 2, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:bone_block",
+    "Id": 216,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "2"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
+    "Command": "bone_block [\"deprecated\" = 3, \"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:bone_block",
+    "Id": 216,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "deprecated",
+        "Value": "3"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
     "Command": "bone_block [\"deprecated\" = 0, \"pillar_axis\" = \"x\"]",
     "Name": "minecraft:bone_block",
     "Id": 216,
@@ -25864,7 +26369,7 @@
   },
   {
     "Command": "white_shulker_box",
-    "Name": "minecraft:shulker_box",
+    "Name": "minecraft:white_shulker_box",
     "Id": 218,
     "Data": 0,
     "States": [
@@ -27112,7 +27617,7 @@
   },
   {
     "Command": "white_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 0,
     "States": [
@@ -27125,7 +27630,7 @@
   },
   {
     "Command": "orange_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 1,
     "States": [
@@ -27138,7 +27643,7 @@
   },
   {
     "Command": "magenta_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 2,
     "States": [
@@ -27151,7 +27656,7 @@
   },
   {
     "Command": "light_blue_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 3,
     "States": [
@@ -27164,7 +27669,7 @@
   },
   {
     "Command": "yellow_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 4,
     "States": [
@@ -27177,7 +27682,7 @@
   },
   {
     "Command": "lime_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 5,
     "States": [
@@ -27190,7 +27695,7 @@
   },
   {
     "Command": "pink_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 6,
     "States": [
@@ -27203,7 +27708,7 @@
   },
   {
     "Command": "gray_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 7,
     "States": [
@@ -27216,7 +27721,7 @@
   },
   {
     "Command": "light_gray_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 8,
     "States": [
@@ -27229,7 +27734,7 @@
   },
   {
     "Command": "cyan_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 9,
     "States": [
@@ -27242,7 +27747,7 @@
   },
   {
     "Command": "purple_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 10,
     "States": [
@@ -27255,7 +27760,7 @@
   },
   {
     "Command": "blue_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 11,
     "States": [
@@ -27268,7 +27773,7 @@
   },
   {
     "Command": "brown_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 12,
     "States": [
@@ -27281,7 +27786,7 @@
   },
   {
     "Command": "green_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 13,
     "States": [
@@ -27294,7 +27799,7 @@
   },
   {
     "Command": "red_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 14,
     "States": [
@@ -27307,7 +27812,7 @@
   },
   {
     "Command": "black_concrete",
-    "Name": "minecraft:concrete",
+    "Name": "minecraft:white_concrete",
     "Id": 236,
     "Data": 15,
     "States": [
@@ -27320,7 +27825,7 @@
   },
   {
     "Command": "white_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 0,
     "States": [
@@ -27333,7 +27838,7 @@
   },
   {
     "Command": "orange_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 1,
     "States": [
@@ -27346,7 +27851,7 @@
   },
   {
     "Command": "magenta_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 2,
     "States": [
@@ -27359,7 +27864,7 @@
   },
   {
     "Command": "light_blue_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 3,
     "States": [
@@ -27372,7 +27877,7 @@
   },
   {
     "Command": "yellow_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 4,
     "States": [
@@ -27385,7 +27890,7 @@
   },
   {
     "Command": "lime_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 5,
     "States": [
@@ -27398,7 +27903,7 @@
   },
   {
     "Command": "pink_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 6,
     "States": [
@@ -27411,7 +27916,7 @@
   },
   {
     "Command": "gray_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 7,
     "States": [
@@ -27424,7 +27929,7 @@
   },
   {
     "Command": "light_gray_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 8,
     "States": [
@@ -27437,7 +27942,7 @@
   },
   {
     "Command": "cyan_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 9,
     "States": [
@@ -27450,7 +27955,7 @@
   },
   {
     "Command": "purple_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 10,
     "States": [
@@ -27463,7 +27968,7 @@
   },
   {
     "Command": "blue_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 11,
     "States": [
@@ -27476,7 +27981,7 @@
   },
   {
     "Command": "brown_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 12,
     "States": [
@@ -27489,7 +27994,7 @@
   },
   {
     "Command": "green_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 13,
     "States": [
@@ -27502,7 +28007,7 @@
   },
   {
     "Command": "red_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 14,
     "States": [
@@ -27515,7 +28020,7 @@
   },
   {
     "Command": "black_concrete_powder",
-    "Name": "minecraft:concretePowder",
+    "Name": "minecraft:white_concrete_powder",
     "Id": 237,
     "Data": 15,
     "States": [
@@ -27535,7 +28040,7 @@
   },
   {
     "Command": "white_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 0,
     "States": [
@@ -27548,7 +28053,7 @@
   },
   {
     "Command": "orange_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 1,
     "States": [
@@ -27561,7 +28066,7 @@
   },
   {
     "Command": "magenta_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 2,
     "States": [
@@ -27574,7 +28079,7 @@
   },
   {
     "Command": "light_blue_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 3,
     "States": [
@@ -27587,7 +28092,7 @@
   },
   {
     "Command": "yellow_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 4,
     "States": [
@@ -27600,7 +28105,7 @@
   },
   {
     "Command": "lime_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 5,
     "States": [
@@ -27613,7 +28118,7 @@
   },
   {
     "Command": "pink_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 6,
     "States": [
@@ -27626,7 +28131,7 @@
   },
   {
     "Command": "gray_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 7,
     "States": [
@@ -27639,7 +28144,7 @@
   },
   {
     "Command": "light_gray_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 8,
     "States": [
@@ -27652,7 +28157,7 @@
   },
   {
     "Command": "cyan_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 9,
     "States": [
@@ -27665,7 +28170,7 @@
   },
   {
     "Command": "purple_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 10,
     "States": [
@@ -27678,7 +28183,7 @@
   },
   {
     "Command": "blue_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 11,
     "States": [
@@ -27691,7 +28196,7 @@
   },
   {
     "Command": "brown_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 12,
     "States": [
@@ -27704,7 +28209,7 @@
   },
   {
     "Command": "green_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 13,
     "States": [
@@ -27717,7 +28222,7 @@
   },
   {
     "Command": "red_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 14,
     "States": [
@@ -27730,7 +28235,7 @@
   },
   {
     "Command": "black_stained_glass",
-    "Name": "minecraft:stained_glass",
+    "Name": "minecraft:white_stained_glass",
     "Id": 241,
     "Data": 15,
     "States": [
@@ -28738,6 +29243,19 @@
     ]
   },
   {
+    "Command": "stripped_spruce_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:stripped_spruce_log",
+    "Id": 260,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
     "Command": "stripped_spruce_log [\"pillar_axis\" = \"x\"]",
     "Name": "minecraft:stripped_spruce_log",
     "Id": 260,
@@ -28760,6 +29278,19 @@
         "Type": "8",
         "Name": "pillar_axis",
         "Value": "z"
+      }
+    ]
+  },
+  {
+    "Command": "stripped_birch_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:stripped_birch_log",
+    "Id": 261,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
       }
     ]
   },
@@ -28790,6 +29321,19 @@
     ]
   },
   {
+    "Command": "stripped_jungle_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:stripped_jungle_log",
+    "Id": 262,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
     "Command": "stripped_jungle_log [\"pillar_axis\" = \"x\"]",
     "Name": "minecraft:stripped_jungle_log",
     "Id": 262,
@@ -28812,6 +29356,19 @@
         "Type": "8",
         "Name": "pillar_axis",
         "Value": "z"
+      }
+    ]
+  },
+  {
+    "Command": "stripped_acacia_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:stripped_acacia_log",
+    "Id": 263,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
       }
     ]
   },
@@ -28842,6 +29399,19 @@
     ]
   },
   {
+    "Command": "stripped_dark_oak_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:stripped_dark_oak_log",
+    "Id": 264,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
     "Command": "stripped_dark_oak_log [\"pillar_axis\" = \"x\"]",
     "Name": "minecraft:stripped_dark_oak_log",
     "Id": 264,
@@ -28864,6 +29434,19 @@
         "Type": "8",
         "Name": "pillar_axis",
         "Value": "z"
+      }
+    ]
+  },
+  {
+    "Command": "stripped_oak_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:stripped_oak_log",
+    "Id": 265,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
       }
     ]
   },
@@ -28899,6 +29482,19 @@
     "Id": 266,
     "Data": 0,
     "States": []
+  },
+  {
+    "Command": "seagrass [\"sea_grass_type\" = \"default\"]",
+    "Name": "minecraft:seagrass",
+    "Id": 385,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "sea_grass_type",
+        "Value": "default"
+      }
+    ]
   },
   {
     "Command": "seagrass [\"sea_grass_type\" = \"double_top\"]",
@@ -28999,6 +29595,24 @@
     ]
   },
   {
+    "Command": "coral_block [\"coral_color\" = \"blue\", \"dead_bit\" = false]",
+    "Name": "minecraft:coral_block",
+    "Id": 387,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "coral_color",
+        "Value": "blue"
+      },
+      {
+        "Type": "1",
+        "Name": "dead_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "coral_block [\"coral_color\" = \"pink\", \"dead_bit\" = false]",
     "Name": "minecraft:coral_block",
     "Id": 387,
@@ -29067,6 +29681,24 @@
         "Type": "1",
         "Name": "dead_bit",
         "Value": "0"
+      }
+    ]
+  },
+    {
+    "Command": "coral_block [\"coral_color\" = \"blue\", \"dead_bit\" = true]",
+    "Name": "minecraft:coral_block",
+    "Id": 387,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "coral_color",
+        "Value": "blue"
+      },
+      {
+        "Type": "1",
+        "Name": "dead_bit",
+        "Value": "1"
       }
     ]
   },
@@ -29139,6 +29771,24 @@
         "Type": "1",
         "Name": "dead_bit",
         "Value": "1"
+      }
+    ]
+  },
+  {
+    "Command": "coral_fan [\"coral_color\" = \"blue\", \"coral_fan_direction\" = 0]",
+    "Name": "minecraft:coral_fan",
+    "Id": 388,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "coral_color",
+        "Value": "blue"
+      },
+      {
+        "Type": "3",
+        "Name": "coral_fan_direction",
+        "Value": "0"
       }
     ]
   },
@@ -29283,6 +29933,24 @@
         "Type": "3",
         "Name": "coral_fan_direction",
         "Value": "1"
+      }
+    ]
+  },
+  {
+    "Command": "coral_fan_dead [\"coral_color\" = \"blue\", \"coral_fan_direction\" = 0]",
+    "Name": "minecraft:coral_fan_dead",
+    "Id": 389,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "coral_color",
+        "Value": "blue"
+      },
+      {
+        "Type": "3",
+        "Name": "coral_fan_direction",
+        "Value": "0"
       }
     ]
   },
@@ -41470,6 +42138,29 @@
     ]
   },
   {
+    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"oak\"]",
+    "Name": "minecraft:wood",
+    "Id": 467,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      },
+      {
+        "Type": "1",
+        "Name": "stripped_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "wood_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
     "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"spruce\"]",
     "Name": "minecraft:wood",
     "Id": 467,
@@ -41584,6 +42275,7 @@
       }
     ]
   },
+  
   {
     "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"spruce\"]",
     "Name": "minecraft:wood",
@@ -42156,6 +42848,19 @@
         "Type": "8",
         "Name": "wood_type",
         "Value": "dark_oak"
+      }
+    ]
+  },
+  {
+    "Command": "composter [\"composter_fill_level\" = 0]",
+    "Name": "minecraft:composter",
+    "Id": 468,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "composter_fill_level",
+        "Value": "0"
       }
     ]
   },
