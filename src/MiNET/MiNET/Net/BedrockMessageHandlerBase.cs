@@ -66,7 +66,7 @@ namespace MiNET.Net
 					var wrapper = McpeWrapper.CreateObject();
 					wrapper.ReliabilityHeader.Reliability = Reliability.ReliableOrdered;
 					wrapper.ForceClear = true;
-					wrapper.payload = Compression.CompressPacketsForWrapper(new List<Packet> {packet}, _session.EnableCompression ? CompressionLevel.Fastest : CompressionLevel.NoCompression, _session.InitializedCompression);
+					wrapper.payload = Compression.CompressPacketsForWrapper(new List<Packet> {packet}, _session.EnableCompression ? CompressionLevel.Fastest : CompressionLevel.NoCompression, _session.EnableCompression);
 					wrapper.Encode(); // prepare
 					packet.PutPool();
 					sendList.Add(wrapper);
@@ -101,7 +101,7 @@ namespace MiNET.Net
 				if (_session != null && _session.EnableCompression)
 				{ 
 					compress = CompressionLevel.Fastest;
-					initCompression = _session.InitializedCompression;
+					initCompression = _session.EnableCompression;
 				}
 				else
 				{
@@ -165,7 +165,7 @@ namespace MiNET.Net
 				var initCompression = false;
 				if (_session != null)
 				{
-					initCompression = _session.InitializedCompression;
+					initCompression = _session.EnableCompression;
 				}
 				if (initCompression)
 				{

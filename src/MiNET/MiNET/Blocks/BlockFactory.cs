@@ -29,6 +29,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using log4net;
+using MiNET.Items;
 using MiNET.Utils;
 
 namespace MiNET.Blocks
@@ -590,6 +591,19 @@ namespace MiNET.Blocks
 		private static int TryGetRuntimeId(int blockId, byte metadata)
 		{
 			return LegacyToRuntimeId[(blockId << 4) | metadata];
+		}
+
+		public static string getBlockColor(int blockId, byte metadata)
+		{
+			BlockPalette.TryGetValue((int) GetRuntimeId(blockId, metadata), out BlockStateContainer states);
+			foreach (var state in states.States)
+			{
+				if (state is BlockStateString s && s.Name == "color")
+				{
+					return s.Value;
+				}
+			}
+			return "";
 		}
 	}
 }

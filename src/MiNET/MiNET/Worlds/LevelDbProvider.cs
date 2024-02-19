@@ -307,7 +307,6 @@ namespace MiNET.Worlds
 					{
 						block = new Air();
 					}
-
 					palette.Add(block.GetRuntimeId());
 				}
 
@@ -599,7 +598,7 @@ namespace MiNET.Worlds
 			stream.Write(count);
 			foreach (int runtimeId in palette)
 			{
-				BlockStateContainer blockState = BlockFactory.BlockPalette[runtimeId];
+				BlockStateContainer blockState = BlockFactory.BlockPalette[runtimeId == -1 ? 0 : runtimeId];
 				var file = new NbtFile
 				{
 					BigEndian = false,

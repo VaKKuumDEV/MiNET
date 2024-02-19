@@ -223,7 +223,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_concrete";
+			record.Name = "minecraft:concrete";
 			record.Id = 236;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
@@ -251,7 +251,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_concrete_powder";
+			record.Name = "minecraft:concretePowder";
 			record.Id = 237;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
@@ -279,7 +279,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_wool";
+			record.Name = "minecraft:wool";
 			record.Id = 35;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
@@ -307,7 +307,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_stained_glass";
+			record.Name = "minecraft:stained_glass";
 			record.Id = 241;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
@@ -335,7 +335,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_stained_glass_pane";
+			record.Name = "minecraft:stained_glass_pane";
 			record.Id = 160;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
@@ -363,7 +363,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_carpet";
+			record.Name = "minecraft:carpet";
 			record.Id = 171;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
@@ -391,7 +391,7 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = "minecraft:white_terracotta";
+			record.Name = "minecraft:stained_hardened_clay";
 			record.Id = 159;
 			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;

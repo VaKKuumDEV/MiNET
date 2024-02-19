@@ -43,7 +43,7 @@ namespace MiNET.Worlds
 {
 	public class ChunkColumn : ICloneable, IEnumerable<SubChunk>, IDisposable
 	{
-		public const int WorldHeight = 384;
+		public const int WorldHeight = 256;
 		public const int WorldMaxY = WorldHeight + WorldMinY;
 		public const int WorldMinY = 0;
 

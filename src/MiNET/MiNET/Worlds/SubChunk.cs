@@ -148,6 +148,7 @@ namespace MiNET.Worlds
 
 			int paletteIndex = _blocks[GetIndex(bx, by, bz)];
 			int runtimeId = _runtimeIds[paletteIndex];
+			if (runtimeId == -1) { runtimeId = BlockFactory.GetBlockById(0).GetRuntimeId(); }
 			BlockFactory.BlockPalette.TryGetValue(runtimeId, out BlockStateContainer blockState);
 			int bid = blockState.Id;
 			return bid == -1 ? 0 : bid;
@@ -159,6 +160,7 @@ namespace MiNET.Worlds
 
 			int index = _blocks[GetIndex(bx, by, bz)];
 			int runtimeId = _runtimeIds[index];
+			if (runtimeId == -1) { runtimeId = BlockFactory.GetBlockById(0).GetRuntimeId(); }
 			BlockFactory.BlockPalette.TryGetValue(runtimeId, out BlockStateContainer blockState);
 			Block block = BlockFactory.GetBlockById(blockState.Id);
 			block.SetState(blockState.States);
