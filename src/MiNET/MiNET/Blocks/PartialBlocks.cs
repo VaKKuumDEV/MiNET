@@ -490,13 +490,20 @@ namespace MiNET.Blocks
 
 	public partial class ShulkerBox // 218 typeof=ShulkerBox
 	{
-		public string blockName { get; set; } = "minecraft:white_shulker_box";
+		public override string Name => "minecraft:shulker_box";
+
+		[StateEnum("light_blue", "pink", "lime", "orange", "purple", "brown", "white", "black", "magenta", "yellow", "cyan", "green", "gray", "blue", "silver", "red")]
+		public string Color { get; set; } = "white";
+
 		public override void SetState(List<IBlockState> states)
 		{
 			foreach (var state in states)
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "color":
+						Color = s.Value;
+						break;
 				} // switch
 			} // foreach
 		} // method
@@ -504,8 +511,9 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = blockName;
+			record.Name = "minecraft:shulker_box";
 			record.Id = 218;
+			record.States.Add(new BlockStateString { Name = "color", Value = Color });
 			return record;
 		} // method
 	} // class
@@ -2349,7 +2357,7 @@ namespace MiNET.Blocks
 
     public partial class Chest  // 54 typeof=Chest
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -2357,8 +2365,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
-						Direction = s.Value;
+					case BlockStateInt s when s.Name == "facing_direction":
+						FacingDirection = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -2369,7 +2377,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:chest";
             record.Id = 54;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = FacingDirection });
 			return record;
         } // method
     } // class
@@ -4023,7 +4031,7 @@ namespace MiNET.Blocks
 
     public partial class EnderChest  // 130 typeof=EnderChest
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -4031,8 +4039,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
-						Direction = s.Value;
+					case BlockStateInt s when s.Name == "facing_direction":
+						FacingDirection = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -4043,7 +4051,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:ender_chest";
             record.Id = 130;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = FacingDirection });
 			return record;
         } // method
     } // class
@@ -9567,7 +9575,7 @@ namespace MiNET.Blocks
 
     public partial class TrappedChest  // 146 typeof=TrappedChest
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -9575,8 +9583,8 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
-						Direction = s.Value;
+					case BlockStateInt s when s.Name == "facing_direction":
+						FacingDirection = s.Value;
 						break;
 				} // switch
             } // foreach
@@ -9587,7 +9595,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:trapped_chest";
             record.Id = 146;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = FacingDirection });
 			return record;
         } // method
     } // class

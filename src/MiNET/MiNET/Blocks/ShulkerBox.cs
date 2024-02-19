@@ -42,8 +42,7 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			var itemInHand = player.Inventory.GetItemInHand();
-			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:shulker_box", itemInHand.Metadata);
+			Color = BlockFactory.getBlockColor(player.Inventory.GetItemInHand().Id, (byte) player.Inventory.GetItemInHand().Metadata);
 
 			var shulkerBoxBlockEntity = new ShulkerBoxBlockEntity
 			{
