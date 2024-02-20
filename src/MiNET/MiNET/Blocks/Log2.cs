@@ -23,7 +23,6 @@
 
 #endregion
 using System.Numerics;
-using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -41,8 +40,6 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			var itemInHand = player.Inventory.GetItemInHand();
-			blockName = ItemFactory.Translator.GetNameByMeta("minecraft:log2", itemInHand.Metadata);
 			return false;
 		}
 

@@ -44,16 +44,7 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			var FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
-
-			/*cardinalDirection = FacingDirection switch
-			{
-				5 => "east",
-				3 => "south",
-				4 => "west",
-				2 => "north",
-				_ => throw new ArgumentOutOfRangeException()
-			};*/
+			FacingDirection = ItemBlock.GetFacingDirectionFromEntity(player);
 			return false;
 		}
 

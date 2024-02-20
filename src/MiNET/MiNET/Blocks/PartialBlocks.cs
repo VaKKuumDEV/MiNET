@@ -436,14 +436,22 @@ namespace MiNET.Blocks
 
 	public partial class Log // 17 typeof=Log
 	{
-		public string blockName { get; set; } = "minecraft:oak_log";
+		public override string Name => "minecraft:log";
+
+		[StateEnum("spruce", "birch", "jungle", "oak")]
+		public string OldLogType { get; set; } = "oak";
+		[StateEnum("y", "x", "z")]
 		public string PillarAxis { get; set; } = "y";
+
 		public override void SetState(List<IBlockState> states)
 		{
 			foreach (var state in states)
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "old_log_type":
+						OldLogType = s.Value;
+						break;
 					case BlockStateString s when s.Name == "pillar_axis":
 						PillarAxis = s.Value;
 						break;
@@ -454,8 +462,9 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = blockName;
-			record.Id = 17; 
+			record.Name = "minecraft:log";
+			record.Id = 17;
+			record.States.Add(new BlockStateString { Name = "old_log_type", Value = OldLogType });
 			record.States.Add(new BlockStateString { Name = "pillar_axis", Value = PillarAxis });
 			return record;
 		} // method
@@ -463,14 +472,22 @@ namespace MiNET.Blocks
 
 	public partial class Log2 // 162 typeof=Log2
 	{
-		public string blockName { get; set; } = "minecraft:acacia_log";
+		public override string Name => "minecraft:log2";
+
+		[StateEnum("dark_oak", "acacia")]
+		public string NewLogType { get; set; } = "acacia";
+		[StateEnum("y", "z", "x")]
 		public string PillarAxis { get; set; } = "y";
+
 		public override void SetState(List<IBlockState> states)
 		{
 			foreach (var state in states)
 			{
 				switch (state)
 				{
+					case BlockStateString s when s.Name == "new_log_type":
+						NewLogType = s.Value;
+						break;
 					case BlockStateString s when s.Name == "pillar_axis":
 						PillarAxis = s.Value;
 						break;
@@ -481,8 +498,9 @@ namespace MiNET.Blocks
 		public override BlockStateContainer GetState()
 		{
 			var record = new BlockStateContainer();
-			record.Name = blockName;
+			record.Name = "minecraft:log2";
 			record.Id = 162;
+			record.States.Add(new BlockStateString { Name = "new_log_type", Value = NewLogType });
 			record.States.Add(new BlockStateString { Name = "pillar_axis", Value = PillarAxis });
 			return record;
 		} // method
@@ -544,7 +562,7 @@ namespace MiNET.Blocks
 	public partial class AcaciaButton  // 395 typeof=AcaciaButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -782,7 +800,7 @@ namespace MiNET.Blocks
 
     public partial class AcaciaWallSign  // 446 typeof=AcaciaWallSign
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -1311,7 +1329,7 @@ namespace MiNET.Blocks
     public partial class BirchButton  // 396 typeof=BirchButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -1549,7 +1567,7 @@ namespace MiNET.Blocks
 
     public partial class BirchWallSign  // 442 typeof=BirchWallSign
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -1576,7 +1594,7 @@ namespace MiNET.Blocks
 
     public partial class BlackGlazedTerracotta  // 235 typeof=BlackGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -1603,7 +1621,7 @@ namespace MiNET.Blocks
 
     public partial class BlastFurnace  // 451 typeof=BlastFurnace
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int Direction { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -1611,7 +1629,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
+					case BlockStateInt s when s.Name == "facing_direction":
 						Direction = s.Value;
 						break;
 				} // switch
@@ -1623,14 +1641,14 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:blast_furnace";
             record.Id = 451;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = Direction });
 			return record;
         } // method
     } // class
 
     public partial class BlueGlazedTerracotta  // 231 typeof=BlueGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -1886,7 +1904,7 @@ namespace MiNET.Blocks
 
     public partial class BrownGlazedTerracotta  // 232 typeof=BrownGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -2256,7 +2274,7 @@ namespace MiNET.Blocks
     public partial class ChainCommandBlock : Block // 189 typeof=ChainCommandBlock
     {
         [StateBit] public  bool ConditionalBit { get; set; } = false;
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         
         public ChainCommandBlock() : base(189)
         {
@@ -2357,7 +2375,7 @@ namespace MiNET.Blocks
 
     public partial class Chest  // 54 typeof=Chest
     {
-		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -2661,7 +2679,7 @@ namespace MiNET.Blocks
     public partial class CommandBlock : Block // 137 typeof=CommandBlock
     {
         [StateBit] public  bool ConditionalBit { get; set; } = false;
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         
         public CommandBlock() : base(137)
         {
@@ -3019,7 +3037,7 @@ namespace MiNET.Blocks
 
     public partial class CyanGlazedTerracotta  // 229 typeof=CyanGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -3047,7 +3065,7 @@ namespace MiNET.Blocks
     public partial class DarkOakButton  // 397 typeof=DarkOakButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -3317,7 +3335,7 @@ namespace MiNET.Blocks
 
     public partial class DarkoakWallSign  // 448 typeof=DarkoakWallSign
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -3578,7 +3596,7 @@ namespace MiNET.Blocks
 
     public partial class Dispenser  // 23 typeof=Dispenser
     {
-        public int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 2;
         public bool TriggeredBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
@@ -3727,7 +3745,7 @@ namespace MiNET.Blocks
 
     public partial class Dropper  // 125 typeof=Dropper
     {
-        public int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 2;
         public bool TriggeredBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
@@ -3982,7 +4000,7 @@ namespace MiNET.Blocks
 
     public partial class EndRod  // 208 typeof=EndRod
     {
-        public int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -4031,7 +4049,7 @@ namespace MiNET.Blocks
 
     public partial class EnderChest  // 130 typeof=EnderChest
     {
-		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -4257,7 +4275,7 @@ namespace MiNET.Blocks
 
     public partial class Frame  // 0 typeof=Air
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         [StateBit] public  bool ItemFrameMapBit { get; set; } = false;
         [StateBit] public  bool ItemFramePhotoBit { get; set; } = false;
 
@@ -4321,7 +4339,7 @@ namespace MiNET.Blocks
 
     public partial class Furnace  // 61 typeof=Furnace
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int Direction { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -4329,7 +4347,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
+					case BlockStateInt s when s.Name == "facing_direction":
 						Direction = s.Value;
 						break;
 				} // switch
@@ -4341,7 +4359,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:furnace";
             record.Id = 61;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -4610,7 +4628,7 @@ namespace MiNET.Blocks
 
     public partial class GrayGlazedTerracotta  // 227 typeof=GrayGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -4637,7 +4655,7 @@ namespace MiNET.Blocks
 
     public partial class GreenGlazedTerracotta  // 233 typeof=GreenGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -4948,7 +4966,7 @@ namespace MiNET.Blocks
 
     public partial class Hopper  // 154 typeof=Hopper
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         [StateBit] public  bool ToggleBit { get; set; } = false;
 
         public override void SetState(List<IBlockState> states)
@@ -5223,7 +5241,7 @@ namespace MiNET.Blocks
 
     public partial class Jigsaw  // 0 typeof=Air
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         [StateRange(0, 3)] public  int Rotation { get; set; } = 1;
 
         public override void SetState(List<IBlockState> states)
@@ -5278,7 +5296,7 @@ namespace MiNET.Blocks
     public partial class JungleButton  // 398 typeof=JungleButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -5516,7 +5534,7 @@ namespace MiNET.Blocks
 
     public partial class JungleWallSign  // 444 typeof=JungleWallSign
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -5575,7 +5593,7 @@ namespace MiNET.Blocks
 
     public partial class Ladder  // 65 typeof=Ladder
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -5869,7 +5887,7 @@ namespace MiNET.Blocks
 
     public partial class LightBlueGlazedTerracotta  // 223 typeof=LightBlueGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -5923,7 +5941,7 @@ namespace MiNET.Blocks
 
     public partial class LimeGlazedTerracotta  // 225 typeof=LimeGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -5950,7 +5968,7 @@ namespace MiNET.Blocks
 
     public partial class LitBlastFurnace  // 469 typeof=LitBlastFurnace
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int Direction { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -5958,7 +5976,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
+					case BlockStateInt s when s.Name == "facing_direction":
 						Direction = s.Value;
 						break;
 				} // switch
@@ -5970,14 +5988,14 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lit_blast_furnace";
             record.Id = 469;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = Direction });
 			return record;
         } // method
     } // class
 
     public partial class LitFurnace  // 62 typeof=LitFurnace
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int Direction { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -5985,7 +6003,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
+					case BlockStateInt s when s.Name == "facing_direction":
 						Direction = s.Value;
 						break;
 				} // switch
@@ -5997,7 +6015,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:lit_furnace";
             record.Id = 62;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -6134,7 +6152,7 @@ namespace MiNET.Blocks
 
     public partial class MagentaGlazedTerracotta  // 222 typeof=MagentaGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -6210,7 +6228,7 @@ namespace MiNET.Blocks
 
     public partial class MelonStem  // 105 typeof=MelonStem
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         [StateRange(0, 7)] public  int Growth { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
@@ -6691,7 +6709,7 @@ namespace MiNET.Blocks
 	{
 		public override string Name => "minecraft:observer";
 
-		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 2;
 		[StateBit] public bool PoweredBit { get; set; } = false;
 
 		public override void SetState(List<IBlockState> states)
@@ -6745,7 +6763,7 @@ namespace MiNET.Blocks
 
     public partial class OrangeGlazedTerracotta  // 221 typeof=OrangeGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -6794,7 +6812,7 @@ namespace MiNET.Blocks
 
     public partial class PinkGlazedTerracotta  // 226 typeof=PinkGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -6821,7 +6839,7 @@ namespace MiNET.Blocks
 
     public partial class Piston  // 33 typeof=Piston
     {
-        public int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -6848,7 +6866,7 @@ namespace MiNET.Blocks
 
     public partial class PistonArmCollision  // 34 typeof=PistonArmCollision
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7267,7 +7285,7 @@ namespace MiNET.Blocks
 
     public partial class PumpkinStem  // 104 typeof=PumpkinStem
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         [StateRange(0, 7)] public  int Growth { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
@@ -7299,7 +7317,7 @@ namespace MiNET.Blocks
 
     public partial class PurpleGlazedTerracotta  // 219 typeof=PurpleGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7536,7 +7554,7 @@ namespace MiNET.Blocks
 
     public partial class RedGlazedTerracotta  // 234 typeof=RedGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -7879,7 +7897,7 @@ namespace MiNET.Blocks
     public partial class RepeatingCommandBlock : Block // 188 typeof=RepeatingCommandBlock
     {
         [StateBit] public  bool ConditionalBit { get; set; } = false;
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
         
         public RepeatingCommandBlock() : base(188)
         {
@@ -8194,7 +8212,7 @@ namespace MiNET.Blocks
 
     public partial class SilverGlazedTerracotta  // 228 typeof=SilverGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8221,7 +8239,7 @@ namespace MiNET.Blocks
 
     public partial class Skull  // 144 typeof=Skull
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8554,7 +8572,7 @@ namespace MiNET.Blocks
     public partial class SpruceButton  // 399 typeof=SpruceButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8792,7 +8810,7 @@ namespace MiNET.Blocks
 
     public partial class SpruceWallSign  // 437 typeof=SpruceWallSign
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8873,7 +8891,7 @@ namespace MiNET.Blocks
 
     public partial class StickyPiston  // 29 typeof=StickyPiston
     {
-        public int FacingDirection { get; set; } = 0;
+        public int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8900,7 +8918,7 @@ namespace MiNET.Blocks
 
     public partial class StickyPistonArmCollision  // 0 typeof=Air
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -8988,7 +9006,7 @@ namespace MiNET.Blocks
     public partial class StoneButton  // 77 typeof=StoneButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -9108,7 +9126,6 @@ namespace MiNET.Blocks
 
 	public partial class Stonecutter  // 245 typeof=Stonecutter
     {
-		public string cardinalDirection { get; set; } = "north";
 		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
@@ -9130,7 +9147,7 @@ namespace MiNET.Blocks
 
     public partial class StonecutterBlock : Block // 452 typeof=StonecutterBlock
     {
-		[StateRange(0, 3)] public int Direction { get; set; } = 0;
+		[StateRange(0, 5)] public int Direction { get; set; } = 2;
 
 		public StonecutterBlock() : base(452)
         {
@@ -9143,7 +9160,7 @@ namespace MiNET.Blocks
             {
                 switch(state)
                 {
-					case BlockStateInt s when s.Name == "direction":
+					case BlockStateInt s when s.Name == "facing_direction":
 						Direction = s.Value;
 						break;
 				} // switch
@@ -9155,7 +9172,7 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:stonecutter_block";
             record.Id = 452;
-			record.States.Add(new BlockStateInt { Name = "direction", Value = Direction });
+			record.States.Add(new BlockStateInt { Name = "facing_direction", Value = Direction });
 			return record;
         } // method
     } // class
@@ -9575,7 +9592,7 @@ namespace MiNET.Blocks
 
     public partial class TrappedChest  // 146 typeof=TrappedChest
     {
-		[StateRange(0, 5)] public int FacingDirection { get; set; } = 0;
+		[StateRange(0, 5)] public int FacingDirection { get; set; } = 2;
 
 		public override void SetState(List<IBlockState> states)
         {
@@ -9877,7 +9894,7 @@ namespace MiNET.Blocks
 
     public partial class WallBanner  // 177 typeof=WallBanner
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -9904,7 +9921,7 @@ namespace MiNET.Blocks
 
     public partial class WallSign  // 68 typeof=WallSign
     {
-        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public  int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -10030,7 +10047,7 @@ namespace MiNET.Blocks
 
     public partial class WhiteGlazedTerracotta  // 220 typeof=WhiteGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -10081,7 +10098,7 @@ namespace MiNET.Blocks
     public partial class WoodenButton  // 143 typeof=WoodenButton
     {
         [StateBit] public override bool ButtonPressedBit { get; set; } = false;
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {
@@ -10238,7 +10255,7 @@ namespace MiNET.Blocks
 
     public partial class YellowGlazedTerracotta  // 224 typeof=YellowGlazedTerracotta
     {
-        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 0;
+        [StateRange(0, 5)] public override int FacingDirection { get; set; } = 2;
 
         public override void SetState(List<IBlockState> states)
         {

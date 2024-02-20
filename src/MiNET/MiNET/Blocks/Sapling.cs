@@ -97,33 +97,33 @@ namespace MiNET.Blocks
 				switch (SaplingType)
 				{
 					case "oak":
-						log = new Log {blockName = "minecraft:oak_log" };
+						log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 4);
 						break;
 					case "spruce":
-						log = new Log { blockName = "minecraft:spruce_log" };
+						log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 4);
 						break;
 					case "birch":
-						log = new Log { blockName = "minecraft:birch_log" };
+						log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 5);
 						break;
 					case "jungle":
-						log = new Log { blockName = "minecraft:jungle_log" };
+						log = new Log {OldLogType = SaplingType};
 						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 4 + new Random().Next(7));
 						break;
 					case "acacia":
-						log = new Log2 { blockName = "minecraft:acacia_log" };
-						leaves = new Leaves2 { NewLeafType = SaplingType};
+						log = new Log {OldLogType = SaplingType};
+						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 5);
 						break;
 					case "dark_oak":
-						log = new Log2 { blockName = "minecraft:dark_oak_log" };
-						leaves = new Leaves2 { NewLeafType = SaplingType};
+						log = new Log {OldLogType = SaplingType};
+						leaves = new Leaves {OldLeafType = SaplingType};
 						generator = new SmallTreeGenerator(log, leaves, 5);
 						break;
 				}

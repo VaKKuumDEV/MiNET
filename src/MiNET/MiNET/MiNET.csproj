@@ -2,7 +2,7 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>MiNET-CobwebSMP</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>gurun</Authors>
     <Company>Niclas Olofsson</Company>
     <Description>MiNET - a Minecraft PocketEdition Server</Description>

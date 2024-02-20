@@ -1327,7 +1327,7 @@
   },
   {
     "Command": "oak_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 0,
     "States": [
@@ -1345,7 +1345,7 @@
   },
   {
     "Command": "spruce_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 1,
     "States": [
@@ -1363,7 +1363,7 @@
   },
   {
     "Command": "birch_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 2,
     "States": [
@@ -1381,7 +1381,7 @@
   },
   {
     "Command": "jungle_log [\"pillar_axis\" = \"y\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 3,
     "States": [
@@ -1399,7 +1399,7 @@
   },
   {
     "Command": "oak_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 4,
     "States": [
@@ -1417,7 +1417,7 @@
   },
   {
     "Command": "spruce_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 5,
     "States": [
@@ -1435,7 +1435,7 @@
   },
   {
     "Command": "birch_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 6,
     "States": [
@@ -1453,7 +1453,7 @@
   },
   {
     "Command": "jungle_log [\"pillar_axis\" = \"x\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 7,
     "States": [
@@ -1471,7 +1471,7 @@
   },
   {
     "Command": "oak_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 8,
     "States": [
@@ -1489,7 +1489,7 @@
   },
   {
     "Command": "spruce_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 9,
     "States": [
@@ -1507,7 +1507,7 @@
   },
   {
     "Command": "birch_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 10,
     "States": [
@@ -1525,7 +1525,7 @@
   },
   {
     "Command": "jungle_log [\"pillar_axis\" = \"z\"]",
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "Id": 17,
     "Data": 11,
     "States": [
@@ -4689,6 +4689,19 @@
     ]
   },
   {
+    "Command": "chest [\"minecraft:cardinal_direction\" = \"north\"]",
+    "Name": "minecraft:chest",
+    "Id": 54,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
+      }
+    ]
+  },
+  {
     "Command": "chest [\"minecraft:cardinal_direction\" = \"south\"]",
     "Name": "minecraft:chest",
     "Id": 54,
@@ -5178,6 +5191,19 @@
     ]
   },
   {
+    "Command": "furnace [\"minecraft:cardinal_direction\" = \"south\"]",
+    "Name": "minecraft:furnace",
+    "Id": 61,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
     "Command": "furnace [\"minecraft:cardinal_direction\" = \"west\"]",
     "Name": "minecraft:furnace",
     "Id": 61,
@@ -5213,6 +5239,19 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "2"
+      }
+    ]
+  },
+  {
+    "Command": "lit_furnace [\"minecraft:cardinal_direction\" = \"south\"]",
+    "Name": "minecraft:lit_furnace",
+    "Id": 62,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
       }
     ]
   },
@@ -9394,13 +9433,6 @@
     ]
   },
   {
-    "Command": "invisible_bedrock",
-    "Name": "minecraft:invisibleBedrock",
-    "Id": 95,
-    "Data": 0,
-    "States": []
-  },
-  {
     "Command": "trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = false]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
@@ -12760,6 +12792,19 @@
     "States": []
   },
   {
+    "Command": "ender_chest [\"minecraft:cardinal_direction\" = \"north\"]",
+    "Name": "minecraft:ender_chest",
+    "Id": 130,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
+      }
+    ]
+  },
+  {
     "Command": "ender_chest [\"minecraft:cardinal_direction\" = \"south\"]",
     "Name": "minecraft:ender_chest",
     "Id": 130,
@@ -14397,7 +14442,7 @@
     ]
   },
   {
-    "Command": "cobblestone_wall [\"wall_block_type\" = \"end_stone\", \"wall_connection_type_east\" = \"none\", \"wall_connection_type_north\" = \"none\", \"wall_connection_type_south\" = \"none\", \"wall_connection_type_west\" = \"none\", \"wall_post_bit\" = false]",
+    "Command": "cobblestone_wall [\"wall_block_type\" = \"end_brick\", \"wall_connection_type_east\" = \"none\", \"wall_connection_type_north\" = \"none\", \"wall_connection_type_south\" = \"none\", \"wall_connection_type_west\" = \"none\", \"wall_post_bit\" = false]",
     "Name": "minecraft:cobblestone_wall",
     "Id": 139,
     "Data": 12,
@@ -14405,7 +14450,7 @@
       {
         "Type": "8",
         "Name": "wall_block_type",
-        "Value": "end_stone"
+        "Value": "end_brick"
       }
     ]
   },
@@ -22936,13 +22981,6 @@
     ]
   },
   {
-    "Command": "hard_glass_pane",
-    "Name": "minecraft:hard_glass_pane",
-    "Id": 190,
-    "Data": 0,
-    "States": []
-  },
-  {
     "Command": "hard_stained_glass_pane [\"color\" = \"white\"]",
     "Name": "minecraft:hard_stained_glass_pane",
     "Id": 191,
@@ -23149,13 +23187,6 @@
         "Value": "black"
       }
     ]
-  },
-  {
-    "Command": "chemical_heat",
-    "Name": "minecraft:chemical_heat",
-    "Id": 192,
-    "Data": 0,
-    "States": []
   },
   {
     "Command": "spruce_door [\"direction\" = 0, \"door_hinge_bit\" = false, \"open_bit\" = false, \"upper_block_bit\" = false]",
@@ -40884,6 +40915,19 @@
     ]
   },
   {
+    "Command": "blast_furnace [\"minecraft:cardinal_direction\" = \"south\"]",
+    "Name": "minecraft:blast_furnace",
+    "Id": 451,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
     "Command": "blast_furnace [\"minecraft:cardinal_direction\" = \"west\"]",
     "Name": "minecraft:blast_furnace",
     "Id": 451,
@@ -40906,6 +40950,19 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "stonecutter_block [\"minecraft:cardinal_direction\" = \"north\"]",
+    "Name": "minecraft:stonecutter_block",
+    "Id": 452,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
@@ -40962,6 +41019,19 @@
     ]
   },
   {
+    "Command": "smoker [\"minecraft:cardinal_direction\" = \"south\"]",
+    "Name": "minecraft:smoker",
+    "Id": 453,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
     "Command": "smoker [\"minecraft:cardinal_direction\" = \"west\"]",
     "Name": "minecraft:smoker",
     "Id": 453,
@@ -40997,6 +41067,19 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "2"
+      }
+    ]
+  },
+  {
+    "Command": "lit_smoker [\"minecraft:cardinal_direction\" = \"south\"]",
+    "Name": "minecraft:lit_smoker",
+    "Id": 454,
+    "Data": 3,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
       }
     ]
   },

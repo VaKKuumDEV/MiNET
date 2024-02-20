@@ -37,7 +37,7 @@ namespace MiNET.Blocks
 		public static string RedstoneSignalDirection { get; set; } = "north";
 		private BlockCoordinates cord = new BlockCoordinates(0, 0, 0);
 		[StateBit] public virtual bool ButtonPressedBit { get; set; } = false;
-		[StateRange(0, 5)] public virtual int FacingDirection { get; set; } = 0;
+		[StateRange(0, 5)] public virtual int FacingDirection { get; set; } = 2;
 
 		protected Button(int id) : base(id)
 		{

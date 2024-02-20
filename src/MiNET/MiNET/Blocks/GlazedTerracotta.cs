@@ -33,7 +33,7 @@ namespace MiNET.Blocks
 {
 	public abstract class GlazedTerracotta : Block
 	{
-		[StateRange(0, 5)] public virtual int FacingDirection { get; set; } = 0;
+		[StateRange(0, 5)] public virtual int FacingDirection { get; set; } = 2;
 
 		public GlazedTerracotta(byte id) : base(id)
 		{

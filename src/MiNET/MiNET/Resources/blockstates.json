@@ -1429,7 +1429,7 @@
   {
     "Id": 17,
     "Data": 0,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 731,
     "States": [
       {
@@ -1448,7 +1448,7 @@
   {
     "Id": 17,
     "Data": 1,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 7067,
     "States": [
       {
@@ -1467,7 +1467,7 @@
   {
     "Id": 17,
     "Data": 2,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 1781,
     "States": [
       {
@@ -1486,7 +1486,7 @@
   {
     "Id": 17,
     "Data": 3,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 639,
     "States": [
       {
@@ -1505,7 +1505,7 @@
   {
     "Id": 17,
     "Data": 4,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 732,
     "States": [
       {
@@ -1524,7 +1524,7 @@
   {
     "Id": 17,
     "Data": 5,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 7068,
     "States": [
       {
@@ -1543,7 +1543,7 @@
   {
     "Id": 17,
     "Data": 6,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 1782,
     "States": [
       {
@@ -1562,7 +1562,7 @@
   {
     "Id": 17,
     "Data": 7,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 640,
     "States": [
       {
@@ -1581,7 +1581,7 @@
   {
     "Id": 17,
     "Data": 8,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 733,
     "States": [
       {
@@ -1600,7 +1600,7 @@
   {
     "Id": 17,
     "Data": 9,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 7069,
     "States": [
       {
@@ -1619,7 +1619,7 @@
   {
     "Id": 17,
     "Data": 10,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 1783,
     "States": [
       {
@@ -1638,7 +1638,7 @@
   {
     "Id": 17,
     "Data": 11,
-    "Name": "minecraft:oak_log",
+    "Name": "minecraft:log",
     "RuntimeId": 641,
     "States": [
       {
@@ -4903,6 +4903,20 @@
   },
   {
     "Id": 54,
+    "Data": 2,
+    "Name": "minecraft:chest",
+    "RuntimeId": 12376,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 54,
     "Data": 3,
     "Name": "minecraft:chest",
     "RuntimeId": 12374,
@@ -4975,7 +4989,7 @@
     "Id": 55,
     "Data": 3,
     "Name": "minecraft:redstone_wire",
-    "RuntimeId": 6199,
+    "RuntimeId": 6196,
     "States": [
       {
         "Type": 3,
@@ -5143,7 +5157,7 @@
     "Id": 55,
     "Data": 15,
     "Name": "minecraft:redstone_wire",
-    "RuntimeId": 6196,
+    "RuntimeId": 6211,
     "States": [
       {
         "Type": 3,
@@ -5417,6 +5431,20 @@
   },
   {
     "Id": 61,
+    "Data": 3,
+    "Name": "minecraft:furnace",
+    "RuntimeId": 13594,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 61,
     "Data": 4,
     "Name": "minecraft:furnace",
     "RuntimeId": 13595,
@@ -5453,6 +5481,20 @@
         "Type": 3,
         "Name": "facing_direction",
         "Value": 2
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 62,
+    "Data": 3,
+    "Name": "minecraft:lit_furnace",
+    "RuntimeId": 12919,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
       }
     ],
     "ItemInstance": null
@@ -14339,6 +14381,20 @@
         "Type": 8,
         "Name": "wall_block_type",
         "Value": "red_nether_brick"
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 139,
+    "Data": 12,
+    "Name": "minecraft:cobblestone_wall",
+    "RuntimeId": 2639,
+    "States": [
+      {
+        "Type": 8,
+        "Name": "wall_block_type",
+        "Value": "end_brick"
       }
     ],
     "ItemInstance": null
@@ -35589,6 +35645,34 @@
     "ItemInstance": null
   },
   {
+    "Id": 415,
+    "Data": 0,
+    "Name": "minecraft:bubble_column",
+    "RuntimeId": 9596,
+    "States": [
+      {
+        "Type": 1,
+        "Name": "drag_down",
+        "Value": 1
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 415,
+    "Data": 1,
+    "Name": "minecraft:bubble_column",
+    "RuntimeId": 9597,
+    "States": [
+      {
+        "Type": 1,
+        "Name": "drag_down",
+        "Value": 0
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
     "Id": 417,
     "Data": 0,
     "Name": "minecraft:stone_slab3",
@@ -40960,6 +41044,20 @@
   },
   {
     "Id": 451,
+    "Data": 3,
+    "Name": "minecraft:blast_furnace",
+    "RuntimeId": 13268,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 451,
     "Data": 4,
     "Name": "minecraft:blast_furnace",
     "RuntimeId": 13269,
@@ -40982,6 +41080,20 @@
         "Type": 3,
         "Name": "facing_direction",
         "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 452,
+    "Data": 2,
+    "Name": "minecraft:stonecutter_block",
+    "RuntimeId": 13275,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -41044,6 +41156,20 @@
   },
   {
     "Id": 453,
+    "Data": 3,
+    "Name": "minecraft:smoker",
+    "RuntimeId": 1773,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 453,
     "Data": 4,
     "Name": "minecraft:smoker",
     "RuntimeId": 1774,
@@ -41080,6 +41206,20 @@
         "Type": 3,
         "Name": "facing_direction",
         "Value": 2
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 454,
+    "Data": 3,
+    "Name": "minecraft:lit_smoker",
+    "RuntimeId": 13393,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
       }
     ],
     "ItemInstance": null
