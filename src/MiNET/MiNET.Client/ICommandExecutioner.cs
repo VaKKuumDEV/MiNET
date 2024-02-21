@@ -50,7 +50,7 @@ namespace MiNET.Client
 
 		public bool CanExecute(string text)
 		{
-			return text.Contains("blockstates") || text.Contains("export");
+			return text.Contains("blockstates") || text.Contains("blockstate") || text.Contains("export");
 		}
 
 		private bool _runningBlockMetadataDiscovery;
@@ -59,6 +59,13 @@ namespace MiNET.Client
 		{
 			if (text.Contains("blockstates"))
 			{
+				ExecuteBlockstates(caller);
+			}
+			else if (text.Contains("blockstate"))
+			{
+				Log.Error(text);
+				string[] textAr = text.Split(' ');
+				BlockstateGenerator.customState(Int32.Parse(textAr[2]), Int32.Parse(textAr[3]));
 				ExecuteBlockstates(caller);
 			}
 			else if (text.Contains("export"))
@@ -106,22 +113,35 @@ namespace MiNET.Client
 			await Task.Delay(4000); //delay just to read this /|\
 			SetGameRules(caller);
 			SendCommand(client, $"/tp TheGrey 0 52 0");
+			await Task.Delay(500);
 
 			var x = 0;
 			var tp = 0;
 			foreach (var block in BlockstateGenerator.Schemas)
 			{
-				SendCommand(client, $"/setblock {x} 49 0 barrier"); //add something below or a lot of thing will fail
-				await Task.Delay(100);
-				if (block.Name == "minecraft:redstone_wire" && block.Id > 0) { SendCommand(client, $"/setblock {x} 50 0 {block.Command}"); } //hack for redstone wire. BDS won't activate signal until placed again
-				if (block.Id == 386 || block.Id == 388 || block.Id == 390 || block.Id == 391 || block.Id == 392 || block.Id == 393 || block.Id == 411 || block.Id == 415) { SendCommand(client, $"/setblock {x} 50 0 water"); } //place water for sea things
-				await Task.Delay(100);
-				SendCommand(client, $"/setblock {x} 50 0 {block.Command}");
-				if (!BlockstateGenerator.blockPosition.ContainsKey(x)){ BlockstateGenerator.blockPosition.Add(x, block); }
-				x += 2;
-				tp++;
-				SendCommand(client, $"/tp TheGrey {x} 52 0");
-				await Task.Delay(100);
+				if (block.Data > 7 && (block.Id == 107 || block.Id == 183 || block.Id == 184 || block.Id == 185 || block.Id == 186 || block.Id == 187)) { continue; } //disable fence_gate with in_wall_bit. because they have same runtime id?
+				if ((block.Id == BlockstateGenerator.customId && block.Data == BlockstateGenerator.customData && BlockstateGenerator.customMode) || BlockstateGenerator.customMode == false)
+				{
+					SendCommand(client, $"/setblock {x} 49 0 barrier"); //add something below or a lot of thing will fail
+					var blockpos = x;
+					if (block.Name == "minecraft:redstone_wire" && block.Data > 0) { SendCommand(client, $"/setblock {blockpos} 50 0 {block.Command}"); } //hack for redstone wire. BDS won't activate signal until placed again
+					if (block.Id == 386 || block.Id == 388 || block.Id == 390 || block.Id == 391 || block.Id == 392 || block.Id == 393 || block.Id == 411 || block.Id == 415) { SendCommand(client, $"/setblock {x} 50 0 water"); } //place water for sea things
+					if (block.Id == 131 && (block.Data == 4 || block.Data == 8)) { SendCommand(client, $"/setblock {blockpos} 50 -1 barrier"); } //tripwire hook will fall off without bock for support
+					if (block.Id == 131 && (block.Data == 5 || block.Data == 9)) { SendCommand(client, $"/setblock {blockpos + 1} 50 0 barrier"); } //tripwire hook will fall off without bock for support
+					if (block.Id == 131 && (block.Data == 6 || block.Data == 10)) { SendCommand(client, $"/setblock {blockpos} 50 1 barrier"); } //tripwire hook will fall off without bock for support
+					if (block.Id == 131 && (block.Data == 7 || block.Data == 11)) { SendCommand(client, $"/setblock {blockpos - 1} 50 0 barrier"); } //tripwire hook will fall off without bock for support
+					if (block.Id == 26 && (block.Data == 9 || block.Data == 13)) { blockpos = blockpos - 1; } //offset to get bed second update
+					if (block.Id == 26 && (block.Data == 11 || block.Data == 15)) { blockpos = blockpos + 1; } //offset to get bed second update
+					await Task.Delay(100);
+					SendCommand(client, $"/setblock {blockpos} 50 0 {block.Command}");
+					SendCommand(client, $"/setblock {blockpos} 50 0 {block.Command}");  //TODO find out why sometimes at random time and random block are not placed
+					SendCommand(client, $"/setblock {blockpos} 50 0 {block.Command}");
+					SendCommand(client, $"/tp TheGrey {x} 52 0");
+					if (!BlockstateGenerator.blockPosition.ContainsKey(x)) { BlockstateGenerator.blockPosition.Add(x, block); }
+					x += 2;
+					tp++;
+					await Task.Delay(100);
+				}
 			}
 		}
 
@@ -140,30 +160,46 @@ namespace MiNET.Client
 			}
 		}
 
-		private void HandleMcpeUpdateBlock(BedrockTraceHandler caller, McpeUpdateBlock message) //for blocks with one update
+		private bool reset1 = true;
+		public void HandleMcpeUpdateBlock(BedrockTraceHandler caller, McpeUpdateBlock message) //for blocks with one update
 		{
-			if (BlockstateGenerator.blockPosition.TryGetValue(message.coordinates.X, out var state) && message.coordinates.Y == 50)
+			//Log.Error($"defaultupdate {message.blockRuntimeId} {message.coordinates.X} {message.coordinates.Y} {message.coordinates.Z}");
+			if (BlockstateGenerator.blockPosition.TryGetValue(message.coordinates.X, out var state) && message.coordinates.Y == 50 && !BlockstateGenerator.BlockPalette.ContainsKey((int) message.blockRuntimeId))
 			{
+				//if (state.Id == 26 && state.Data > 7 && reset1) { reset1 = false; return; }
 				Log.Warn($"Got runtimeID for {state.Name} (id: {state.Id} data: {state.Data})");
 				BlockstateGenerator.createContainer(state.Name, message.blockRuntimeId, state.Id, state.Data, state.States);
 				BlockstateGenerator.blockPosition.Remove(message.coordinates.X);
 				if (state.Name == "minecraft:barrier")
 				{
+
 					BlockstateGenerator.write();
 				}
+				if (state.Id == BlockstateGenerator.customId && state.Data == BlockstateGenerator.customData && BlockstateGenerator.customMode)
+				{
+					BlockstateGenerator.write();
+				}
+				reset1 = true;
 			}
 		}
 
-		private void HandleMcpeUpdateSubChunkBlocksPacket(BedrockTraceHandler caller, McpeUpdateSubChunkBlocksPacket message) //for blocks with two updates
+		public void HandleMcpeUpdateSubChunkBlocksPacket(BedrockTraceHandler caller, McpeUpdateSubChunkBlocksPacket message) //for blocks with two updates
 		{
 			foreach (var block in message.layerZeroUpdates)
 			{
-				if (BlockstateGenerator.blockPosition.TryGetValue(block.Coordinates.X, out var state) && block.Coordinates.Y == 50)
+				//Log.Error($"layer2 {block.BlockRuntimeId} {block.Coordinates.X} {block.Coordinates.Y} {block.Coordinates.Z}");
+				if (BlockstateGenerator.blockPosition.TryGetValue(block.Coordinates.X, out var state) && block.Coordinates.Y == 50 && !BlockstateGenerator.BlockPalette.ContainsKey((int)block.BlockRuntimeId))
 				{
+					if (state.Id == 26 && state.Data < 7 && reset1){ reset1 = false; continue; }  //bed send two updates but after data 7 we need second one. so ignoring first... TODO seems like not working correctly
 					Log.Warn($"Got runtimeID for {state.Name} (id: {state.Id} data: {state.Data})");
 					BlockstateGenerator.createContainer(state.Name, block.BlockRuntimeId, state.Id, state.Data, state.States);
 					BlockstateGenerator.blockPosition.Remove(block.Coordinates.X);
+					reset1 = true;
 				}
+			}
+			foreach (var block in message.layerOneUpdates)
+			{
+				//Log.Error($"layer1 {block.BlockRuntimeId} {block.Coordinates.X} {block.Coordinates.Y} {block.Coordinates.Z}");
 			}
 		}
 

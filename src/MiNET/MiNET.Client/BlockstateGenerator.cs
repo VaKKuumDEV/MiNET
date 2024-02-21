@@ -11,9 +11,12 @@ namespace MiNET.Client
 	public class BlockstateGenerator
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(BlockstateGenerator));
-		private static BlockPalette BlockPalette = null;
+		public static BlockPalette BlockPalette = null;
 		public static List<Schema> Schemas = new List<Schema>();
 		public static Dictionary<int, Schema> blockPosition = new Dictionary<int, Schema>();
+		public static bool customMode = false;
+		public static int customId = 0;
+		public static int customData = 0;
 
 		public class Schema
 		{
@@ -61,6 +64,13 @@ namespace MiNET.Client
 			container.RuntimeId = (int) blockRuntime;
 			container.States = stateList;
 			BlockPalette.Add((int)blockRuntime, container);
+		}
+
+		public static void customState(int id, int data)
+		{
+			customMode = true;
+			customId = id;
+			customData = data;
 		}
 
 		public static void write()

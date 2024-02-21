@@ -9525,7 +9525,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 4,
@@ -9548,7 +9548,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 5,
@@ -9571,7 +9571,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 6,
@@ -9594,7 +9594,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 7,
@@ -9617,7 +9617,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 8,
@@ -9640,7 +9640,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 9,
@@ -9663,7 +9663,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 10,
@@ -9686,7 +9686,7 @@
     ]
   },
   {
-    "Command": "trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:trapdoor",
     "Id": 96,
     "Data": 11,
@@ -17429,6 +17429,24 @@
     ]
   },
   {
+    "Command": "wooden_slab [\"minecraft:vertical_half\" = \"bottom\", \"wood_type\" = \"oak\"]",
+    "Name": "minecraft:wooden_slab",
+    "Id": 158,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "top_slot_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "wood_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
     "Command": "wooden_slab [\"minecraft:vertical_half\" = \"bottom\", \"wood_type\" = \"spruce\"]",
     "Name": "minecraft:wooden_slab",
     "Id": 158,
@@ -18071,7 +18089,7 @@
     ]
   },
   {
-    "Command": "leaves2 [\"new_leaf_type\" = \"acacia\", \"persistent_bit\" = false, \"update_bit\" = false]",
+    "Command": "leaves2 [\"new_leaf_type\" = \"acacia\", \"persistent_bit\" = true, \"update_bit\" = false]",
     "Name": "minecraft:leaves2",
     "Id": 161,
     "Data": 3,
@@ -18117,7 +18135,7 @@
     ]
   },
   {
-    "Command": "leaves2 [\"new_leaf_type\" = \"acacia\", \"persistent_bit\" = false, \"update_bit\" = true]",
+    "Command": "leaves2 [\"new_leaf_type\" = \"acacia\", \"persistent_bit\" = true, \"update_bit\" = true]",
     "Name": "minecraft:leaves2",
     "Id": 161,
     "Data": 7,
@@ -18140,6 +18158,24 @@
     ]
   },
   {
+    "Command": "acacia_log [\"pillar_axis\" = \"y\"]",
+    "Name": "minecraft:log2",
+    "Id": 162,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_log_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      }
+    ]
+  },
+  {
     "Command": "dark_oak_log [\"pillar_axis\" = \"y\"]",
     "Name": "minecraft:log2",
     "Id": 162,
@@ -18158,6 +18194,24 @@
     ]
   },
   {
+    "Command": "acacia_log [\"pillar_axis\" = \"x\"]",
+    "Name": "minecraft:log2",
+    "Id": 162,
+    "Data": 4,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_log_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "x"
+      }
+    ]
+  },
+  {
     "Command": "dark_oak_log [\"pillar_axis\" = \"x\"]",
     "Name": "minecraft:log2",
     "Id": 162,
@@ -18172,6 +18226,24 @@
         "Type": "8",
         "Name": "pillar_axis",
         "Value": "x"
+      }
+    ]
+  },
+  {
+    "Command": "acacia_log [\"pillar_axis\" = \"z\"]",
+    "Name": "minecraft:log2",
+    "Id": 162,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_log_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "z"
       }
     ]
   },
@@ -18581,7 +18653,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "iron_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 4,
@@ -18604,7 +18676,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "iron_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 5,
@@ -18627,7 +18699,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "iron_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 6,
@@ -18650,7 +18722,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "iron_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 7,
@@ -18673,7 +18745,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "iron_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 8,
@@ -18696,7 +18768,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "iron_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 9,
@@ -18719,7 +18791,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "iron_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 10,
@@ -18742,7 +18814,7 @@
     ]
   },
   {
-    "Command": "iron_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "iron_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:iron_trapdoor",
     "Id": 167,
     "Data": 11,
@@ -19348,6 +19420,24 @@
     "States": []
   },
   {
+    "Command": "double_plant [\"double_plant_type\" = \"sunflower\", \"upper_block_bit\" = false]",
+    "Name": "minecraft:double_plant",
+    "Id": 175,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "double_plant_type",
+        "Value": "sunflower"
+      },
+      {
+        "Type": "1",
+        "Name": "upper_block_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "double_plant [\"double_plant_type\" = \"syringa\", \"upper_block_bit\" = false]",
     "Name": "minecraft:double_plant",
     "Id": 175,
@@ -19434,6 +19524,24 @@
         "Type": "1",
         "Name": "upper_block_bit",
         "Value": "0"
+      }
+    ]
+  },
+  {
+    "Command": "double_plant [\"double_plant_type\" = \"sunflower\", \"upper_block_bit\" = true]",
+    "Name": "minecraft:double_plant",
+    "Id": 175,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "double_plant_type",
+        "Value": "sunflower"
+      },
+      {
+        "Type": "1",
+        "Name": "upper_block_bit",
+        "Value": "1"
       }
     ]
   },
@@ -32441,7 +32549,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "acacia_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 4,
@@ -32464,7 +32572,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "acacia_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 5,
@@ -32487,7 +32595,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "acacia_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 6,
@@ -32510,7 +32618,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "acacia_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 7,
@@ -32533,7 +32641,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "acacia_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 8,
@@ -32556,7 +32664,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "acacia_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 9,
@@ -32579,7 +32687,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "acacia_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 10,
@@ -32602,7 +32710,7 @@
     ]
   },
   {
-    "Command": "acacia_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "acacia_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:acacia_trapdoor",
     "Id": 400,
     "Data": 11,
@@ -32809,7 +32917,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "birch_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 4,
@@ -32832,7 +32940,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "birch_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 5,
@@ -32855,7 +32963,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "birch_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 6,
@@ -32878,7 +32986,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "birch_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 7,
@@ -32901,7 +33009,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "birch_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 8,
@@ -32924,7 +33032,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "birch_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 9,
@@ -32947,7 +33055,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "birch_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 10,
@@ -32970,7 +33078,7 @@
     ]
   },
   {
-    "Command": "birch_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "birch_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:birch_trapdoor",
     "Id": 401,
     "Data": 11,
@@ -33177,7 +33285,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 4,
@@ -33200,7 +33308,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 5,
@@ -33223,7 +33331,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 6,
@@ -33246,7 +33354,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 7,
@@ -33269,7 +33377,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 8,
@@ -33292,7 +33400,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 9,
@@ -33315,7 +33423,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 10,
@@ -33338,7 +33446,7 @@
     ]
   },
   {
-    "Command": "dark_oak_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "dark_oak_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:dark_oak_trapdoor",
     "Id": 402,
     "Data": 11,
@@ -33545,7 +33653,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "jungle_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 4,
@@ -33568,7 +33676,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "jungle_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 5,
@@ -33591,7 +33699,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "jungle_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 6,
@@ -33614,7 +33722,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "jungle_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 7,
@@ -33637,7 +33745,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "jungle_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 8,
@@ -33660,7 +33768,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "jungle_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 9,
@@ -33683,7 +33791,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "jungle_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 10,
@@ -33706,7 +33814,7 @@
     ]
   },
   {
-    "Command": "jungle_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "jungle_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:jungle_trapdoor",
     "Id": 403,
     "Data": 11,
@@ -33913,7 +34021,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "spruce_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 4,
@@ -33936,7 +34044,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "spruce_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 5,
@@ -33959,7 +34067,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "spruce_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 6,
@@ -33982,7 +34090,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
+    "Command": "spruce_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 7,
@@ -34005,7 +34113,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 0, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "spruce_trapdoor [\"direction\" = 0, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 8,
@@ -34028,7 +34136,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 1, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "spruce_trapdoor [\"direction\" = 1, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 9,
@@ -34051,7 +34159,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 2, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "spruce_trapdoor [\"direction\" = 2, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 10,
@@ -34074,7 +34182,7 @@
     ]
   },
   {
-    "Command": "spruce_trapdoor [\"direction\" = 3, \"open_bit\" = true, \"upside_down_bit\" = false]",
+    "Command": "spruce_trapdoor [\"direction\" = 3, \"open_bit\" = false, \"upside_down_bit\" = true]",
     "Name": "minecraft:spruce_trapdoor",
     "Id": 404,
     "Data": 11,
@@ -42358,7 +42466,29 @@
       }
     ]
   },
-  
+  {
+    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"oak\"]",
+    "Name": "minecraft:wood",
+    "Id": 467,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "y"
+      },
+      {
+        "Type": "1",
+        "Name": "stripped_bit",
+        "Value": "1"
+      },
+      {
+        "Type": "8",
+        "Name": "wood_type",
+        "Value": "oak"
+      }
+    ]
+  },
   {
     "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"spruce\"]",
     "Name": "minecraft:wood",
@@ -42475,10 +42605,33 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"spruce\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = false, \"wood_type\" = \"oak\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 1,
+    "Data": 14,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "x"
+      },
+      {
+        "Type": "1",
+        "Name": "stripped_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "wood_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = false, \"wood_type\" = \"spruce\"]",
+    "Name": "minecraft:wood",
+    "Id": 467,
+    "Data": 15,
     "States": [
       {
         "Type": "8",
@@ -42498,10 +42651,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"birch\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = false, \"wood_type\" = \"birch\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 2,
+    "Data": 16,
     "States": [
       {
         "Type": "8",
@@ -42521,10 +42674,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"jungle\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = false, \"wood_type\" = \"jungle\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 3,
+    "Data": 17,
     "States": [
       {
         "Type": "8",
@@ -42544,10 +42697,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"acacia\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = false, \"wood_type\" = \"acacia\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 4,
+    "Data": 18,
     "States": [
       {
         "Type": "8",
@@ -42567,10 +42720,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"dark_oak\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = false, \"wood_type\" = \"dark_oak\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 5,
+    "Data": 19,
     "States": [
       {
         "Type": "8",
@@ -42590,10 +42743,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"spruce\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = true, \"wood_type\" = \"spruce\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 9,
+    "Data": 20,
     "States": [
       {
         "Type": "8",
@@ -42613,10 +42766,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"birch\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = true, \"wood_type\" = \"birch\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 10,
+    "Data": 21,
     "States": [
       {
         "Type": "8",
@@ -42636,10 +42789,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"jungle\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = true, \"wood_type\" = \"jungle\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 11,
+    "Data": 22,
     "States": [
       {
         "Type": "8",
@@ -42659,10 +42812,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"acacia\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = true, \"wood_type\" = \"acacia\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 12,
+    "Data": 23,
     "States": [
       {
         "Type": "8",
@@ -42682,10 +42835,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"dark_oak\"]",
+    "Command": "wood [\"pillar_axis\" = \"x\", \"stripped_bit\" = true, \"wood_type\" = \"dark_oak\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 13,
+    "Data": 24,
     "States": [
       {
         "Type": "8",
@@ -42705,10 +42858,33 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"spruce\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = false, \"wood_type\" = \"oak\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 1,
+    "Data": 25,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "pillar_axis",
+        "Value": "z"
+      },
+      {
+        "Type": "1",
+        "Name": "stripped_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "wood_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = false, \"wood_type\" = \"spruce\"]",
+    "Name": "minecraft:wood",
+    "Id": 467,
+    "Data": 26,
     "States": [
       {
         "Type": "8",
@@ -42728,10 +42904,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"birch\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = false, \"wood_type\" = \"birch\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 2,
+    "Data": 27,
     "States": [
       {
         "Type": "8",
@@ -42751,10 +42927,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"jungle\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = false, \"wood_type\" = \"jungle\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 3,
+    "Data": 28,
     "States": [
       {
         "Type": "8",
@@ -42774,10 +42950,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"acacia\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = false, \"wood_type\" = \"acacia\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 4,
+    "Data": 29,
     "States": [
       {
         "Type": "8",
@@ -42797,10 +42973,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = false, \"wood_type\" = \"dark_oak\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = false, \"wood_type\" = \"dark_oak\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 5,
+    "Data": 30,
     "States": [
       {
         "Type": "8",
@@ -42820,10 +42996,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"spruce\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = true, \"wood_type\" = \"spruce\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 9,
+    "Data": 31,
     "States": [
       {
         "Type": "8",
@@ -42843,10 +43019,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"birch\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = true, \"wood_type\" = \"birch\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 10,
+    "Data": 32,
     "States": [
       {
         "Type": "8",
@@ -42866,10 +43042,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"jungle\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = true, \"wood_type\" = \"jungle\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 11,
+    "Data": 33,
     "States": [
       {
         "Type": "8",
@@ -42889,10 +43065,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"acacia\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = true, \"wood_type\" = \"acacia\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 12,
+    "Data": 34,
     "States": [
       {
         "Type": "8",
@@ -42912,10 +43088,10 @@
     ]
   },
   {
-    "Command": "wood [\"pillar_axis\" = \"y\", \"stripped_bit\" = true, \"wood_type\" = \"dark_oak\"]",
+    "Command": "wood [\"pillar_axis\" = \"z\", \"stripped_bit\" = true, \"wood_type\" = \"dark_oak\"]",
     "Name": "minecraft:wood",
     "Id": 467,
-    "Data": 13,
+    "Data": 35,
     "States": [
       {
         "Type": "8",
