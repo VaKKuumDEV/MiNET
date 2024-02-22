@@ -53,8 +53,6 @@ namespace MiNET.Client
 			return text.Contains("blockstates") || text.Contains("blockstate") || text.Contains("export");
 		}
 
-		private bool _runningBlockMetadataDiscovery;
-
 		public void Execute(BedrockTraceHandler caller, string text)
 		{
 			if (text.Contains("blockstates"))
@@ -166,13 +164,11 @@ namespace MiNET.Client
 			}
 		}
 
-		private bool reset1 = true;
 		public void HandleMcpeUpdateBlock(BedrockTraceHandler caller, McpeUpdateBlock message) //for blocks with one update
 		{
 			//Log.Error($"defaultupdate {message.blockRuntimeId} {message.coordinates.X} {message.coordinates.Y} {message.coordinates.Z}");
 			if (BlockstateGenerator.blockPosition.TryGetValue(message.coordinates.X, out var state) && message.coordinates.Y == 50 && message.coordinates.Z == 0 && !BlockstateGenerator.BlockPalette.ContainsKey((int) message.blockRuntimeId))
 			{
-				//if (state.Id == 26 && state.Data > 7 && reset1) { reset1 = false; return; }
 				Log.Warn($"Got runtimeID for {state.Name} (id: {state.Id} data: {state.Data})");
 				BlockstateGenerator.createContainer(state.Name, message.blockRuntimeId, state.Id, state.Data, state.States);
 				BlockstateGenerator.blockPosition.Remove(message.coordinates.X);
@@ -185,7 +181,6 @@ namespace MiNET.Client
 				{
 					BlockstateGenerator.write();
 				}
-				reset1 = true;
 			}
 		}
 
@@ -196,11 +191,9 @@ namespace MiNET.Client
 				//Log.Error($"layer2 {block.BlockRuntimeId} {block.Coordinates.X} {block.Coordinates.Y} {block.Coordinates.Z}");
 				if (BlockstateGenerator.blockPosition.TryGetValue(block.Coordinates.X, out var state) && block.Coordinates.Y == 50 && block.Coordinates.Z == 0 && !BlockstateGenerator.BlockPalette.ContainsKey((int)block.BlockRuntimeId))
 				{
-					//if (state.Id == 26 && state.Data > 7 && reset1) { reset1 = false; continue; }  //bed send two updates but after data 7 we need second one. so ignoring first... TODO seems like not working correctly
 					Log.Warn($"Got runtimeID for {state.Name} (id: {state.Id} data: {state.Data})");
 					BlockstateGenerator.createContainer(state.Name, block.BlockRuntimeId, state.Id, state.Data, state.States);
 					BlockstateGenerator.blockPosition.Remove(block.Coordinates.X);
-					reset1 = true;
 				}
 			}
 			foreach (var block in message.layerOneUpdates)

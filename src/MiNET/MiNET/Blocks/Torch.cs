@@ -69,16 +69,16 @@ namespace MiNET.Blocks
 					TorchFacingDirection = "top";
 					break;
 				case BlockFace.North:
-					TorchFacingDirection = "south";
-					break;
-				case BlockFace.South:
 					TorchFacingDirection = "north";
 					break;
+				case BlockFace.South:
+					TorchFacingDirection = "south";
+					break;
 				case BlockFace.West:
-					TorchFacingDirection = "east";
+					TorchFacingDirection = "west";
 					break;
 				case BlockFace.East:
-					TorchFacingDirection = "west";
+					TorchFacingDirection = "east";
 					break;
 			}
 

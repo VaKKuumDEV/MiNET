@@ -25,7 +25,7 @@
 
 using System.Numerics;
 using log4net;
-using MiNET.Utils;
+using MiNET.Sounds;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -34,6 +34,7 @@ namespace MiNET.Blocks
 	public abstract class DoorBase : Block
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(DoorBase));
+		public static int fDirection { get; set; }
 		[StateRange(0, 3)] public virtual int Direction { get; set; }
 		[StateBit] public virtual bool DoorHingeBit { get; set; }
 		[StateBit] public virtual bool OpenBit { get; set; }
@@ -48,9 +49,10 @@ namespace MiNET.Blocks
 
 		protected override bool CanPlace(Level world, Player player, BlockCoordinates blockCoordinates, BlockCoordinates targetCoordinates, BlockFace face)
 		{
-			if (Direction == 1 || Direction == 3)
+			if (fDirection == 1 || fDirection == 3)
 			{
-				Direction = 0;
+				fDirection = 0;
+				Direction = fDirection;
 				DoorBase block = this;
 				block.OpenBit = true;
 				world.SetBlock(block);
@@ -80,6 +82,9 @@ namespace MiNET.Blocks
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
+			var sound = new Sound((short)LevelEventType.SoundOpenDoor, blockCoordinates);
+			sound.Spawn(world);
+			Direction = fDirection;
 			DoorBase block = this;
 			// Remove door
 			if (UpperBlockBit) // Is Upper?

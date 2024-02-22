@@ -35,6 +35,7 @@ namespace MiNET.Blocks
 	{
 		public int TickRate { get; set; }
 		public static string RedstoneSignalDirection { get; set; } = "north";
+		public static int Direction { get; set; }
 		private BlockCoordinates cord = new BlockCoordinates(0, 0, 0);
 		[StateBit] public virtual bool ButtonPressedBit { get; set; } = false;
 		[StateRange(0, 5)] public virtual int FacingDirection { get; set; } = 2;
@@ -49,19 +50,8 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			FacingDirection = (int) face;
-
-			RedstoneSignalDirection = face switch
-			{
-				BlockFace.North => "south",
-				BlockFace.South => "north",
-				BlockFace.West => "east",
-				BlockFace.East => "west",
-				BlockFace.Up => "down",
-				BlockFace.Down => "up",
-				_ => throw new ArgumentOutOfRangeException()
-			};
-
+			Direction = (int) face;
+			FacingDirection = Direction;
 			world.SetBlock(this);
 			return true;
 		}
@@ -70,10 +60,22 @@ namespace MiNET.Blocks
 		{
 			world.BroadcastSound(blockCoordinates, LevelSoundEventType.ButtonOn);
 			ButtonPressedBit = true;
+			FacingDirection = Direction;
 			world.SetBlock(this);
 			world.ScheduleBlockTick(this, TickRate);
 
 			if (!world.RedstoneEnabled) { return true; }
+			RedstoneSignalDirection = Direction switch
+			{
+				2 => "south",
+				3 => "north",
+				4 => "east",
+				5 => "west",
+				1 => "down",
+				0 => "up",
+				_ => throw new ArgumentOutOfRangeException()
+			};
+
 			cord = blockCoordinates.BlockNorth();
 			if (RedstoneSignalDirection == "north")
 			{

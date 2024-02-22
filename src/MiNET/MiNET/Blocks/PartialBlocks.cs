@@ -69,7 +69,7 @@ namespace MiNET.Blocks
 
 	public partial class StoneBlockSlab2 // 182 typeof=StoneSlab2
 	{
-		public string Name => "minecraft:stone_slab2";
+		public override string Name => "minecraft:stone_slab2";
 
 		[StateEnum("red_sandstone", "red_nether_brick", "mossy_cobblestone", "prismarine_dark", "prismarine_rough", "smooth_sandstone", "prismarine_brick", "purpur")]
 		public string StoneSlabType2 { get; set; } = "red_sandstone";
@@ -104,7 +104,7 @@ namespace MiNET.Blocks
 
 	public partial class StoneBlockSlab3 // 417 typeof=StoneSlab3
 	{
-		public string Name => "minecraft:stone_slab3";
+		public override string Name => "minecraft:stone_slab3";
 
 		[StateEnum("end_stone_brick", "granite", "andesite", "polished_granite", "diorite", "polished_andesite", "smooth_red_sandstone", "polished_diorite")]
 		public string StoneSlabType3 { get; set; } = "end_stone_brick";
@@ -139,7 +139,7 @@ namespace MiNET.Blocks
 
 	public partial class StoneBlockSlab4 // 421 typeof=StoneSlab4
 	{
-		public string Name => "minecraft:stone_slab4";
+		public override string Name => "minecraft:stone_slab4";
 
 		[StateEnum("cut_sandstone", "stone", "smooth_quartz", "cut_red_sandstone", "mossy_stone_brick")]
 		public string StoneSlabType4 { get; set; } = "mossy_stone_brick";
@@ -574,8 +574,9 @@ namespace MiNET.Blocks
                         ButtonPressedBit = Convert.ToBoolean(s.Value);
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
-                        FacingDirection = s.Value;
-                        break;
+						FacingDirection = s.Value;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -606,7 +607,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						fDirection = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;
@@ -635,7 +637,7 @@ namespace MiNET.Blocks
 
     public partial class AcaciaFenceGate  // 187 typeof=AcaciaFenceGate
     {
-        [StateRange(0, 3)] public  int Direction { get; set; } = 0;
+        [StateRange(0, 3)] public override int Direction { get; set; } = 0;
         [StateBit] public  bool InWallBit { get; set; } = false;
         [StateBit] public  bool OpenBit { get; set; } = false;
 
@@ -1342,7 +1344,8 @@ namespace MiNET.Blocks
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
                         FacingDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -1373,7 +1376,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						fDirection = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;
@@ -1402,7 +1406,7 @@ namespace MiNET.Blocks
 
     public partial class BirchFenceGate  // 184 typeof=BirchFenceGate
     {
-        [StateRange(0, 3)] public  int Direction { get; set; } = 0;
+        [StateRange(0, 3)] public override int Direction { get; set; } = 0;
         [StateBit] public  bool InWallBit { get; set; } = false;
         [StateBit] public  bool OpenBit { get; set; } = false;
 
@@ -3078,7 +3082,8 @@ namespace MiNET.Blocks
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
                         FacingDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -3109,7 +3114,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						fDirection = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;
@@ -3138,7 +3144,7 @@ namespace MiNET.Blocks
 
     public partial class DarkOakFenceGate  // 186 typeof=DarkOakFenceGate
     {
-        [StateRange(0, 3)] public  int Direction { get; set; } = 0;
+        [StateRange(0, 3)] public override int Direction { get; set; } = 0;
         [StateBit] public  bool InWallBit { get; set; } = false;
         [StateBit] public  bool OpenBit { get; set; } = false;
 
@@ -4103,7 +4109,7 @@ namespace MiNET.Blocks
 
     public partial class FenceGate  // 107 typeof=FenceGate
     {
-        [StateRange(0, 3)] public  int Direction { get; set; } = 0;
+        [StateRange(0, 3)] public override int Direction { get; set; } = 0;
         [StateBit] public  bool InWallBit { get; set; } = false;
         [StateBit] public  bool OpenBit { get; set; } = false;
 
@@ -5153,7 +5159,7 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;
@@ -5309,7 +5315,8 @@ namespace MiNET.Blocks
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
                         FacingDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -5340,7 +5347,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						fDirection = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;
@@ -5369,7 +5377,7 @@ namespace MiNET.Blocks
 
     public partial class JungleFenceGate  // 185 typeof=JungleFenceGate
     {
-        [StateRange(0, 3)] public  int Direction { get; set; } = 0;
+        [StateRange(0, 3)] public override int Direction { get; set; } = 0;
         [StateBit] public  bool InWallBit { get; set; } = false;
         [StateBit] public  bool OpenBit { get; set; } = false;
 
@@ -5839,7 +5847,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateString s when s.Name == "lever_direction":
                         LeverDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "open_bit":
                         OpenBit = Convert.ToBoolean(s.Value);
                         break;
@@ -8585,7 +8594,8 @@ namespace MiNET.Blocks
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
                         FacingDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -8616,7 +8626,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						fDirection = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;
@@ -8645,7 +8656,7 @@ namespace MiNET.Blocks
 
     public partial class SpruceFenceGate  // 183 typeof=SpruceFenceGate
     {
-        [StateRange(0, 3)] public  int Direction { get; set; } = 0;
+        [StateRange(0, 3)] public override int Direction { get; set; } = 0;
         [StateBit] public  bool InWallBit { get; set; } = false;
         [StateBit] public  bool OpenBit { get; set; } = false;
 
@@ -9019,7 +9030,8 @@ namespace MiNET.Blocks
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
                         FacingDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -10111,7 +10123,8 @@ namespace MiNET.Blocks
                         break;
                     case BlockStateInt s when s.Name == "facing_direction":
                         FacingDirection = s.Value;
-                        break;
+						Direction = s.Value;
+						break;
                 } // switch
             } // foreach
         } // method
@@ -10142,7 +10155,8 @@ namespace MiNET.Blocks
                 {
                     case BlockStateInt s when s.Name == "direction":
                         Direction = s.Value;
-                        break;
+						fDirection = s.Value;
+						break;
                     case BlockStateByte s when s.Name == "door_hinge_bit":
                         DoorHingeBit = Convert.ToBoolean(s.Value);
                         break;

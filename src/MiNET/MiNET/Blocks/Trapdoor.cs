@@ -25,6 +25,7 @@
 
 using System.Numerics;
 using MiNET.Entities;
+using MiNET.Sounds;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -61,6 +62,8 @@ namespace MiNET.Blocks
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
+			var sound = new Sound((short) LevelEventType.SoundOpenDoor, blockCoordinates);
+			sound.Spawn(world);
 			OpenBit = !OpenBit;
 			world.SetBlock(this);
 

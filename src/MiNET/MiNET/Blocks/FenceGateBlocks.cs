@@ -23,10 +23,18 @@
 
 #endregion
 
+using MiNET.Utils.Vectors;
+using System.Numerics;
+using MiNET.Worlds;
+using MiNET.Sounds;
+using MiNET.Entities;
+using System;
+
 namespace MiNET.Blocks
 {
 	public abstract class FenceGateBlocks : Block
 	{
+		[StateRange(0, 3)] public virtual int Direction { get; set; }
 		public FenceGateBlocks(byte id) : base(id)
 		{
 			FuelEfficiency = 15;
@@ -34,6 +42,24 @@ namespace MiNET.Blocks
 			BlastResistance = 15;
 			Hardness = 2;
 			IsFlammable = true;
+		}
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates targetCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			Direction = player.GetDirectionEmum() switch
+			{
+				Entity.Direction.West => 0,
+				Entity.Direction.North => 1,
+				Entity.Direction.East => 2,
+				Entity.Direction.South => 3,
+				_ => throw new ArgumentOutOfRangeException()
+			};
+			return false;
+		}
+		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
+		{
+			var sound = new Sound((short) LevelEventType.SoundOpenDoor, blockCoordinates);
+			sound.Spawn(world);
+			return true;
 		}
 	}
 }

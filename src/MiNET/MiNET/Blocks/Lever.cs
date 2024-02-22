@@ -35,6 +35,7 @@ namespace MiNET.Blocks
 	public partial class Lever : Block
 	{
 		public static string RedstoneSignalDirection { get; set; } = "north";
+		public static string Direction { get; set; }
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Lever));
 		public Lever() : base(69)
 		{
@@ -50,7 +51,7 @@ namespace MiNET.Blocks
 			Log.Debug(FacingDirection);
 			if (face == BlockFace.Down)
 			{
-				LeverDirection = FacingDirection switch
+				Direction = FacingDirection switch
 				{
 					5 or 4 => "down_east_west",
 					2 or 3 => "down_north_south",
@@ -59,7 +60,7 @@ namespace MiNET.Blocks
 			}
 			else if (face == BlockFace.Up)
 			{
-				LeverDirection = FacingDirection switch
+				Direction = FacingDirection switch
 				{
 					5 or 4 => "up_east_west",
 					2 or 3 => "up_north_south",
@@ -68,7 +69,7 @@ namespace MiNET.Blocks
 			}
 			else
 			{
-				LeverDirection = FacingDirection switch
+				Direction = FacingDirection switch
 				{
 					5 => "east",
 					3 => "south",
@@ -77,18 +78,7 @@ namespace MiNET.Blocks
 					_ => throw new ArgumentOutOfRangeException()
 				};
 			}
-
-			RedstoneSignalDirection = face switch
-			{
-				BlockFace.North => "south",
-				BlockFace.South => "north",
-				BlockFace.West => "east",
-				BlockFace.East => "west",
-				BlockFace.Up => "down",
-				BlockFace.Down => "up",
-				_ => throw new ArgumentOutOfRangeException()
-			};
-
+			LeverDirection = Direction;
 			return false;
 		}
 
@@ -96,6 +86,17 @@ namespace MiNET.Blocks
 		{
 			BlockCoordinates cord = blockCoordinates.BlockNorth();
 			world.BroadcastSound(blockCoordinates, LevelSoundEventType.ButtonOn);
+			LeverDirection = Direction;
+			RedstoneSignalDirection = Direction switch
+			{
+				"north" => "south",
+				"south" => "north",
+				"west" => "east",
+				"east" => "west",
+				"up" => "down",
+				"down" => "up",
+				_ => throw new ArgumentOutOfRangeException()
+			};
 			if (RedstoneSignalDirection == "north")
 			{
 				cord = blockCoordinates.BlockNorth();

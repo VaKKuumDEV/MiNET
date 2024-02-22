@@ -117,8 +117,6 @@ namespace MiNET.Client
 			base.HandleMcpeResourcePackStack(message);
 		}
 
-		//private bool _runningBlockMetadataDiscovery;
-
 		private List<ICommandExecutioner> _executioners = new List<ICommandExecutioner>() {new PlaceAllBlocksExecutioner()};
 
 		private void CallPacketHandlers(Packet packet)
