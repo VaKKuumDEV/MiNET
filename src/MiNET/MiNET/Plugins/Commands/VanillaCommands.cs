@@ -678,5 +678,25 @@ namespace MiNET.Plugins.Commands
 			}
 			return "";
 		}
+
+		[Command(Name = "weather", Description = "Sets the weather")]
+		public string Weather(Player commander, WeatherManager.weatherTypes weather)
+		{
+			var change = new WeatherManager(commander.Level);
+			switch (weather)
+			{
+				case WeatherManager.weatherTypes.clear:
+					change.setWeather(WeatherManager.weatherTypes.clear);
+					return "Changing to clear weather";
+				case WeatherManager.weatherTypes.rain:
+					change.setWeather(WeatherManager.weatherTypes.rain);
+					return "Changing to rainy weather";
+				case WeatherManager.weatherTypes.thunder:
+					change.setWeather(WeatherManager.weatherTypes.thunder);
+					return "Changing to rain and thunder";
+				default:
+					return "";
+			}
+		}
 	}
 }

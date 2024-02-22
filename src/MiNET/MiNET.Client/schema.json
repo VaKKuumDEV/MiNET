@@ -43266,6 +43266,13 @@
       }
     ]
   },
+    {
+    "Command": "wither_rose",
+    "Name": "minecraft:wither_rose",
+    "Id": 471,
+    "Data": 0,
+    "States": []
+  },
   {
     "Command": "barrier",
     "Name": "minecraft:barrier",

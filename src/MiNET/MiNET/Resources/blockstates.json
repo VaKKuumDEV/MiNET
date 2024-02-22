@@ -2348,7 +2348,7 @@
     "Id": 26,
     "Data": 0,
     "Name": "minecraft:bed",
-    "RuntimeId": 11898,
+    "RuntimeId": 11890,
     "States": [
       {
         "Type": 3,
@@ -2372,7 +2372,7 @@
     "Id": 26,
     "Data": 1,
     "Name": "minecraft:bed",
-    "RuntimeId": 11899,
+    "RuntimeId": 11891,
     "States": [
       {
         "Type": 3,
@@ -2420,7 +2420,7 @@
     "Id": 26,
     "Data": 3,
     "Name": "minecraft:bed",
-    "RuntimeId": 11901,
+    "RuntimeId": 11893,
     "States": [
       {
         "Type": 3,
@@ -2444,7 +2444,7 @@
     "Id": 26,
     "Data": 4,
     "Name": "minecraft:bed",
-    "RuntimeId": 11902,
+    "RuntimeId": 11894,
     "States": [
       {
         "Type": 3,
@@ -2468,7 +2468,7 @@
     "Id": 26,
     "Data": 5,
     "Name": "minecraft:bed",
-    "RuntimeId": 11903,
+    "RuntimeId": 11895,
     "States": [
       {
         "Type": 3,
@@ -2516,7 +2516,7 @@
     "Id": 26,
     "Data": 7,
     "Name": "minecraft:bed",
-    "RuntimeId": 11905,
+    "RuntimeId": 11897,
     "States": [
       {
         "Type": 3,
@@ -2540,7 +2540,7 @@
     "Id": 26,
     "Data": 8,
     "Name": "minecraft:bed",
-    "RuntimeId": 11890,
+    "RuntimeId": 11898,
     "States": [
       {
         "Type": 3,
@@ -2564,7 +2564,7 @@
     "Id": 26,
     "Data": 9,
     "Name": "minecraft:bed",
-    "RuntimeId": 11891,
+    "RuntimeId": 11899,
     "States": [
       {
         "Type": 3,
@@ -2612,7 +2612,7 @@
     "Id": 26,
     "Data": 11,
     "Name": "minecraft:bed",
-    "RuntimeId": 11893,
+    "RuntimeId": 11901,
     "States": [
       {
         "Type": 3,
@@ -2636,7 +2636,7 @@
     "Id": 26,
     "Data": 12,
     "Name": "minecraft:bed",
-    "RuntimeId": 11894,
+    "RuntimeId": 11902,
     "States": [
       {
         "Type": 3,
@@ -2660,7 +2660,7 @@
     "Id": 26,
     "Data": 13,
     "Name": "minecraft:bed",
-    "RuntimeId": 11895,
+    "RuntimeId": 11903,
     "States": [
       {
         "Type": 3,
@@ -2708,7 +2708,7 @@
     "Id": 26,
     "Data": 15,
     "Name": "minecraft:bed",
-    "RuntimeId": 11897,
+    "RuntimeId": 11905,
     "States": [
       {
         "Type": 3,
@@ -4791,6 +4791,20 @@
         "Type": 3,
         "Name": "age",
         "Value": 12
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 51,
+    "Data": 13,
+    "Name": "minecraft:fire",
+    "RuntimeId": 11203,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "age",
+        "Value": 13
       }
     ],
     "ItemInstance": null
@@ -44615,6 +44629,14 @@
         "Value": 5
       }
     ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 471,
+    "Data": 0,
+    "Name": "minecraft:wither_rose",
+    "RuntimeId": 11329,
+    "States": [],
     "ItemInstance": null
   },
   {
