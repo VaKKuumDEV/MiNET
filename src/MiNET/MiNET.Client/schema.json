@@ -1957,6 +1957,24 @@
     "States": []
   },
   {
+    "Command": "dispenser [\"facing_direction\" = 0, \"triggered_bit\" = false]",
+    "Name": "minecraft:dispenser",
+    "Id": 23,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "triggered_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "dispenser [\"facing_direction\" = 1, \"triggered_bit\" = false]",
     "Name": "minecraft:dispenser",
     "Id": 23,
@@ -2762,6 +2780,24 @@
     ]
   },
   {
+    "Command": "detector_rail [\"rail_data_bit\" = false, \"rail_direction\" = 0]",
+    "Name": "minecraft:detector_rail",
+    "Id": 28,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "rail_data_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "3",
+        "Name": "rail_direction",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "detector_rail [\"rail_data_bit\" = false, \"rail_direction\" = 1]",
     "Name": "minecraft:detector_rail",
     "Id": 28,
@@ -2852,6 +2888,24 @@
     ]
   },
   {
+    "Command": "detector_rail [\"rail_data_bit\" = true, \"rail_direction\" = 0]",
+    "Name": "minecraft:detector_rail",
+    "Id": 28,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "rail_data_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "3",
+        "Name": "rail_direction",
+        "Value": "1"
+      }
+    ]
+  },
+  {
     "Command": "detector_rail [\"rail_data_bit\" = true, \"rail_direction\" = 1]",
     "Name": "minecraft:detector_rail",
     "Id": 28,
@@ -2938,6 +2992,19 @@
         "Type": "3",
         "Name": "rail_direction",
         "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "sticky_piston [\"facing_direction\" = 0]",
+    "Name": "minecraft:sticky_piston",
+    "Id": 29,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
       }
     ]
   },
@@ -3073,6 +3140,19 @@
     "States": []
   },
   {
+    "Command": "piston [\"facing_direction\" = 0]",
+    "Name": "minecraft:piston",
+    "Id": 33,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "piston [\"facing_direction\" = 1]",
     "Name": "minecraft:piston",
     "Id": 33,
@@ -3134,6 +3214,19 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "piston_arm_collision [\"facing_direction\" = 0]",
+    "Name": "minecraft:pistonArmCollision",
+    "Id": 34,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
       }
     ]
   },
@@ -4326,6 +4419,19 @@
         "Type": "8",
         "Name": "torch_facing_direction",
         "Value": "top"
+      }
+    ]
+  },
+  {
+    "Command": "fire [\"age\" = 0]",
+    "Name": "minecraft:fire",
+    "Id": 51,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "age",
+        "Value": "0"
       }
     ]
   },
@@ -5938,6 +6044,19 @@
     ]
   },
   {
+    "Command": "ladder [\"facing_direction\" = 0]",
+    "Name": "minecraft:ladder",
+    "Id": 65,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "ladder [\"facing_direction\" = 1]",
     "Name": "minecraft:ladder",
     "Id": 65,
@@ -6273,6 +6392,19 @@
         "Type": "3",
         "Name": "weirdo_direction",
         "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "wall_sign [\"facing_direction\" = 0]",
+    "Name": "minecraft:wall_sign",
+    "Id": 68,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "0"
       }
     ]
   },
@@ -14891,11 +15023,6 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "0"
-      },
-      {
-        "Type": "1",
-        "Name": "no_drop_bit",
-        "Value": "0"
       }
     ]
   },
@@ -14909,11 +15036,6 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "1"
-      },
-      {
-        "Type": "1",
-        "Name": "no_drop_bit",
-        "Value": "0"
       }
     ]
   },
@@ -14927,11 +15049,6 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "2"
-      },
-      {
-        "Type": "1",
-        "Name": "no_drop_bit",
-        "Value": "0"
       }
     ]
   },
@@ -14945,11 +15062,6 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "3"
-      },
-      {
-        "Type": "1",
-        "Name": "no_drop_bit",
-        "Value": "0"
       }
     ]
   },
@@ -14963,11 +15075,6 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "4"
-      },
-      {
-        "Type": "1",
-        "Name": "no_drop_bit",
-        "Value": "0"
       }
     ]
   },
@@ -14981,11 +15088,6 @@
         "Type": "3",
         "Name": "facing_direction",
         "Value": "5"
-      },
-      {
-        "Type": "1",
-        "Name": "no_drop_bit",
-        "Value": "0"
       }
     ]
   },
@@ -15274,6 +15376,19 @@
         "Type": "3",
         "Name": "direction",
         "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "trapped_chest [\"minecraft:cardinal_direction\" = \"north\"]",
+    "Name": "minecraft:trapped_chest",
+    "Id": 146,
+    "Data": 2,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
@@ -18097,6 +18212,29 @@
       {
         "Type": "8",
         "Name": "new_leaf_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "1",
+        "Name": "persistent_bit",
+        "Value": "1"
+      },
+      {
+        "Type": "1",
+        "Name": "update_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
+    "Command": "leaves2 [\"new_leaf_type\" = \"dark_oak\", \"persistent_bit\" = true, \"update_bit\" = false]",
+    "Name": "minecraft:leaves2",
+    "Id": 161,
+    "Data": 4,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_leaf_type",
         "Value": "dark_oak"
       },
       {
@@ -18112,10 +18250,33 @@
     ]
   },
   {
-    "Command": "leaves2 [\"new_leaf_type\" = \"dark_oak\", \"persistent_bit\" = false, \"update_bit\" = true]",
+    "Command": "leaves2 [\"new_leaf_type\" = \"acacia\", \"persistent_bit\" = false, \"update_bit\" = true]",
     "Name": "minecraft:leaves2",
     "Id": 161,
     "Data": 5,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_leaf_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "1",
+        "Name": "persistent_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "update_bit",
+        "Value": "1"
+      }
+    ]
+  },
+  {
+    "Command": "leaves2 [\"new_leaf_type\" = \"dark_oak\", \"persistent_bit\" = false, \"update_bit\" = true]",
+    "Name": "minecraft:leaves2",
+    "Id": 161,
+    "Data": 6,
     "States": [
       {
         "Type": "8",
@@ -18139,6 +18300,29 @@
     "Name": "minecraft:leaves2",
     "Id": 161,
     "Data": 7,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "new_leaf_type",
+        "Value": "acacia"
+      },
+      {
+        "Type": "1",
+        "Name": "persistent_bit",
+        "Value": "1"
+      },
+      {
+        "Type": "1",
+        "Name": "update_bit",
+        "Value": "1"
+      }
+    ]
+  },
+  {
+    "Command": "leaves2 [\"new_leaf_type\" = \"dark_oak\", \"persistent_bit\" = true, \"update_bit\" = true]",
+    "Name": "minecraft:leaves2",
+    "Id": 161,
+    "Data": 8,
     "States": [
       {
         "Type": "8",
@@ -25558,6 +25742,11 @@
         "Type": "1",
         "Name": "item_frame_map_bit",
         "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
+        "Value": "0"
       }
     ]
   },
@@ -25575,6 +25764,11 @@
       {
         "Type": "1",
         "Name": "item_frame_map_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
         "Value": "0"
       }
     ]
@@ -25594,6 +25788,11 @@
         "Type": "1",
         "Name": "item_frame_map_bit",
         "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
+        "Value": "0"
       }
     ]
   },
@@ -25611,6 +25810,11 @@
       {
         "Type": "1",
         "Name": "item_frame_map_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
         "Value": "0"
       }
     ]
@@ -25630,6 +25834,11 @@
         "Type": "1",
         "Name": "item_frame_map_bit",
         "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
+        "Value": "0"
       }
     ]
   },
@@ -25647,6 +25856,11 @@
       {
         "Type": "1",
         "Name": "item_frame_map_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
         "Value": "0"
       }
     ]
@@ -25666,6 +25880,11 @@
         "Type": "1",
         "Name": "item_frame_map_bit",
         "Value": "1"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
+        "Value": "0"
       }
     ]
   },
@@ -25684,6 +25903,11 @@
         "Type": "1",
         "Name": "item_frame_map_bit",
         "Value": "1"
+      },
+      {
+        "Type": "1",
+        "Name": "item_frame_photo_bit",
+        "Value": "0"
       }
     ]
   },
@@ -36182,6 +36406,42 @@
     ]
   },
   {
+    "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"oak\"]",
+    "Name": "minecraft:bamboo_sapling",
+    "Id": 419,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "age_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "sapling_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
+    "Command": "bamboo_sapling [\"age_bit\" = true, \"sapling_type\" = \"oak\"]",
+    "Name": "minecraft:bamboo_sapling",
+    "Id": 419,
+    "Data": 1,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "age_bit",
+        "Value": "1"
+      },
+      {
+        "Type": "8",
+        "Name": "sapling_type",
+        "Value": "oak"
+      }
+    ]
+  },
+  {
     "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"spruce\"]",
     "Name": "minecraft:bamboo_sapling",
     "Id": 419,
@@ -36208,7 +36468,7 @@
       {
         "Type": "1",
         "Name": "age_bit",
-        "Value": "0"
+        "Value": "1"
       },
       {
         "Type": "8",
@@ -36244,7 +36504,7 @@
       {
         "Type": "1",
         "Name": "age_bit",
-        "Value": "0"
+        "Value": "1"
       },
       {
         "Type": "8",
@@ -36254,7 +36514,7 @@
     ]
   },
   {
-    "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"acacia\"]",
+    "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"jungle\"]",
     "Name": "minecraft:bamboo_sapling",
     "Id": 419,
     "Data": 8,
@@ -36262,17 +36522,17 @@
       {
         "Type": "1",
         "Name": "age_bit",
-        "Value": "1"
+        "Value": "0"
       },
       {
         "Type": "8",
         "Name": "sapling_type",
-        "Value": "oak"
+        "Value": "jungle"
       }
     ]
   },
   {
-    "Command": "bamboo_sapling [\"age_bit\" = true, \"sapling_type\" = \"acacia\"]",
+    "Command": "bamboo_sapling [\"age_bit\" = true, \"sapling_type\" = \"jungle\"]",
     "Name": "minecraft:bamboo_sapling",
     "Id": 419,
     "Data": 9,
@@ -36285,12 +36545,12 @@
       {
         "Type": "8",
         "Name": "sapling_type",
-        "Value": "spruce"
+        "Value": "jungle"
       }
     ]
   },
   {
-    "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"dark_oak\"]",
+    "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"acacia\"]",
     "Name": "minecraft:bamboo_sapling",
     "Id": 419,
     "Data": 10,
@@ -36298,17 +36558,17 @@
       {
         "Type": "1",
         "Name": "age_bit",
-        "Value": "1"
+        "Value": "0"
       },
       {
         "Type": "8",
         "Name": "sapling_type",
-        "Value": "birch"
+        "Value": "acacia"
       }
     ]
   },
   {
-    "Command": "bamboo_sapling [\"age_bit\" = true, \"sapling_type\" = \"dark_oak\"]",
+    "Command": "bamboo_sapling [\"age_bit\" = true, \"sapling_type\" = \"acacia\"]",
     "Name": "minecraft:bamboo_sapling",
     "Id": 419,
     "Data": 11,
@@ -36321,7 +36581,43 @@
       {
         "Type": "8",
         "Name": "sapling_type",
-        "Value": "jungle"
+        "Value": "acacia"
+      }
+    ]
+  },
+  {
+    "Command": "bamboo_sapling [\"age_bit\" = false, \"sapling_type\" = \"dark_oak\"]",
+    "Name": "minecraft:bamboo_sapling",
+    "Id": 419,
+    "Data": 12,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "age_bit",
+        "Value": "0"
+      },
+      {
+        "Type": "8",
+        "Name": "sapling_type",
+        "Value": "dark_oak"
+      }
+    ]
+  },
+  {
+    "Command": "bamboo_sapling [\"age_bit\" = true, \"sapling_type\" = \"dark_oak\"]",
+    "Name": "minecraft:bamboo_sapling",
+    "Id": 419,
+    "Data": 13,
+    "States": [
+      {
+        "Type": "1",
+        "Name": "age_bit",
+        "Value": "1"
+      },
+      {
+        "Type": "8",
+        "Name": "sapling_type",
+        "Value": "dark_oak"
       }
     ]
   },
@@ -41117,12 +41413,12 @@
     "Command": "smoker [\"minecraft:cardinal_direction\" = \"north\"]",
     "Name": "minecraft:smoker",
     "Id": 453,
-    "Data": 2,
+    "Data": 0,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "2"
+        "Name": "direction",
+        "Value": "0"
       }
     ]
   },
@@ -41130,12 +41426,12 @@
     "Command": "smoker [\"minecraft:cardinal_direction\" = \"south\"]",
     "Name": "minecraft:smoker",
     "Id": 453,
-    "Data": 3,
+    "Data": 1,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "3"
+        "Name": "direction",
+        "Value": "1"
       }
     ]
   },
@@ -41143,12 +41439,12 @@
     "Command": "smoker [\"minecraft:cardinal_direction\" = \"west\"]",
     "Name": "minecraft:smoker",
     "Id": 453,
-    "Data": 4,
+    "Data": 2,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "4"
+        "Name": "direction",
+        "Value": "2"
       }
     ]
   },
@@ -41156,12 +41452,12 @@
     "Command": "smoker [\"minecraft:cardinal_direction\" = \"east\"]",
     "Name": "minecraft:smoker",
     "Id": 453,
-    "Data": 5,
+    "Data": 3,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "5"
+        "Name": "direction",
+        "Value": "3"
       }
     ]
   },
@@ -41169,12 +41465,12 @@
     "Command": "lit_smoker [\"minecraft:cardinal_direction\" = \"north\"]",
     "Name": "minecraft:lit_smoker",
     "Id": 454,
-    "Data": 2,
+    "Data": 0,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "2"
+        "Name": "direction",
+        "Value": "0"
       }
     ]
   },
@@ -41182,12 +41478,12 @@
     "Command": "lit_smoker [\"minecraft:cardinal_direction\" = \"south\"]",
     "Name": "minecraft:lit_smoker",
     "Id": 454,
-    "Data": 3,
+    "Data": 1,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "3"
+        "Name": "direction",
+        "Value": "1"
       }
     ]
   },
@@ -41195,12 +41491,12 @@
     "Command": "lit_smoker [\"minecraft:cardinal_direction\" = \"west\"]",
     "Name": "minecraft:lit_smoker",
     "Id": 454,
-    "Data": 4,
+    "Data": 2,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "4"
+        "Name": "direction",
+        "Value": "2"
       }
     ]
   },
@@ -41208,12 +41504,12 @@
     "Command": "lit_smoker [\"minecraft:cardinal_direction\" = \"east\"]",
     "Name": "minecraft:lit_smoker",
     "Id": 454,
-    "Data": 5,
+    "Data": 3,
     "States": [
       {
         "Type": "3",
-        "Name": "facing_direction",
-        "Value": "5"
+        "Name": "direction",
+        "Value": "3"
       }
     ]
   },
@@ -41974,14 +42270,14 @@
     "Id": 464,
     "Data": 0,
     "States": [
-      {
-        "Type": "3",
-        "Name": "direction",
+	  {
+        "Type": "1",
+        "Name": "extinguished",
         "Value": "0"
       },
       {
-        "Type": "1",
-        "Name": "extinguished",
+        "Type": "3",
+        "Name": "direction",
         "Value": "0"
       }
     ]
@@ -41992,15 +42288,15 @@
     "Id": 464,
     "Data": 1,
     "States": [
+	  {
+        "Type": "1",
+        "Name": "extinguished",
+        "Value": "0"
+      },
       {
         "Type": "3",
         "Name": "direction",
         "Value": "1"
-      },
-      {
-        "Type": "1",
-        "Name": "extinguished",
-        "Value": "0"
       }
     ]
   },
@@ -42010,15 +42306,15 @@
     "Id": 464,
     "Data": 2,
     "States": [
+	  {
+        "Type": "1",
+        "Name": "extinguished",
+        "Value": "0"
+      },
       {
         "Type": "3",
         "Name": "direction",
         "Value": "2"
-      },
-      {
-        "Type": "1",
-        "Name": "extinguished",
-        "Value": "0"
       }
     ]
   },
@@ -42028,15 +42324,15 @@
     "Id": 464,
     "Data": 3,
     "States": [
+	  {
+        "Type": "1",
+        "Name": "extinguished",
+        "Value": "0"
+      },
       {
         "Type": "3",
         "Name": "direction",
         "Value": "3"
-      },
-      {
-        "Type": "1",
-        "Name": "extinguished",
-        "Value": "0"
       }
     ]
   },
@@ -42046,15 +42342,15 @@
     "Id": 464,
     "Data": 4,
     "States": [
+	  {
+        "Type": "1",
+        "Name": "extinguished",
+        "Value": "1"
+      },
       {
         "Type": "3",
         "Name": "direction",
         "Value": "0"
-      },
-      {
-        "Type": "1",
-        "Name": "extinguished",
-        "Value": "1"
       }
     ]
   },
@@ -42064,14 +42360,14 @@
     "Id": 464,
     "Data": 5,
     "States": [
-      {
-        "Type": "3",
-        "Name": "direction",
+	  {
+        "Type": "1",
+        "Name": "extinguished",
         "Value": "1"
       },
       {
-        "Type": "1",
-        "Name": "extinguished",
+        "Type": "3",
+        "Name": "direction",
         "Value": "1"
       }
     ]
@@ -42082,15 +42378,15 @@
     "Id": 464,
     "Data": 6,
     "States": [
+	  {
+        "Type": "1",
+        "Name": "extinguished",
+        "Value": "1"
+      },
       {
         "Type": "3",
         "Name": "direction",
         "Value": "2"
-      },
-      {
-        "Type": "1",
-        "Name": "extinguished",
-        "Value": "1"
       }
     ]
   },
@@ -42100,21 +42396,21 @@
     "Id": 464,
     "Data": 7,
     "States": [
+	  {
+        "Type": "1",
+        "Name": "extinguished",
+        "Value": "1"
+      },
       {
         "Type": "3",
         "Name": "direction",
         "Value": "3"
-      },
-      {
-        "Type": "1",
-        "Name": "extinguished",
-        "Value": "1"
       }
     ]
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"water\", \"fill_level\" = 0]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 0,
     "States": [
@@ -42132,7 +42428,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"water\", \"fill_level\" = 1]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 1,
     "States": [
@@ -42150,7 +42446,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"water\", \"fill_level\" = 2]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 2,
     "States": [
@@ -42168,7 +42464,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"water\", \"fill_level\" = 3]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 3,
     "States": [
@@ -42186,7 +42482,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"water\", \"fill_level\" = 4]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 4,
     "States": [
@@ -42204,7 +42500,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"water\", \"fill_level\" = 5]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 5,
     "States": [
@@ -42222,7 +42518,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"lava\", \"fill_level\" = 0]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 8,
     "States": [
@@ -42240,7 +42536,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"lava\", \"fill_level\" = 1]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 9,
     "States": [
@@ -42258,7 +42554,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"lava\", \"fill_level\" = 2]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 10,
     "States": [
@@ -42276,7 +42572,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"lava\", \"fill_level\" = 3]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 11,
     "States": [
@@ -42294,7 +42590,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"lava\", \"fill_level\" = 4]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 12,
     "States": [
@@ -42312,7 +42608,7 @@
   },
   {
     "Command": "cauldron [\"cauldron_liquid\" = \"lava\", \"fill_level\" = 5]",
-    "Name": "minecraft:lava_cauldron",
+    "Name": "minecraft:cauldron",
     "Id": 465,
     "Data": 13,
     "States": [

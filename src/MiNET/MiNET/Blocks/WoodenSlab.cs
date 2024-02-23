@@ -43,11 +43,7 @@ namespace MiNET.Blocks
 
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
-			/*verticalHalf = (faceCoords.Y > 0.5 && face != BlockFace.Up) switch
-			{
-				true => "top",
-				false => "bottom"
-			};*/
+			TopSlotBit = (faceCoords.Y > 0.5 && face != BlockFace.Up);
 			return false;
 		}
 

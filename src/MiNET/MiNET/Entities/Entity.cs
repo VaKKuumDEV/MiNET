@@ -737,6 +737,18 @@ namespace MiNET.Entities
 			};
 		}
 
+		public byte GetCardinalDirection()
+		{
+			return DirectionByRotationFlat(KnownPosition.Yaw) switch
+			{
+				0 => 1,
+				1 => 2,
+				2 => 3,
+				3 => 0,
+				_ => 0
+			};
+		}
+
 		public enum Direction
 		{
 			South = 0,

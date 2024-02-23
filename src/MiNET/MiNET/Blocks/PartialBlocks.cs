@@ -4308,7 +4308,7 @@ namespace MiNET.Blocks
         {
             var record = new BlockStateContainer();
             record.Name = "minecraft:frame";
-            record.Id = 0;
+            record.Id = 199;
             record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
             record.States.Add(new BlockStateByte {Name = "item_frame_map_bit", Value = Convert.ToByte(ItemFrameMapBit)});
             record.States.Add(new BlockStateByte {Name = "item_frame_photo_bit", Value = Convert.ToByte(ItemFramePhotoBit)});

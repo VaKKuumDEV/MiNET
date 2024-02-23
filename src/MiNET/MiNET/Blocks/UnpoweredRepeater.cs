@@ -23,12 +23,22 @@
 
 #endregion
 
+using MiNET.Utils.Vectors;
+using MiNET.Worlds;
+using System.Numerics;
+
 namespace MiNET.Blocks
 {
 	public partial class UnpoweredRepeater : RepeaterBase
 	{
 		public UnpoweredRepeater() : base(93)
 		{
+		}
+
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		{
+			Direction = player.GetCardinalDirection();
+			return false;
 		}
 	}
 }
