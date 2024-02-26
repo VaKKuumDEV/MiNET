@@ -6401,8 +6401,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:melon_stem";
             record.Id = 105;
-            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
             record.States.Add(new BlockStateInt {Name = "growth", Value = Growth});
+            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
             return record;
         } // method
     } // class
@@ -7458,8 +7458,8 @@ namespace MiNET.Blocks
             var record = new BlockStateContainer();
             record.Name = "minecraft:pumpkin_stem";
             record.Id = 104;
-            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
             record.States.Add(new BlockStateInt {Name = "growth", Value = Growth});
+            record.States.Add(new BlockStateInt {Name = "facing_direction", Value = FacingDirection});
             return record;
         } // method
     } // class
