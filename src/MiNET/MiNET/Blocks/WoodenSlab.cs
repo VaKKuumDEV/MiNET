@@ -23,16 +23,17 @@
 
 #endregion
 
+using System;
+using System.Numerics;
+using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
-using System.Numerics;
-using System;
 
 namespace MiNET.Blocks
 {
-	public partial class WoodenSlab : SlabBase
+	public partial class WoodenSlab : Block
 	{
-		public WoodenSlab() : base(158, 157)
+		public WoodenSlab() : base(158)
 		{
 			BlastResistance = 15;
 			Hardness = 2;
@@ -41,20 +42,36 @@ namespace MiNET.Blocks
 			IsBlockingSkylight = false; // Partial - blocks light.
 		}
 
-		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates targetCoordinates, BlockFace face, Vector3 faceCoords)
 		{
+			var itemInHand = player.Inventory.GetItemInHand();
+
 			TopSlotBit = (faceCoords.Y > 0.5 && face != BlockFace.Up);
+
+			WoodType = itemInHand.Metadata switch
+			{
+				1 => "spruce",
+				2 => "birch",
+				3 => "jungle",
+				4 => "acacia",
+				5 => "dark_oak",
+				_ => throw new ArgumentOutOfRangeException()
+			};
+
+			var slabcoordinates = new BlockCoordinates(Coordinates.X, Coordinates.Y - 1, Coordinates.Z);
+
+			foreach (var state in world.GetBlock(slabcoordinates).GetState().States)
+			{
+				if (state is BlockStateString s && s.Name == "wood_type")
+				{
+					if (world.GetBlock(slabcoordinates).Name == "minecraft:wooden_slab" && s.Value == WoodType)
+					{
+						world.SetBlock(new DoubleWoodenSlab { WoodType = WoodType, TopSlotBit = true });
+						return true;
+					}
+				}
+			}
 			return false;
-		}
-
-		protected override bool AreSameType(Block obj)
-		{
-			if (ReferenceEquals(null, obj)) return false;
-			if (obj.GetType() != this.GetType()) return false;
-			var slab = obj as WoodenSlab;
-			if (slab == null) return false;
-
-			return slab.WoodType == WoodType;
 		}
 	}
 }

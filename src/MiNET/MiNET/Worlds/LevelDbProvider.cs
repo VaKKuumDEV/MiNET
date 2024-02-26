@@ -296,7 +296,6 @@ namespace MiNET.Worlds
 					};
 					file.LoadFromStream(reader, NbtCompression.None);
 					var tag = (NbtCompound) file.RootTag;
-
 					Block block = BlockFactory.GetBlockByName(tag["name"].StringValue);
 					if (block != null && block.GetType() != typeof(Block) && !(block is Air))
 					{
@@ -308,6 +307,7 @@ namespace MiNET.Worlds
 						block = new Air();
 					}
 					palette.Add(block.GetRuntimeId());
+					//Log.Error($"dbread raw: {tag["name"].StringValue} / runtime: {block.GetRuntimeId()}");
 				}
 
 				long nextStore = reader.Position;

@@ -125,7 +125,7 @@ namespace MiNET.Blocks
 			{
 				Block block = GetBlockById(idx);
 				string name = block.GetType().Name.ToLowerInvariant();
-
+				//Log.Error($"factory name {name}");
 				if (name.Equals("block"))
 				{
 					//if (Log.IsDebugEnabled)
@@ -237,7 +237,7 @@ namespace MiNET.Blocks
 				41 => new GoldBlock(),
 				42 => new IronBlock(),
 				43 => new DoubleStoneSlab(),
-				44 => new StoneBlockSlab(),
+				44 => new StoneSlab(),
 				45 => new BrickBlock(),
 				46 => new Tnt(),
 				47 => new Bookshelf(),
@@ -374,7 +374,7 @@ namespace MiNET.Blocks
 				179 => new RedSandstone(),
 				180 => new RedSandstoneStairs(),
 				181 => new DoubleStoneSlab2(),
-				182 => new StoneBlockSlab2(),
+				182 => new StoneSlab2(),
 				183 => new SpruceFenceGate(),
 				184 => new BirchFenceGate(),
 				185 => new JungleFenceGate(),
@@ -489,11 +489,11 @@ namespace MiNET.Blocks
 				414 => new TurtleEgg(),
 				415 => new BubbleColumn(),
 				416 => new Barrier(),
-				417 => new StoneBlockSlab3(),
+				417 => new StoneSlab3(),
 				418 => new Bamboo(),
 				419 => new BambooSapling(),
 				420 => new Scaffolding(),
-				421 => new StoneBlockSlab4(),
+				421 => new StoneSlab4(),
 				422 => new DoubleStoneSlab3(),
 				423 => new DoubleStoneSlab4(),
 				424 => new GraniteStairs(),

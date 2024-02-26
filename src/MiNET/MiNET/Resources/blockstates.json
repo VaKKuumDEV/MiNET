@@ -4651,7 +4651,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "east"
+        "Value": "west"
       }
     ],
     "ItemInstance": null
@@ -4665,7 +4665,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "west"
+        "Value": "east"
       }
     ],
     "ItemInstance": null
@@ -4679,7 +4679,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "south"
+        "Value": "north"
       }
     ],
     "ItemInstance": null
@@ -4693,7 +4693,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "north"
+        "Value": "south"
       }
     ],
     "ItemInstance": null
@@ -8097,7 +8097,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "east"
+        "Value": "west"
       }
     ],
     "ItemInstance": null
@@ -8111,7 +8111,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "west"
+        "Value": "east"
       }
     ],
     "ItemInstance": null
@@ -8125,7 +8125,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "south"
+        "Value": "north"
       }
     ],
     "ItemInstance": null
@@ -8139,7 +8139,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "north"
+        "Value": "south"
       }
     ],
     "ItemInstance": null
@@ -8167,7 +8167,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "east"
+        "Value": "west"
       }
     ],
     "ItemInstance": null
@@ -8181,7 +8181,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "west"
+        "Value": "east"
       }
     ],
     "ItemInstance": null
@@ -8195,7 +8195,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "south"
+        "Value": "north"
       }
     ],
     "ItemInstance": null
@@ -8209,7 +8209,7 @@
       {
         "Type": 8,
         "Name": "torch_facing_direction",
-        "Value": "north"
+        "Value": "south"
       }
     ],
     "ItemInstance": null
@@ -11156,12 +11156,17 @@
     "Id": 104,
     "Data": 0,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11438,
+    "RuntimeId": 11454,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11170,12 +11175,17 @@
     "Id": 104,
     "Data": 1,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11439,
+    "RuntimeId": 11455,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11184,11 +11194,16 @@
     "Id": 104,
     "Data": 2,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11440,
+    "RuntimeId": 11456,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
         "Value": 2
       }
     ],
@@ -11198,12 +11213,17 @@
     "Id": 104,
     "Data": 3,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11441,
+    "RuntimeId": 11457,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11212,12 +11232,17 @@
     "Id": 104,
     "Data": 4,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11442,
+    "RuntimeId": 11458,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 4
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11226,12 +11251,17 @@
     "Id": 104,
     "Data": 5,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11443,
+    "RuntimeId": 11459,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11240,12 +11270,17 @@
     "Id": 104,
     "Data": 6,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11444,
+    "RuntimeId": 11460,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11254,12 +11289,473 @@
     "Id": 104,
     "Data": 7,
     "Name": "minecraft:pumpkin_stem",
-    "RuntimeId": 11445,
+    "RuntimeId": 11461,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 8,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11462,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 9,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11463,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 10,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11464,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 11,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11465,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 12,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11466,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 4
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 13,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11467,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 14,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11468,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 15,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11469,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 16,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11470,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 17,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11471,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 18,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11472,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 19,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11473,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 20,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11474,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 4
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 21,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11475,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 22,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11476,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 23,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11477,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 24,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11478,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 25,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11479,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 26,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11480,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 27,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11481,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 28,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11482,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 29,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11483,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 30,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11484,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 104,
+    "Data": 31,
+    "Name": "minecraft:pumpkin_stem",
+    "RuntimeId": 11485,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
       }
     ],
     "ItemInstance": null
@@ -11268,12 +11764,17 @@
     "Id": 105,
     "Data": 0,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8555,
+    "RuntimeId": 8571,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11282,12 +11783,17 @@
     "Id": 105,
     "Data": 1,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8556,
+    "RuntimeId": 8572,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11296,11 +11802,16 @@
     "Id": 105,
     "Data": 2,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8557,
+    "RuntimeId": 8573,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
         "Value": 2
       }
     ],
@@ -11310,12 +11821,17 @@
     "Id": 105,
     "Data": 3,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8558,
+    "RuntimeId": 8574,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11324,12 +11840,17 @@
     "Id": 105,
     "Data": 4,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8559,
+    "RuntimeId": 8575,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 4
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11338,12 +11859,17 @@
     "Id": 105,
     "Data": 5,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8560,
+    "RuntimeId": 8576,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11352,12 +11878,17 @@
     "Id": 105,
     "Data": 6,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8561,
+    "RuntimeId": 8577,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
       }
     ],
     "ItemInstance": null
@@ -11366,12 +11897,473 @@
     "Id": 105,
     "Data": 7,
     "Name": "minecraft:melon_stem",
-    "RuntimeId": 8562,
+    "RuntimeId": 8578,
     "States": [
       {
         "Type": 3,
         "Name": "growth",
         "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 2
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 8,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8579,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 9,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8580,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 10,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8581,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 11,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8582,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 12,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8583,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 4
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 13,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8584,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 14,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8585,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 15,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8586,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 16,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8587,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 17,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8588,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 18,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8589,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 19,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8590,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 20,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8591,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 4
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 21,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8592,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 22,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8593,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 23,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8594,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 24,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8595,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 0
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 25,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8596,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 1
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 26,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8597,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 2
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 27,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8598,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 3
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 28,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8599,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 4
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 29,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8600,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 5
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 30,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8601,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 6
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 105,
+    "Data": 31,
+    "Name": "minecraft:melon_stem",
+    "RuntimeId": 8602,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "growth",
+        "Value": 7
+      },
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 5
       }
     ],
     "ItemInstance": null
@@ -18365,25 +19357,6 @@
         "Type": 8,
         "Name": "wood_type",
         "Value": "dark_oak"
-      }
-    ],
-    "ItemInstance": null
-  },
-  {
-    "Id": 158,
-    "Data": 0,
-    "Name": "minecraft:wooden_slab",
-    "RuntimeId": 9062,
-    "States": [
-      {
-        "Type": 1,
-        "Name": "top_slot_bit",
-        "Value": 0
-      },
-      {
-        "Type": 8,
-        "Name": "wood_type",
-        "Value": "oak"
       }
     ],
     "ItemInstance": null
@@ -30821,6 +31794,25 @@
   },
   {
     "Id": 388,
+    "Data": 5,
+    "Name": "minecraft:coral_fan",
+    "RuntimeId": 7499,
+    "States": [
+      {
+        "Type": 8,
+        "Name": "coral_color",
+        "Value": "blue"
+      },
+      {
+        "Type": 3,
+        "Name": "coral_fan_direction",
+        "Value": 1
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 388,
     "Data": 9,
     "Name": "minecraft:coral_fan",
     "RuntimeId": 7500,
@@ -32226,7 +33218,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 0
       }
     ],
@@ -32240,7 +33232,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 1
       }
     ],
@@ -32254,7 +33246,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 2
       }
     ],
@@ -32268,7 +33260,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 3
       }
     ],
@@ -32282,7 +33274,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 4
       }
     ],
@@ -32296,7 +33288,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 5
       }
     ],
@@ -32310,7 +33302,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 6
       }
     ],
@@ -32324,7 +33316,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 7
       }
     ],
@@ -32338,7 +33330,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 8
       }
     ],
@@ -32352,7 +33344,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 9
       }
     ],
@@ -32366,7 +33358,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 10
       }
     ],
@@ -32380,7 +33372,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 11
       }
     ],
@@ -32394,7 +33386,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 12
       }
     ],
@@ -32408,7 +33400,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 13
       }
     ],
@@ -32422,7 +33414,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 14
       }
     ],
@@ -32436,7 +33428,7 @@
     "States": [
       {
         "Type": 3,
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": 15
       }
     ],
@@ -37866,6 +38858,25 @@
   },
   {
     "Id": 421,
+    "Data": 0,
+    "Name": "minecraft:stone_slab4",
+    "RuntimeId": 9639,
+    "States": [
+      {
+        "Type": 8,
+        "Name": "stone_slab_type_4",
+        "Value": "mossy_stone_brick"
+      },
+      {
+        "Type": 1,
+        "Name": "top_slot_bit",
+        "Value": 0
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 421,
     "Data": 1,
     "Name": "minecraft:stone_slab4",
     "RuntimeId": 9640,
@@ -37936,6 +38947,25 @@
         "Type": 1,
         "Name": "top_slot_bit",
         "Value": 0
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 421,
+    "Data": 5,
+    "Name": "minecraft:stone_slab4",
+    "RuntimeId": 9644,
+    "States": [
+      {
+        "Type": 8,
+        "Name": "stone_slab_type_4",
+        "Value": "mossy_stone_brick"
+      },
+      {
+        "Type": 1,
+        "Name": "top_slot_bit",
+        "Value": 1
       }
     ],
     "ItemInstance": null
@@ -42327,6 +43357,25 @@
   },
   {
     "Id": 450,
+    "Data": 5,
+    "Name": "minecraft:grindstone",
+    "RuntimeId": 13823,
+    "States": [
+      {
+        "Type": 8,
+        "Name": "attachment",
+        "Value": "hanging"
+      },
+      {
+        "Type": 3,
+        "Name": "direction",
+        "Value": 1
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 450,
     "Data": 6,
     "Name": "minecraft:grindstone",
     "RuntimeId": 13824,
@@ -42792,6 +43841,25 @@
         "Type": 3,
         "Name": "facing_direction",
         "Value": 2
+      },
+      {
+        "Type": 1,
+        "Name": "open_bit",
+        "Value": 0
+      }
+    ],
+    "ItemInstance": null
+  },
+  {
+    "Id": 458,
+    "Data": 3,
+    "Name": "minecraft:barrel",
+    "RuntimeId": 7378,
+    "States": [
+      {
+        "Type": 3,
+        "Name": "facing_direction",
+        "Value": 3
       },
       {
         "Type": 1,

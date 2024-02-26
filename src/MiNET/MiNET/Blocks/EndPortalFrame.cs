@@ -25,6 +25,7 @@
 
 using log4net;
 using MiNET.Items;
+using MiNET.Sounds;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 using System.Numerics;
@@ -49,6 +50,7 @@ namespace MiNET.Blocks
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
+			world.BroadcastSound(blockCoordinates, LevelSoundEventType.BlockEndPortalFrameFill);
 			var itemInHand = player.Inventory.GetItemInHand();
 			if(itemInHand.Name == "minecraft:ender_eye")
 			{

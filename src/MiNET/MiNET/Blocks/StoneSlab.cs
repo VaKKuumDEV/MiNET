@@ -23,16 +23,17 @@
 
 #endregion
 
+using System;
+using System.Numerics;
+using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
-using System.Numerics;
-using System;
 
 namespace MiNET.Blocks
 {
-	public partial class StoneBlockSlab : Block
+	public partial class StoneSlab : Block
 	{
-		public StoneBlockSlab() : base(44)
+		public StoneSlab() : base(44)
 		{
 			BlastResistance = 30;
 			Hardness = 2;
@@ -40,9 +41,12 @@ namespace MiNET.Blocks
 			IsBlockingSkylight = false; // Partial - blocks light.
 		}
 
-		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
+		public override bool PlaceBlock(Level world, Player player, BlockCoordinates targetCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var itemInHand = player.Inventory.GetItemInHand();
+
+			TopSlotBit = (faceCoords.Y > 0.5 && face != BlockFace.Up);
+
 			StoneSlabType = itemInHand.Metadata switch
 			{
 				0 => "smooth_stone",
@@ -56,7 +60,21 @@ namespace MiNET.Blocks
 				_ => throw new ArgumentOutOfRangeException()
 			};
 
-			TopSlotBit = (faceCoords.Y > 0.5 && face != BlockFace.Up);
+			var slabcoordinates = new BlockCoordinates(Coordinates.X, Coordinates.Y - 1, Coordinates.Z);
+
+			foreach (var state in world.GetBlock(slabcoordinates).GetState().States)
+			{
+				if (state is BlockStateString s && s.Name == "stone_slab_type")
+				{
+					if (world.GetBlock(slabcoordinates).Name == "minecraft:stone_slab" && s.Value == StoneSlabType)
+					{
+						var block = new DoubleStoneSlab();
+						block.SetState(GetState().States);
+						world.SetBlock(block);
+						return true;
+					}
+				}
+			}
 			return false;
 		}
 	}

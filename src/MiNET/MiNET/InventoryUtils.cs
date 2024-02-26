@@ -174,7 +174,7 @@ namespace MiNET
             new Item(158, 4), //acacia_slab
             new Item(158, 5), //dark_oak_slab
             new Item(44, 5), //stone_brick_slab
-            new Item(182, 5), //mossy_stone_brick_slab
+            new Item(-166, 0), //mossy_stone_brick_slab
             new Item(44, 1), //sandstone_slab
             new Item(-166, 3), //cut_sandstone_slab
             new Item(182, 6), //smooth_sandstone_slab

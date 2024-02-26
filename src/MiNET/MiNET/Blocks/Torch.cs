@@ -24,7 +24,6 @@
 #endregion
 
 using System.Numerics;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -69,16 +68,16 @@ namespace MiNET.Blocks
 					TorchFacingDirection = "top";
 					break;
 				case BlockFace.North:
-					TorchFacingDirection = "north";
-					break;
-				case BlockFace.South:
 					TorchFacingDirection = "south";
 					break;
+				case BlockFace.South:
+					TorchFacingDirection = "north";
+					break;
 				case BlockFace.West:
-					TorchFacingDirection = "west";
+					TorchFacingDirection = "east";
 					break;
 				case BlockFace.East:
-					TorchFacingDirection = "east";
+					TorchFacingDirection = "west";
 					break;
 			}
 

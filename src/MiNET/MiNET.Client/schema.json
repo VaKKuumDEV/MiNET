@@ -4366,7 +4366,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "east"
+        "Value": "west"
       }
     ]
   },
@@ -4379,7 +4379,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "west"
+        "Value": "east"
       }
     ]
   },
@@ -4392,7 +4392,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "south"
+        "Value": "north"
       }
     ]
   },
@@ -4405,7 +4405,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "north"
+        "Value": "south"
       }
     ]
   },
@@ -7648,7 +7648,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "east"
+        "Value": "west"
       }
     ]
   },
@@ -7661,7 +7661,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "west"
+        "Value": "east"
       }
     ]
   },
@@ -7674,7 +7674,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "south"
+        "Value": "north"
       }
     ]
   },
@@ -7687,7 +7687,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "north"
+        "Value": "south"
       }
     ]
   },
@@ -7713,7 +7713,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "east"
+        "Value": "west"
       }
     ]
   },
@@ -7726,7 +7726,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "west"
+        "Value": "east"
       }
     ]
   },
@@ -7739,7 +7739,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "south"
+        "Value": "north"
       }
     ]
   },
@@ -7752,7 +7752,7 @@
       {
         "Type": "8",
         "Name": "torch_facing_direction",
-        "Value": "north"
+        "Value": "south"
       }
     ]
   },
@@ -10513,7 +10513,7 @@
     "States": []
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 0]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 0]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 0,
@@ -10522,11 +10522,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 1]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 1]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 1,
@@ -10535,11 +10540,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 2]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 2]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 2,
@@ -10548,11 +10558,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 3]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 3]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 3,
@@ -10561,11 +10576,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 4]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 4]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 4,
@@ -10574,11 +10594,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "4"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 5]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 5]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 5,
@@ -10587,11 +10612,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 6]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 6]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 6,
@@ -10600,11 +10630,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "pumpkin_stem [\"facing_direction\" = 0, \"growth\" = 7]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 2, \"growth\" = 7]",
     "Name": "minecraft:pumpkin_stem",
     "Id": 104,
     "Data": 7,
@@ -10613,11 +10648,448 @@
         "Type": "3",
         "Name": "growth",
         "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 0]",
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 0]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 1]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 9,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 2]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 10,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 3]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 11,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 4]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 12,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "4"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 5]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 13,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 6]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 14,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 3, \"growth\" = 7]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 15,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 0]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 16,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 1]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 17,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 2]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 18,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 3]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 19,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 4]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 20,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "4"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 5]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 21,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 6]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 22,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 4, \"growth\" = 7]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 23,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 0]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 24,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 1]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 25,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 2]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 26,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 3]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 27,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 4]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 28,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 5]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 29,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 6]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 30,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "pumpkin_stem [\"facing_direction\" = 5, \"growth\" = 7]",
+    "Name": "minecraft:pumpkin_stem",
+    "Id": 104,
+    "Data": 31,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 0]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 0,
@@ -10626,11 +11098,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 1]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 1]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 1,
@@ -10639,11 +11116,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 2]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 2]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 2,
@@ -10652,11 +11134,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 3]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 3]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 3,
@@ -10665,11 +11152,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 4]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 4]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 4,
@@ -10678,11 +11170,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "4"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 5]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 5]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 5,
@@ -10691,11 +11188,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 6]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 6]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 6,
@@ -10704,11 +11206,16 @@
         "Type": "3",
         "Name": "growth",
         "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
       }
     ]
   },
   {
-    "Command": "melon_stem [\"facing_direction\" = 0, \"growth\" = 7]",
+    "Command": "melon_stem [\"facing_direction\" = 2, \"growth\" = 7]",
     "Name": "minecraft:melon_stem",
     "Id": 105,
     "Data": 7,
@@ -10717,6 +11224,443 @@
         "Type": "3",
         "Name": "growth",
         "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "2"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 0]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 8,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 1]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 9,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 2]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 10,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 3]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 11,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 4]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 12,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "4"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 5]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 13,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 6]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 14,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 3, \"growth\" = 7]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 15,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "3"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 0]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 16,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 1]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 17,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 2]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 18,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 3]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 19,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 4]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 20,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "4"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 5]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 21,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 6]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 22,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 4, \"growth\" = 7]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 23,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 0]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 24,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "0"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 1]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 25,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "1"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 2]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 26,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "2"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 3]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 27,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "3"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 4]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 28,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 5]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 29,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "5"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 6]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 30,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "6"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
+      }
+    ]
+  },
+  {
+    "Command": "melon_stem [\"facing_direction\" = 5, \"growth\" = 7]",
+    "Name": "minecraft:melon_stem",
+    "Id": 105,
+    "Data": 31,
+    "States": [
+      {
+        "Type": "3",
+        "Name": "growth",
+        "Value": "7"
+      },
+	  {
+        "Type": "3",
+        "Name": "facing_direction",
+        "Value": "5"
       }
     ]
   },
@@ -17540,24 +18484,6 @@
         "Type": "8",
         "Name": "wood_type",
         "Value": "dark_oak"
-      }
-    ]
-  },
-  {
-    "Command": "wooden_slab [\"minecraft:vertical_half\" = \"bottom\", \"wood_type\" = \"oak\"]",
-    "Name": "minecraft:wooden_slab",
-    "Id": 158,
-    "Data": 0,
-    "States": [
-      {
-        "Type": "1",
-        "Name": "top_slot_bit",
-        "Value": "0"
-      },
-      {
-        "Type": "8",
-        "Name": "wood_type",
-        "Value": "oak"
       }
     ]
   },
@@ -30228,6 +31154,24 @@
     ]
   },
   {
+    "Command": "coral_fan [\"coral_color\" = \"blue\", \"coral_fan_direction\" = 1]",
+    "Name": "minecraft:coral_fan",
+    "Id": 388,
+    "Data": 5,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "coral_color",
+        "Value": "blue"
+      },
+      {
+        "Type": "3",
+        "Name": "coral_fan_direction",
+        "Value": "1"
+      }
+    ]
+  },
+  {
     "Command": "coral_fan [\"coral_color\" = \"pink\", \"coral_fan_direction\" = 1]",
     "Name": "minecraft:coral_fan",
     "Id": 388,
@@ -31573,7 +32517,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "0"
       }
     ]
@@ -31586,7 +32530,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "1"
       }
     ]
@@ -31599,7 +32543,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "2"
       }
     ]
@@ -31612,7 +32556,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "3"
       }
     ]
@@ -31625,7 +32569,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "4"
       }
     ]
@@ -31638,7 +32582,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "5"
       }
     ]
@@ -31651,7 +32595,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "6"
       }
     ]
@@ -31664,7 +32608,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "7"
       }
     ]
@@ -31677,7 +32621,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "8"
       }
     ]
@@ -31690,7 +32634,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "9"
       }
     ]
@@ -31703,7 +32647,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "10"
       }
     ]
@@ -31716,7 +32660,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "11"
       }
     ]
@@ -31729,7 +32673,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "12"
       }
     ]
@@ -31742,7 +32686,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "13"
       }
     ]
@@ -31755,7 +32699,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "14"
       }
     ]
@@ -31768,7 +32712,7 @@
     "States": [
       {
         "Type": "3",
-        "Name": "age",
+        "Name": "kelp_age",
         "Value": "15"
       }
     ]
@@ -36910,6 +37854,24 @@
     ]
   },
   {
+    "Command": "stone_block_slab4 [\"minecraft:vertical_half\" = \"bottom\", \"stone_slab_type_4\" = \"mossy_stone_brick\"]",
+    "Name": "minecraft:stone_slab4",
+    "Id": 421,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "stone_slab_type_4",
+        "Value": "mossy_stone_brick"
+      },
+      {
+        "Type": "1",
+        "Name": "top_slot_bit",
+        "Value": "0"
+      }
+    ]
+  },
+  {
     "Command": "stone_block_slab4 [\"minecraft:vertical_half\" = \"bottom\", \"stone_slab_type_4\" = \"smooth_quartz\"]",
     "Name": "minecraft:stone_slab4",
     "Id": 421,
@@ -36978,6 +37940,24 @@
         "Type": "1",
         "Name": "top_slot_bit",
         "Value": "0"
+      }
+    ]
+  },
+  {
+    "Command": "stone_block_slab4 [\"minecraft:vertical_half\" = \"top\", \"stone_slab_type_4\" = \"mossy_stone_brick\"]",
+    "Name": "minecraft:stone_slab4",
+    "Id": 421,
+    "Data": 5,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "stone_slab_type_4",
+        "Value": "mossy_stone_brick"
+      },
+      {
+        "Type": "1",
+        "Name": "top_slot_bit",
+        "Value": "1"
       }
     ]
   },
