@@ -5032,10 +5032,10 @@ namespace MiNET.Net
 
 			BeforeEncode();
 
-			Write(recipes);
+			WriteUnsignedVarInt(0);//Write(recipes);    <-------- Here to enable crafting data
 			Write(potionTypeRecipes);
 			Write(potionContainerRecipes);
-			WriteUnsignedVarInt(0);//0 recipes TODO fix //Write(materialReducerRecipes);
+			WriteUnsignedVarInt(0);
 			Write(isClean);
 
 			AfterEncode();
