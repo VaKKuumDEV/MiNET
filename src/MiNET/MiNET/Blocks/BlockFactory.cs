@@ -38,20 +38,6 @@ namespace MiNET.Blocks
 	{
 		Block GetBlockById(int blockId);
 	}
-
-	public class R12ToCurrentBlockMapEntry
-	{
-		public string StringId { get; set; }
-		public short Meta { get; set; }
-		public BlockStateContainer State { get; set; }
-
-		public R12ToCurrentBlockMapEntry(string id, short meta, BlockStateContainer state)
-		{
-			StringId = id;
-			Meta = meta;
-			State = state;
-		}
-	}
 	
 	public static class BlockFactory
 	{
@@ -562,17 +548,16 @@ namespace MiNET.Blocks
 			{
 				return (uint) idx;
 			}
-			//block found with bad metadata, try getting with zero
 			int idx2 = TryGetRuntimeId(blockId, 0);
 			if (idx2 != -1)
 			{
 				return (uint) idx2;
 			}
 
-			return (uint) TryGetRuntimeId(248, 0); //legacy id for info_update block (for unknown block)
+			return (uint) TryGetRuntimeId(0, 0);
 		}
 
-		public static uint GetCreativeRuntimeId(int blockId, byte metadata)
+		public static uint GetItemRuntimeId(int blockId, byte metadata)
 		{
 			if (blockId < 0)
 			{

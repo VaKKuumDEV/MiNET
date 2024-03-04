@@ -222,10 +222,10 @@ namespace MiNET
             new Item(133, 0), //emerald_block
             new Item(57, 0), //diamond_block
             new Item(22, 0), //lapis_lazuli_block
-            new Item(155, 12), //quartz_block
-            new Item(155, 14), //pillar_quartz_block
-            new Item(155, 13), //chiseled_quartz_block
-            new Item(155, 15), //smooth_quartz_block
+            new Item(155, 0), //quartz_block
+            new Item(155, 2), //pillar_quartz_block
+            new Item(155, 1), //chiseled_quartz_block
+            new Item(155, 3), //smooth_quartz_block
             new Item(168, 0), //prismarine
             new Item(168, 1), //dark_prismarine
             new Item(165, 0), //slime_block
@@ -332,8 +332,8 @@ namespace MiNET
             new Item(219, 0), //purple_glazed_terracotta
             new Item(222, 0), //magenta_glazed_terracotta
             new Item(226, 0), //pink_glazed_terracotta
-			new Item(201, 12), //purpur_block
-            new Item(201, 14), //purpur_pillar
+            new Item(201, 0), //purpur_block
+            new Item(201, 2), //purpur_pillar
             new Item(3, 0), //dirt
             new Item(3, 1), //coarse_dirt
             new Item(2, 0), //grass_block
