@@ -109,6 +109,11 @@ namespace MiNET
 						ProcessConsumeAction(consumeAction, stackResponses);
 						break;
 					}
+					case LoomStackRequestAction loomStackRequestAction:
+					{
+						ProcessLoomStackRequestAction(loomStackRequestAction, stackResponses);
+						break;
+					}
 					default:
 						throw new ArgumentOutOfRangeException(nameof(stackAction));
 				}
@@ -171,6 +176,10 @@ namespace MiNET
 					}
 				}
 			});
+		}
+
+		protected virtual void ProcessLoomStackRequestAction(LoomStackRequestAction action, List<StackResponseContainerInfo> stackResponses)
+		{
 		}
 
 		protected virtual void ProcessDropAction(DropAction action, List<StackResponseContainerInfo> stackResponses)
@@ -473,7 +482,13 @@ namespace MiNET
 				case 13: // crafting
 				case 21: // enchanting
 				case 22: // enchanting
+				case 23: // enchanting
+				case 24: // furnace
+				case 25: // furnace
 				case 41: // loom
+				case 42: // loom
+				case 43: // loom
+				case 45: // blast furnace
 				case 59: // cursor
 				case 60: // creative
 					item = _player.Inventory.UiInventory.Slots[slot];
@@ -516,7 +531,13 @@ namespace MiNET
 				case 13: // crafting
 				case 21: // enchanting
 				case 22: // enchanting
+				case 23: // enchanting
+				case 24: // furnace
+				case 25: // furnace
 				case 41: // loom
+				case 42: // loom
+				case 43: // loom
+				case 45: // blast furnace
 				case 59: // cursor
 				case 60: // creative
 					_player.Inventory.UiInventory.Slots[slot] = item;

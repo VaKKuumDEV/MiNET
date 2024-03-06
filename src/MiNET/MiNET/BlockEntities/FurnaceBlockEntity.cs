@@ -26,15 +26,18 @@
 using System;
 using System.Collections.Generic;
 using fNbt;
+using log4net;
 using MiNET.Blocks;
 using MiNET.Items;
 using MiNET.Net;
 using MiNET.Worlds;
+using Newtonsoft.Json;
 
 namespace MiNET.BlockEntities
 {
 	public class FurnaceBlockEntity : BlockEntity
 	{
+		private static readonly ILog Log = LogManager.GetLogger(typeof(BlockFactory));
 		private NbtCompound Compound { get; set; }
 		public Inventory Inventory { get; set; }
 
@@ -103,7 +106,7 @@ namespace MiNET.BlockEntities
 		{
 			if (Inventory == null) return;
 
-			var furnace = level.GetBlock(Coordinates) as FurnaceBase;
+			var furnace = level.GetBlock(Coordinates);
 			if (furnace == null) return;
 
 			if (!(furnace is LitFurnace))
@@ -111,6 +114,7 @@ namespace MiNET.BlockEntities
 				Item fuel = GetFuel();
 				Item ingredient = GetIngredient();
 				Item smelt = ingredient.GetSmelt();
+				//Log.Error($"furnace 2 {JsonConvert.SerializeObject(Inventory.Slots, Formatting.Indented)}");
 				// To light a furnace you need both fule and proper ingredient.
 				if (fuel.Count > 0 && fuel.FuelEfficiency > 0 && smelt != null)
 				{
