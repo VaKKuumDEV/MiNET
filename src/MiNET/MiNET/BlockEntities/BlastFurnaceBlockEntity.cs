@@ -103,7 +103,7 @@ namespace MiNET.BlockEntities
 		{
 			if (Inventory == null) return;
 
-			var furnace = level.GetBlock(Coordinates) as BlastFurnaceBase;
+			var furnace = level.GetBlock(Coordinates);
 			if (furnace == null) return;
 
 			if (!(furnace is LitBlastFurnace))

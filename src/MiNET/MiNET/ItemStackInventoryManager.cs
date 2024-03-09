@@ -483,12 +483,9 @@ namespace MiNET
 				case 21: // enchanting
 				case 22: // enchanting
 				case 23: // enchanting
-				case 24: // furnace
-				case 25: // furnace
 				case 41: // loom
 				case 42: // loom
 				case 43: // loom
-				case 45: // blast furnace
 				case 59: // cursor
 				case 60: // creative
 					item = _player.Inventory.UiInventory.Slots[slot];
@@ -512,6 +509,10 @@ namespace MiNET
 					};
 					break;
 				case 7: // chest/container
+				case 24: // furnace
+				case 25: // furnace
+				case 26: // furnace
+				case 45: // blast furnace
 					if (_player._openInventory is Inventory inventory) item = inventory.GetSlot((byte) slot);
 					break;
 				default:
@@ -532,12 +533,9 @@ namespace MiNET
 				case 21: // enchanting
 				case 22: // enchanting
 				case 23: // enchanting
-				case 24: // furnace
-				case 25: // furnace
 				case 41: // loom
 				case 42: // loom
 				case 43: // loom
-				case 45: // blast furnace
 				case 59: // cursor
 				case 60: // creative
 					_player.Inventory.UiInventory.Slots[slot] = item;
@@ -568,6 +566,10 @@ namespace MiNET
 					}
 					break;
 				case 7: // chest/container
+				case 24: // furnace
+				case 25: // furnace
+				case 26: // furnace
+				case 45: // blast furnace
 					if (_player._openInventory is Inventory inventory) inventory.SetSlot(_player, (byte) slot, item);
 					break;
 				default:
