@@ -45,6 +45,15 @@ namespace MiNET.Blocks
 			return new[] {new ItemBlock(new Cobblestone(), 0) {Count = 1}}; // Drop cobblestone
 		}
 
+		public override Item GetSmelt()
+		{
+			if (StoneType == "stone")
+			{
+				return ItemFactory.GetItem(-183, 0);
+			}
+			return null;
+		}
+
 		public override bool PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			var itemInHand = player.Inventory.GetItemInHand();

@@ -23,6 +23,8 @@
 
 #endregion
 
+using MiNET.Items;
+
 namespace MiNET.Blocks
 {
 	public partial class QuartzBlock : Block
@@ -31,6 +33,15 @@ namespace MiNET.Blocks
 		{
 			BlastResistance = 4;
 			Hardness = 0.8f;
+		}
+
+		public override Item GetSmelt()
+		{
+			if (ChiselType == "default")
+			{
+				return ItemFactory.GetItem(155, 3);
+			}
+			return null;
 		}
 	}
 }

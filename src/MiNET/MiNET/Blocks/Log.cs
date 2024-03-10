@@ -23,6 +23,7 @@
 
 #endregion
 using System.Numerics;
+using MiNET.Items;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -43,7 +44,9 @@ namespace MiNET.Blocks
 			return false;
 		}
 
-
-
+		public override Item GetSmelt()
+		{
+			return ItemFactory.GetItem(263, 1);
+		}
 	}
 }

@@ -2751,7 +2751,7 @@ namespace MiNET.Net
 						{
 							WriteSignedVarInt(Furnace);
 							WriteSignedVarInt(rec.Input.Id);
-							Write(new Item(rec.Input.Id, 0, 1) { RuntimeId = (int) BlockFactory.GetItemRuntimeId(rec.Input.Id, 0) }, false);
+							Write(rec.Result, false);
 							Write(rec.Block);
 						}
 						else
@@ -2759,7 +2759,7 @@ namespace MiNET.Net
 							WriteSignedVarInt(FurnaceData);
 							WriteSignedVarInt(rec.Input.Id);
 							WriteSignedVarInt(rec.Input.Metadata);
-							Write(new Item(rec.Input.Id, rec.Input.Metadata, 1) { RuntimeId = (int) BlockFactory.GetItemRuntimeId(rec.Input.Id, (byte)rec.Input.Metadata) }, false);
+							Write(rec.Result, false);
 							Write(rec.Block);
 						}
 						break;

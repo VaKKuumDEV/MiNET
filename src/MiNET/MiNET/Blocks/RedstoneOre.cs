@@ -48,6 +48,11 @@ namespace MiNET.Blocks
 			return new[] {ItemFactory.GetItem(331, 0, (byte) (4 + rnd.Next(1)))};
 		}
 
+		public override Item GetSmelt()
+		{
+			return new ItemRedstone();
+		}
+
 		public override float GetExperiencePoints()
 		{
 			Random random = new Random();

@@ -494,12 +494,9 @@ namespace MiNET.Items
 		}
 	}
 
-	public class ItemRabbit : Item { public ItemRabbit() : base("minecraft:rabbit", 411) {} }
 	public class ItemMushroomStew : Item { public ItemMushroomStew() : base("minecraft:mushroom_stew", 282) {} }
 	public class ItemMusicDiscWard : Item { public ItemMusicDiscWard() : base("minecraft:music_disc_ward", 509) {} }
 	public class ItemEnchantedApple : Item { public ItemEnchantedApple() : base("minecraft:enchanted_golden_apple", 466) {} }
-	public class ItemCod : Item { public ItemCod() : base("minecraft:cod", 349) {} }
-	public class ItemSalmon : Item { public ItemSalmon() : base("minecraft:salmon", 460) {} }
 	public class ItemTropicalFish : Item { public ItemTropicalFish() : base("minecraft:tropical_fish", 461) {} }
 	public class ItemPufferfish : Item { public ItemPufferfish() : base("minecraft:pufferfish", 462) {} }
 	public class ItemCookedCod : Item { public ItemCookedCod() : base("minecraft:cooked_cod", 350) {} }
@@ -517,7 +514,7 @@ namespace MiNET.Items
 	public class ItemPoisonousPotato : Item { public ItemPoisonousPotato() : base("minecraft:poisonous_potato", 394) {} }
 	public class ItemBeetrootSoup : Item { public ItemBeetrootSoup() : base("minecraft:beetroot_soup", 459) {} }
 	public class ItemSweetBerries : Item { public ItemSweetBerries() : base("minecraft:sweet_berries", 477) {} }
-	public class ItemCookedRabbit : Item { public ItemCookedRabbit() : base("minecraft:cooked_rabbit", 412) {} }
+	public class ItemCookedRabbit : FoodItem { public ItemCookedRabbit() : base("minecraft:cooked_rabbit", 412, 0, 6, 7) {} }
 	public class ItemRabbitStew : Item { public ItemRabbitStew() : base("minecraft:rabbit_stew", 413) {} }
 	public class ItemPumpkinSeeds : Item { public ItemPumpkinSeeds() : base("minecraft:pumpkin_seeds", 361) {} }
 	public class ItemCommandBlockMinecart : Item { public ItemCommandBlockMinecart() : base("minecraft:command_block_minecart", 443) {} }
@@ -536,9 +533,7 @@ namespace MiNET.Items
 	public class ItemMinecart : Item { public ItemMinecart() : base("minecraft:minecart", 328) {} }
 	public class ItemWrittenBook : Item { public ItemWrittenBook() : base("minecraft:written_book", 387) {} }
 	public class ItemLeather : Item { public ItemLeather() : base("minecraft:leather", 334) {} }
-	public class ItemKelp : Item { public ItemKelp() : base("minecraft:kelp", 335) {} }
 	public class ItemBrick : Item { public ItemBrick() : base("minecraft:brick", 336) {} }
-	public class ItemClayBall : Item { public ItemClayBall() : base("minecraft:clay_ball", 337) {} }
 	public class ItemCarrotonastick : Item { public ItemCarrotonastick() : base("minecraft:carrot_on_a_stick", 398) {} }
 	public class ItemReeds : Item { public ItemReeds() : base("minecraft:item.reeds", 338) {} }
 	public class ItemPaper : Item { public ItemPaper() : base("minecraft:paper", 339) {} }
@@ -586,7 +581,6 @@ namespace MiNET.Items
 	public class ItemPrismarineCrystals : Item { public ItemPrismarineCrystals() : base("minecraft:prismarine_crystals", 422) {} }
 	public class ItemArmorStand : Item { public ItemArmorStand() : base("minecraft:armor_stand", 425) {} }
 	public class ItemPhantomMembrane : Item { public ItemPhantomMembrane() : base("minecraft:phantom_membrane", 470) {} }
-	public class ItemChorusFruit : Item { public ItemChorusFruit() : base("minecraft:chorus_fruit", 432) {} }
 	public class ItemSuspiciousStew : Item { public ItemSuspiciousStew() : base("minecraft:suspicious_stew", 734) {} }
 	public class ItemPoppedChorusFruit : Item { public ItemPoppedChorusFruit() : base("minecraft:popped_chorus_fruit", 433) {} }
 	public class ItemSplashPotion : Item { public ItemSplashPotion() : base("minecraft:splash_potion", 438) {} }

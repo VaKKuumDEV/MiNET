@@ -37,7 +37,11 @@ namespace MiNET.Blocks
 
 		public override Item GetSmelt()
 		{
-			return ItemFactory.GetItem(1, 2);
+			if (StoneBrickType == "default")
+			{
+				return ItemFactory.GetItem(98, 2);
+			}
+			return null;
 		}
 	}
 }

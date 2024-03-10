@@ -39,5 +39,10 @@ namespace MiNET.Blocks
 		{
 			return new Item[] {ItemFactory.GetItem(337, 0, 4)};
 		}
+
+		public override Item GetSmelt()
+		{
+			return ItemFactory.GetItem(172, 0);
+		}
 	}
 }

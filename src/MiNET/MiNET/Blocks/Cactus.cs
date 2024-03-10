@@ -23,6 +23,8 @@
 
 #endregion
 
+using MiNET.Items;
+
 namespace MiNET.Blocks
 {
 	public partial class Cactus : Block
@@ -32,6 +34,11 @@ namespace MiNET.Blocks
 			IsTransparent = true;
 			BlastResistance = 2;
 			Hardness = 0.4f;
+		}
+
+		public override Item GetSmelt()
+		{
+			return ItemFactory.GetItem(351, 2);
 		}
 	}
 }

@@ -43,6 +43,11 @@ namespace MiNET.Blocks
 			return new[] {ItemFactory.GetItem(263, 0, 1)};
 		}
 
+		public override Item GetSmelt()
+		{
+			return new ItemCoal();
+		}
+
 		public override float GetExperiencePoints()
 		{
 			Random random = new Random();

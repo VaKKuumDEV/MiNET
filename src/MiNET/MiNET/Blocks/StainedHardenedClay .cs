@@ -42,5 +42,46 @@ namespace MiNET.Blocks
 			Color = BlockFactory.getBlockColor(player.Inventory.GetItemInHand().Id, (byte) player.Inventory.GetItemInHand().Metadata);
 			return false;
 		}
+
+		public override Item GetSmelt()
+		{
+			switch (this.Metadata)
+			{
+				case 0:
+					return ItemFactory.GetItem(220, 0);
+				case 8:
+					return ItemFactory.GetItem(228, 0);
+				case 7:
+					return ItemFactory.GetItem(227, 0);
+				case 15:
+					return ItemFactory.GetItem(235, 0);
+				case 12:
+					return ItemFactory.GetItem(232, 0);
+				case 14:
+					return ItemFactory.GetItem(234, 0);
+				case 1:
+					return ItemFactory.GetItem(221, 0);
+				case 4:
+					return ItemFactory.GetItem(224, 0);
+				case 5:
+					return ItemFactory.GetItem(225, 0);
+				case 13:
+					return ItemFactory.GetItem(233, 0);
+				case 9:
+					return ItemFactory.GetItem(229, 0);
+				case 3:
+					return ItemFactory.GetItem(223, 0);
+				case 11:
+					return ItemFactory.GetItem(231, 0);
+				case 10:
+					return ItemFactory.GetItem(219, 0);
+				case 2:
+					return ItemFactory.GetItem(222, 0);
+				case 6:
+					return ItemFactory.GetItem(226, 0);
+				default:
+					return null;
+			}
+		}
 	}
 }
