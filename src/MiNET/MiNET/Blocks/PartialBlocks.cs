@@ -7192,7 +7192,7 @@ namespace MiNET.Blocks
     public partial class Portal  // 90 typeof=Portal
     {
         [StateEnum("x","z","unknown")]
-        public  string PortalAxis { get; set; } = "";
+        public  string PortalAxis { get; set; } = "x";
 
         public override void SetState(List<IBlockState> states)
         {

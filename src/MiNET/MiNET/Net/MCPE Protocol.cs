@@ -47,8 +47,8 @@ namespace MiNET.Net
 {
 	public class McpeProtocolInfo
 	{
-		public const int ProtocolVersion = 649;
-		public const string GameVersion = "1.20.60";
+		public const int ProtocolVersion = 662;
+		public const string GameVersion = "1.20.70";
 	}
 
 	public interface IMcpeMessageHandler
@@ -2210,6 +2210,7 @@ namespace MiNET.Net
 	{
 
 		public bool mustAccept; // = null;
+		public bool hasAddons; // = null;
 		public bool hasScripts; // = null;
 		public bool forceServerPacks; // = null;
 		public ResourcePackInfos behahaviorpackinfos; // = null;
@@ -2228,6 +2229,7 @@ namespace MiNET.Net
 			BeforeEncode();
 
 			Write(mustAccept);
+			Write(false); //addons that we don't and won't have
 			Write(hasScripts);
 			Write(forceServerPacks);
 			Write(behahaviorpackinfos);
@@ -2247,6 +2249,7 @@ namespace MiNET.Net
 			BeforeDecode();
 
 			mustAccept = ReadBool();
+			hasAddons = ReadBool();
 			hasScripts = ReadBool();
 			forceServerPacks = ReadBool();
 			behahaviorpackinfos = ReadResourcePackInfos();
@@ -2263,6 +2266,7 @@ namespace MiNET.Net
 			base.ResetPacket();
 
 			mustAccept=default(bool);
+			hasAddons=default(bool);
 			hasScripts=default(bool);
 			forceServerPacks=default(bool);
 			behahaviorpackinfos=default(ResourcePackInfos);
@@ -3629,6 +3633,7 @@ namespace MiNET.Net
 		public int amplifier; // = null;
 		public bool particles; // = null;
 		public int duration; // = null;
+		public long tick; // = null;
 
 		public McpeMobEffect()
 		{
@@ -3648,6 +3653,7 @@ namespace MiNET.Net
 			WriteSignedVarInt(amplifier);
 			Write(particles);
 			WriteSignedVarInt(duration);
+			WriteUnsignedVarLong(20);
 
 			AfterEncode();
 		}
@@ -3667,6 +3673,7 @@ namespace MiNET.Net
 			amplifier = ReadSignedVarInt();
 			particles = ReadBool();
 			duration = ReadSignedVarInt();
+			tick = ReadUnsignedVarLong();
 
 			AfterDecode();
 		}
@@ -3684,6 +3691,7 @@ namespace MiNET.Net
 			amplifier=default(int);
 			particles=default(bool);
 			duration=default(int);
+			tick = default(long);
 		}
 
 	}
@@ -4335,6 +4343,7 @@ namespace MiNET.Net
 
 		public long runtimeEntityId; // = null;
 		public Vector3 velocity; // = null;
+		public long tick; // = null;
 
 		public McpeSetEntityMotion()
 		{
@@ -4350,6 +4359,7 @@ namespace MiNET.Net
 
 			WriteUnsignedVarLong(runtimeEntityId);
 			Write(velocity);
+			WriteUnsignedVarLong(20);
 
 			AfterEncode();
 		}
@@ -4365,6 +4375,7 @@ namespace MiNET.Net
 
 			runtimeEntityId = ReadUnsignedVarLong();
 			velocity = ReadVector3();
+			tick = ReadUnsignedVarLong();
 
 			AfterDecode();
 		}
@@ -4378,6 +4389,7 @@ namespace MiNET.Net
 
 			runtimeEntityId=default(long);
 			velocity=default(Vector3);
+			tick = default(long);
 		}
 
 	}

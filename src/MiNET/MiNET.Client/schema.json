@@ -8833,6 +8833,19 @@
     "States": []
   },
   {
+    "Command": "portal [\"portal_axis\" = \"unknown\"]",
+    "Name": "minecraft:portal",
+    "Id": 90,
+    "Data": 0,
+    "States": [
+      {
+        "Type": "8",
+        "Name": "portal_axis",
+        "Value": "unknown"
+      }
+    ]
+  },
+  {
     "Command": "portal [\"portal_axis\" = \"x\"]",
     "Name": "minecraft:portal",
     "Id": 90,
