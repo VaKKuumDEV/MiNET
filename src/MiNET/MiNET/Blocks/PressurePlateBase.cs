@@ -1,4 +1,5 @@
-﻿using MiNET.Utils.Vectors;
+﻿using MiNET.Sounds;
+using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
 namespace MiNET.Blocks
@@ -48,10 +49,14 @@ namespace MiNET.Blocks
 							if (i == 3) { cord = this.Coordinates.BlockEast(); }
 							if (i == 4) { cord = this.Coordinates.BlockDown(); }
 							var blockk = level.GetBlock(cord);
-							if (blockk is RedstoneLamp)
-							{
-								level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(cord) });
-							}
+							if (blockk is RedstoneLamp) { level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(cord) }); }
+							if (blockk is WoodenDoor) { level.SetBlock(new WoodenDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+							if (blockk is SpruceDoor) { level.SetBlock(new SpruceDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+							if (blockk is BirchDoor) { level.SetBlock(new BirchDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+							if (blockk is JungleDoor) { level.SetBlock(new JungleDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+							if (blockk is AcaciaDoor) { level.SetBlock(new AcaciaDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+							if (blockk is DarkOakDoor) { level.SetBlock(new DarkOakDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+							if (blockk is IronDoor) { level.SetBlock(new IronDoor { Coordinates = new BlockCoordinates(cord), OpenBit = true }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
 						}
 					}
 				}
@@ -68,10 +73,14 @@ namespace MiNET.Blocks
 						if (i == 3) { cord = this.Coordinates.BlockEast(); }
 						if (i == 4) { cord = this.Coordinates.BlockDown(); }
 						var blockk = level.GetBlock(cord);
-						if (blockk is LitRedstoneLamp)
-						{
-							level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });
-						}
+						if (blockk is LitRedstoneLamp) { level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });}
+						if (blockk is WoodenDoor) { level.SetBlock(new WoodenDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+						if (blockk is SpruceDoor) { level.SetBlock(new SpruceDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+						if (blockk is BirchDoor) { level.SetBlock(new BirchDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+						if (blockk is JungleDoor) { level.SetBlock(new JungleDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+						if (blockk is AcaciaDoor) { level.SetBlock(new AcaciaDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+						if (blockk is DarkOakDoor) { level.SetBlock(new DarkOakDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
+						if (blockk is IronDoor) { level.SetBlock(new IronDoor { Coordinates = new BlockCoordinates(cord), OpenBit = false }); var sound = new Sound((short) LevelEventType.SoundOpenDoor, Coordinates); sound.Spawn(level);}
 					}
 				}
 			}

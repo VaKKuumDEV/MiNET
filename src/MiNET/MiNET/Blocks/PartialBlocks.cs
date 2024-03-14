@@ -10323,11 +10323,16 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class WoodenPressurePlate  // 72 typeof=WoodenPressurePlate
+    public partial class WoodenPressurePlate : PressurePlateBase  // 72 typeof=WoodenPressurePlate
     {
-        public int RedstoneSignal { get; set; } = 0;
+        public override int RedstoneSignal { get; set; } = 0;
 
-        public override void SetState(List<IBlockState> states)
+		public WoodenPressurePlate() : base(72)
+		{
+			IsGenerated = true;
+		}
+
+		public override void SetState(List<IBlockState> states)
         {
             foreach (var state in states)
             {
