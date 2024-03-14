@@ -2471,6 +2471,7 @@ namespace MiNET
 
 		public void OpenInventory(BlockCoordinates inventoryCoord)
 		{
+			if (Level.GetBlockEntity(inventoryCoord) != null && !Level.BlockEntities.Contains(Level.GetBlockEntity(inventoryCoord))) { Level.BlockEntities.Add(Level.GetBlockEntity(inventoryCoord)); }
 			// https://github.com/pmmp/PocketMine-MP/blob/stable/src/pocketmine/network/mcpe/protocol/types/WindowTypes.php
 			lock (_inventorySync)
 			{
