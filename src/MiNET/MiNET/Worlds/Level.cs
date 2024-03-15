@@ -479,6 +479,20 @@ namespace MiNET.Worlds
 
 				Player[] players = GetSpawnedPlayers();
 
+				if (TickTime % 10 == 0)
+				{
+					foreach (var player in players)
+					{
+						if (player.Level.GetBlock((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z) is PressurePlateBase)
+						{
+							if (!player.Level.BlockWithTicks.TryGetValue(new BlockCoordinates((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z), out _));
+							{
+								player.Level.ScheduleBlockTick(player.Level.GetBlock(new BlockCoordinates((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z)), 20);
+							}
+						}
+					}
+				}
+
 				if (DoDaylightcycle)
 				{
 					WorldTime++;
