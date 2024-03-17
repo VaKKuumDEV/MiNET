@@ -47,6 +47,7 @@ namespace MiNET
 		{
 			var stackResponses = new List<StackResponseContainerInfo>();
 			uint recipeNetworkId = 0;
+			uint timesCrafted = 0;
 			foreach (ItemStackAction stackAction in actions)
 			{
 				switch (stackAction)
@@ -54,6 +55,11 @@ namespace MiNET
 					case CraftAction craftAction:
 					{
 						recipeNetworkId = ProcessCraftAction(craftAction);
+						break;
+					}
+					case CraftAutoAction CraftAuto:
+					{
+						timesCrafted = ProcessCraftAuto(CraftAuto); //need to do something with count but what?
 						break;
 					}
 					case CraftCreativeAction craftCreativeAction:
@@ -455,6 +461,10 @@ namespace MiNET
 		protected virtual uint ProcessCraftAction(CraftAction action)
 		{
 			return action.RecipeNetworkId;
+		}
+		protected virtual uint ProcessCraftAuto(CraftAutoAction action)
+		{
+			return action.craftCount;
 		}
 
 		protected virtual void ProcessCraftCreativeAction(CraftCreativeAction action)

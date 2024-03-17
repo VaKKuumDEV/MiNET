@@ -1254,6 +1254,12 @@ namespace MiNET.Net
 						{
 							Write((byte) McpeItemStackRequest.ActionType.CraftRecipeAuto);
 							WriteUnsignedVarInt(ta.RecipeNetworkId);
+							Write(ta.craftCount);
+							Write((byte)ta.Ingredients.Count);
+							foreach (Item item in ta.Ingredients)
+							{
+								WriteRecipeIngredient(item);
+							}
 							break;
 						}
 						
@@ -1440,6 +1446,12 @@ namespace MiNET.Net
 						{
 							var action = new CraftAutoAction();
 							action.RecipeNetworkId = ReadUnsignedVarInt();
+							action.craftCount = ReadByte();
+							var cou = ReadByte();
+							for (var a = 0; a < cou; a++)
+							{
+								action.Ingredients.Add(ReadRecipeData());
+							}
 							actions.Add(action);
 							break;
 						}

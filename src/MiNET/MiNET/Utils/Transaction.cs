@@ -113,6 +113,8 @@ namespace MiNET.Utils
 	public class CraftAutoAction : ItemStackAction
 	{
 		public uint RecipeNetworkId { get; set; }
+		public byte craftCount { get; set; }
+		public List<Item> Ingredients { get; set; } = new List<Item>();
 	}
 
 	public class CraftCreativeAction : ItemStackAction
