@@ -2726,6 +2726,7 @@ namespace MiNET.Net
 						Write(rec.Block);
 						WriteSignedVarInt(0); // priority
 						WriteVarInt(UniqueId); // unique id
+						if(!RecipeManager.resultMapLocked){ RecipeManager.resultMap.Add(UniqueId, rec.Result[0]); }
 						break;
 					}
 					case ShapedRecipe shapedRecipe:
@@ -2754,6 +2755,7 @@ namespace MiNET.Net
 						Write(rec.Block);
 						WriteUnsignedVarInt(0); // priority
 						WriteVarInt(UniqueId); // unique id
+						if(!RecipeManager.resultMapLocked){ RecipeManager.resultMap.Add(UniqueId, rec.Result[0]); }
 						break;
 					}
 					case SmeltingRecipe smeltingRecipe:
@@ -2786,6 +2788,7 @@ namespace MiNET.Net
 				}
 				UniqueId++;
 			}
+			RecipeManager.resultMapLocked = true;
 		}
 
 		public Recipes ReadRecipes()

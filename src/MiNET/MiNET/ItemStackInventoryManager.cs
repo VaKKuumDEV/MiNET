@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using log4net;
+using MiNET.Crafting;
 using MiNET.Items;
 using MiNET.Utils;
 
@@ -47,7 +48,6 @@ namespace MiNET
 		{
 			var stackResponses = new List<StackResponseContainerInfo>();
 			uint recipeNetworkId = 0;
-			uint timesCrafted = 0;
 			foreach (ItemStackAction stackAction in actions)
 			{
 				switch (stackAction)
@@ -59,7 +59,7 @@ namespace MiNET
 					}
 					case CraftAutoAction CraftAuto:
 					{
-						timesCrafted = ProcessCraftAuto(CraftAuto); //need to do something with count but what?
+						ProcessCraftAuto(CraftAuto);
 						break;
 					}
 					case CraftCreativeAction craftCreativeAction:
@@ -86,7 +86,6 @@ namespace MiNET
 					case TakeAction takeAction:
 					{
 						ProcessTakeAction(takeAction, stackResponses);
-
 						break;
 					}
 					case PlaceAction placeAction:
@@ -449,7 +448,7 @@ namespace MiNET
 			//TODO: We only use this for anvils right now. Until we fixed the anvil merge ourselves.
 			Item craftingResult = action.ResultItems.FirstOrDefault();
 			if (craftingResult == null) return;
-
+			
 			craftingResult.UniqueId = Environment.TickCount;
 			SetContainerItem(59, 50, craftingResult);
 		}
@@ -462,9 +461,10 @@ namespace MiNET
 		{
 			return action.RecipeNetworkId;
 		}
-		protected virtual uint ProcessCraftAuto(CraftAutoAction action)
+		protected virtual void ProcessCraftAuto(CraftAutoAction action)
 		{
-			return action.craftCount;
+			RecipeManager.resultMap.TryGetValue((int)action.RecipeNetworkId, out Item item);
+			_player.Inventory.UiInventory.Slots[50] = new Item(item.Id, item.Metadata, item.Count * action.craftCount);
 		}
 
 		protected virtual void ProcessCraftCreativeAction(CraftCreativeAction action)

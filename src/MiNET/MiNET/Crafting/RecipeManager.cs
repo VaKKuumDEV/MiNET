@@ -38,6 +38,10 @@ namespace MiNET.Crafting
 
 		public static Recipes Recipes { get; private set; }
 
+		public static Dictionary<int, Item> resultMap = new Dictionary<int, Item>();
+
+		public static bool resultMapLocked = false;
+
 		private static McpeWrapper _craftingData;
 
 		public static McpeWrapper GetCraftingData()
