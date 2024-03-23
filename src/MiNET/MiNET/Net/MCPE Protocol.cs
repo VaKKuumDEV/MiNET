@@ -87,7 +87,6 @@ namespace MiNET.Net
 		void HandleMcpeSetPlayerGameType(McpeSetPlayerGameType message);
 		void HandleMcpeMapInfoRequest(McpeMapInfoRequest message);
 		void HandleMcpeRequestChunkRadius(McpeRequestChunkRadius message);
-		void HandleMcpeItemFrameDropItem(McpeItemFrameDropItem message);
 		void HandleMcpeCommandRequest(McpeCommandRequest message);
 		void HandleMcpeCommandBlockUpdate(McpeCommandBlockUpdate message);
 		void HandleMcpeResourcePackChunkRequest(McpeResourcePackChunkRequest message);
@@ -183,7 +182,6 @@ namespace MiNET.Net
 		void HandleMcpeMapInfoRequest(McpeMapInfoRequest message);
 		void HandleMcpeRequestChunkRadius(McpeRequestChunkRadius message);
 		void HandleMcpeChunkRadiusUpdate(McpeChunkRadiusUpdate message);
-		void HandleMcpeItemFrameDropItem(McpeItemFrameDropItem message);
 		void HandleMcpeGameRulesChanged(McpeGameRulesChanged message);
 		void HandleMcpeCamera(McpeCamera message);
 		void HandleMcpeBossEvent(McpeBossEvent message);
@@ -453,9 +451,6 @@ namespace MiNET.Net
 					break;
 				case McpeChunkRadiusUpdate msg:
 					_messageHandler.HandleMcpeChunkRadiusUpdate(msg);
-					break;
-				case McpeItemFrameDropItem msg:
-					_messageHandler.HandleMcpeItemFrameDropItem(msg);
 					break;
 				case McpeGameRulesChanged msg:
 					_messageHandler.HandleMcpeGameRulesChanged(msg);
@@ -873,8 +868,6 @@ namespace MiNET.Net
 						return McpeRequestChunkRadius.CreateObject().Decode(buffer);
 					case 0x46:
 						return McpeChunkRadiusUpdate.CreateObject().Decode(buffer);
-					case 0x47:
-						return McpeItemFrameDropItem.CreateObject().Decode(buffer);
 					case 0x48:
 						return McpeGameRulesChanged.CreateObject().Decode(buffer);
 					case 0x49:
@@ -6044,54 +6037,6 @@ namespace MiNET.Net
 			base.ResetPacket();
 
 			chunkRadius=default(int);
-		}
-
-	}
-
-	public partial class McpeItemFrameDropItem : Packet<McpeItemFrameDropItem>
-	{
-
-		public BlockCoordinates coordinates; // = null;
-
-		public McpeItemFrameDropItem()
-		{
-			Id = 0x47;
-			IsMcpe = true;
-		}
-
-		protected override void EncodePacket()
-		{
-			base.EncodePacket();
-
-			BeforeEncode();
-
-			Write(coordinates);
-
-			AfterEncode();
-		}
-
-		partial void BeforeEncode();
-		partial void AfterEncode();
-
-		protected override void DecodePacket()
-		{
-			base.DecodePacket();
-
-			BeforeDecode();
-
-			coordinates = ReadBlockCoordinates();
-
-			AfterDecode();
-		}
-
-		partial void BeforeDecode();
-		partial void AfterDecode();
-
-		protected override void ResetPacket()
-		{
-			base.ResetPacket();
-
-			coordinates=default(BlockCoordinates);
 		}
 
 	}

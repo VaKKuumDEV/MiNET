@@ -127,11 +127,11 @@ namespace MiNET.Entities
 			MaybeAge = 24,
 			PlayerFlags = 26,
 			BedPosition = 28,
-			Scale = 38,
+			Scale = 38, //todo still exist?
 			MaxAir = 42,
 			Markings = 43,
-			CollisionBoxWidth = 53,
-			CollisionBoxHeight = 54,
+			CollisionBoxWidth = 53, //todo still exist?
+			CollisionBoxHeight = 54, //todo still exist?
 
 			DataFuseLength = 55,
 
