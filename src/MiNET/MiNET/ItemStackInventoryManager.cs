@@ -374,6 +374,7 @@ namespace MiNET
 					}
 				}
 			});
+			_player.Inventory.SendSetSlot(destination.Slot);
 		}
 
 		protected virtual void ProcessTakeAction(TakeAction action, List<StackResponseContainerInfo> stackResponses)
