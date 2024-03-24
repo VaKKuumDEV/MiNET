@@ -37,6 +37,7 @@ namespace MiNET.Entities.World
 		private static readonly ILog Log = LogManager.GetLogger(typeof(MapEntity));
 
 		public MapInfo MapInfo { get; set; }
+		public bool initialized { get; set; } = false;
 		public IMapImageProvider ImageProvider { get; set; }
 
 		public MapEntity(Level level, long mapId = EntityManager.EntityIdUndefined) : base(EntityType.None, level)
@@ -56,7 +57,7 @@ namespace MiNET.Entities.World
 			var mapInfo = new MapInfo
 			{
 				MapId = EntityId,
-				UpdateType = 6,
+				UpdateType = 0,
 				Scale = 0,
 				X = 0,
 				Z = 0,
@@ -107,12 +108,15 @@ namespace MiNET.Entities.World
 			if (data != null)
 			{
 				MapInfo.Data = data;
+
+				MapInfo.UpdateType = initialized ? (byte) 2 : (byte) 8;
+
 				var mapInfo = (MapInfo) MapInfo.Clone();
 
 				var msg = McpeClientboundMapItemData.CreateObject();
 				msg.mapinfo = mapInfo;
 				Level.RelayBroadcast(msg);
-
+				initialized = true;
 				return;
 			}
 

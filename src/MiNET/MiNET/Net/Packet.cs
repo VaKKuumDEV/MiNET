@@ -3182,8 +3182,8 @@ namespace MiNET.Net
 
 			if ((map.UpdateType & MapUpdateFlagInitialisation) != 0)
 			{
-				WriteUnsignedVarInt(0);
-				//WriteSignedVarLong(map.MapId);
+				WriteUnsignedVarInt(1);
+				WriteSignedVarLong(map.MapId);
 			}
 
 			if ((map.UpdateType & (MapUpdateFlagInitialisation | MapUpdateFlagDecoration | MapUpdateFlagTexture)) != 0)
@@ -3402,6 +3402,18 @@ namespace MiNET.Net
 			//}
 
 			return map;
+		}
+
+		public pixelList ReadPixelList()
+		{
+			pixelList mapData = new pixelList();
+
+			var listSize = ReadInt();
+			for (int i = 0; i < listSize; i++)
+			{
+				mapData.mapData.Add(new pixels { pixel = ReadUnsignedVarInt(), index = ReadShort()});
+			}
+			return mapData;
 		}
 
 		public void Write(ScoreEntries list)

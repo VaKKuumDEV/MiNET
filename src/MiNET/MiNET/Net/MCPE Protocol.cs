@@ -5897,6 +5897,7 @@ namespace MiNET.Net
 	{
 
 		public long mapId; // = null;
+		public pixelList pixellist; // = null;
 
 		public McpeMapInfoRequest()
 		{
@@ -5911,6 +5912,7 @@ namespace MiNET.Net
 			BeforeEncode();
 
 			WriteSignedVarLong(mapId);
+			WriteUnsignedVarInt(0);
 
 			AfterEncode();
 		}
@@ -5925,6 +5927,7 @@ namespace MiNET.Net
 			BeforeDecode();
 
 			mapId = ReadSignedVarLong();
+			pixellist = ReadPixelList();
 
 			AfterDecode();
 		}
@@ -5937,6 +5940,7 @@ namespace MiNET.Net
 			base.ResetPacket();
 
 			mapId=default(long);
+			pixellist = default(pixelList);
 		}
 
 	}
