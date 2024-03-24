@@ -78,6 +78,7 @@ namespace MiNET.Worlds
 		{
 			BasePath ??= Config.GetProperty("WorldDirectory", "Worlds").Trim();
 			var pluginDir = Config.GetProperty("PluginDirectory", "Plugins").Trim();
+			var resourceDir = Config.GetProperty("ResourceDirectory", "ResourcePacks").Trim();
 
 			var directory = new DirectoryInfo(Path.Combine(BasePath, "db"));
 
@@ -108,6 +109,10 @@ namespace MiNET.Worlds
 				if (!Directory.Exists(pluginDir))
 				{
 					Directory.CreateDirectory(pluginDir);
+				}
+				if (!Directory.Exists(resourceDir))
+				{
+					Directory.CreateDirectory(resourceDir);
 				}
 				SaveLevelInfo(LevelInfo);
 			}
