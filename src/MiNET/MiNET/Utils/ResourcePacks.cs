@@ -108,4 +108,27 @@ namespace MiNET.Utils
 		Skins = 7,
 		WorldTemplate = 8
 	}
+
+	public class Header
+	{
+		public string Description { get; set; }
+		public string Name { get; set; }
+		public string Uuid { get; set; }
+		public List<int> Version { get; set; }
+		public List<int> MinEngineVersion { get; set; }
+	}
+
+	public class Module
+	{
+		public string Type { get; set; }
+		public string Uuid { get; set; }
+		public List<int> Version { get; set; }
+	}
+
+	public class manifestStructure
+	{
+		public int FormatVersion { get; set; }
+		public Header Header { get; set; }
+		public List<Module> Modules { get; set; }
+	}
 }

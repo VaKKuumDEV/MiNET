@@ -54,7 +54,7 @@ using MiNET.Utils.Skins;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 using Newtonsoft.Json;
-using System.Runtime.Intrinsics.Arm;
+using System.IO.Compression;
 
 namespace MiNET
 {
@@ -109,6 +109,8 @@ namespace MiNET
 
 		public DamageCalculator DamageCalculator { get; set; } = new DamageCalculator();
 
+		public TexturePackInfos PlayerPackData { get; set; }
+		public Dictionary<string, string> PlayerPackMap = new Dictionary<string, string>();
 
 		public Player(MiNetServer server, IPEndPoint endPoint) : base(EntityType.None, null)
 		{
@@ -174,13 +176,12 @@ namespace MiNET
 			string result = JsonConvert.SerializeObject(message, jsonSerializerSettings);
 			Log.Debug($"{message.GetType().Name}\n{result}");
 
-			var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
-			var content = File.ReadAllBytes($"{directory}/base.zip");
+			var content = File.ReadAllBytes(PlayerPackMap[message.packageId]);
 
 			McpeResourcePackChunkData chunkData = McpeResourcePackChunkData.CreateObject();
-			chunkData.packageId = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e";
-			chunkData.chunkIndex = message.chunkIndex; // Package index ?
-			chunkData.progress = 16384 * message.chunkIndex; // Long, maybe timestamp?
+			chunkData.packageId = message.packageId;
+			chunkData.chunkIndex = message.chunkIndex;
+			chunkData.progress = 16384 * message.chunkIndex;
 			chunkData.payload = GetChunk(content, (int)chunkData.chunkIndex, 16384);
 			SendPacket(chunkData);
 		}
@@ -319,20 +320,24 @@ namespace MiNET
 
 			if (message.responseStatus == 2)
 			{
-				var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
-				var content = File.ReadAllBytes($"{directory}/base.zip");
-				SHA256 sha256 = SHA256.Create();
-				byte[] packHash = sha256.ComputeHash(content);
+				foreach (string packid in message.resourcepackids)
+				{
+					var uuid = packid.Substring(0, Math.Min(packid.Length, 36));
+					var content = File.ReadAllBytes(PlayerPackMap[uuid]);
 
-				McpeResourcePackDataInfo dataInfo = McpeResourcePackDataInfo.CreateObject();
-				dataInfo.packageId = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e";
-				dataInfo.maxChunkSize = 16384;
-				dataInfo.chunkCount = (uint)Math.Ceiling((double) content.Count() / 16384);
-				dataInfo.compressedPackageSize = (ulong)content.Count();
-				dataInfo.hash = packHash;
-				dataInfo.isPremium = false;
-				dataInfo.packType = 6;
-				SendPacket(dataInfo);
+					SHA256 sha256 = SHA256.Create();
+					byte[] packHash = sha256.ComputeHash(content);
+
+					McpeResourcePackDataInfo dataInfo = McpeResourcePackDataInfo.CreateObject();
+					dataInfo.packageId = uuid;
+					dataInfo.maxChunkSize = 16384;
+					dataInfo.chunkCount = (uint) Math.Ceiling((double) content.Count() / 16384);
+					dataInfo.compressedPackageSize = (ulong) content.Count();
+					dataInfo.hash = packHash;
+					dataInfo.isPremium = false;
+					dataInfo.packType = 6;
+					SendPacket(dataInfo);
+				}
 				return;
 			}
 			else if (message.responseStatus == 3)
@@ -353,6 +358,8 @@ namespace MiNET
 				{
 					MiNetServer.FastThreadPool.QueueUserWorkItem(() => { Start(null); });
 				}
+				PlayerPackData.Clear();
+				PlayerPackMap.Clear();
 				return;
 			}
 		}
@@ -362,22 +369,45 @@ namespace MiNET
 			McpeResourcePacksInfo packInfo = McpeResourcePacksInfo.CreateObject();
 			if (_serverHaveResources)
 			{
-
+				var packInfos = new TexturePackInfos();
 				var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
-				var content = File.ReadAllBytes($"{directory}/base.zip");
+				packInfo.mustAccept = Config.GetProperty("ForceResourcePacks", false);
 
-				packInfo.mustAccept = false;
-				packInfo.texturepacks = new TexturePackInfos
+				foreach (var zipPack in Directory.GetFiles(directory, "*.zip"))
 				{
-					new TexturePackInfo()
-					{
-						UUID = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e",
-						Version = "1.0.0",
-						Size = (ulong)content.Count(),
-					},
-				};
-			}
+					var archive = ZipFile.OpenRead(zipPack);
+					var packDir = archive.Entries[0].FullName.Substring(0, archive.Entries[0].FullName.IndexOf('/'));
 
+					if (packDir == null)
+					{
+						Log.Error($"Invalid resource pack {zipPack}. Wrong folder structure");
+						continue;
+					}
+
+					var entry = archive.GetEntry($"{packDir}/manifest.json");
+
+					if (entry == null)
+					{
+						Log.Error($"Invalid resource pack {packDir}. Unable to locate manifest.json");
+						continue;
+					}
+
+					using (var stream = entry.Open())
+					using (var reader = new StreamReader(stream))
+					{
+						string jsonContent = reader.ReadToEnd();
+						manifestStructure obj = JsonConvert.DeserializeObject<manifestStructure>(jsonContent);
+						packInfos.Add(new TexturePackInfo { 
+							UUID = obj.Header.Uuid, 
+							Version = $"{obj.Header.Version[0]}.{obj.Header.Version[1]}.{obj.Header.Version[2]}", 
+							Size = (ulong) File.ReadAllBytes(zipPack).Count(),
+						});
+						PlayerPackMap.Add(obj.Header.Uuid, zipPack);
+					}
+				}
+				PlayerPackData = packInfos;
+				packInfo.texturepacks = packInfos;
+			}
 			SendPacket(packInfo);
 		}
 
@@ -388,15 +418,13 @@ namespace MiNET
 			
 			if (_serverHaveResources)
 			{
-				packStack.mustAccept = false;
-				packStack.resourcepackidversions = new ResourcePackIdVersions
+				packStack.mustAccept = Config.GetProperty("ForceResourcePacks", false);
+				var packVersions = new ResourcePackIdVersions();
+				foreach (var packData in PlayerPackData)
 				{
-					new PackIdVersion()
-					{
-						Id = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e",
-						Version = "1.0.0"
-					},
-				};
+					packVersions.Add(new PackIdVersion { Id = packData.UUID, Version = packData.Version });
+				}
+				packStack.resourcepackidversions = packVersions;
 			}
 
 			SendPacket(packStack);
