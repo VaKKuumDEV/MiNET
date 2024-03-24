@@ -25,8 +25,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Threading;
 using log4net;
 using MiNET.Entities;
@@ -53,7 +55,7 @@ namespace MiNET.Plugins.Commands
 		[Command(Name = "about", Description = "About the server")]
 		public string About()
 		{
-			return $"This server is running on MiNET for Minecraft Bedrock Edition {McpeProtocolInfo.GameVersion} ({McpeProtocolInfo.ProtocolVersion})";
+			return $"This server is running on MiNET-CobwebSMP {FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(MiNetServer)).Location).ProductVersion} for Minecraft Bedrock Edition {McpeProtocolInfo.GameVersion} ({McpeProtocolInfo.ProtocolVersion}). https://github.com/CobwebSMP/MiNET ";
 		}
 
 		[Command(Name = "op", Description = "Make player an operator")]
