@@ -34,7 +34,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Net.Sockets;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
@@ -42,7 +41,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using fNbt;
 using fNbt.Tags;
-using Jose;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Crafting;
@@ -56,7 +54,6 @@ using MiNET.Utils.IO;
 using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
-using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Agreement;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Modes;
@@ -159,8 +156,6 @@ namespace MiNET.Client
 
 		public void SendLogin(string username)
 		{
-			JWT.JsonMapper = new NewtonsoftMapper();
-
 			var clientKey = CryptoUtils.GenerateClientKey();
 			byte[] data = CryptoUtils.CompressJwtBytes(CryptoUtils.EncodeJwt(username, clientKey, IsEmulator), CryptoUtils.EncodeSkinJwt(clientKey, username), CompressionLevel.Fastest);
 
@@ -734,8 +729,6 @@ namespace MiNET.Client
 			result = result.Replace(@"[]", "s");
 			return result;
 		}
-
-		private int _numberOfChunks = 0;
 
 		public ConcurrentDictionary<ChunkCoordinates, ChunkColumn> Chunks { get; } = new ConcurrentDictionary<ChunkCoordinates, ChunkColumn>();
 		public IndentedTextWriter _mobWriter;

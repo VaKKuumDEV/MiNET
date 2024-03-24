@@ -40,10 +40,9 @@ namespace MiNET.Client
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(ClientUtils));
 
-		private static int _waterOffsetY = 0;
 		private static string _basePath = @"D:\Temp\MCPEWorldStore";
 
-		private static object _chunkRead = new object();
+		//private static object _chunkRead = new object();
 
 		public static ChunkColumn DecodeChunkColumn(int subChunkCount, byte[] buffer, BlockPalette bedrockPalette = null, HashSet<BlockStateContainer> internalBlockPallet = null)
 		{
