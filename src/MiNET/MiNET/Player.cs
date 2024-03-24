@@ -32,7 +32,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Numerics;
+using System.Reflection;
 using System.Threading;
+using System.Security.Cryptography;
 using fNbt;
 using log4net;
 using MiNET.Blocks;
@@ -52,6 +54,7 @@ using MiNET.Utils.Skins;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 using Newtonsoft.Json;
+using System.Runtime.Intrinsics.Arm;
 
 namespace MiNET
 {
@@ -171,13 +174,24 @@ namespace MiNET
 			string result = JsonConvert.SerializeObject(message, jsonSerializerSettings);
 			Log.Debug($"{message.GetType().Name}\n{result}");
 
-			var content = File.ReadAllBytes(@"D:\Temp\ResourcePackChunkData_8f760cf7-2ca4-44ab-ab60-9be2469b9777.zip");
+			var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
+			var content = File.ReadAllBytes($"{directory}/base.zip");
+
 			McpeResourcePackChunkData chunkData = McpeResourcePackChunkData.CreateObject();
-			chunkData.packageId = "5abdb963-4f3f-4d97-8482-88e2049ab149";
-			chunkData.chunkIndex = 0; // Package index ?
-			chunkData.progress = 0; // Long, maybe timestamp?
-			chunkData.payload = content;
+			chunkData.packageId = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e";
+			chunkData.chunkIndex = message.chunkIndex; // Package index ?
+			chunkData.progress = 16384 * message.chunkIndex; // Long, maybe timestamp?
+			chunkData.payload = GetChunk(content, (int)chunkData.chunkIndex, 16384);
 			SendPacket(chunkData);
+		}
+
+		public static byte[] GetChunk(byte[] content, int chunkIndex, int chunkSize)
+		{
+			int start = chunkIndex * chunkSize;
+			int length = Math.Min(chunkSize, content.Length - start);
+			byte[] chunk = new byte[length];
+			Array.Copy(content, start, chunk, 0, length);
+			return chunk;
 		}
 
 		public virtual void HandleMcpePurchaseReceipt(McpePurchaseReceipt message)
@@ -297,7 +311,7 @@ namespace MiNET
 			OnLocalPlayerIsInitialized(new PlayerEventArgs(this));
 		}
 
-		private bool _serverHaveResources = false;
+		private bool _serverHaveResources = true;
 
 		public virtual void HandleMcpeResourcePackClientResponse(McpeResourcePackClientResponse message)
 		{
@@ -305,12 +319,19 @@ namespace MiNET
 
 			if (message.responseStatus == 2)
 			{
+				var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
+				var content = File.ReadAllBytes($"{directory}/base.zip");
+				SHA256 sha256 = SHA256.Create();
+				byte[] packHash = sha256.ComputeHash(content);
+
 				McpeResourcePackDataInfo dataInfo = McpeResourcePackDataInfo.CreateObject();
-				dataInfo.packageId = "5abdb963-4f3f-4d97-8482-88e2049ab149";
-				dataInfo.maxChunkSize = 1048576;
-				dataInfo.chunkCount = 1;
-				dataInfo.compressedPackageSize = 359901; // Lenght of data
-				dataInfo.hash = new byte[] {57, 38, 13, 50, 39, 63, 88, 63, 59, 27, 63, 63, 63, 63, 6, 63, 54, 7, 84, 63, 47, 91, 63, 120, 63, 120, 42, 5, 104, 2, 63, 18};
+				dataInfo.packageId = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e";
+				dataInfo.maxChunkSize = 16384;
+				dataInfo.chunkCount = (uint)Math.Ceiling((double) content.Count() / 16384);
+				dataInfo.compressedPackageSize = (ulong)content.Count();
+				dataInfo.hash = packHash;
+				dataInfo.isPremium = false;
+				dataInfo.packType = 6;
 				SendPacket(dataInfo);
 				return;
 			}
@@ -341,14 +362,18 @@ namespace MiNET
 			McpeResourcePacksInfo packInfo = McpeResourcePacksInfo.CreateObject();
 			if (_serverHaveResources)
 			{
+
+				var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
+				var content = File.ReadAllBytes($"{directory}/base.zip");
+
 				packInfo.mustAccept = false;
-				packInfo.behahaviorpackinfos = new ResourcePackInfos
+				packInfo.texturepacks = new TexturePackInfos
 				{
-					new ResourcePackInfo()
+					new TexturePackInfo()
 					{
-						UUID = "5abdb963-4f3f-4d97-8482-88e2049ab149",
-						Version = "0.0.1",
-						Size = 359901
+						UUID = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e",
+						Version = "1.0.0",
+						Size = (ulong)content.Count(),
 					},
 				};
 			}
@@ -368,8 +393,8 @@ namespace MiNET
 				{
 					new PackIdVersion()
 					{
-						Id = "5abdb963-4f3f-4d97-8482-88e2049ab149",
-						Version = "0.0.1"
+						Id = "d32876c8-fbac-40c2-b040-8bf4c18a9b7e",
+						Version = "1.0.0"
 					},
 				};
 			}
