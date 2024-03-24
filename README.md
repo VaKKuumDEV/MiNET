@@ -18,13 +18,18 @@ This is fork of [MiNET](https://github.com/NiclasOlofsson/MiNET), that includes 
 ## Getting started
 Download minet.zip from [Releases](https://github.com/CobwebSMP/MiNET/releases), extract MiNET folder, run MiNET.Console.exe.
 This action will also create Worlds, Plugins and ResourcePacks folders.
+
 **Worlds** - You can load world LevelDB files exported with Minecraft Bedrock Edition 1.13 or converted to 1.13 format with [Chunker.app](https://chunker.app/). World data (level.dat, .... ) have to extracted in Worlds folder.
+
 **Plugins** - There isn't many plugins for MiNET but here and there you may find some or you can made one. Useful links: [Plugin documention](https://github.com/NiclasOlofsson/MiNET/wiki/Plugin-API-Documentation), [MiNET TestPlugin](https://github.com/NiclasOlofsson/MiNET/tree/master/src/MiNET/TestPlugin)
+
 **ResourcePacks** - Resource packs made for the latest game version should work also here. If you got pack with .mcpack extension, just rename it to .zip and it's good to go.
 
 ## Stability
 Since this software is used and maintained for our server purposes, this may not contain all features, updates and fixes.
+
 But if you found something you can always open an issue or pull request if you have solution.
+
 **Known problems** :
  - Saving isn't working properly, block entities may fail to save, blockstates may change values on save. Solution: Disable saving in server.conf.
 
