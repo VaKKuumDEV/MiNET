@@ -30,6 +30,7 @@ using log4net;
 using MiNET.Crafting;
 using MiNET.Items;
 using MiNET.Utils;
+using Newtonsoft.Json.Linq;
 
 namespace MiNET
 {
@@ -340,10 +341,27 @@ namespace MiNET
 				SetContainerItem(destination.ContainerId, destination.Slot, destItem);
 			}
 
-			if (destination.ContainerId == 21 || destination.ContainerId == 22)
+			if (destination.ContainerId == 22)
 			{
-				if (!(GetContainerItem(21, 14) is ItemAir) && !(GetContainerItem(22, 15) is ItemAir)) Enchantment.SendEnchantments(_player, GetContainerItem(21, 14));
-				else Enchantment.SendEmptyEnchantments(_player);
+				if (Enum.IsDefined(typeof(ItemType), GetContainerItem(21, 14).ItemType) && !(GetContainerItem(22, 15) is ItemAir))
+				{
+					Enchantment.SendEnchantments(_player, GetContainerItem(21, 14));
+				}
+				else
+				{
+					Enchantment.SendEmptyEnchantments(_player);
+				}
+			}
+			else if (destination.ContainerId == 23)
+			{
+				if (Enum.IsDefined(typeof(ItemType), GetContainerItem(21, 14).ItemType) && !(GetContainerItem(21, 14) is ItemAir) && !(GetContainerItem(22, 15) is ItemAir))
+				{
+					Enchantment.SendEnchantments(_player, GetContainerItem(21, 14));
+				}
+				else
+				{
+					Enchantment.SendEmptyEnchantments(_player);
+				}
 			}
 
 			stackResponses.Add(new StackResponseContainerInfo
@@ -405,10 +423,9 @@ namespace MiNET
 
 			SetContainerItem(destination.ContainerId, destination.Slot, destItem);
 
-			if (source.ContainerId == 21 || source.ContainerId == 22)
+			if (source.ContainerId == 22 || source.ContainerId == 23)
 			{
-				if (!(GetContainerItem(21, 14) is ItemAir) && !(GetContainerItem(22, 15) is ItemAir)) Enchantment.SendEnchantments(_player, GetContainerItem(21, 14));
-				else Enchantment.SendEmptyEnchantments(_player);
+				Enchantment.SendEmptyEnchantments(_player);
 			}
 
 			stackResponses.Add(new StackResponseContainerInfo
