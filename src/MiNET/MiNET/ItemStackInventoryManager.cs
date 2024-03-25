@@ -482,7 +482,7 @@ namespace MiNET
 		protected virtual void ProcessCraftAuto(CraftAutoAction action)
 		{
 			RecipeManager.resultMap.TryGetValue((int)action.RecipeNetworkId, out Item item);
-			_player.Inventory.UiInventory.Slots[50] = new Item(item.Id, item.Metadata, item.Count * action.craftCount);
+			_player.Inventory.UiInventory.Slots[50] = ItemFactory.GetItem(item.Id, item.Metadata, item.Count * action.craftCount);
 		}
 
 		protected virtual void ProcessCraftCreativeAction(CraftCreativeAction action)

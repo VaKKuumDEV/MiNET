@@ -101,8 +101,11 @@ namespace MiNET
 		{
 			if (itemToEnchant.ExtraData != null)
 			{
-				SendEmptyEnchantments(player);
-				return;
+				if (itemToEnchant.ExtraData.Contains("ench"))
+				{
+					SendEmptyEnchantments(player);
+					return;
+				}
 			}
 
 			var rnd = new Random();
