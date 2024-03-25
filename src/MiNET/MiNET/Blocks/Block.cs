@@ -91,6 +91,18 @@ namespace MiNET.Blocks
 			return null;
 		}
 
+		public virtual int GetDirection()
+		{
+			foreach (var state in GetState().States)
+			{
+				if (state is BlockStateInt s && s.Name == "direction")
+				{
+					return s.Value;
+				}
+			}
+			return 0;
+		}
+
 		public virtual BlockStateContainer GetGlobalState()
 		{
 			BlockStateContainer currentState = GetState();

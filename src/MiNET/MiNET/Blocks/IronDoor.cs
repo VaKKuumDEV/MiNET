@@ -24,7 +24,6 @@
 #endregion
 
 using System.Numerics;
-using MiNET.Utils;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
@@ -61,13 +60,6 @@ namespace MiNET.Blocks
 
 		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
-			Block block = this;
-			// Remove door
-			if (UpperBlockBit) block = world.GetBlock(GetNewCoordinatesFromFace(blockCoordinates, BlockFace.Down));
-
-			OpenBit = !OpenBit;
-			world.SetBlock(block);
-
 			return true;
 		}
 	}
