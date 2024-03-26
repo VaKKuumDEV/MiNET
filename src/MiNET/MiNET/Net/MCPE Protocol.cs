@@ -5793,7 +5793,7 @@ namespace MiNET.Net
 
 	}
 
-	public partial class McpeSpawnExperienceOrb : Packet<McpeSpawnExperienceOrb>
+	public partial class McpeSpawnExperienceOrb : Packet<McpeSpawnExperienceOrb>  //Deprecated, todo remove, looks like not even working anymore
 	{
 
 		public Vector3 position; // = null;

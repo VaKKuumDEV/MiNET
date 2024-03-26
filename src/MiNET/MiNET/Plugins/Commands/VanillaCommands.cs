@@ -35,6 +35,7 @@ using MiNET.Entities;
 using MiNET.Entities.Hostile;
 using MiNET.Entities.Passive;
 using MiNET.Entities.Vehicles;
+using MiNET.Entities.World;
 using MiNET.Items;
 using MiNET.Net;
 using MiNET.Plugins.Attributes;
@@ -306,6 +307,9 @@ namespace MiNET.Plugins.Commands
 					break;
 				case EntityType.Boat:
 					entity = new Boat(world);
+					break;
+				case EntityType.ExperienceOrb:
+					entity = new ExperienceOrb(world);
 					break;
 			}
 

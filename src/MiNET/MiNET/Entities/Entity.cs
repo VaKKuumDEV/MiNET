@@ -122,6 +122,7 @@ namespace MiNET.Entities
 			Owner = 5,
 			AvailableAir = 7,
 			PotionColor = 8,
+			ExperienceValue = 15,
 			EatingHaystack = 16,
 			FireworksType = 16,
 			MaybeAge = 24,
