@@ -114,6 +114,8 @@ namespace MiNET.Worlds
 		public int SaveInterval { get; set; } = 300;
 		public int UnloadInterval { get; set; } = -1;
 
+		public string fog { get; set; } = "";
+
 		public Level(LevelManager levelManager, string levelId, IWorldProvider worldProvider, EntityManager entityManager, GameMode gameMode = GameMode.Survival, Difficulty difficulty = Difficulty.Normal, int viewDistance = 11)
 		{
 			Random = new Random();
@@ -270,6 +272,13 @@ namespace MiNET.Worlds
 				}
 
 				newPlayer.IsSpawned = spawn;
+			}
+
+			if (fog != "")
+			{
+				McpePlayerFog msg = McpePlayerFog.CreateObject();
+				msg.fogstack = new fogStack(fog);
+				newPlayer.SendPacket(msg);
 			}
 
 			OnPlayerAdded(new LevelEventArgs(newPlayer, this));

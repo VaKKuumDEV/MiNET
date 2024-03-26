@@ -3821,6 +3821,26 @@ namespace MiNET.Net
 			}
 		}
 
+		public fogStack Read()
+		{
+			fogStack stack = new fogStack();
+			var effectCount = ReadUnsignedVarInt();
+			for (int i = 0; i < (int) effectCount; i++)
+			{
+				stack.fogList.Add(ReadString());
+			}
+			return stack;
+		}
+
+		public void Write(fogStack stack)
+		{
+			WriteUnsignedVarInt((uint)stack.fogList.Count);
+			foreach (string effect in stack.fogList)
+			{
+				Write(effect);
+			}
+		}
+
 		public bool CanRead()
 		{
 			return _reader.Position < _reader.Length;

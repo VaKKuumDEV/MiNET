@@ -686,6 +686,7 @@ namespace MiNET.Plugins.Commands
 		}
 
 		[Command(Name = "weather", Description = "Sets the weather")]
+		[Authorize(Permission = 4)]
 		public string Weather(Player commander, WeatherManager.weatherTypes weather)
 		{
 			var change = new WeatherManager(commander.Level);
@@ -703,6 +704,33 @@ namespace MiNET.Plugins.Commands
 				default:
 					return "";
 			}
+		}
+
+		[Command(Name = "fog", Description = "Change level fog settings")]
+		[Authorize(Permission = 4)]
+		public void fog(Player commander, mode action, string fogID)
+		{
+			if (action == mode.push)
+			{
+				McpePlayerFog msg = McpePlayerFog.CreateObject();
+				msg.fogstack = new fogStack(fogID);
+				commander.Level.RelayBroadcast(msg);
+				commander.Level.fog = fogID;
+				commander.SendMessage("Fog setting was added successfully");
+			}
+			else if(action == mode.remove)
+			{
+				McpePlayerFog msg = McpePlayerFog.CreateObject();
+				msg.fogstack = new fogStack("minecraft:fog_default");
+				commander.Level.RelayBroadcast(msg);
+				commander.Level.fog = "";
+				commander.SendMessage("Fog setting was removed successfully");
+			}
+		}
+
+		public enum mode
+		{
+			remove, push
 		}
 	}
 }

@@ -758,6 +758,11 @@ namespace MiNET.Client
 		{
 
 		}
+
+		public void HandleMcpePlayerFog(McpePlayerFog message)
+		{
+
+		}
 	}
 
 	public class DefaultMessageHandler : McpeClientMessageHandlerBase

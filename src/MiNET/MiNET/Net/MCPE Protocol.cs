@@ -254,6 +254,7 @@ namespace MiNET.Net
 		void HandleMcpeEmote(McpeEmotePacket message);
 		void HandleMcpeEmoteList(McpeEmoteList message);
 		void HandleMcpePermissionRequest(McpePermissionRequest message);
+		void HandleMcpePlayerFog(McpePlayerFog message);
 	}
 
 	public class McpeClientMessageDispatcher
@@ -665,6 +666,9 @@ namespace MiNET.Net
 				case McpeEmoteList msg:
 					_messageHandler.HandleMcpeEmoteList(msg);
 					break;
+				case McpePlayerFog msg:
+					_messageHandler.HandleMcpePlayerFog(msg);
+					break;
 				default:
 					return false;
 			}
@@ -1042,6 +1046,8 @@ namespace MiNET.Net
 						return McpePermissionRequest.CreateObject().Decode(buffer);
 					case 0x133:
 						return McpeSetInventoryOptions.CreateObject().Decode(buffer);
+					case 0xa0:
+						return McpePlayerFog.CreateObject().Decode(buffer);
 				}
 			}
 
@@ -10821,6 +10827,55 @@ namespace MiNET.Net
 			filtering = default(bool);
 			inventoryLayout = default(int);
 			craftingLayout = default(int);
+
+		}
+
+	}
+
+	public partial class McpePlayerFog : Packet<McpePlayerFog>
+	{
+
+		public fogStack fogstack; // = null;
+
+		public McpePlayerFog()
+		{
+			Id = 0xa0;
+			IsMcpe = true;
+		}
+
+		protected override void EncodePacket()
+		{
+			base.EncodePacket();
+
+			BeforeEncode();
+
+			Write(fogstack);
+
+			AfterEncode();
+		}
+
+		partial void BeforeEncode();
+		partial void AfterEncode();
+
+		protected override void DecodePacket()
+		{
+			base.DecodePacket();
+
+			BeforeDecode();
+
+			fogstack = Read();
+
+			AfterDecode();
+		}
+
+		partial void BeforeDecode();
+		partial void AfterDecode();
+
+		protected override void ResetPacket()
+		{
+			base.ResetPacket();
+
+			fogstack = default(fogStack);
 
 		}
 
