@@ -1365,7 +1365,7 @@ namespace MiNET.Worlds
 		public void Interact(Player player, Item itemInHand, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
 		{
 			Block target = GetBlock(blockCoordinates);
-			if (!player.IsSneaking && target.Interact(this, player, blockCoordinates, face, faceCoords)) return; // Handled in block interaction
+			if (!player.IsSneaking && OnBlockInteract(new BlockInteractEventArgs(player, this, target)) && target.Interact(this, player, blockCoordinates, face, faceCoords)) return; // Handled in block interaction
 
 			Log.Debug($"Item in hand: {itemInHand}");
 			if (itemInHand.Id == 356) { itemInHand = new ItemBlock(new UnpoweredRepeater()); }  //TODO: item translator
@@ -1398,6 +1398,15 @@ namespace MiNET.Worlds
 			}
 
 			itemInHand.PlaceBlock(this, player, blockCoordinates, face, faceCoords);
+		}
+
+		public event EventHandler<BlockInteractEventArgs> BlockInteract;
+
+		protected virtual bool OnBlockInteract(BlockInteractEventArgs e)
+		{
+			BlockInteract?.Invoke(this, e);
+
+			return !e.Cancel;
 		}
 
 		public event EventHandler<BlockBreakEventArgs> BlockBreak;
@@ -1804,6 +1813,16 @@ namespace MiNET.Worlds
 		{
 			Block = block;
 			Drops = drops;
+		}
+	}
+
+
+	public class BlockInteractEventArgs : LevelCancelEventArgs
+	{
+		public Block Block { get; private set; }
+		public BlockInteractEventArgs(Player player, Level level, Block block) : base(player, level)
+		{
+			Block = block;
 		}
 	}
 }
