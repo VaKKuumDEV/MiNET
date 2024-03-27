@@ -1,4 +1,4 @@
-#region LICENSE
+﻿#region LICENSE
 
 // The contents of this file are subject to the Common Public Attribution
 // License Version 1.0. (the "License"); you may not use this file except in
@@ -49,12 +49,12 @@ namespace MiNET.Entities.ImageProviders
 
 			if (MapData == null)
 			{
-				return null;
+				return GenerateColors(mapInfo);
 			}
 
 			if (MapData.Length != (mapInfo.Col * mapInfo.Row * 4))
 			{
-				return null;
+				return GenerateColors(mapInfo);
 			}
 
 			if (!_alreadySent)

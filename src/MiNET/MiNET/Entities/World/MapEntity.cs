@@ -51,23 +51,24 @@ namespace MiNET.Entities.World
 				EntityId = level.EntityManager.AddEntity(this) + 0xFFFF;
 			}
 
-			//ImageProvider = new MapImageProvider();
-			ImageProvider = new RandomColorMapImageProvider();
+			ImageProvider = new MapImageProvider();
 
-			var mapInfo = new MapInfo
+			if (MapInfo == null)
 			{
-				MapId = EntityId,
-				UpdateType = 0,
-				Scale = 0,
-				X = 0,
-				Z = 0,
-				Col = 128,
-				Row = 128,
-				XOffset = 0,
-				ZOffset = 0
-			};
-
-			MapInfo = mapInfo;
+				var mapInfo = new MapInfo
+				{
+					MapId = EntityId,
+					UpdateType = 0,
+					Scale = 0,
+					X = 0,
+					Z = 0,
+					Col = 128,
+					Row = 128,
+					XOffset = 0,
+					ZOffset = 0
+				};
+				MapInfo = mapInfo;
+			}
 		}
 
 		public override void SpawnToPlayers(Player[] players)
@@ -82,57 +83,29 @@ namespace MiNET.Entities.World
 
 		public override void OnTick(Entity[] entities)
 		{
-			//if (Level.TickTime % 2 != 0) return;
+			if (Level.TickTime % 2 != 0) return;
 
-			// if no image provider, do nothing
 			if (ImageProvider == null) return;
 
-			MapInfo.Decorators = new MapDecorator[0];
-			//MapInfo.Decorators = new MapDecorator[1];
-			//for (int i = 0; i < MapInfo.Decorators.Length; i++)
-			//{
-			//	var decorator = new MapDecorator
-			//	{
-			//		Rotation = (byte) (Level.TickTime % 16),
-			//		Icon = (byte) 1,
-			//		X = (byte) (Level.TickTime % 255),
-			//		Z = (byte) (Level.TickTime % 255),
-			//		Label = "",
-			//		Color = BitConverter.ToUInt32(new byte[] {0xff, 0xff, 0xff, 0xff}, 0),
-			//	};
-
-			//	MapInfo.Decorators[i] = decorator;
-			//}
-
-			var data = ImageProvider.GetData(MapInfo, false);
-			if (data != null)
+			if (MapInfo.Decorators == null)
 			{
-				MapInfo.Data = data;
-
-				MapInfo.UpdateType = initialized ? (byte) 2 : (byte) 8;
-
-				var mapInfo = (MapInfo) MapInfo.Clone();
-
-				var msg = McpeClientboundMapItemData.CreateObject();
-				msg.mapinfo = mapInfo;
-				Level.RelayBroadcast(msg);
-				initialized = true;
-				return;
+				MapInfo.Decorators = new MapDecorator[0];
 			}
 
-			var packet = ImageProvider.GetClientboundMapItemData(MapInfo);
-			if (packet != null)
+			if (MapInfo.Data == null)
 			{
-				Level.RelayBroadcast(packet);
-
-				return;
+				MapInfo.Data = ImageProvider.GetData(MapInfo, false);
 			}
+			
+			MapInfo.UpdateType = initialized ? (byte) 2 : (byte) 8;
 
-			var batchPacket = ImageProvider.GetBatch(MapInfo, false);
-			if (batchPacket != null)
-			{
-				Level.RelayBroadcast(batchPacket);
-			}
+			var mapInfo = (MapInfo) MapInfo.Clone();
+
+			var msg = McpeClientboundMapItemData.CreateObject();
+			msg.mapinfo = mapInfo;
+			Level.RelayBroadcast(msg);
+			initialized = true;
+			return;
 		}
 
 		public virtual void AddToMapListeners(Player player, long mapId)
