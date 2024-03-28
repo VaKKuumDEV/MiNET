@@ -25,14 +25,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Imaging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
-using Color = System.Drawing.Color;
 
 namespace MiNET.Utils.Skins
 {
@@ -106,7 +103,7 @@ namespace MiNET.Utils.Skins
 
 		public static byte[] GetTextureFromFile(string filename)
 		{
-			var bitmap = Image.Load<Rgba32>(filename);// new Image<Rgba32>(filename);
+			Bitmap bitmap = new Bitmap(filename);
 
 			var size = bitmap.Height * bitmap.Width * 4;
 
@@ -119,7 +116,7 @@ namespace MiNET.Utils.Skins
 			{
 				for (int x = 0; x < bitmap.Width; x++)
 				{
-					var color = bitmap[x, y];
+					var color = bitmap.GetPixel(x, y);
 					bytes[i++] = color.R;
 					bytes[i++] = color.G;
 					bytes[i++] = color.B;
@@ -137,7 +134,15 @@ namespace MiNET.Utils.Skins
 			int width = size == 0x10000 ? 128 : 64;
 			var height = size == 0x2000 ? 32 : (size == 0x4000 ? 64 : 128);
 
-			var bitmap = new Image<Rgba32>(width, height);
+			var bitmap = new Bitmap(width, height);
+
+			BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
+
+			int bytesPerPixel = Bitmap.GetPixelFormatSize(bitmap.PixelFormat) / 8;
+			int byteCount = bmpData.Stride * bitmap.Height;
+			byte[] rgbValues = new byte[byteCount];
+
+			System.Runtime.InteropServices.Marshal.Copy(bmpData.Scan0, rgbValues, 0, byteCount);
 
 			int i = 0;
 			for (int y = 0; y < bitmap.Height; y++)
@@ -149,10 +154,19 @@ namespace MiNET.Utils.Skins
 					byte b = bytes[i++];
 					byte a = bytes[i++];
 
-					bitmap[x, y] = new Rgba32(r, g, b, a);
+					int index = y * bmpData.Stride + x * bytesPerPixel;
+
+					rgbValues[index] = r;
+					rgbValues[index + 1] = g;
+					rgbValues[index + 2] = b;
+					if (bytesPerPixel == 4) { rgbValues[index + 3] = a; }
 				}
 			}
-			
+
+			System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, bmpData.Scan0, byteCount);
+
+			bitmap.UnlockBits(bmpData);
+
 			bitmap.Save(filename);
 		}
 
