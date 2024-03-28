@@ -254,6 +254,7 @@ namespace MiNET
 		RecordWard = 110,
 		Record11 = 111,
 		RecordWait = 112,
+		RecordNull = 113,
 
 		Flop = 114,
 		ElderguardianCurse = 115,
