@@ -2859,12 +2859,7 @@ namespace MiNET.Blocks
 
     public partial class Composter : Block // 468 typeof=Composter
     {
-        [StateRange(0, 8)] public  int ComposterFillLevel { get; set; } = 0;
-        
-        public Composter() : base(468)
-        {
-            IsGenerated = true;
-        }
+        [StateRange(0, 8)] public int ComposterFillLevel { get; set; } = 0;
 
         public override void SetState(List<IBlockState> states)
         {
