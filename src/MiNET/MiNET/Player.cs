@@ -2680,6 +2680,7 @@ namespace MiNET
 			LastAttackTarget = target;
 
 			Player player = target as Player;
+			Entity entity = target as Entity;
 			if (player != null)
 			{
 				double damage = DamageCalculator.CalculateItemDamage(this, itemInHand, player);
@@ -2705,11 +2706,13 @@ namespace MiNET
 				{
 					player.HealthManager.Ignite(fireAspectLevel * 80);
 				}
+				OnPlayerDamageToPlayer(new PlayerDamageToPlayerEventArgs(player, this));
 			}
 			else
 			{
 				// This is totally wrong. Need to merge with the above damage calculation
 				target.HealthManager.TakeHit(this, itemInHand, CalculateDamage(target), DamageCause.EntityAttack);
+				OnPlayerDamageToEntity(new PlayerDamageToEntityEventArgs(entity, this));
 			}
 
 			Inventory.DamageItemInHand(ItemDamageReason.EntityAttack, target, null);
@@ -4114,6 +4117,20 @@ namespace MiNET
 			Ticked?.Invoke(this, e);
 		}
 
+		public event EventHandler<PlayerDamageToPlayerEventArgs> PlayerDamageToPlayer;
+
+		protected virtual void OnPlayerDamageToPlayer(PlayerDamageToPlayerEventArgs e)
+		{
+			PlayerDamageToPlayer?.Invoke(this, e);
+		}
+
+		public event EventHandler<PlayerDamageToEntityEventArgs> PlayerDamageToEntity;
+
+		protected virtual void OnPlayerDamageToEntity(PlayerDamageToEntityEventArgs e)
+		{
+			PlayerDamageToEntity?.Invoke(this, e);
+		}
+
 		public virtual void HandleMcpeNetworkStackLatency(McpeNetworkStackLatency message)
 		{
 			var packet = McpeNetworkStackLatency.CreateObject();
@@ -4142,6 +4159,34 @@ namespace MiNET
 		{
 			Player = player;
 			Level = player?.Level;
+		}
+	}
+
+	public class PlayerDamageToPlayerEventArgs : EventArgs
+	{
+		public Player Player { get; }
+		public Player Damager { get; }
+		public Level Level { get; }
+
+		public PlayerDamageToPlayerEventArgs(Player player, Player damager)
+		{
+			Player = player;
+			Damager = damager;
+			Level = player?.Level;
+		}
+	}
+
+	public class PlayerDamageToEntityEventArgs : EventArgs
+	{
+		public Entity Entity { get; }
+		public Player Damager { get; }
+		public Level Level { get; }
+
+		public PlayerDamageToEntityEventArgs(Entity entity, Player damager)
+		{
+			Entity = entity;
+			Damager = damager;
+			Level = entity?.Level;
 		}
 	}
 }
