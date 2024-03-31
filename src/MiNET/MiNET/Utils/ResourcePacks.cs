@@ -131,4 +131,10 @@ namespace MiNET.Utils
 		public Header Header { get; set; }
 		public List<Module> Modules { get; set; }
 	}
+
+	public class PlayerPackMapData
+	{
+		public string pack { get; set; }
+		public ResourcePackType type { get; set; }
+	}
 }

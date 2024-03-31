@@ -2424,8 +2424,7 @@ namespace MiNET.Net
 		{
 			if (packInfos == null)
 			{
-				_writer.Write((short) 0); // LE
-				//WriteVarInt(0);
+				_writer.Write((short) 0);
 				return;
 			}
 

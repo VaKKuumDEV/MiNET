@@ -109,8 +109,9 @@ namespace MiNET
 
 		public DamageCalculator DamageCalculator { get; set; } = new DamageCalculator();
 
-		public TexturePackInfos PlayerPackData { get; set; }
-		public Dictionary<string, string> PlayerPackMap = new Dictionary<string, string>();
+		public TexturePackInfos PlayerPackData { get; set; } = new TexturePackInfos();
+		public ResourcePackInfos PlayerPackDataB { get; set; } = new ResourcePackInfos();
+		public Dictionary<string, PlayerPackMapData> PlayerPackMap = new Dictionary<string, PlayerPackMapData>();
 
 		public Player(MiNetServer server, IPEndPoint endPoint) : base(EntityType.None, null)
 		{
@@ -176,7 +177,7 @@ namespace MiNET
 			string result = JsonConvert.SerializeObject(message, jsonSerializerSettings);
 			Log.Debug($"{message.GetType().Name}\n{result}");
 
-			var content = File.ReadAllBytes(PlayerPackMap[message.packageId]);
+			var content = File.ReadAllBytes(PlayerPackMap[message.packageId].pack);
 
 			McpeResourcePackChunkData chunkData = McpeResourcePackChunkData.CreateObject();
 			chunkData.packageId = message.packageId;
@@ -323,7 +324,7 @@ namespace MiNET
 				foreach (string packid in message.resourcepackids)
 				{
 					var uuid = packid.Substring(0, Math.Min(packid.Length, 36));
-					var content = File.ReadAllBytes(PlayerPackMap[uuid]);
+					var content = File.ReadAllBytes(PlayerPackMap[uuid].pack);
 
 					SHA256 sha256 = SHA256.Create();
 					byte[] packHash = sha256.ComputeHash(content);
@@ -335,7 +336,7 @@ namespace MiNET
 					dataInfo.compressedPackageSize = (ulong) content.Count();
 					dataInfo.hash = packHash;
 					dataInfo.isPremium = false;
-					dataInfo.packType = 6;
+					dataInfo.packType = (byte)PlayerPackMap[uuid].type;
 					SendPacket(dataInfo);
 				}
 				return;
@@ -359,6 +360,7 @@ namespace MiNET
 					MiNetServer.FastThreadPool.QueueUserWorkItem(() => { Start(null); });
 				}
 				PlayerPackData.Clear();
+				PlayerPackDataB.Clear();
 				PlayerPackMap.Clear();
 				return;
 			}
@@ -370,43 +372,87 @@ namespace MiNET
 			if (_serverHaveResources)
 			{
 				var packInfos = new TexturePackInfos();
-				var directory = Config.GetProperty("ResourceDirectory", Path.GetDirectoryName(new Uri(Assembly.GetEntryAssembly().Location).LocalPath));
+				var packInfosB = new ResourcePackInfos();
+				var directory = Config.GetProperty("ResourceDirectory", "ResourcePacks");
+				var directoryB = Config.GetProperty("BehaviorDirectory", "BehaviorPacks");
 				packInfo.mustAccept = Config.GetProperty("ForceResourcePacks", false);
 
-				foreach (var zipPack in Directory.GetFiles(directory, "*.zip"))
+				if (Directory.Exists(directory))
 				{
-					var archive = ZipFile.OpenRead(zipPack);
-					var packDir = archive.Entries[0].FullName.Substring(0, archive.Entries[0].FullName.IndexOf('/'));
-
-					if (packDir == null)
+					foreach (var zipPack in Directory.GetFiles(directory, "*.zip"))
 					{
-						Log.Error($"Invalid resource pack {zipPack}. Wrong folder structure");
-						continue;
-					}
+						var archive = ZipFile.OpenRead(zipPack);
+						var packDir = archive.Entries[0].FullName.Substring(0, archive.Entries[0].FullName.IndexOf('/'));
 
-					var entry = archive.GetEntry($"{packDir}/manifest.json");
+						if (packDir == null)
+						{
+							Disconnect($"Invalid resource pack {zipPack}. Wrong folder structure");
+							continue;
+						}
 
-					if (entry == null)
-					{
-						Log.Error($"Invalid resource pack {packDir}. Unable to locate manifest.json");
-						continue;
-					}
+						var entry = archive.GetEntry($"{packDir}/manifest.json");
 
-					using (var stream = entry.Open())
-					using (var reader = new StreamReader(stream))
-					{
-						string jsonContent = reader.ReadToEnd();
-						manifestStructure obj = JsonConvert.DeserializeObject<manifestStructure>(jsonContent);
-						packInfos.Add(new TexturePackInfo { 
-							UUID = obj.Header.Uuid, 
-							Version = $"{obj.Header.Version[0]}.{obj.Header.Version[1]}.{obj.Header.Version[2]}", 
-							Size = (ulong) File.ReadAllBytes(zipPack).Count(),
-						});
-						PlayerPackMap.Add(obj.Header.Uuid, zipPack);
+						if (entry == null)
+						{
+							Disconnect($"Invalid resource pack {packDir}. Unable to locate manifest.json");
+							continue;
+						}
+						using (var stream = entry.Open())
+						using (var reader = new StreamReader(stream))
+						{
+							string jsonContent = reader.ReadToEnd();
+							manifestStructure obj = JsonConvert.DeserializeObject<manifestStructure>(jsonContent);
+							packInfos.Add(new TexturePackInfo
+							{
+								UUID = obj.Header.Uuid,
+								Version = $"{obj.Header.Version[0]}.{obj.Header.Version[1]}.{obj.Header.Version[2]}",
+								Size = (ulong) File.ReadAllBytes(zipPack).Count(),
+							});
+							PlayerPackMap.Add(obj.Header.Uuid, new PlayerPackMapData { pack = zipPack, type = ResourcePackType.Resources });
+						}
 					}
+					PlayerPackData = packInfos;
 				}
-				PlayerPackData = packInfos;
+
+				if (Directory.Exists(directoryB))
+				{
+					foreach (var zipPack in Directory.GetFiles(directoryB, "*.zip"))
+					{
+						var archive = ZipFile.OpenRead(zipPack);
+						var entry = "";
+
+						for (byte i = 0; i < archive.Entries.Count; i++)
+						{
+							if (archive.Entries[i].ToString() == "manifest.json")
+							{
+								entry = archive.Entries[i].ToString();
+							}
+						}
+
+						if (entry == "")
+						{
+							Disconnect($"Invalid behaviour pack {zipPack}. Unable to locate manifest.json");
+							continue;
+						}
+
+						using (var stream = archive.GetEntry(entry).Open())
+						using (var reader = new StreamReader(stream))
+						{
+							string jsonContent = reader.ReadToEnd();
+							manifestStructure obj = JsonConvert.DeserializeObject<manifestStructure>(jsonContent);
+							packInfosB.Add(new ResourcePackInfo
+							{
+								UUID = obj.Header.Uuid,
+								Version = $"{obj.Header.Version[0]}.{obj.Header.Version[1]}.{obj.Header.Version[2]}",
+								Size = (ulong) File.ReadAllBytes(zipPack).Count()
+							});
+							PlayerPackMap.Add(obj.Header.Uuid, new PlayerPackMapData { pack = zipPack, type = ResourcePackType.Behaviour });
+						}
+					}
+					PlayerPackDataB = packInfosB;
+				}
 				packInfo.texturepacks = packInfos;
+				packInfo.behahaviorpackinfos = packInfosB;
 			}
 			SendPacket(packInfo);
 		}
@@ -420,11 +466,17 @@ namespace MiNET
 			{
 				packStack.mustAccept = Config.GetProperty("ForceResourcePacks", false);
 				var packVersions = new ResourcePackIdVersions();
+				var packVersionsB = new ResourcePackIdVersions();
 				foreach (var packData in PlayerPackData)
 				{
 					packVersions.Add(new PackIdVersion { Id = packData.UUID, Version = packData.Version });
 				}
+				foreach (var packData in PlayerPackDataB)
+				{
+					packVersionsB.Add(new PackIdVersion { Id = packData.UUID, Version = packData.Version });
+				}
 				packStack.resourcepackidversions = packVersions;
+				packStack.behaviorpackidversions = packVersionsB;
 			}
 
 			SendPacket(packStack);
