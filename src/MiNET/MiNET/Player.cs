@@ -382,6 +382,8 @@ namespace MiNET
 					foreach (var zipPack in Directory.GetFiles(directory, "*.zip"))
 					{
 						var archive = ZipFile.OpenRead(zipPack);
+
+						/*
 						var packDir = archive.Entries[0].FullName.Substring(0, archive.Entries[0].FullName.IndexOf('/'));
 
 						if (packDir == null)
@@ -391,13 +393,32 @@ namespace MiNET
 						}
 
 						var entry = archive.GetEntry($"{packDir}/manifest.json");
+						*/
 
-						if (entry == null)
+						var entry = "";
+
+						for (byte i = 0; i < archive.Entries.Count; i++) //todo too time consuming. I think. For large packs...
 						{
-							Disconnect($"Invalid resource pack {packDir}. Unable to locate manifest.json");
+							if (archive.Entries[i].ToString() == "manifest.json")
+							{
+								entry = archive.Entries[i].ToString();
+							}
+						}
+
+						if (entry == "")
+						{
+							Disconnect($"Invalid resource pack {zipPack}. Unable to locate manifest.json");
 							continue;
 						}
-						using (var stream = entry.Open())
+
+						bool encrypted = false;
+
+						if (File.Exists($"{zipPack}.key"))
+						{
+							encrypted = true;
+						}
+
+						using (var stream = archive.GetEntry(entry).Open())
 						using (var reader = new StreamReader(stream))
 						{
 							string jsonContent = reader.ReadToEnd();
@@ -407,6 +428,8 @@ namespace MiNET
 								UUID = obj.Header.Uuid,
 								Version = $"{obj.Header.Version[0]}.{obj.Header.Version[1]}.{obj.Header.Version[2]}",
 								Size = (ulong) File.ReadAllBytes(zipPack).Count(),
+								ContentKey = encrypted ? File.ReadAllText($"{zipPack}.key") : "",
+								ContentIdentity = obj.Header.Uuid
 							});
 							PlayerPackMap.Add(obj.Header.Uuid, new PlayerPackMapData { pack = zipPack, type = ResourcePackType.Resources });
 						}
