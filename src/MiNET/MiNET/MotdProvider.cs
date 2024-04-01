@@ -81,7 +81,10 @@ namespace MiNET
 				clock = 0;
 			}
 			Motd = Motds[clock / 10];
-			clock++;
+			if (DateTime.Now.Second % 5 == 0)
+			{
+				clock++;
+			}
 			return string.Format($"{"MCPE"};{Motd};{protocolVersion};{McpeProtocolInfo.GameVersion};{NumberOfPlayers};{MaxNumberOfPlayers};{serverId};{SecondLine};{GameMode};");
 		}
 	}
