@@ -441,7 +441,7 @@ namespace MiNET.Worlds
 				{
 					McpeText message = McpeText.CreateObject();
 					message.type = (byte) type;
-					message.source = sender == null ? "" : sender.Username;
+					message.source = sender == null ? "" : sender.NameTag;
 					message.message = line;
 					message.needsTranslation = needsTranslation;
 					message.parameters = parameters;
