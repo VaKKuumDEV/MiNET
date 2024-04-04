@@ -64,6 +64,7 @@ namespace MiNET
 
 		public LoginMessageHandler(BedrockMessageHandler bedrockHandler, RakSession session, IServerManager serverManager)
 		{
+			JWT.DefaultSettings.JsonMapper = new NewtonsoftMapper();
 			_bedrockHandler = bedrockHandler;
 			_session = session;
 			_serverManager = serverManager;
