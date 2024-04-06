@@ -792,6 +792,10 @@ namespace MiNET
 		public void HandleMcpeSetInventoryOptions(McpeSetInventoryOptions message)
 		{
 		}
+
+		public void HandleMcpeAnvilDamage(McpeAnvilDamage message)
+		{
+		}
 	}
 
 	public interface IServerManager

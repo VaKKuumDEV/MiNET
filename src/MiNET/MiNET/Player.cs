@@ -4223,6 +4223,12 @@ namespace MiNET
 			Log.Debug($"InventoryOptions: leftTab={message.leftTab}, rightTab={message.rightTab}, filtering={message.filtering}, inventoryLayout={message.inventoryLayout}, craftingLayout={message.craftingLayout}");
 		}
 
+		public virtual void HandleMcpeAnvilDamage(McpeAnvilDamage message)
+		{
+			//TODO handle this.
+			Log.Debug($"Damaged anvil at {message.coordinates.X} {message.coordinates.Y} {message.coordinates.Z} Amount = {message.damageAmount}");
+		}
+
 	}
 
 	public class PlayerEventArgs : EventArgs

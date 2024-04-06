@@ -161,6 +161,10 @@ namespace MiNET
 			StackRequestSlotInfo source = action.Source;
 
 			Item sourceItem = GetContainerItem(source.ContainerId, source.Slot);
+			if (source.ContainerId == 0) //anvil
+			{
+				ProcessAnvilAction(action);
+			}
 			sourceItem.Count -= count;
 			if (sourceItem.Count <= 0)
 			{
@@ -498,6 +502,12 @@ namespace MiNET
 
 		protected virtual void ProcessCraftRecipeOptionalAction(CraftRecipeOptionalAction action)
 		{
+		}
+
+		protected virtual void ProcessAnvilAction(ConsumeAction action)
+		{
+			var sourceItem = GetContainerItem(13, 1);
+			_player.Inventory.UiInventory.Slots[50] = new Item(sourceItem.Id, 0, 1);
 		}
 
 		private Item GetContainerItem(int containerId, int slot)
