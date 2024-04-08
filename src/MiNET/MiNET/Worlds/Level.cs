@@ -494,7 +494,7 @@ namespace MiNET.Worlds
 					{
 						if (player.Level.GetBlock((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z) is PressurePlateBase)
 						{
-							if (!player.Level.BlockWithTicks.ContainsKey(new BlockCoordinates((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z)));
+							if (!player.Level.BlockWithTicks.ContainsKey(new BlockCoordinates((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z)))
 							{
 								player.Level.ScheduleBlockTick(player.Level.GetBlock(new BlockCoordinates((int) player.KnownPosition.X, (int) player.KnownPosition.Y, (int) player.KnownPosition.Z)), 20);
 							}

@@ -31185,7 +31185,7 @@
     ]
   },
   {
-    "Command": "tube_coral_fan [\"coral_fan_direction\" = 1]"
+    "Command": "tube_coral_fan [\"coral_fan_direction\" = 1]",
     "Name": "minecraft:coral_fan",
     "Id": 388,
     "Data": 5,
@@ -31275,7 +31275,7 @@
     ]
   },
   {
-    "Command": "dead_tube_coral_fan [\"coral_fan_direction\" = 0]"
+    "Command": "dead_tube_coral_fan [\"coral_fan_direction\" = 0]",
     "Name": "minecraft:coral_fan_dead",
     "Id": 389,
     "Data": 0,
@@ -31365,7 +31365,7 @@
     ]
   },
     {
-    "Command": "dead_tube_coral_fan [\"coral_fan_direction\" = 1]"
+    "Command": "dead_tube_coral_fan [\"coral_fan_direction\" = 1]",
     "Name": "minecraft:coral_fan_dead",
     "Id": 389,
     "Data": 8,
