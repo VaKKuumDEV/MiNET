@@ -3382,8 +3382,16 @@ namespace MiNET
 			lock (_sendChunkSync)
 			{
 				var chunkPosition = new ChunkCoordinates(position);
+				McpeWrapper chunk = null;
 
-				McpeWrapper chunk = Level.GetChunk(chunkPosition)?.GetBatch();
+				foreach (ChunkColumn cachedChunk in Level.GetLoadedChunks())
+				{
+					if (cachedChunk.X == chunkPosition.X && cachedChunk.Z == chunkPosition.Z)
+					{
+						chunk = cachedChunk.GetBatch();
+					}
+				}
+
 				if (!_chunksUsed.ContainsKey(chunkPosition))
 				{
 					_chunksUsed.Add(chunkPosition, chunk);
