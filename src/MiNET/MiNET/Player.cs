@@ -2238,7 +2238,7 @@ namespace MiNET
 				HeadYaw = message.headYaw
 			};
 
-			IsFalling = verticalMove < 0 && !IsOnGround;
+			IsFalling = verticalMove < 0 && !IsOnGround && !IsGliding;
 
 			if (IsFalling)
 			{
