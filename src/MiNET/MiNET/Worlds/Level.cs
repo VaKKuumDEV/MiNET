@@ -1382,6 +1382,7 @@ namespace MiNET.Worlds
 			if (itemInHand.Id == 404) { itemInHand = new ItemBlock(new UnpoweredComparator()); }  //TODO: item translator
 			if (itemInHand.Id == 410) { itemInHand = new ItemBlock(new Hopper()); }  //TODO: item translator
 			if (itemInHand.Id == 720) { itemInHand = new ItemBlock(new Campfire()); }  //TODO: item translator
+			if (itemInHand.Id == 331) { itemInHand = new ItemBlock(new RedstoneWire()); }  //TODO: item translator
 			if (itemInHand is ItemBlock)
 			{
 				Block block = GetBlock(blockCoordinates);

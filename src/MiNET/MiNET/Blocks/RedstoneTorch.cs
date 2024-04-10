@@ -66,19 +66,14 @@ namespace MiNET.Blocks
 
 		public override void BreakBlock(Level level, BlockFace face, bool silent = false)
 		{
+			BlockCoordinates[] cord = { Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockUp(), Coordinates.BlockDown() };
 			level.CancelBlockTick(this);
-			BlockCoordinates cord = this.Coordinates.BlockNorth();
-			for (int i = 0; i < 5; i++)
+			foreach (BlockCoordinates bCord in cord)
 			{
-				if (i == 0) { cord = this.Coordinates.BlockNorth(); }
-				if (i == 1) { cord = this.Coordinates.BlockSouth(); }
-				if (i == 2) { cord = this.Coordinates.BlockWest(); }
-				if (i == 3) { cord = this.Coordinates.BlockEast(); }
-				if (i == 4) { cord = this.Coordinates.BlockUp(); }
-				var blockk = level.GetBlock(cord);
+				var blockk = level.GetBlock(bCord);
 				if (blockk is LitRedstoneLamp)
 				{
-					level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(cord) });
+					level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
 				}
 			}
 			base.BreakBlock(level, face);
@@ -92,18 +87,13 @@ namespace MiNET.Blocks
 		public override void OnTick(Level level, bool isRandom)
 		{
 			if (isRandom) { return; }
-			BlockCoordinates cord = this.Coordinates.BlockNorth();
-			for (int i = 0; i < 5; i++)
+			BlockCoordinates[] cord = { Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockUp(), Coordinates.BlockDown() };
+			foreach (BlockCoordinates bCord in cord)
 			{
-				if (i == 0) { cord = this.Coordinates.BlockNorth(); }
-				if (i == 1) { cord = this.Coordinates.BlockSouth(); }
-				if (i == 2) { cord = this.Coordinates.BlockWest(); }
-				if (i == 3) { cord = this.Coordinates.BlockEast(); }
-				if (i == 4) { cord = this.Coordinates.BlockUp(); }
-				var blockk = level.GetBlock(cord);
+				var blockk = level.GetBlock(bCord);
 				if (blockk is RedstoneLamp)
 				{
-					level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(cord) });
+					level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
 				}
 			}
 			level.ScheduleBlockTick(this, 10);
