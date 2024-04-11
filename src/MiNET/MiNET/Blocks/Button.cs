@@ -54,28 +54,24 @@ namespace MiNET.Blocks
 			return true;
 		}
 
-		public override bool Interact(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
+		public override bool Interact(Level level, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoord)
 		{
-			world.BroadcastSound(blockCoordinates, LevelSoundEventType.ButtonOn);
+			level.BroadcastSound(blockCoordinates, LevelSoundEventType.ButtonOn);
 			ButtonPressedBit = true;
 			FacingDirection = Direction;
-			world.SetBlock(this);
-			world.ScheduleBlockTick(this, TickRate);
+			level.SetBlock(this);
+			level.ScheduleBlockTick(this, TickRate);
 
-			if (!world.RedstoneEnabled) { return true; }
+			if (!level.RedstoneEnabled) { return true; }
 
-			cord = [ Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockUp(), Coordinates.BlockDown() ];
+			cord = [Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockDown(), Coordinates.BlockNorthEast(), Coordinates.BlockNorthWest(), Coordinates.BlockSouthEast(), Coordinates.BlockSouthWest()];
 
 			if (ButtonPressedBit)
 			{
 				foreach (BlockCoordinates bCord in cord)
 				{
-					var blockk = world.GetBlock(bCord);
-					if (blockk is RedstoneLamp)
-					{
-						world.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-					}
-					TurnOff(world);
+					RedstoneController.signal(level, bCord, true);
+					TurnOff(level);
 				}
 			}
 			return true;
@@ -89,16 +85,12 @@ namespace MiNET.Blocks
 			level.SetBlock(this);
 		}
 
-		private async void TurnOff(Level world)
+		private async void TurnOff(Level level)
 		{
 			await Task.Delay((TickRate / 2) * 100);
 			foreach (BlockCoordinates bCord in cord)
 			{
-				var blockk = world.GetBlock(bCord);
-				if (blockk is RedstoneLamp)
-				{
-					world.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-				}
+				RedstoneController.signal(level, bCord, false);
 			}
 		}
 	}

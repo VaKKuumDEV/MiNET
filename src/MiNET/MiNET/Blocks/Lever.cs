@@ -35,6 +35,7 @@ namespace MiNET.Blocks
 	public partial class Lever : Block
 	{
 		public static string Direction { get; set; }
+		private BlockCoordinates[] cord = [];
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Lever));
 		public Lever() : base(69)
 		{
@@ -106,14 +107,7 @@ namespace MiNET.Blocks
 			foreach (BlockCoordinates bCord in cord)
 			{
 				var blockk = level.GetBlock(bCord);
-				if (blockk is LitRedstoneLamp)
-				{
-					level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-				}
-				if (blockk is RedstoneWire)
-				{
-					level.SetBlock(new RedstoneWire { Coordinates = new BlockCoordinates(bCord), RedstoneSignal = 0 });
-				}
+				RedstoneController.signal(level, bCord, false);
 			}
 			base.BreakBlock(level, face);
 		}
@@ -126,27 +120,16 @@ namespace MiNET.Blocks
 		public override void OnTick(Level level, bool isRandom)
 		{
 			if (isRandom) { return; }
-			BlockCoordinates[] cord = { Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockUp(), Coordinates.BlockDown() };
+			cord = [Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockDown(), Coordinates.BlockNorthEast(), Coordinates.BlockNorthWest(), Coordinates.BlockSouthEast(), Coordinates.BlockSouthWest()];
 			foreach (BlockCoordinates bCord in cord)
 			{
-				var blockk = level.GetBlock(bCord);
 				if (OpenBit)
 				{
-					if (blockk is RedstoneLamp)
-					{
-						level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-					}
+					RedstoneController.signal(level, bCord, true);
 				}
 				else
 				{
-					if (blockk is LitRedstoneLamp)
-					{
-						level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-					}
-					if (blockk is RedstoneWire)
-					{
-						level.ScheduleBlockTick(level.GetBlock(bCord), 10);
-					}
+					RedstoneController.signal(level, bCord, false);
 				}
 			}
 			level.ScheduleBlockTick(this, 10);

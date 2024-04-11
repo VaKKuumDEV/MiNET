@@ -55,6 +55,19 @@ namespace MiNET.Blocks
 						currentSignal = 15;
 					}
 				}
+				if (blockk is Button)
+				{
+					var button = blockk as Button;
+					if (button.ButtonPressedBit == true)
+					{
+						currentSignal = 15;
+					}
+				}
+				if (blockk is RedstoneTorch)
+				{
+					var button = blockk as RedstoneTorch;
+					currentSignal = 15;
+				}
 				else if (blockk is RedstoneWire)
 				{
 					var wire = blockk as RedstoneWire;
@@ -71,16 +84,15 @@ namespace MiNET.Blocks
 						level.ScheduleBlockTick(blockk, 10);
 					}
 				}
-				else if (blockk is RedstoneLamp)
+				else
 				{
 					if ( RedstoneSignal > 0)
 					{
-						level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
+						RedstoneController.signal(level, bCord, true);
 					}
 					else
 					{
-						level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-
+						RedstoneController.signal(level, bCord, false);
 					}
 				}
 				level.SetBlock(new RedstoneWire { Coordinates = new BlockCoordinates(Coordinates), RedstoneSignal = currentSignal == -1 ? 0 : currentSignal });

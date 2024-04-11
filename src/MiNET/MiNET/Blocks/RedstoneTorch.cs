@@ -70,11 +70,7 @@ namespace MiNET.Blocks
 			level.CancelBlockTick(this);
 			foreach (BlockCoordinates bCord in cord)
 			{
-				var blockk = level.GetBlock(bCord);
-				if (blockk is LitRedstoneLamp)
-				{
-					level.SetBlock(new RedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-				}
+				RedstoneController.signal(level, bCord, false);
 			}
 			base.BreakBlock(level, face);
 		}
@@ -90,11 +86,7 @@ namespace MiNET.Blocks
 			BlockCoordinates[] cord = { Coordinates.BlockNorth(), Coordinates.BlockSouth(), Coordinates.BlockEast(), Coordinates.BlockWest(), Coordinates.BlockUp(), Coordinates.BlockDown() };
 			foreach (BlockCoordinates bCord in cord)
 			{
-				var blockk = level.GetBlock(bCord);
-				if (blockk is RedstoneLamp)
-				{
-					level.SetBlock(new LitRedstoneLamp { Coordinates = new BlockCoordinates(bCord) });
-				}
+				RedstoneController.signal(level, bCord, true);
 			}
 			level.ScheduleBlockTick(this, 10);
 		}
