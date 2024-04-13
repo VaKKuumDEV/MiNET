@@ -3655,7 +3655,7 @@ namespace MiNET.Net
 			WriteSignedVarInt(amplifier);
 			Write(particles);
 			WriteSignedVarInt(duration);
-			WriteUnsignedVarLong(20);
+			Write(tick);
 
 			AfterEncode();
 		}
@@ -3675,7 +3675,7 @@ namespace MiNET.Net
 			amplifier = ReadSignedVarInt();
 			particles = ReadBool();
 			duration = ReadSignedVarInt();
-			tick = ReadUnsignedVarLong();
+			tick = ReadLong();
 
 			AfterDecode();
 		}
@@ -4361,7 +4361,7 @@ namespace MiNET.Net
 
 			WriteUnsignedVarLong(runtimeEntityId);
 			Write(velocity);
-			WriteUnsignedVarLong(20);
+			WriteUnsignedVarLong(tick);
 
 			AfterEncode();
 		}
