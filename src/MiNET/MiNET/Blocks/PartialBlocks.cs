@@ -2291,15 +2291,10 @@ namespace MiNET.Blocks
         } // method
     } // class
 
-    public partial class CarvedPumpkin : Block // 410 typeof=CarvedPumpkin
+    public partial class CarvedPumpkin // 410 typeof=CarvedPumpkin
     {
 		public override string Name => "minecraft:carved_pumpkin";
 		[StateRange(0, 3)] public int Direction { get; set; } = 0;
-
-		public CarvedPumpkin() : base(410)
-        {
-            IsGenerated = true;
-        }
 
         public override void SetState(List<IBlockState> states)
         {
