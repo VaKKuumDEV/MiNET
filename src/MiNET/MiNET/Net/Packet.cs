@@ -3412,7 +3412,7 @@ namespace MiNET.Net
 			var listSize = ReadInt();
 			for (int i = 0; i < listSize; i++)
 			{
-				mapData.mapData.Add(new pixels { pixel = ReadUnsignedVarInt(), index = ReadShort()});
+				mapData.mapData.Add(new pixelsData { pixel = ReadUnsignedVarInt(), index = ReadShort()});
 			}
 			return mapData;
 		}

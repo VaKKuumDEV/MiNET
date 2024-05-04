@@ -30,14 +30,11 @@
 using System;
 using System.Net;
 using System.Numerics;
-using System.Threading;
 using MiNET.Utils; 
 using MiNET.Utils.Skins;
 using MiNET.Items;
 using MiNET.Crafting;
 using MiNET.Net.RakNet;
-using little = MiNET.Utils.Int24; // friendly name
-using LongString = System.String;
 using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
 using MiNET.Utils.Nbt;
