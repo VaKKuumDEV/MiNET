@@ -76,7 +76,7 @@ namespace MiNET
 
 		public virtual void HandleMcpeRequestNetworkSettings(McpeRequestNetworkSettings message)
 		{
-			Log.Warn(message.protocolVersion);
+			//Log.Warn(message.protocolVersion);
 			//_playerInfo.ProtocolVersion = message.protocolVersion;
 			/*if (_playerInfo.ProtocolVersion < McpeProtocolInfo.ProtocolVersion || _playerInfo.ProtocolVersion > 65535)
 			{
