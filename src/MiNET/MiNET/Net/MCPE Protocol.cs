@@ -6949,6 +6949,7 @@ namespace MiNET.Net
 		public int fadeOutTime; // = null;
 		public string xuid; // = null;
 		public string platformOnlineId; // = null;
+		public string filteredString; // = null;
 
 		public McpeSetTitle()
 		{
@@ -6969,6 +6970,7 @@ namespace MiNET.Net
 			WriteSignedVarInt(fadeOutTime);
 			Write(xuid);
 			Write(platformOnlineId);
+			Write(filteredString);
 
 			AfterEncode();
 		}
@@ -6989,6 +6991,7 @@ namespace MiNET.Net
 			fadeOutTime = ReadSignedVarInt();
 			xuid = ReadString();
 			platformOnlineId = ReadString();
+			filteredString = ReadString();
 
 			AfterDecode();
 		}
