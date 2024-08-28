@@ -4368,6 +4368,7 @@ namespace MiNET.Net
 		public long riderId; // = null;
 		public byte linkType; // = null;
 		public byte unknown; // = null;
+		public float vehicleAngularVelocity; // = null;
 
 		public McpeSetEntityLink()
 		{
@@ -4386,6 +4387,7 @@ namespace MiNET.Net
 			Write(linkType);
 			Write(unknown);
 			Write(false);
+			Write(vehicleAngularVelocity);
 
 			AfterEncode();
 		}
@@ -4403,6 +4405,7 @@ namespace MiNET.Net
 			riderId = ReadSignedVarLong();
 			linkType = ReadByte();
 			unknown = ReadByte();
+			vehicleAngularVelocity = ReadFloat();
 
 			AfterDecode();
 		}
@@ -4418,6 +4421,7 @@ namespace MiNET.Net
 			riderId=default(long);
 			linkType=default(byte);
 			unknown=default(byte);
+			vehicleAngularVelocity=default(float);
 		}
 
 	}
