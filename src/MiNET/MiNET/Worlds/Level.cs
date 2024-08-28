@@ -1492,7 +1492,7 @@ namespace MiNET.Worlds
 				//Log.Error(drops);
 			}
 
-			if ((player != null && player.GameMode == GameMode.Survival) || (player == null && GameMode == GameMode.Survival))
+			if ((player != null && player.GameMode == GameMode.Survival && DoTiledrops) || (player == null && GameMode == GameMode.Survival && DoTiledrops))
 			{
 				foreach (Item drop in drops)
 				{

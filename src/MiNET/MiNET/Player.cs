@@ -1119,6 +1119,7 @@ namespace MiNET
 
 				SpawnPosition = (PlayerLocation) (SpawnPosition ?? Level.SpawnPoint).Clone();
 				KnownPosition = (PlayerLocation) SpawnPosition.Clone();
+				NameTag = (string) Username.Clone();
 
 				// Check if the user already exist, that case bumpt the old one
 				Level.RemoveDuplicatePlayers(Username, ClientId);
@@ -2177,7 +2178,7 @@ namespace MiNET
 
 			if (string.IsNullOrEmpty(text)) return;
 
-			Level.BroadcastMessage($"<{Username}> {text}", sender: this);
+			Level.BroadcastMessage(text, sender: this);
 		}
 
 		private int _lastOrderingIndex;
