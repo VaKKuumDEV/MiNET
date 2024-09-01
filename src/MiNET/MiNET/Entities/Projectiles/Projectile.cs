@@ -221,12 +221,15 @@ namespace MiNET.Entities.Projectiles
 
 		private Entity CheckEntityCollide(Vector3 position, Vector3 direction)
 		{
-			Ray2 ray = new Ray2 {x = position, d = Vector3.Normalize(direction)};
+			float Distance = 2.0f;
+
+			Vector3 offsetPosition = position + Vector3.Normalize(direction) * Distance;
+
+			Ray2 ray = new Ray2 { x = offsetPosition, d = Vector3.Normalize(direction) };
 
 			var entities = Level.Entities.Values.Concat(Level.GetSpawnedPlayers()).OrderBy(entity => Vector3.Distance(position, entity.KnownPosition.ToVector3()));
 			foreach (Entity entity in entities)
 			{
-				if (entity == Shooter) continue;
 				if (entity == this) continue;
 				if (entity is Projectile) continue; // This should actually be handled for some projectiles
 				if (entity is Player player && player.GameMode == GameMode.Spectator) continue;
