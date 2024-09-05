@@ -116,7 +116,7 @@ namespace MiNET.Entities.Projectiles
 
 			bool collided = false;
 			Block collidedWithBlock = null;
-			if (entityCollided != null)
+			if (entityCollided != null && Damage >= 0)
 			{
 				double speed = Math.Sqrt(Velocity.X * Velocity.X + Velocity.Y * Velocity.Y + Velocity.Z * Velocity.Z);
 				double damage = Math.Ceiling(speed * Damage);
@@ -143,14 +143,16 @@ namespace MiNET.Entities.Projectiles
 					player.LastAttackTarget = entityCollided;
 				}
 
+				entityCollided.HealthManager.TakeHit(this, (int) damage, DamageCause.Projectile);
 				entityCollided.HealthManager.LastDamageSource = Shooter;
 				OnHitEntity(entityCollided);
 				DespawnEntity();
-
-				if (damage == -1) { return; }
-
-				entityCollided.HealthManager.TakeHit(this, (int) damage, DamageCause.Projectile);
 				return;
+			}else if (entityCollided != null && Damage == -1)
+			{
+				entityCollided.HealthManager.LastDamageSource = Shooter;
+				OnHitEntity(entityCollided);
+				DespawnEntity();
 			}
 			else
 			{
