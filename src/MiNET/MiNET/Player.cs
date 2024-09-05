@@ -1880,7 +1880,10 @@ namespace MiNET
 			bool oldNoAi = NoAi;
 			SetNoAi(true);
 
-			SendChangeDimension(Dimension.Nether);
+			if (useLoadingScreen)
+			{
+				SendChangeDimension(Dimension.Nether);
+			}
 
 			if (toLevel == null && levelFunc != null)
 			{
@@ -1899,7 +1902,10 @@ namespace MiNET
 
 			Action transferFunc = delegate
 			{
-				SendChangeDimension(Dimension.Overworld);
+				if (useLoadingScreen)
+				{
+					SendChangeDimension(Dimension.Overworld);
+				}
 
 				Level.RemovePlayer(this, true);
 
