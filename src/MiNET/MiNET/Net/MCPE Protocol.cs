@@ -5537,6 +5537,7 @@ namespace MiNET.Net
 			WriteSignedVarInt(dimension);
 			Write(position);
 			Write(respawn);
+			Write(false);
 
 			AfterEncode();
 		}

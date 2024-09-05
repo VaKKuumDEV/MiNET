@@ -653,8 +653,6 @@ namespace MiNET
 			Level.RelayBroadcast(this, msg);
 		}
 
-		Action _dimensionFunc;
-
 		/// <summary>
 		///     Handles the player action.
 		/// </summary>
@@ -771,12 +769,7 @@ namespace MiNET
 				}
 				case PlayerAction.DimensionChangeAck:
 				{
-					if (_dimensionFunc != null)
-					{
-						_dimensionFunc();
-						_dimensionFunc = null;
-					}
-
+					SendPlayerStatus(3);
 					break;
 				}
 				case PlayerAction.WorldImmutable:
@@ -1452,40 +1445,20 @@ namespace MiNET
 
 		public virtual void Teleport(PlayerLocation newPosition)
 		{
-			if (!Monitor.TryEnter(_teleportSync)) return;
+			KnownPosition = newPosition;
+			LastUpdatedTime = DateTime.UtcNow;
 
-			try
-			{
-				bool oldNoAi = NoAi;
-				SetNoAi(true);
+			var packet = McpeMovePlayer.CreateObject();
+			packet.runtimeEntityId = EntityManager.EntityIdSelf;
+			packet.x = newPosition.X;
+			packet.y = newPosition.Y + 1.62f;
+			packet.z = newPosition.Z;
+			packet.yaw = newPosition.Yaw;
+			packet.headYaw = newPosition.HeadYaw;
+			packet.pitch = newPosition.Pitch;
+			packet.mode = 1;
 
-				if (!IsChunkInCache(newPosition))
-				{
-					// send teleport straight up, no chunk loading
-					SetPosition(new PlayerLocation
-					{
-						X = KnownPosition.X,
-						Y = 4000,
-						Z = KnownPosition.Z,
-						Yaw = 91,
-						Pitch = 28,
-						HeadYaw = 91,
-					});
-
-					ForcedSendChunk(newPosition);
-				}
-
-				// send teleport to spawn
-				SetPosition(newPosition);
-
-				SetNoAi(oldNoAi);
-			}
-			finally
-			{
-				Monitor.Exit(_teleportSync);
-			}
-
-			MiNetServer.FastThreadPool.QueueUserWorkItem(SendChunksForKnownPosition);
+			SendPacket(packet);
 		}
 
 		private bool IsChunkInCache(PlayerLocation position)
@@ -1907,10 +1880,7 @@ namespace MiNET
 			bool oldNoAi = NoAi;
 			SetNoAi(true);
 
-			if (useLoadingScreen)
-			{
-				SendChangeDimension(Dimension.Nether);
-			}
+			SendChangeDimension(Dimension.Nether);
 
 			if (toLevel == null && levelFunc != null)
 			{
@@ -1929,10 +1899,7 @@ namespace MiNET
 
 			Action transferFunc = delegate
 			{
-				if (useLoadingScreen)
-				{
-					SendChangeDimension(Dimension.Overworld);
-				}
+				SendChangeDimension(Dimension.Overworld);
 
 				Level.RemovePlayer(this, true);
 
@@ -1977,16 +1944,7 @@ namespace MiNET
 				});
 			};
 
-
-			if (useLoadingScreen)
-			{
-				_dimensionFunc = transferFunc;
-				ForcedSendEmptyChunks();
-			}
-			else
-			{
-				transferFunc();
-			}
+			transferFunc();
 		}
 
 		protected virtual void SendChangeDimension(Dimension dimension, bool respawn = false, Vector3 position = new Vector3())
