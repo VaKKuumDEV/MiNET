@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Numerics;
 using MiNET.Net;
-using MiNET.Utils.Vectors;
 using MiNET.Worlds;
 
 namespace MiNET.Particles
 {
 	public class SplashPotionParticle : LegacyParticle
 	{
-		public SplashPotionParticle(Level level, BlockCoordinates coordinates, int r, int g, int b) : base(0, level)
+		public SplashPotionParticle(Level level, Vector3 coordinates, int r, int g, int b) : base(0, level)
 		{
 			Data = CustomPotionColor(r, g, b);
 			Position = coordinates;
