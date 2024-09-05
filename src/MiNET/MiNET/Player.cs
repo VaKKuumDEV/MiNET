@@ -1890,16 +1890,6 @@ namespace MiNET
 				toLevel = levelFunc();
 			}
 
-			SetPosition(new PlayerLocation
-			{
-				X = KnownPosition.X,
-				Y = 4000,
-				Z = KnownPosition.Z,
-				Yaw = 91,
-				Pitch = 28,
-				HeadYaw = 91,
-			});
-
 			Action transferFunc = delegate
 			{
 				if (useLoadingScreen)
@@ -1928,10 +1918,7 @@ namespace MiNET
 
 				CleanCache();
 
-				ForcedSendChunk(SpawnPosition);
-
-				// send teleport to spawn
-				SetPosition(SpawnPosition);
+				ForcedSendChunk(Level.SpawnPoint);
 
 				MiNetServer.FastThreadPool.QueueUserWorkItem(() =>
 				{
@@ -1948,6 +1935,7 @@ namespace MiNET
 						postSpawnAction?.Invoke();
 					});
 				});
+				SetPosition(SpawnPosition);
 			};
 
 			transferFunc();

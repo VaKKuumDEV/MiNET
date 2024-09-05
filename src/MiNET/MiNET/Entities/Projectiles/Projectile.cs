@@ -30,7 +30,6 @@ using log4net;
 using MiNET.Blocks;
 using MiNET.Net;
 using MiNET.Particles;
-using MiNET.Utils;
 using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
 using MiNET.Worlds;
@@ -144,11 +143,13 @@ namespace MiNET.Entities.Projectiles
 					player.LastAttackTarget = entityCollided;
 				}
 
-				entityCollided.HealthManager.TakeHit(this, (int) damage, DamageCause.Projectile);
 				entityCollided.HealthManager.LastDamageSource = Shooter;
-
 				OnHitEntity(entityCollided);
 				DespawnEntity();
+
+				if (damage == -1) { return; }
+
+				entityCollided.HealthManager.TakeHit(this, (int) damage, DamageCause.Projectile);
 				return;
 			}
 			else
