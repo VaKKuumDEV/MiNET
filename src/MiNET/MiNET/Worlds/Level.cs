@@ -1744,6 +1744,16 @@ namespace MiNET.Worlds
 			packet.blockId = blockId;
 			RelayBroadcast(sender, packet);
 		}
+
+		public void BroadcastSound(PlayerLocation position, LevelSoundEventType sound, string entityType = null, bool isBabyMob = false) //todo use this for all entities
+		{
+			var packet = McpeLevelSoundEvent.CreateObject();
+			packet.position = position;
+			packet.soundId = (uint) sound;
+			packet.entityType = entityType;
+			packet.isBabyMob = isBabyMob;
+			RelayBroadcast(packet);
+		}
 	}
 
 	public class LevelEventArgs : EventArgs
