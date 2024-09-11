@@ -24,6 +24,7 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Security.Cryptography;
@@ -33,9 +34,12 @@ using log4net;
 using MiNET.Net;
 using MiNET.Utils;
 using MiNET.Utils.Cryptography;
+using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
+using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
+using static MiNET.Entities.Entity;
 
 namespace MiNET.Client
 {
@@ -286,6 +290,9 @@ namespace MiNET.Client
 
 		public virtual void HandleMcpeSetEntityData(McpeSetEntityData message)
 		{
+			//Log.Warn(JsonConvert.SerializeObject(message, Formatting.Indented));
+
+			
 			/*if (message.metadata[0] == null) { return; }
 			MetadataLong metadataLong = message.metadata[0] as MetadataLong;
 			byte[] bytes = BitConverter.GetBytes(metadataLong.Value);

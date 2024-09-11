@@ -544,7 +544,7 @@ namespace MiNET
 				if (message.unknown0 == 0)
 				{
 					MetadataDictionary metadata = new MetadataDictionary();
-					metadata[42] = new MetadataString(message.unknown1);
+					//metadata[42] = new MetadataString(message.unknown1); todo whats this
 					entity.SetEntityData(metadata);
 				}
 			}
@@ -3733,7 +3733,6 @@ namespace MiNET
 		{
 			var metadata = base.GetMetadata();
 			metadata[(int) MetadataFlags.NameTag] = new MetadataString(NameTag ?? Username);
-			metadata[(int) MetadataFlags.ButtonText] = new MetadataString(ButtonText ?? string.Empty);
 			metadata[(int) MetadataFlags.PlayerFlags] = new MetadataByte((byte) (IsSleeping ? 0b10 : 0));
 			metadata[(int) MetadataFlags.BedPosition] = new MetadataIntCoordinates((int) SpawnPosition.X, (int) SpawnPosition.Y, (int) SpawnPosition.Z);
 

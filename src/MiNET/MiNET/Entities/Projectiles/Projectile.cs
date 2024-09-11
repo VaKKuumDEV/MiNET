@@ -86,7 +86,7 @@ namespace MiNET.Entities.Projectiles
 
 			if (Shooter != null)
 			{
-				metadata[5] = new MetadataLong(Shooter.EntityId);
+				metadata[(int) MetadataFlags.Owner] = new MetadataLong(Shooter.EntityId);
 			}
 
 			return metadata;

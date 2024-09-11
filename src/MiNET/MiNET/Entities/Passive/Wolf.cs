@@ -57,10 +57,8 @@ namespace MiNET.Entities.Passive
 			TargetBehaviors.Add(new HurtByTargetBehavior(this));
 			TargetBehaviors.Add(new FindAttackableEntityTargetBehavior<Sheep>(this, 16));
 			TargetBehaviors.Add(new FindAttackableEntityTargetBehavior<Rabbit>(this, 16));
-			//TargetBehaviors.Add(new FindAttackableEntityTargetBehavior<Fox>(this, 16));
 
 			Behaviors.Add(new SittingBehavior(this));
-			//Behaviors.Add(new JumpAttackBehavior(this, 1.0));
 			Behaviors.Add(new MeleeAttackBehavior(this, 1.0, 16));
 			Behaviors.Add(new OwnerHurtByTargetBehavior(this));
 			Behaviors.Add(new OwnerHurtTargetBehavior(this));
@@ -77,6 +75,16 @@ namespace MiNET.Entities.Passive
 				if (Owner == player)
 				{
 					IsSitting = !IsSitting;
+					var item = player.Inventory.GetItemInHand();
+					if (player.Inventory.GetItemInHand() is ItemDye)
+					{
+						var color = ItemDye.toColorCode(item.Metadata);
+						if (color != 255)
+						{
+							CollarColor = color;
+							item.Count--;
+						}
+					}
 					BroadcastSetEntityData();
 				}
 				else
@@ -128,29 +136,14 @@ namespace MiNET.Entities.Passive
 		public override MetadataDictionary GetMetadata()
 		{
 			MetadataDictionary metadata = base.GetMetadata();
-			metadata[1] = new MetadataInt(12);
-			metadata[2] = new MetadataInt(0);
 			metadata[(int) MetadataFlags.Color] = new MetadataByte(CollarColor);
-			//metadata[4] = new MetadataString("Testing");
 			if (Owner != null)
 			{
 				metadata[(int) MetadataFlags.Owner] = new MetadataLong(Owner.EntityId);
 			}
-			metadata[7] = new MetadataShort(300);
-			metadata[8] = new MetadataInt(0);
-			metadata[9] = new MetadataByte(0);
-			metadata[38] = new MetadataLong(0);
-			metadata[39] = new MetadataFloat(1.0f);
-			metadata[44] = new MetadataShort(300);
-			metadata[45] = new MetadataInt(0);
-			metadata[46] = new MetadataByte(0);
-			metadata[47] = new MetadataInt(0);
-			metadata[53] = new MetadataFloat(0.6f);
-			metadata[54] = new MetadataFloat(0.8f);
-			metadata[56] = new MetadataVector3(0, 0, 0);
-			metadata[57] = new MetadataByte(0);
-			metadata[58] = new MetadataFloat(0f);
-			metadata[59] = new MetadataFloat(0f);
+			metadata[(int) MetadataFlags.CollisionBoxWidth] = new MetadataFloat(0.6f);
+			metadata[(int) MetadataFlags.CollisionBoxHeight] = new MetadataFloat(0.8f);
+			metadata[(int) MetadataFlags.EntityAge] = new MetadataShort(0);
 
 			return metadata;
 		}
