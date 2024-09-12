@@ -124,31 +124,6 @@ namespace MiNET.Entities.Behaviors
 			_entity.Controller.LookAt(owner);
 		}
 
-		private bool GetNextTile(out Tile next)
-		{
-			next = null;
-			if (_currentPath.NoPath()) return false;
-
-			next = _currentPath.First();
-
-			BlockCoordinates currPos = (BlockCoordinates) _entity.KnownPosition;
-			if ((int) next.X == currPos.X && (int) next.Y == currPos.Z)
-			{
-				_currentPath.Remove(next);
-
-				if (!GetNextTile(out next)) return false;
-			}
-
-			return true;
-		}
-
-		public double Distance(Player player, Tile tile)
-		{
-			Vector2 pos1 = new Vector2(player.KnownPosition.X, player.KnownPosition.Z);
-			Vector2 pos2 = new Vector2((float) tile.X, (float) tile.Y);
-			return (pos1 - pos2).Length();
-		}
-
 		public override void OnEnd()
 		{
 			_entity.Velocity = Vector3.Zero;

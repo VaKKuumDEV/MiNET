@@ -3283,7 +3283,8 @@ namespace MiNET
 			levelSettings.permissionLevel = (byte) PermissionLevel;
 			levelSettings.gameVersion = "";
 			levelSettings.hasEduFeaturesEnabled = true;
-			
+			levelSettings.onlySpawnV1Villagers = false;
+
 			var startGame = McpeStartGame.CreateObject();
 			startGame.levelSettings = levelSettings;
 			startGame.entityIdSelf = EntityId;
@@ -3291,7 +3292,7 @@ namespace MiNET
 			startGame.playerGamemode = (int) GameMode;
 			startGame.spawn = SpawnPosition;
 			startGame.rotation = new Vector2(KnownPosition.HeadYaw, KnownPosition.Pitch);
-			
+
 			startGame.levelId = "1m0AAMIFIgA=";
 			startGame.worldName = Level.LevelName;
 			startGame.premiumWorldTemplateId = "";
