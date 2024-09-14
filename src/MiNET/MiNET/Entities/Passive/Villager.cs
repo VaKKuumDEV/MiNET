@@ -31,7 +31,6 @@ namespace MiNET.Entities.Passive
 {
 	public class Villager : PassiveMob
 	{
-		public int Variant { get; set; }
 		public Villager(Level level) : base(EntityType.Villager, level)
 		{
 			Width = Length = 0.6;
