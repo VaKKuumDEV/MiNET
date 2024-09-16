@@ -487,7 +487,6 @@ namespace MiNET
 			
 			if (_serverHaveResources)
 			{
-				packStack.mustAccept = Config.GetProperty("ForceResourcePacks", false);
 				var packVersions = new ResourcePackIdVersions();
 				var packVersionsB = new ResourcePackIdVersions();
 				foreach (var packData in PlayerPackData)
