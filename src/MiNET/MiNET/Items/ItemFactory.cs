@@ -458,11 +458,8 @@ namespace MiNET.Items
 				Block block = BlockFactory.GetBlockById(blockId);
 				var runtimeId = BlockFactory.GetRuntimeId(blockId, (byte) metadata);
 
-				if (runtimeId < BlockFactory.BlockPalette.Count)
-				{
-					var blockState = BlockFactory.BlockPalette[(int) runtimeId];
-					block.SetState(blockState);
-				}
+				var blockState = BlockFactory.BlockPalette[(int) runtimeId];
+				block.SetState(blockState);
 
 				if (CustomBlockItemFactory == null)
 				{

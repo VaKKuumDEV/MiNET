@@ -475,7 +475,6 @@ namespace MiNET
 					PlayerPackDataB = packInfosB;
 				}
 				packInfo.texturepacks = packInfos;
-				packInfo.behahaviorpackinfos = packInfosB;
 			}
 			SendPacket(packInfo);
 		}
@@ -2503,11 +2502,11 @@ namespace MiNET
 					return;
 				}
 
-				if (Log.IsDebugEnabled) Log.Debug($"Player {Username} called set equipment with held hotbar slot {message.selectedSlot} with item {message.item}");
+				if (Log.IsDebugEnabled) Log.Debug($"Player {Username} called set equipment with held hotbar slot {message.selectedSlot} with item {message.item}, RuntimeID: {message.item.RuntimeId}");
 
 				Inventory.SetHeldItemSlot(selectedHotbarSlot, false);
 				if (Log.IsDebugEnabled)
-					Log.Debug($"Player {Username} now holding {Inventory.GetItemInHand()}");
+					Log.Debug($"Player {Username} now holding {Inventory.GetItemInHand()} RuntimeID: {Inventory.GetItemInHand().RuntimeId}");
 			}
 			else if (message.windowsId == 119)
 			{
@@ -3291,7 +3290,6 @@ namespace MiNET
 			startGame.playerGamemode = (int) GameMode;
 			startGame.spawn = SpawnPosition;
 			startGame.rotation = new Vector2(KnownPosition.HeadYaw, KnownPosition.Pitch);
-
 			startGame.levelId = "1m0AAMIFIgA=";
 			startGame.worldName = Level.LevelName;
 			startGame.premiumWorldTemplateId = "";

@@ -1322,7 +1322,7 @@ namespace MiNET.Worlds
 			}
 			else
 			{
-				Log.Error("NULL");
+				//Log.Error("NULL");
 			}
 
 			chunk.RemoveBlockEntity(blockCoordinates);

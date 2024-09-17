@@ -24,7 +24,6 @@
 #endregion
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Security.Cryptography;
@@ -34,12 +33,9 @@ using log4net;
 using MiNET.Net;
 using MiNET.Utils;
 using MiNET.Utils.Cryptography;
-using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
-using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
-using static MiNET.Entities.Entity;
 
 namespace MiNET.Client
 {
@@ -118,11 +114,11 @@ namespace MiNET.Client
 			//response.responseStatus = 3;
 			//SendPackage(response);
 
-			if (message.behahaviorpackinfos.Count != 0)
+			if (message.texturepacks.Count != 0)
 			{
 				var resourcePackIds = new ResourcePackIds();
 
-				foreach (ResourcePackInfo packInfo in message.behahaviorpackinfos)
+				foreach (ResourcePackInfo packInfo in message.texturepacks)
 				{
 					resourcePackIds.Add(packInfo.UUID);
 				}
@@ -273,7 +269,7 @@ namespace MiNET.Client
 
 		public virtual void HandleMcpeMobEquipment(McpeMobEquipment message)
 		{
-			/*Log.Warn($"Entity with {message.runtimeEntityId} is holding {message.item.Name}");*/
+			Log.Warn($"Entity with {message.runtimeEntityId} is holding {message.item.Name}");
 		}
 
 		public virtual void HandleMcpeMobArmorEquipment(McpeMobArmorEquipment message)
@@ -292,7 +288,6 @@ namespace MiNET.Client
 		{
 			//Log.Warn(JsonConvert.SerializeObject(message, Formatting.Indented));
 
-			
 			/*if (message.metadata[0] == null) { return; }
 			MetadataLong metadataLong = message.metadata[0] as MetadataLong;
 			byte[] bytes = BitConverter.GetBytes(metadataLong.Value);
