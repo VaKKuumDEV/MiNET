@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using fNbt;
 using log4net;
 using MiNET.Crafting;
 using MiNET.Items;
@@ -75,7 +76,7 @@ namespace MiNET
 					}
 					case CraftRecipeOptionalAction craftRecipeOptionalAction:
 					{
-						ProcessCraftRecipeOptionalAction(craftRecipeOptionalAction);
+						ProcessCraftRecipeOptionalAction(craftRecipeOptionalAction, actions.filteredString);
 						break;
 					}
 					case CraftResultDeprecatedAction craftResultDeprecatedAction:
@@ -160,10 +161,6 @@ namespace MiNET
 			StackRequestSlotInfo source = action.Source;
 
 			Item sourceItem = GetContainerItem(source.ContainerId, source.Slot);
-			if (source.ContainerId == 0) //anvil
-			{
-				ProcessAnvilAction(action);
-			}
 			sourceItem.Count -= count;
 			if (sourceItem.Count <= 0)
 			{
@@ -517,19 +514,52 @@ namespace MiNET
 			creativeItem = ItemFactory.GetItem(creativeItem.Id, creativeItem.Metadata);
 			creativeItem.Count = (byte) creativeItem.MaxStackSize;
 			creativeItem.UniqueId = Environment.TickCount;
-			creativeItem.ExtraData = InventoryUtils.CreativeInventoryItems[(int) action.CreativeItemNetworkId].ExtraData;
+			if (creativeItem.ExtraData == null)
+			{
+				creativeItem.ExtraData = InventoryUtils.CreativeInventoryItems[(int) action.CreativeItemNetworkId].ExtraData;
+			}
 			Log.Debug($"Creating {creativeItem}");
 			_player.Inventory.UiInventory.Slots[50] = creativeItem;
 		}
 
-		protected virtual void ProcessCraftRecipeOptionalAction(CraftRecipeOptionalAction action)
-		{
-		}
-
-		protected virtual void ProcessAnvilAction(ConsumeAction action)
+		protected virtual void ProcessCraftRecipeOptionalAction(CraftRecipeOptionalAction action, List<string> strings)
 		{
 			var sourceItem = GetContainerItem(13, 1);
-			_player.Inventory.UiInventory.Slots[50] = new Item(sourceItem.Id, 0, 1);
+			var secondItem = GetContainerItem(13, 2);
+
+			NbtCompound data = new NbtCompound(string.Empty);
+
+			if (secondItem != null)
+			{
+				if (sourceItem.ExtraData != null)
+				{
+					data = sourceItem.ExtraData.Clone() as NbtCompound;
+				}
+			}
+
+			if (secondItem is ItemEnchantedBook) // Enchanting mode
+			{
+				NbtList nbt = GetContainerItem(13, 2).ExtraData.Get<NbtList>("ench").Clone() as NbtList;
+				data.Add(nbt);
+			}
+			else if (secondItem is ItemAir) // Rename mode
+			{
+				NbtCompound nbt = new NbtCompound("display")
+				{
+					new NbtString("Name", strings[0]),
+				};
+				data.Add(nbt);
+			}
+			else if (secondItem is Item) // Repairing mode
+			{
+				//todo repair
+			}
+
+			var item = sourceItem.Clone() as Item;
+			item.UniqueId = Environment.TickCount;
+			item.ExtraData = data;
+
+			_player.Inventory.UiInventory.Slots[50] = item;
 		}
 
 		private Item GetContainerItem(int containerId, int slot)

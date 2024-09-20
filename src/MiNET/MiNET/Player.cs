@@ -2696,40 +2696,46 @@ namespace MiNET
 
 			LastAttackTarget = target;
 
-			Player player = target as Player;
-			Entity entity = target as Entity;
-			if (player != null)
+			if (target is Player player)
 			{
-				double damage = DamageCalculator.CalculateItemDamage(this, itemInHand, player);
-
-				if (IsFalling)
-				{
-					damage += DamageCalculator.CalculateFallDamage(this, damage, player);
-				}
-
-				damage += DamageCalculator.CalculateEffectDamage(this, damage, player);
-
-				if (damage < 0) damage = 0;
-
-				damage += DamageCalculator.CalculateDamageIncreaseFromEnchantments(this, itemInHand, player);
-				var reducedDamage = (int) DamageCalculator.CalculatePlayerDamage(this, player, itemInHand, damage, DamageCause.EntityAttack);
-				player.HealthManager.TakeHit(this, itemInHand, reducedDamage, DamageCause.EntityAttack);
-				if (reducedDamage < damage)
-				{
-					player.Inventory.DamageArmor();
-				}
-				var fireAspectLevel = itemInHand.GetEnchantingLevel(EnchantingType.FireAspect);
-				if (fireAspectLevel > 0)
-				{
-					player.HealthManager.Ignite(fireAspectLevel * 80);
-				}
-				OnPlayerDamageToPlayer(new PlayerDamageToPlayerEventArgs(player, this));
+				if (!OnPlayerDamageToPlayer(new PlayerDamageToPlayerEventArgs(player, this))) { return; }
 			}
 			else
 			{
-				// This is totally wrong. Need to merge with the above damage calculation
-				target.HealthManager.TakeHit(this, itemInHand, CalculateDamage(target), DamageCause.EntityAttack);
-				OnPlayerDamageToEntity(new PlayerDamageToEntityEventArgs(entity, this));
+				Entity entity = target as Entity;
+
+				if (!OnPlayerDamageToEntity(new PlayerDamageToEntityEventArgs(entity, this)) && entity != null) { return; }
+			}
+
+			double damage = DamageCalculator.CalculateItemDamage(this, itemInHand, target);
+
+			if (IsFalling)
+			{
+				damage += DamageCalculator.CalculateFallDamage(this, damage, target);
+			}
+
+			damage += DamageCalculator.CalculateEffectDamage(this, damage, target);
+
+			if (damage < 0) damage = 0;
+
+			damage += DamageCalculator.CalculateDamageIncreaseFromEnchantments(this, itemInHand, target);
+
+			var reducedDamage = (int) DamageCalculator.CalculatePlayerDamage(this, target, itemInHand, damage, DamageCause.EntityAttack);
+
+			target.HealthManager.TakeHit(this, itemInHand, reducedDamage, DamageCause.EntityAttack);
+
+			var fireAspectLevel = itemInHand.GetEnchantingLevel(EnchantingType.FireAspect);
+			if (fireAspectLevel > 0)
+			{
+				target.HealthManager.Ignite(fireAspectLevel * 80);
+			}
+
+			if (target is Player playerT)
+			{
+				if (reducedDamage < damage)
+				{
+					playerT.Inventory.DamageArmor();
+				}
 			}
 
 			Inventory.DamageItemInHand(ItemDamageReason.EntityAttack, target, null);
@@ -4156,16 +4162,18 @@ namespace MiNET
 
 		public event EventHandler<PlayerDamageToPlayerEventArgs> PlayerDamageToPlayer;
 
-		protected virtual void OnPlayerDamageToPlayer(PlayerDamageToPlayerEventArgs e)
+		protected virtual bool OnPlayerDamageToPlayer(PlayerDamageToPlayerEventArgs e)
 		{
 			PlayerDamageToPlayer?.Invoke(this, e);
+			return !e.Cancel;
 		}
 
 		public event EventHandler<PlayerDamageToEntityEventArgs> PlayerDamageToEntity;
 
-		protected virtual void OnPlayerDamageToEntity(PlayerDamageToEntityEventArgs e)
+		protected virtual bool OnPlayerDamageToEntity(PlayerDamageToEntityEventArgs e)
 		{
 			PlayerDamageToEntity?.Invoke(this, e);
+			return !e.Cancel;
 		}
 
 		public virtual void HandleMcpeNetworkStackLatency(McpeNetworkStackLatency message)
@@ -4205,13 +4213,11 @@ namespace MiNET
 		}
 	}
 
-	public class PlayerDamageToPlayerEventArgs : EventArgs
+	public class PlayerDamageToPlayerEventArgs : LevelCancelEventArgs
 	{
-		public Player Player { get; }
 		public Player Damager { get; }
-		public Level Level { get; }
 
-		public PlayerDamageToPlayerEventArgs(Player player, Player damager)
+		public PlayerDamageToPlayerEventArgs(Player player, Player damager) : base(player, player?.Level)
 		{
 			Player = player;
 			Damager = damager;
@@ -4219,13 +4225,12 @@ namespace MiNET
 		}
 	}
 
-	public class PlayerDamageToEntityEventArgs : EventArgs
+	public class PlayerDamageToEntityEventArgs : LevelCancelEventArgs
 	{
 		public Entity Entity { get; }
 		public Player Damager { get; }
-		public Level Level { get; }
 
-		public PlayerDamageToEntityEventArgs(Entity entity, Player damager)
+		public PlayerDamageToEntityEventArgs(Entity entity, Player damager) : base(damager, damager?.Level)
 		{
 			Entity = entity;
 			Damager = damager;

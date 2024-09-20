@@ -25,6 +25,7 @@
 
 using System;
 using System.Numerics;
+using fNbt;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Entities;
@@ -43,6 +44,7 @@ namespace MiNET.Items
 		{
 			MaxStackSize = 1;
 			ItemType = ItemType.Bow;
+			ExtraData = new NbtCompound { new NbtInt("Damage", 0), new NbtInt("RepairCost", 1) };
 		}
 
 		public override bool DamageItem(Player player, ItemDamageReason reason, Entity target, Block block)

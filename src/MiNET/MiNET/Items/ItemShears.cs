@@ -23,6 +23,7 @@
 
 #endregion
 
+using fNbt;
 using MiNET.Blocks;
 using MiNET.Entities;
 using MiNET.Entities.Passive;
@@ -35,6 +36,7 @@ namespace MiNET.Items
 		{
 			MaxStackSize = 1;
 			ItemType = ItemType.Sheers;
+			ExtraData = new NbtCompound { new NbtInt("Damage", 0), new NbtInt("RepairCost", 1) };
 		}
 
 		public override bool DamageItem(Player player, ItemDamageReason reason, Entity target, Block block)

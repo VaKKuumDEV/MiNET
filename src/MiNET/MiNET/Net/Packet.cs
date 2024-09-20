@@ -1333,8 +1333,13 @@ namespace MiNET.Net
 						}
 					}
 				}
-				
-				WriteUnsignedVarInt(0); //FilterStrings
+
+				WriteUnsignedVarInt((uint) request.filteredString.Count);
+
+				for (int fi = 0; fi < request.filteredString.Count; fi++)
+				{
+					Write(request.filteredString[fi]);
+				}
 			}
 		}
 
@@ -1540,7 +1545,7 @@ namespace MiNET.Net
 
 				for (int fi = 0; fi < filterStringCount; fi++)
 				{
-					ReadString();
+					actions.filteredString.Add(ReadString());
 				}
 				var filterStringCause = ReadUint();
 			}
