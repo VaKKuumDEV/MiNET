@@ -552,7 +552,7 @@ namespace MiNET
 			}
 			else if (secondItem is Item) // Repairing mode
 			{
-				//todo repair
+				//todo repair. Can't yet add because client side transaction nbt bugs
 			}
 
 			var item = sourceItem.Clone() as Item;

@@ -67,6 +67,7 @@ namespace MiNET.Items
 		[JsonIgnore] public bool IsStackable => MaxStackSize > 1;
 
 		[JsonIgnore] public int Durability { get; set; }
+		[JsonIgnore] public int Damage { get; set; } = 0;
 
 		[JsonIgnore] public int FuelEfficiency { get; set; }
 

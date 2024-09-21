@@ -50,6 +50,7 @@ namespace MiNET.Items
 			MaxStackSize = 1;
 			ItemType = ItemType.FlintAndSteel;
 			ExtraData = new NbtCompound { new NbtInt("Damage", 0), new NbtInt("RepairCost", 1) };
+			Durability = 384;
 		}
 
 		public override void PlaceBlock(Level world, Player player, BlockCoordinates blockCoordinates, BlockFace face, Vector3 faceCoords)
@@ -193,8 +194,8 @@ namespace MiNET.Items
 			{
 				case ItemDamageReason.BlockInteract:
 				{
-					Metadata++;
-					return Metadata >= GetMaxUses() - 1;
+					Damage++;
+					return Damage >= GetMaxUses() - 1;
 				}
 				default:
 					return false;

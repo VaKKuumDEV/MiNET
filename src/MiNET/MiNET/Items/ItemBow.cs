@@ -49,13 +49,12 @@ namespace MiNET.Items
 
 		public override bool DamageItem(Player player, ItemDamageReason reason, Entity target, Block block)
 		{
-			//TODO: This is now NBT
 			switch (reason)
 			{
 				case ItemDamageReason.ItemUse:
 				{
-					Metadata++;
-					return Metadata >= GetMaxUses();
+					Damage++;
+					return Damage >= GetMaxUses();
 				}
 				default:
 					return false;

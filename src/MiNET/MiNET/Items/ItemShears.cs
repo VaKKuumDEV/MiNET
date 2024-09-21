@@ -37,6 +37,7 @@ namespace MiNET.Items
 			MaxStackSize = 1;
 			ItemType = ItemType.Sheers;
 			ExtraData = new NbtCompound { new NbtInt("Damage", 0), new NbtInt("RepairCost", 1) };
+			Durability = 238;
 		}
 
 		public override bool DamageItem(Player player, ItemDamageReason reason, Entity target, Block block)
@@ -47,8 +48,8 @@ namespace MiNET.Items
 				{
 					if (block is Web || block is Leaves || block is Leaves2 || block is Wool || block is Vine)
 					{
-						Metadata++;
-						return Metadata >= GetMaxUses() - 1;
+						Damage++;
+						return Damage >= GetMaxUses() - 1;
 					}
 					return false;
 				}
@@ -56,8 +57,8 @@ namespace MiNET.Items
 				{
 					if (target is Sheep)
 					{
-						Metadata++;
-						return Metadata >= GetMaxUses() - 1;
+						Damage++;
+						return Damage >= GetMaxUses() - 1;
 					}
 					return false;
 				}
