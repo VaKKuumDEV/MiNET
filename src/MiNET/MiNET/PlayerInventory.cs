@@ -402,12 +402,65 @@ namespace MiNET
 			}
 		}
 
-		public virtual void SendSetSlot(int slot, int inventoryId = 0)
+		public virtual void SendSetSlot(int slot, byte ContainerId = 12)
 		{
+			//Log.Warn(ContainerId);
+			uint inventoryId;
+			uint invId = 255;
+			Inventory inv = null;
+
+			if (Player._openInventory is Inventory inventory)
+			{
+				invId = inventory.WindowsId;
+				inv = inventory;
+			}
+
+			switch (ContainerId)
+			{
+				case 0:
+				case 1:
+				case 13:
+				case 22:
+					inventoryId = 124; //UI
+					break;
+				case 6:
+				case 12:
+				case 28:
+				case 29:
+					inventoryId = 0; //Player inventory
+					break;
+				case 7:
+				case 24:
+				case 25:
+				case 30:
+				case 45:
+					inventoryId = invId; //Container
+					break;
+				default:
+					inventoryId = 0;
+					Log.Warn($"SendSetSlot: Unknown ContainerId: {ContainerId}");
+					break;
+			}
+
+			Item item;
+
+			if (inventoryId == 124)
+			{
+				item = UiInventory.Slots[slot];
+			}
+			else if (inventoryId == invId)
+			{
+				item = Player.Level.InventoryManager.GetInventory(inv.Id).Slots[slot];
+			}
+			else
+			{
+				item = Slots[slot];
+			}
+
 			var sendSlot = McpeInventorySlot.CreateObject();
-			sendSlot.inventoryId = (uint) inventoryId;
+			sendSlot.inventoryId = inventoryId;
 			sendSlot.slot = (uint) slot;
-			sendSlot.item = Slots[slot];
+			sendSlot.item = item;
 			Player.SendPacket(sendSlot);
 		}
 

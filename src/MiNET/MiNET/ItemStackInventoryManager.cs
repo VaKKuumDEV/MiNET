@@ -45,7 +45,7 @@ namespace MiNET
 			_player = player;
 		}
 
-		public virtual List<StackResponseContainerInfo> HandleItemStackActions(int requestId, ItemStackActionList actions)
+		public virtual List<StackResponseContainerInfo> HandleItemStackActions(int requestId, ItemStackActionList actions, ref StackRequestSlotInfo updatedSlot)
 		{
 			var stackResponses = new List<StackResponseContainerInfo>();
 			byte TimesCrafted = 1;
@@ -91,7 +91,7 @@ namespace MiNET
 					}
 					case PlaceAction placeAction:
 					{
-						ProcessPlaceAction(placeAction, stackResponses);
+						updatedSlot = ProcessPlaceAction(placeAction, stackResponses);
 						break;
 					}
 					case SwapAction swapAction:
@@ -305,7 +305,7 @@ namespace MiNET
 			});
 		}
 
-		protected virtual void ProcessPlaceAction(PlaceAction action, List<StackResponseContainerInfo> stackResponses)
+		protected virtual StackRequestSlotInfo ProcessPlaceAction(PlaceAction action, List<StackResponseContainerInfo> stackResponses)
 		{
 			byte count = action.Count;
 			Item sourceItem;
@@ -395,7 +395,7 @@ namespace MiNET
 					}
 				}
 			});
-			_player.Inventory.SendSetSlot(destination.Slot);
+			return destination;
 		}
 
 		protected virtual void ProcessTakeAction(TakeAction action, List<StackResponseContainerInfo> stackResponses)
@@ -524,6 +524,7 @@ namespace MiNET
 
 		protected virtual void ProcessCraftRecipeOptionalAction(CraftRecipeOptionalAction action, List<string> strings)
 		{
+			//todo xp cost and more testing
 			var sourceItem = GetContainerItem(13, 1);
 			var secondItem = GetContainerItem(13, 2);
 
@@ -550,12 +551,40 @@ namespace MiNET
 				};
 				data.Add(nbt);
 			}
-			else if (secondItem is Item) // Repairing mode
+			else if (secondItem is ItemBlock) // Repairing mode
 			{
-				//todo repair. Can't yet add because client side transaction nbt bugs
+				int damage1 = data.Get<NbtInt>("Damage").Value;
+				int maxDurability = sourceItem.GetMaxUses();
+
+				int damaged = maxDurability - ((maxDurability - damage1) + (maxDurability / 4) * secondItem.Count);
+
+				data.Get<NbtInt>("Damage").Value = Math.Max((int) damaged, 0);
+			}
+			else if (secondItem is Item) // Combining mode
+			{
+				int damage1 = data.Get<NbtInt>("Damage").Value;
+				int damage2 = secondItem.ExtraData.Get<NbtInt>("Damage").Value;
+				int maxDurability = sourceItem.GetMaxUses();
+				int repairCost = data.Get<NbtInt>("RepairCost").Value;
+
+				if (maxDurability == 0)
+				{
+					maxDurability = sourceItem.Durability;
+				}
+
+				repairCost = repairCost * 2;
+
+				var damaged = maxDurability - (maxDurability - damage1) + (maxDurability - damage2) + (0.12 * maxDurability);
+
+				data.Get<NbtInt>("Damage").Value = Math.Max((int)damaged, 0);
+				data.Get<NbtInt>("RepairCost").Value = repairCost;
+
+				//_player.ExperienceManager.ExperienceLevel = _player.ExperienceManager.ExperienceLevel - repairCost;
+				//_player.ExperienceManager.SendAttributes();
 			}
 
 			var item = sourceItem.Clone() as Item;
+			item.Damage = data.Get<NbtInt>("Damage").Value;
 			item.UniqueId = Environment.TickCount;
 			item.ExtraData = data;
 
@@ -602,6 +631,7 @@ namespace MiNET
 				case 24: // furnace
 				case 25: // furnace
 				case 26: // furnace
+				case 30: // shulkerbox
 				case 45: // blast furnace
 					if (_player._openInventory is Inventory inventory) item = inventory.GetSlot((byte) slot);
 					break;
@@ -659,6 +689,7 @@ namespace MiNET
 				case 24: // furnace
 				case 25: // furnace
 				case 26: // furnace
+				case 30: // shulkerbox
 				case 45: // blast furnace
 					if (_player._openInventory is Inventory inventory) inventory.SetSlot(_player, (byte) slot, item);
 					break;

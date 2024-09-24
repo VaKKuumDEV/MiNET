@@ -67,7 +67,7 @@ namespace MiNET.Items
 			}
 		}
 
-		protected override int GetMaxUses()
+		public override int GetMaxUses()
 		{
 			return 238;
 		}

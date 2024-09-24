@@ -2296,6 +2296,7 @@ namespace MiNET
 		public void HandleMcpeItemStackRequest(McpeItemStackRequest message)
 		{
 			var response = McpeItemStackResponse.CreateObject();
+			List<StackRequestSlotInfo> updatedSlots = new List<StackRequestSlotInfo>();
 			response.responses = new ItemStackResponses();
 			foreach (ItemStackActionList request in message.requests)
 			{
@@ -2310,7 +2311,14 @@ namespace MiNET
 
 				try
 				{
-					stackResponse.ResponseContainerInfos.AddRange(ItemStackInventoryManager.HandleItemStackActions(request.RequestId, request));
+					StackRequestSlotInfo info = null;
+					List<StackResponseContainerInfo> actionList = ItemStackInventoryManager.HandleItemStackActions(request.RequestId, request, ref info);
+					stackResponse.ResponseContainerInfos.AddRange(actionList);
+
+					if (info != null)
+					{
+						updatedSlots.Add(info);
+					}
 				}
 				catch (Exception e)
 				{
@@ -2321,6 +2329,11 @@ namespace MiNET
 			}
 
 			SendPacket(response);
+
+			foreach (var slot in updatedSlots)
+			{
+				Inventory.SendSetSlot(slot.Slot, slot.ContainerId);
+			}
 		}
 
 		protected Item GetContainerItem(int containerId, int slot)
