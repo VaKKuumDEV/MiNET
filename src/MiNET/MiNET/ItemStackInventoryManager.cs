@@ -540,25 +540,37 @@ namespace MiNET
 
 			if (secondItem is ItemEnchantedBook) // Enchanting mode
 			{
-				NbtList nbt = GetContainerItem(13, 2).ExtraData.Get<NbtList>("ench").Clone() as NbtList;
-				data.Add(nbt);
-			}
-			else if (secondItem is ItemAir) // Rename mode
-			{
-				NbtCompound nbt = new NbtCompound("display")
+				NbtList nbt = new NbtList("ench");
+
+				if (sourceItem.ExtraData.Get<NbtList>("ench") == null)
 				{
-					new NbtString("Name", strings[0]),
-				};
+					nbt = secondItem.ExtraData.Get<NbtList>("ench").Clone() as NbtList;
+				}
+				else
+				{
+					nbt = sourceItem.ExtraData.Get<NbtList>("ench").Clone() as NbtList;
+
+					foreach (NbtCompound ench in secondItem.ExtraData.Get<NbtList>("ench"))
+					{
+						nbt.Add(ench.Clone() as NbtCompound);
+					}
+					data.Remove("ench");
+				}
+
 				data.Add(nbt);
 			}
-			else if (secondItem is ItemBlock) // Repairing mode
+			else if (secondItem is ItemBlock or ItemLeather or ItemIronIngot or ItemGoldIngot or ItemDiamond or ItemScute or ItemPhantomMembrane) // Repairing mode
 			{
 				int damage1 = data.Get<NbtInt>("Damage").Value;
 				int maxDurability = sourceItem.GetMaxUses();
 
 				int damaged = maxDurability - ((maxDurability - damage1) + (maxDurability / 4) * secondItem.Count);
 
-				data.Get<NbtInt>("Damage").Value = Math.Max((int) damaged, 0);
+				data.Get<NbtInt>("Damage").Value = Math.Max(damaged, 0);
+			}
+			else if (secondItem is ItemAir)  // Renaming mode
+			{
+				//nothing, handled below
 			}
 			else if (secondItem is Item) // Combining mode
 			{
@@ -572,15 +584,52 @@ namespace MiNET
 					maxDurability = sourceItem.Durability;
 				}
 
+				if (secondItem.ExtraData.Get<NbtList>("ench") != null)
+				{
+					NbtList nbt = new NbtList("ench");
+
+					if (sourceItem.ExtraData.Get<NbtList>("ench") == null)
+					{
+						nbt = secondItem.ExtraData.Get<NbtList>("ench").Clone() as NbtList;
+					}
+					else
+					{
+						nbt = sourceItem.ExtraData.Get<NbtList>("ench").Clone() as NbtList;
+
+						foreach (NbtCompound ench in secondItem.ExtraData.Get<NbtList>("ench"))
+						{
+							nbt.Add(ench.Clone() as NbtCompound);
+						}
+					}
+
+					data.Remove("ench");
+					data.Add(nbt);
+				}
+
 				repairCost = repairCost * 2;
 
-				var damaged = maxDurability - (maxDurability - damage1) + (maxDurability - damage2) + (0.12 * maxDurability);
+				var damaged = maxDurability - ((maxDurability - damage1) + (maxDurability - damage2) + (0.12 * maxDurability));
 
 				data.Get<NbtInt>("Damage").Value = Math.Max((int)damaged, 0);
 				data.Get<NbtInt>("RepairCost").Value = repairCost;
 
 				//_player.ExperienceManager.ExperienceLevel = _player.ExperienceManager.ExperienceLevel - repairCost;
 				//_player.ExperienceManager.SendAttributes();
+			}
+
+			if (strings.Count > 0) // Real renaming
+			{
+				NbtCompound nbt = new NbtCompound("display")
+				{
+					new NbtString("Name", strings[0]),
+				};
+
+				if (data.Contains("display"))
+				{
+					data.Remove("display");
+				}
+
+				data.Add(nbt);
 			}
 
 			var item = sourceItem.Clone() as Item;
