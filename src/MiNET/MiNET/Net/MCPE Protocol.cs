@@ -10608,7 +10608,7 @@ namespace MiNET.Net
 		public string platformId; // = null;
 		public string emoteId; // = null;
 		public byte flags; // = null;
-		public long tick; // = null;
+		public uint tick; // = null;
 
 		public McpeEmotePacket()
 		{
@@ -10624,10 +10624,10 @@ namespace MiNET.Net
 
 			WriteUnsignedVarLong(runtimeEntityId);
 			Write(emoteId);
+			WriteUnsignedVarInt(tick);
 			Write(xuid);
 			Write(platformId);
 			Write(flags);
-			Write(tick);
 
 			AfterEncode();
 		}
@@ -10643,10 +10643,10 @@ namespace MiNET.Net
 
 			runtimeEntityId = ReadUnsignedVarLong();
 			emoteId = ReadString();
+			tick = ReadUnsignedVarInt();
 			xuid = ReadString();
 			platformId = ReadString();
 			flags = ReadByte();
-			tick = ReadLong();
 
 			AfterDecode();
 		}
@@ -10662,7 +10662,7 @@ namespace MiNET.Net
 			xuid = default(string);
 			platformId = default(string);
 			emoteId = default(string);
-			tick = default(long);
+			tick = default(uint);
 			flags = default(byte);
 		}
 

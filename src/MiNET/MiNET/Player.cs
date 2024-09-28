@@ -100,6 +100,7 @@ namespace MiNET
 
 		public bool IsFalling { get; set; }
 		public bool IsFlyingHorizontally { get; set; }
+		public AuthInputFlags lastAuthInputFlag { get; set; }
 
 		public Entity LastAttackTarget { get; set; }
 
@@ -2158,11 +2159,11 @@ namespace MiNET
 			bool isFlyingHorizontally = false;
 			if (Math.Abs(distanceTo) > 0.01)
 			{
-				isOnGround = CheckOnGround(message);
-				isFlyingHorizontally = DetectSimpleFly(message, isOnGround);
+				isOnGround = CheckOnGround(new PlayerLocation(message.x, message.y, message.z));
+				isFlyingHorizontally = DetectSimpleFly(new PlayerLocation(message.x, message.y, message.z), isOnGround);
 			}
 
-			if (!AcceptPlayerMove(message, isOnGround, isFlyingHorizontally)) return;
+			if (!AcceptPlayerMove(new PlayerLocation(message.x, message.y, message.z), isOnGround, isFlyingHorizontally)) return;
 
 			IsFlyingHorizontally = isFlyingHorizontally;
 			IsOnGround = isOnGround;
@@ -2208,26 +2209,26 @@ namespace MiNET
 		public double CurrentSpeed { get; private set; } = 0;
 		public double StartFallY { get; private set; } = 0;
 
-		protected virtual bool AcceptPlayerMove(McpeMovePlayer message, bool isOnGround, bool isFlyingHorizontally)
+		protected virtual bool AcceptPlayerMove(PlayerLocation message, bool isOnGround, bool isFlyingHorizontally)
 		{
 			return true;
 		}
 
-		protected virtual bool DetectSimpleFly(McpeMovePlayer message, bool isOnGround)
+		protected virtual bool DetectSimpleFly(PlayerLocation message, bool isOnGround)
 		{
-			double d = Math.Abs(KnownPosition.Y - (message.y - 1.62f));
+			double d = Math.Abs(KnownPosition.Y - (message.X - 1.62f));
 			return !(AllowFly || IsOnGround || isOnGround || d > 0.001);
 		}
 
 		private static readonly int[] Layers = {-1, 0};
 		private static readonly int[] Arounds = {0, 1, -1};
 
-		public bool CheckOnGround(McpeMovePlayer message)
+		public bool CheckOnGround(PlayerLocation message)
 		{
 			if (Level == null)
 				return true;
 
-			BlockCoordinates pos = new Vector3(message.x, message.y - 1.62f, message.z);
+			BlockCoordinates pos = new Vector3(message.X, message.Y - 1.62f, message.Z);
 
 			foreach (int layer in Layers)
 			{
@@ -2284,10 +2285,190 @@ namespace MiNET
 		{
 		}
 
-		/// <inheritdoc />
 		public void HandleMcpePlayerAuthInput(McpePlayerAuthInput message)
 		{
-			
+			if (KnownPosition != message.Position)
+			{
+				var origin = KnownPosition.ToVector3();
+				double distanceTo = Vector3.Distance(origin, new Vector3(message.Position.X, message.Position.Y - 1.62f, message.Position.Z));
+
+				CurrentSpeed = distanceTo / ((double) (DateTime.UtcNow - LastUpdatedTime).Ticks / TimeSpan.TicksPerSecond);
+
+				double verticalMove = message.Position.Y - 1.62 - KnownPosition.Y;
+
+				bool isOnGround = IsOnGround;
+				bool isFlyingHorizontally = false;
+				if (Math.Abs(distanceTo) > 0.01)
+				{
+					isOnGround = CheckOnGround(message.Position);
+					isFlyingHorizontally = DetectSimpleFly(message.Position, isOnGround);
+				}
+
+				if (!AcceptPlayerMove(message.Position, isOnGround, isFlyingHorizontally))
+					return;
+
+				IsFlyingHorizontally = isFlyingHorizontally;
+				IsOnGround = isOnGround;
+
+				if (!IsGliding)
+					HungerManager.Move(Vector3.Distance(new Vector3(KnownPosition.X, 0, KnownPosition.Z), new Vector3(message.Position.X, 0, message.Position.Z)));
+
+				KnownPosition = new PlayerLocation
+				{
+					X = message.Position.X,
+					Y = message.Position.Y - 1.62f,
+					Z = message.Position.Z,
+					Pitch = message.Position.Pitch,
+					Yaw = message.Position.Yaw,
+					HeadYaw = message.Position.HeadYaw
+				};
+
+				IsFalling = verticalMove < 0 && !IsOnGround && !IsGliding;
+
+				if (IsFalling)
+				{
+					if (StartFallY == 0)
+						StartFallY = KnownPosition.Y;
+				}
+				else
+				{
+					double damage = StartFallY - KnownPosition.Y;
+					if ((damage - 3) > 0)
+					{
+						HealthManager.TakeHit(null, (int) DamageCalculator.CalculatePlayerDamage(null, this, null, damage, DamageCause.Fall), DamageCause.Fall);
+					}
+					StartFallY = 0;
+				}
+
+				LastUpdatedTime = DateTime.UtcNow;
+
+				var chunkPosition = new ChunkCoordinates(KnownPosition);
+				if (_currentChunkPosition != chunkPosition && _currentChunkPosition.DistanceTo(chunkPosition) >= MoveRenderDistance)
+				{
+					MiNetServer.FastThreadPool.QueueUserWorkItem(SendChunksForKnownPosition);
+				}
+			}
+
+			if (message.InputFlags != lastAuthInputFlag)
+			{
+				lastAuthInputFlag = message.InputFlags;
+				Log.Debug($"updated AuthInputFlags: {message.InputFlags}");
+
+				if ((message.InputFlags & AuthInputFlags.StartSneaking) != 0)
+				{
+					IsSneaking = true;
+					BroadcastSetEntityData();
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StopSneaking) != 0)
+				{
+					IsSneaking = false;
+					BroadcastSetEntityData();
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StartSwimming) != 0)
+				{
+					IsSwimming = true;
+					BroadcastSetEntityData();
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StopSwimming) != 0)
+				{
+					IsSwimming = false;
+					BroadcastSetEntityData();
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StartSprinting) != 0)
+				{
+					SetSprinting(true);
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StopSprinting) != 0)
+				{
+					SetSprinting(false);
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StartGliding) != 0)
+				{
+					IsGliding = true;
+					Height = 0.6;
+					BroadcastSetEntityData();
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StopGliding) != 0)
+				{
+					IsGliding = false;
+					Height = 1.8;
+					BroadcastSetEntityData();
+				}
+
+				if ((message.InputFlags & AuthInputFlags.StartJumping) != 0)
+				{
+					HungerManager.IncreaseExhaustion(IsSprinting ? 0.8f : 0.2f);
+				}
+			}
+
+			if (message.Actions != null)
+			{
+				foreach (var action in message.Actions.PlayerBlockAction)
+				{
+					switch (action.PlayerActionType)
+					{
+						case PlayerAction.StartBreak:
+						{
+								if (GameMode == GameMode.Survival)
+								{
+									Block target = Level.GetBlock(action.BlockCoordinates);
+									var drops = target.GetDrops(Inventory.GetItemInHand());
+									float tooltypeFactor = drops == null || drops.Length == 0 ? 5f : 1.5f;
+									double breakTime = Math.Ceiling(target.Hardness * tooltypeFactor * 20);
+
+									McpeLevelEvent breakEvent = McpeLevelEvent.CreateObject();
+									breakEvent.eventId = 3600;
+									breakEvent.position = action.BlockCoordinates;
+									breakEvent.data = (int) (65535 / breakTime);
+									Level.RelayBroadcast(breakEvent);
+								}
+
+								break;
+							}
+						case PlayerAction.Breaking:
+						case PlayerAction.ContinueDestroyBlock:
+							{
+								Block target = Level.GetBlock(action.BlockCoordinates);
+								int data = ((int) target.GetRuntimeId()) | ((byte) (action.Facing << 24));
+
+								McpeLevelEvent breakEvent = McpeLevelEvent.CreateObject();
+								breakEvent.eventId = 2014;
+								breakEvent.position = action.BlockCoordinates;
+								breakEvent.data = data;
+								Level.RelayBroadcast(breakEvent);
+								break;
+							}
+						case PlayerAction.AbortBreak:
+						case PlayerAction.StopBreak:
+							{
+								McpeLevelEvent breakEvent = McpeLevelEvent.CreateObject();
+								breakEvent.eventId = 3601;
+								breakEvent.position = action.BlockCoordinates;
+								Level.RelayBroadcast(breakEvent);
+								break;
+							}
+						case PlayerAction.PredictDestroyBlock:
+							{
+								Level.BreakBlock(this, action.BlockCoordinates);
+								break;
+							}
+						default:
+							{
+								Log.Warn($"Unhandled action ID={action.PlayerActionType}");
+								throw new ArgumentOutOfRangeException(nameof(action.PlayerActionType));
+							}
+					}
+
+					BroadcastSetEntityData();
+				}
+			}
 		}
 
 
@@ -2332,7 +2513,7 @@ namespace MiNET
 
 			foreach (var slot in updatedSlots)
 			{
-				Inventory.SendSetSlot(slot.Slot, slot.ContainerId);
+				//Inventory.SendSetSlot(slot.Slot, slot.ContainerId);  todo something breaks
 			}
 		}
 
@@ -2800,7 +2981,6 @@ namespace MiNET
 					itemInHand.UseItem(Level, this, transaction.Position);
 					if (itemInHand is not ItemBlock)
 					{
-						IsUsingItem = true;
 						BroadcastSetEntityData();
 					}
 					break;
@@ -3315,7 +3495,12 @@ namespace MiNET
 			startGame.isTrial = false;
 			startGame.currentTick = Level.TickTime;
 			startGame.enchantmentSeed = 123456;
-			startGame.movementType = 0;
+			if (Config.GetProperty("ServerAuthoritativeMovement", true))
+			{
+				startGame.movementType = 3;
+				startGame.movementRewindHistorySize = 40;
+				startGame.enableNewBlockBreakSystem = true;
+			}
 
 			//startGame.blockPalette = BlockFactory.BlockPalette;
 			startGame.itemstates = ItemFactory.Itemstates;
