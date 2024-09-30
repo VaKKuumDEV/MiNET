@@ -2,8 +2,8 @@
 MiNET (CobwebSMP edition)
 =====
 [![Build status](https://github.com/CobwebSMP/MiNET/actions/workflows/dotnet.yml/badge.svg)](https://github.com/CobwebSMP/MiNET/actions/workflows/dotnet.yml)
-[![NuGet Version](https://img.shields.io/nuget/v/MiNET-CobwebSMP.svg/) 
-[![Downloads count](https://img.shields.io/nuget/dt/MiNET-CobwebSMP.svg) 
+[NuGet Version](https://img.shields.io/nuget/v/MiNET-CobwebSMP.svg) 
+[Downloads count](https://img.shields.io/nuget/dt/MiNET-CobwebSMP.svg) 
 
 ## What is this?
 
