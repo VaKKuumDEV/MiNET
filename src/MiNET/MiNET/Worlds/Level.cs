@@ -1061,41 +1061,6 @@ namespace MiNET.Worlds
 			return block;
 		}
 
-		public Block GetBlock2(BlockCoordinates blockCoordinates, ChunkColumn tryChunk = null)
-		{
-			ChunkColumn chunk = null;
-
-			var chunkCoordinates = new ChunkCoordinates(blockCoordinates.X >> 4, blockCoordinates.Z >> 4);
-			if (tryChunk != null && tryChunk.X == chunkCoordinates.X && tryChunk.Z == chunkCoordinates.Z)
-			{
-				chunk = tryChunk;
-			}
-			else
-			{
-				chunk = GetChunk(chunkCoordinates);
-			}
-			if (chunk == null)
-				return new Air
-				{
-					Coordinates = blockCoordinates,
-					SkyLight = 15
-				};
-
-			var block = chunk.GetBlockObject(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
-			byte blockLight = chunk.GetBlocklight(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
-			byte skyLight = chunk.GetSkylight(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
-			byte biomeId = chunk.GetBiome(blockCoordinates.X & 0x0f, blockCoordinates.Z & 0x0f);
-
-			block.Coordinates = blockCoordinates;
-			block.BlockLight = blockLight;
-			block.SkyLight = skyLight;
-			block.BiomeId = biomeId;
-
-			BlockFactory.BlockPalette.TryGetValue((int) BlockFactory.GetRuntimeId(block.Id, block.Metadata), out BlockStateContainer blockState);
-			block.SetState(blockState);
-
-			return block;
-		}
 
 		public bool IsBlock(int x, int y, int z, int blockId)
 		{

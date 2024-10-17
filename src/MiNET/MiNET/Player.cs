@@ -2216,7 +2216,7 @@ namespace MiNET
 
 		protected virtual bool DetectSimpleFly(PlayerLocation message, bool isOnGround)
 		{
-			double d = Math.Abs(KnownPosition.Y - (message.X - 1.62f));
+			double d = Math.Abs(KnownPosition.Y - (message.Y - 1.62f));
 			return !(AllowFly || IsOnGround || isOnGround || d > 0.001);
 		}
 
