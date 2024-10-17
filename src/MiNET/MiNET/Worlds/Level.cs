@@ -48,6 +48,7 @@ using MiNET.Utils.Diagnostics;
 using MiNET.Utils.IO;
 using MiNET.Utils.Nbt;
 using MiNET.Utils.Vectors;
+using Newtonsoft.Json;
 
 namespace MiNET.Worlds
 {
@@ -1060,6 +1061,42 @@ namespace MiNET.Worlds
 			return block;
 		}
 
+		public Block GetBlock2(BlockCoordinates blockCoordinates, ChunkColumn tryChunk = null)
+		{
+			ChunkColumn chunk = null;
+
+			var chunkCoordinates = new ChunkCoordinates(blockCoordinates.X >> 4, blockCoordinates.Z >> 4);
+			if (tryChunk != null && tryChunk.X == chunkCoordinates.X && tryChunk.Z == chunkCoordinates.Z)
+			{
+				chunk = tryChunk;
+			}
+			else
+			{
+				chunk = GetChunk(chunkCoordinates);
+			}
+			if (chunk == null)
+				return new Air
+				{
+					Coordinates = blockCoordinates,
+					SkyLight = 15
+				};
+
+			var block = chunk.GetBlockObject(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
+			byte blockLight = chunk.GetBlocklight(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
+			byte skyLight = chunk.GetSkylight(blockCoordinates.X & 0x0f, blockCoordinates.Y, blockCoordinates.Z & 0x0f);
+			byte biomeId = chunk.GetBiome(blockCoordinates.X & 0x0f, blockCoordinates.Z & 0x0f);
+
+			block.Coordinates = blockCoordinates;
+			block.BlockLight = blockLight;
+			block.SkyLight = skyLight;
+			block.BiomeId = biomeId;
+
+			BlockFactory.BlockPalette.TryGetValue((int) BlockFactory.GetRuntimeId(block.Id, block.Metadata), out BlockStateContainer blockState);
+			block.SetState(blockState);
+
+			return block;
+		}
+
 		public bool IsBlock(int x, int y, int z, int blockId)
 		{
 			return IsBlock(new BlockCoordinates(x, y, z), blockId);
@@ -1349,28 +1386,26 @@ namespace MiNET.Worlds
 			if (itemInHand.Id == 410) { itemInHand = new ItemBlock(new Hopper()); }  //TODO: item translator
 			if (itemInHand.Id == 720) { itemInHand = new ItemBlock(new Campfire()); }  //TODO: item translator
 			if (itemInHand.Id == 331) { itemInHand = new ItemBlock(new RedstoneWire()); }  //TODO: item translator
-			if (itemInHand is ItemBlock)
+
+			Block block = GetBlock(blockCoordinates);
+			if (!block.IsReplaceable)
 			{
-				Block block = GetBlock(blockCoordinates);
-				if (!block.IsReplaceable)
-				{
-					block = GetBlock(itemInHand.GetNewCoordinatesFromFace(blockCoordinates, face));
-				}
+				block = GetBlock(itemInHand.GetNewCoordinatesFromFace(blockCoordinates, face));
+			}
 
-				if (!AllowBuild || player.GameMode == GameMode.Spectator || !OnBlockPlace(new BlockPlaceEventArgs(player, this, target, block)))
-				{
-					// Revert
+			if (!AllowBuild || player.GameMode == GameMode.Spectator || !OnBlockPlace(new BlockPlaceEventArgs(player, this, target, block)))
+			{
+				// Revert
 
-					player.SendPlayerInventory();
+				player.SendPlayerInventory();
 
-					var message = McpeUpdateBlock.CreateObject();
-					message.blockRuntimeId = (uint) block.GetRuntimeId();
-					message.coordinates = block.Coordinates;
-					message.blockPriority = 0xb;
-					player.SendPacket(message);
+				var message = McpeUpdateBlock.CreateObject();
+				message.blockRuntimeId = (uint) block.GetRuntimeId();
+				message.coordinates = block.Coordinates;
+				message.blockPriority = 0xb;
+				player.SendPacket(message);
 
-					return;
-				}
+				return;
 			}
 
 			itemInHand.PlaceBlock(this, player, blockCoordinates, face, faceCoords);
@@ -1397,6 +1432,7 @@ namespace MiNET.Worlds
 		public void BreakBlock(Player player, BlockCoordinates blockCoordinates, BlockFace face = BlockFace.None)
 		{
 			Block block = GetBlock(blockCoordinates);
+
 			BlockEntity blockEntity = GetBlockEntity(blockCoordinates);
 
 			Item inHand = player.Inventory.GetItemInHand();
@@ -1418,10 +1454,29 @@ namespace MiNET.Worlds
 			}
 		}
 
-		private static void RevertBlockAction(Player player, Block block, BlockEntity blockEntity)
+		private void RevertBlockAction(Player player, Block block, BlockEntity blockEntity)
 		{
+			if (block is DoorBase doors)
+			{
+				var message1 = McpeUpdateBlock.CreateObject();
+				if (doors.UpperBlockBit)
+				{
+					Block block1 = GetBlock(block.Coordinates.BlockDown());
+					message1.blockRuntimeId = BlockFactory.GetRuntimeId(block1.Id, block1.Metadata);
+					message1.coordinates = block.Coordinates.BlockDown();
+				}
+				else
+				{
+					Block block1 = GetBlock(block.Coordinates.BlockUp());
+					message1.blockRuntimeId = BlockFactory.GetRuntimeId(block1.Id, block1.Metadata);
+					message1.coordinates = block.Coordinates.BlockUp();
+				}
+				message1.blockPriority = 0xb;
+				player.SendPacket(message1);
+			}
+
 			var message = McpeUpdateBlock.CreateObject();
-			message.blockRuntimeId = (uint) block.GetRuntimeId();
+			message.blockRuntimeId = BlockFactory.GetRuntimeId(block.Id, block.Metadata);
 			message.coordinates = block.Coordinates;
 			message.blockPriority = 0xb;
 			player.SendPacket(message);

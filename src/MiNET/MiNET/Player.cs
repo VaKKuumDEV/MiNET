@@ -677,7 +677,7 @@ namespace MiNET
 					{
 						Block target = Level.GetBlock(message.coordinates);
 						var drops = target.GetDrops(Inventory.GetItemInHand());
-						float tooltypeFactor = drops == null || drops.Length == 0 ? 5f : 1.5f; // 1.5 if proper tool
+						float tooltypeFactor = drops == null || drops.Length == 0 ? 5f : 1.5f; 
 						double breakTime = Math.Ceiling(target.Hardness * tooltypeFactor * 20);
 
 						McpeLevelEvent breakEvent = McpeLevelEvent.CreateObject();
@@ -2415,14 +2415,18 @@ namespace MiNET
 					switch (action.PlayerActionType)
 					{
 						case PlayerAction.StartBreak:
-						{
+						case PlayerAction.ContinueDestroyBlock:
+							{
 								if (GameMode == GameMode.Survival)
 								{
 									Block target = Level.GetBlock(action.BlockCoordinates);
-									var drops = target.GetDrops(Inventory.GetItemInHand());
-									float tooltypeFactor = drops == null || drops.Length == 0 ? 5f : 1.5f;
-									double breakTime = Math.Ceiling(target.Hardness * tooltypeFactor * 20);
+									var tool = Inventory.GetItemInHand();
+									var drops = target.GetDrops(tool);
 
+									double tooltypeFactor = drops == null || drops.Length == 0 ? 5 : 1.5;
+									tooltypeFactor /= tool.GetBreakingSpeed(target);
+
+									double breakTime = Math.Ceiling(target.Hardness * tooltypeFactor * 20);
 									McpeLevelEvent breakEvent = McpeLevelEvent.CreateObject();
 									breakEvent.eventId = 3600;
 									breakEvent.position = action.BlockCoordinates;
@@ -2433,7 +2437,6 @@ namespace MiNET
 								break;
 							}
 						case PlayerAction.Breaking:
-						case PlayerAction.ContinueDestroyBlock:
 							{
 								Block target = Level.GetBlock(action.BlockCoordinates);
 								int data = ((int) target.GetRuntimeId()) | ((byte) (action.Facing << 24));

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
+using MiNET.Utils;
 using MiNET.Utils.Vectors;
 
 namespace MiNET.Net;
@@ -15,6 +16,7 @@ public partial class McpePlayerAuthInput : Packet<McpePlayerAuthInput>
 	public long Tick;
 	public Vector3 Delta;
 	public PlayerBlockActions Actions;
+	public ItemStackRequests ItemStack;
 
 	public Vector2 AnalogMoveVector;
 
@@ -37,6 +39,11 @@ public partial class McpePlayerAuthInput : Packet<McpePlayerAuthInput>
 
 		Tick = ReadUnsignedVarLong();
 		Delta = ReadVector3();
+
+		if ((InputFlags & AuthInputFlags.PerformItemStackRequest) != 0)
+		{
+			ItemStack = ReadItemStackRequests(true);
+		}
 
 		if ((InputFlags & AuthInputFlags.PerformBlockActions) != 0)
 		{
@@ -74,6 +81,8 @@ public partial class McpePlayerAuthInput : Packet<McpePlayerAuthInput>
 		Tick = 0;
 		Delta = Vector3.Zero;
 		AnalogMoveVector = Vector2.Zero;
+		Actions = default(PlayerBlockActions);
+		ItemStack = default(ItemStackRequests);
 	}
 
 	public enum PlayerPlayMode
