@@ -2516,7 +2516,7 @@ namespace MiNET
 
 			foreach (var slot in updatedSlots)
 			{
-				//Inventory.SendSetSlot(slot.Slot, slot.ContainerId);  todo something breaks
+				Inventory.SendSetSlot(slot.Slot, slot.ContainerId);
 			}
 		}
 
