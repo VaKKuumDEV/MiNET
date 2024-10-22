@@ -86,6 +86,7 @@ namespace MiNET
 		public string Username { get; set; }
 		public string DisplayName { get; set; }
 		public long ClientId { get; set; }
+		public long CurrentTick { get; set; }
 		public UUID ClientUuid { get; set; }
 		public string ServerAddress { get; set; }
 		public PlayerInfo PlayerInfo { get; set; }
@@ -1955,6 +1956,7 @@ namespace MiNET
 			McpeSetEntityData mcpeSetEntityData = McpeSetEntityData.CreateObject();
 			mcpeSetEntityData.runtimeEntityId = EntityManager.EntityIdSelf;
 			mcpeSetEntityData.metadata = metadata;
+			mcpeSetEntityData.tick = CurrentTick;
 			SendPacket(mcpeSetEntityData);
 
 			base.BroadcastSetEntityData(metadata);
@@ -1965,6 +1967,7 @@ namespace MiNET
 			McpeSetEntityData mcpeSetEntityData = McpeSetEntityData.CreateObject();
 			mcpeSetEntityData.runtimeEntityId = EntityManager.EntityIdSelf;
 			mcpeSetEntityData.metadata = GetMetadata();
+			mcpeSetEntityData.tick = CurrentTick;
 			SendPacket(mcpeSetEntityData);
 		}
 
@@ -2287,6 +2290,7 @@ namespace MiNET
 
 		public void HandleMcpePlayerAuthInput(McpePlayerAuthInput message)
 		{
+			CurrentTick = message.Tick;
 			if (KnownPosition != message.Position)
 			{
 				var origin = KnownPosition.ToVector3();
@@ -3762,6 +3766,7 @@ namespace MiNET
 			McpeUpdateAttributes attributesPackate = McpeUpdateAttributes.CreateObject();
 			attributesPackate.runtimeEntityId = EntityManager.EntityIdSelf;
 			attributesPackate.attributes = attributes;
+			attributesPackate.tick = CurrentTick;
 			SendPacket(attributesPackate);
 		}
 
@@ -3936,6 +3941,7 @@ namespace MiNET
 			McpeSetEntityMotion motions = McpeSetEntityMotion.CreateObject();
 			motions.runtimeEntityId = EntityManager.EntityIdSelf;
 			motions.velocity = velocity;
+			motions.tick = CurrentTick;
 			SendPacket(motions);
 		}
 
@@ -4321,6 +4327,17 @@ namespace MiNET
 			McpeRemoveEntity mcpeRemovePlayer = McpeRemoveEntity.CreateObject();
 			mcpeRemovePlayer.entityIdSelf = EntityId;
 			Level.RelayBroadcast(this, players, mcpeRemovePlayer);
+		}
+
+		public virtual void CorrectPlayerMovement() //probably useful to prevent movement hacks. Todo check after release
+		{
+			McpeCorrectPlayerMovement packet = McpeCorrectPlayerMovement.CreateObject();
+			packet.Type = (byte)(Vehicle == 0 ? 0 : 3);
+			packet.Postition = KnownPosition;
+			packet.Velocity = Velocity;
+			packet.OnGround = !IsGliding && IsOnGround;
+			packet.Tick = CurrentTick;
+			SendPacket(packet);
 		}
 
 

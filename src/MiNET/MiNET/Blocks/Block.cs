@@ -127,14 +127,14 @@ namespace MiNET.Blocks
 			return blockstate.RuntimeId;
 		}
 
-		public virtual Item GetItem()
+		public virtual Item GetItem(int count = 1)
 		{
 			var id = Id;
 			if (id > 255)
 			{
 				id = -(id - 255);
 			}
-			return ItemFactory.GetItem((short) id, Metadata, 1);
+			return ItemFactory.GetItem((short) id, Metadata, count);
 		}
 
 		public bool CanPlace(Level world, Player player, BlockCoordinates targetCoordinates, BlockFace face)

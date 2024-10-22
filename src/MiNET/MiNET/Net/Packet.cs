@@ -2446,6 +2446,7 @@ namespace MiNET.Net
 				Write(info.HasScripts);
 				Write(info.isAddon);
 				Write(info.RtxEnabled);
+				Write(info.cndUrls);
 			}
 		}
 
@@ -2467,7 +2468,9 @@ namespace MiNET.Net
 				var hasScripts      = ReadBool();
 				var isAddon         = ReadBool();
 				var rtxEnabled      = ReadBool();
-				
+				var cndUrls         = ReadString();
+
+
 				info.UUID = id;
 				info.Version = version;
 				info.Size = size;
@@ -2477,6 +2480,7 @@ namespace MiNET.Net
 				info.ContentIdentity = contentIdentity;
 				info.isAddon = isAddon;
 				info.RtxEnabled = rtxEnabled;
+				info.cndUrls = cndUrls;
 				
 				packInfos.Add(info);
 			}
