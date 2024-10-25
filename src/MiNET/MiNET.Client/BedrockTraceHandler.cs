@@ -716,23 +716,22 @@ namespace MiNET.Client
 
 		public override void HandleMcpeBiomeDefinitionList(McpeBiomeDefinitionList message)
 		{
-			//NbtCompound list = new NbtCompound("");
-			//foreach (Biome biome in Biomes)
-			//{
-			//	if (string.IsNullOrEmpty(biome.DefinitionName))
-			//		continue;
-			//	list.Add(
-			//		new NbtCompound(biome.DefinitionName)
-			//		{
-			//			new NbtFloat("downfall", biome.Downfall),
-			//			new NbtFloat("temperature", biome.Temperature),
-			//		}
-			//	);
-			//}
+			NbtCompound list = new NbtCompound("");
+			foreach (var biome in message.namedtag.NbtFile.RootTag as NbtCompound)
+			{
+				string biomeName = biome.Name;
+				float downfall = (biome["downfall"] as NbtFloat).Value;
+				float temperature = (biome["temperature"] as NbtFloat).Value;
+				list.Add(
+					new NbtCompound(biomeName)
+					{
+						new NbtFloat("temperature", temperature),
+						new NbtFloat("downfall", downfall),
+					}
+				);
+			}
 
-			var root = message.namedtag.NbtFile.RootTag;
-			//Log.Debug($"\n{root}");
-			File.WriteAllText("newResources/biomes.txt", root.ToString());
+			File.WriteAllText("newResources/biomes.txt", list.ToString());
 			Log.Warn("Received biome definitions exported to newResources/biomes.txt\n");
 		}
 
