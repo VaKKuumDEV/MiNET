@@ -2337,7 +2337,7 @@ namespace MiNET
 				else
 				{
 					double damage = StartFallY - KnownPosition.Y;
-					if ((damage - 3) > 0)
+					if ((damage - 3) > 0 && Level.Falldamage)
 					{
 						HealthManager.TakeHit(null, (int) DamageCalculator.CalculatePlayerDamage(null, this, null, damage, DamageCause.Fall), DamageCause.Fall);
 					}
