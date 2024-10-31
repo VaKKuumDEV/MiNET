@@ -77,8 +77,6 @@ namespace MiNET.Worlds
 		public void Initialize()
 		{
 			BasePath ??= Config.GetProperty("WorldDirectory", "Worlds").Trim();
-			var pluginDir = Config.GetProperty("PluginDirectory", "Plugins").Trim();
-			var resourceDir = Config.GetProperty("ResourceDirectory", "ResourcePacks").Trim();
 
 			var directory = new DirectoryInfo(Path.Combine(BasePath, "db"));
 
@@ -102,6 +100,8 @@ namespace MiNET.Worlds
 			{
 				Log.Warn($"No level.dat found at {levelFileName}. Creating empty.");
 				LevelInfo = new LevelInfoBedrock();
+				var pluginDir = Config.GetProperty("PluginDirectory", "Plugins").Trim();
+				var resourceDir = Config.GetProperty("ResourceDirectory", "ResourcePacks").Trim();
 				if (!Directory.Exists(BasePath))
 				{
 					Directory.CreateDirectory(BasePath);

@@ -114,6 +114,7 @@ namespace MiNET.Net
 		void HandleMcpePermissionRequest(McpePermissionRequest message);
 		void HandleMcpeSetInventoryOptions(McpeSetInventoryOptions message);
 		void HandleMcpeAnvilDamage(McpeAnvilDamage message);
+		void HandleMcpeServerboundLoadingScreen(McpeServerboundLoadingScreen message);
 	}
 
 	public interface IMcpeClientMessageHandler
@@ -1043,6 +1044,8 @@ namespace MiNET.Net
 						return McpePermissionRequest.CreateObject().Decode(buffer);
 					case 0x133:
 						return McpeSetInventoryOptions.CreateObject().Decode(buffer);
+					case 0x138:
+						return McpeServerboundLoadingScreen.CreateObject().Decode(buffer);
 					case 0xa0:
 						return McpePlayerFog.CreateObject().Decode(buffer);
 					case 0x8D:
@@ -11068,5 +11071,63 @@ namespace MiNET.Net
 			Tick = default(long);
 
 		}
+	}
+
+	public partial class McpeServerboundLoadingScreen : Packet<McpeServerboundLoadingScreen>
+	{
+		public int ScreenType; // = null;
+		public int? ScreenId; // = null;
+
+		public McpeServerboundLoadingScreen()
+		{
+			Id = 0x138;
+			IsMcpe = true;
+		}
+
+		protected override void EncodePacket()
+		{
+			base.EncodePacket();
+
+			BeforeEncode();
+
+			WriteSignedVarInt(ScreenType);
+			Write(ScreenId.HasValue);
+			if (ScreenId.HasValue)
+			{
+				Write(ScreenId.Value);
+			}
+
+			AfterEncode();
+		}
+
+		partial void BeforeEncode();
+		partial void AfterEncode();
+
+		protected override void DecodePacket()
+		{
+			base.DecodePacket();
+
+			BeforeDecode();
+
+			ScreenType = ReadSignedVarInt();
+			if (ReadBool())
+			{
+				ScreenId = ReadInt();
+			}
+
+			AfterDecode();
+		}
+
+		partial void BeforeDecode();
+		partial void AfterDecode();
+
+		protected override void ResetPacket()
+		{
+			base.ResetPacket();
+
+			ScreenType = default(int);
+			ScreenId = default(int);
+		}
+
 	}
 }

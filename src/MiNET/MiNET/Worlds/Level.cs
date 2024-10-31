@@ -48,7 +48,6 @@ using MiNET.Utils.Diagnostics;
 using MiNET.Utils.IO;
 using MiNET.Utils.Nbt;
 using MiNET.Utils.Vectors;
-using Newtonsoft.Json;
 
 namespace MiNET.Worlds
 {
@@ -830,20 +829,35 @@ namespace MiNET.Worlds
 
 			foreach (var player in players)
 			{
-				if (now - player.LastUpdatedTime <= now - lastSendTime)
+				if (now - player.LastUpdatedTime <= now - lastSendTime && player.KnownPosition != player.LastSentPosition)
 				{
-					var knownPosition = (PlayerLocation) player.KnownPosition.Clone();
-
-					McpeMoveEntityDelta move = McpeMoveEntityDelta.CreateObject();
-					move.runtimeEntityId = player.EntityId;
-					move.prevSentPosition = player.LastSentPosition;
-					move.currentPosition = new PlayerLocation(player.KnownPosition.X, player.KnownPosition.Y + 1.62f, player.KnownPosition.Z, player.KnownPosition.HeadYaw, player.KnownPosition.Yaw, player.KnownPosition.Pitch);
-					move.isOnGround = player.IsWalker && player.IsOnGround;
-					if (move.SetFlags())
+					if (Vector3.Distance(player.KnownPosition, player.LastSentPosition) > ViewDistance)
 					{
-						RelayBroadcast(move);
+						var knownPosition = (PlayerLocation) player.KnownPosition.Clone();
+
+						var move = McpeMoveEntity.CreateObject();
+						move.runtimeEntityId = player.EntityId;
+						move.flags = 2;
+						move.position = knownPosition;
+						move.position.Y += 1.62f;
+						movePackets.Add(move);
 					}
-					movePackets.Add(move);
+					else
+					{
+						var knownPosition = (PlayerLocation) player.KnownPosition.Clone();
+
+						McpeMoveEntityDelta move = McpeMoveEntityDelta.CreateObject();
+						move.runtimeEntityId = player.EntityId;
+						move.prevSentPosition = player.LastSentPosition;
+						move.currentPosition = knownPosition;
+						move.currentPosition.Y += 1.62f;
+						move.isOnGround = player.IsWalker && player.IsOnGround;
+						if (move.SetFlags())
+						{
+							RelayBroadcast(move);
+						}
+						movePackets.Add(move);
+					}
 					playerMoveCount++;
 				}
 				player.LastSentPosition = (PlayerLocation) player.KnownPosition.Clone();

@@ -842,6 +842,10 @@ namespace MiNET
 				{
 					break;
 				}
+				case PlayerAction.Respawn:
+				{
+					break;
+				}
 				default:
 				{
 					Log.Warn($"Unhandled action ID={message.actionId}");
@@ -2291,7 +2295,7 @@ namespace MiNET
 		public void HandleMcpePlayerAuthInput(McpePlayerAuthInput message)
 		{
 			CurrentTick = message.Tick;
-			if (KnownPosition != message.Position)
+			if (!PlayerLocation.Equal(KnownPosition, message.Position))
 			{
 				var origin = KnownPosition.ToVector3();
 				double distanceTo = Vector3.Distance(origin, new Vector3(message.Position.X, message.Position.Y - 1.62f, message.Position.Z));
@@ -4438,6 +4442,11 @@ namespace MiNET
 		{
 			//TODO handle this.
 			Log.Debug($"Damaged anvil at {message.coordinates.X} {message.coordinates.Y} {message.coordinates.Z} Amount = {message.damageAmount}");
+		}
+
+		public void HandleMcpeServerboundLoadingScreen(McpeServerboundLoadingScreen message)
+		{
+			Log.Debug($"Loading screen: {(message.ScreenType == 1 ? "Opened" : message.ScreenType == 2 ? "Closed" : "Unknown")} {message.ScreenId}");
 		}
 
 	}
