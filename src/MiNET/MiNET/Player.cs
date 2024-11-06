@@ -205,12 +205,13 @@ namespace MiNET
 		public virtual void HandleMcpePlayerSkin(McpePlayerSkin message)
 		{
 			McpePlayerSkin pk = McpePlayerSkin.CreateObject();
-			pk.uuid = this.ClientUuid;
+			pk.uuid = ClientUuid;
 			pk.skin = message.skin;
-			pk.oldSkinName = this.Skin.SkinId;
+			pk.oldSkinName = Skin.SkinId;
 			pk.skinName = message.skinName;
-			this.Skin = message.skin;
-			this.Level.RelayBroadcast(pk);
+			pk.isVerified = true;
+			Skin = message.skin;
+			Level.RelayBroadcast(pk);
 		}
 
 		public virtual void HandleMcpePhotoTransfer(McpePhotoTransfer message)
@@ -1922,7 +1923,7 @@ namespace MiNET
 
 				CleanCache();
 
-				ForcedSendChunk(Level.SpawnPoint);
+				ForcedSendChunk(SpawnPosition);
 
 				MiNetServer.FastThreadPool.QueueUserWorkItem(() =>
 				{
