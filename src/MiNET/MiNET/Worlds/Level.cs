@@ -319,11 +319,11 @@ namespace MiNET.Worlds
 
 				McpePlayerList playerListMessage = McpePlayerList.CreateObject();
 				playerListMessage.records = new PlayerAddRecords(spawnedPlayers);
-				newPlayer.SendPacket(CreateMcpeBatch(playerListMessage.Encode()));
+				newPlayer.SendPacket(playerListMessage);
 
 				McpePlayerList playerList = McpePlayerList.CreateObject();
 				playerList.records = new PlayerAddRecords { newPlayer };
-				RelayBroadcast(newPlayer, CreateMcpeBatch(playerList.Encode()));
+				RelayBroadcast(playerList);
 			}
 		}
 
