@@ -3244,6 +3244,24 @@ namespace MiNET
 					closePacket.windowId = inventory.WindowsId;
 					closePacket.server = message == null ? true : false;
 					SendPacket(closePacket);
+
+					Block block = Level.GetBlock(inventory.Coordinates);
+					if (block is Chest or TrappedChest)
+					{
+						Level.BroadcastSound(inventory.Coordinates, LevelSoundEventType.ChestClosed);
+					}
+					else if (block is EnderChest)
+					{
+						Level.BroadcastSound(inventory.Coordinates, LevelSoundEventType.EnderchestClosed);
+					}
+					else if (block is ShulkerBox)
+					{
+						Level.BroadcastSound(inventory.Coordinates, LevelSoundEventType.ShulkerboxClosed);
+					}
+					else if (block is Barrel)
+					{
+						Level.BroadcastSound(inventory.Coordinates, LevelSoundEventType.BlockBarrelClose);
+					}
 				}
 				else if (_openInventory is HorseInventory horseInventory)
 				{
