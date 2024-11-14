@@ -3515,7 +3515,7 @@ namespace MiNET
 			levelSettings.bonusChest = false;
 			levelSettings.mapEnabled = false;
 			levelSettings.permissionLevel = (byte) PermissionLevel;
-			levelSettings.gameVersion = "";
+			levelSettings.gameVersion = McpeProtocolInfo.GameVersion;
 			levelSettings.hasEduFeaturesEnabled = true;
 			levelSettings.onlySpawnV1Villagers = false;
 
