@@ -55,6 +55,12 @@ namespace MiNET.Effects
 		HealthBoost = 21,
 		Absorption = 22,
 		Saturation = 23,
+		Levitation = 24,
+		FatalPoison = 25,
+		Conduit = 26,
+		SlowFalling = 27,
+		BadOmen = 28,
+		VillageHero = 29
 	}
 
 	public class Effect
