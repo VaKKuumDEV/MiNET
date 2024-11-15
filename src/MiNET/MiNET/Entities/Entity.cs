@@ -382,6 +382,7 @@ namespace MiNET.Entities
 			return sb.ToString();
 		}
 
+		public bool IsOnFire { get; set; }
 		public bool IsSneaking { get; set; }
 		public bool IsSwimming { get; set; }
 		public bool IsRiding { get; set; }
@@ -552,7 +553,7 @@ namespace MiNET.Entities
 		protected virtual BitArray GetFlags()
 		{
 			BitArray bits = new BitArray(64);
-			bits[(int) DataFlags.OnFire] = HealthManager.IsOnFire;
+			bits[(int) DataFlags.OnFire] = IsOnFire;
 			bits[(int) DataFlags.Sneaking] = IsSneaking;
 			bits[(int) DataFlags.Riding] = IsRiding;
 			bits[(int) DataFlags.Sprinting] = IsSprinting;

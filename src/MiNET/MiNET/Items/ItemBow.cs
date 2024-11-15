@@ -86,6 +86,7 @@ namespace MiNET.Items
 			PlayerInventory inventory = player.Inventory;
 
 			bool isInfinity = this.GetEnchantingLevel(EnchantingType.Infinity) > 0;
+			bool isFlame = this.GetEnchantingLevel(EnchantingType.Flame) > 0;
 			bool haveArrow = false;
 			byte effect = 0;
 			if (!haveArrow)
@@ -107,7 +108,6 @@ namespace MiNET.Items
 			}
 			if (!haveArrow)
 			{
-				//TODO: Make sure we deal with arrows based on "potions"
 				for (byte i = 0; i < inventory.Slots.Count; i++)
 				{
 					Item itemStack = inventory.Slots[i];
@@ -115,7 +115,7 @@ namespace MiNET.Items
 					{
 						haveArrow = true;
 						effect = (byte) itemStack.Metadata;
-						if (player.GameMode != GameMode.Creative)
+						if (!isInfinity && player.GameMode != GameMode.Creative)
 						{
 							itemStack.Count--;
 							player.Inventory.SetInventorySlot(i, itemStack);
@@ -133,6 +133,7 @@ namespace MiNET.Items
 			var arrow = new Arrow(player, world, 2, !(force < 1.0));
 			arrow.PowerLevel = this.GetEnchantingLevel(EnchantingType.Power);
 			arrow.EffectValue = effect;
+			arrow.isFlame = isFlame;
 			arrow.KnownPosition = (PlayerLocation) player.KnownPosition.Clone();
 			arrow.KnownPosition.Y += 1.62f;
 

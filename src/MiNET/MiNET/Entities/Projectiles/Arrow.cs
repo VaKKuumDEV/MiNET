@@ -37,6 +37,7 @@ namespace MiNET.Entities.Projectiles
 	public class Arrow : Projectile
 	{
 		public byte EffectValue { get; set; } = 0;
+		public bool isFlame { get; set; }
 		public int PickupDelay = 10;
 		public Arrow(Player shooter, Level level, int damage = 2, bool isCritical = false) : base(shooter, EntityType.ShotArrow, level, damage, isCritical)
 		{
@@ -79,9 +80,17 @@ namespace MiNET.Entities.Projectiles
 					effect.Duration = effect.Duration / 8;
 					player.SetEffect(effect);
 				}
+				if (isFlame)
+				{
+					player.HealthManager.Ignite(100);
+				}
 			}
 			else if (entityCollided is PassiveMob mob) //todo
 			{
+				if (isFlame)
+				{
+					mob.HealthManager.Ignite(100);
+				}
 			}
 		}
 
@@ -116,6 +125,7 @@ namespace MiNET.Entities.Projectiles
 
 		public override MetadataDictionary GetMetadata()
 		{
+			IsOnFire = isFlame;
 			MetadataDictionary metadata = base.GetMetadata();
 			metadata[(int) MetadataFlags.CustomDisplay] = new MetadataByte(EffectValue);
 			return metadata;

@@ -248,6 +248,7 @@ namespace MiNET
 			if (!IsOnFire)
 			{
 				IsOnFire = true;
+				Entity.IsOnFire = IsOnFire;
 				Entity.BroadcastSetEntityData();
 			}
 		}
@@ -396,6 +397,7 @@ namespace MiNET
 			{
 				IsOnFire = false;
 				FireTick = 0;
+				Entity.IsOnFire = IsOnFire;
 				Entity.BroadcastSetEntityData();
 			}
 
@@ -451,6 +453,7 @@ namespace MiNET
 				if (FireTick <= 0)
 				{
 					IsOnFire = false;
+					Entity.IsOnFire = IsOnFire;
 					Entity.BroadcastSetEntityData();
 				}
 				else if (FireTick % 20 == 0)
