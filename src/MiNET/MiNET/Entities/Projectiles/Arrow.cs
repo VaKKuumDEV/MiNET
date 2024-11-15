@@ -125,7 +125,7 @@ namespace MiNET.Entities.Projectiles
 
 		public override MetadataDictionary GetMetadata()
 		{
-			IsOnFire = isFlame;
+			HealthManager.Ignite();
 			MetadataDictionary metadata = base.GetMetadata();
 			metadata[(int) MetadataFlags.CustomDisplay] = new MetadataByte(EffectValue);
 			return metadata;
