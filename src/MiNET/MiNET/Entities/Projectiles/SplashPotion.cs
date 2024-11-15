@@ -33,17 +33,13 @@ namespace MiNET.Entities.Projectiles
 			var particle = new SplashPotionParticle(Level, KnownPosition, effects.Count == 0 ? Color.FromArgb(0x38, 0x5d, 0xc6) : effects[0].ParticleColor);
 			particle.Spawn();
 			Level.BroadcastSound(KnownPosition, LevelSoundEventType.Glass);
-			
-			var detectionMin = KnownPosition - new Vector3(1, 1, 1);
-			var detectionMax = KnownPosition + new Vector3(1, 1, 1);
 
 			var playersInArea = new List<Player>();
 
 			foreach (var player in Level.Players.Values)
 			{
-				if (player.KnownPosition.X >= detectionMin.X && player.KnownPosition.X <= detectionMax.X &&
-					player.KnownPosition.Y >= detectionMin.Y && player.KnownPosition.Y <= detectionMax.Y &&
-					player.KnownPosition.Z >= detectionMin.Z && player.KnownPosition.Z <= detectionMax.Z)
+				var box = player.GetBoundingBox() + 4.00f;
+				if (box.Intersects(GetBoundingBox()))
 				{
 					playersInArea.Add(player);
 				}
@@ -64,7 +60,11 @@ namespace MiNET.Entities.Projectiles
 			{
 				foreach (var effect in effects)
 				{
+					float distance = Vector3.Distance(player.KnownPosition, KnownPosition);
+					float multiplier = (1 - (distance / 4));
+
 					effect.Particles = true;
+					effect.Duration = (int)(effect.Duration * multiplier);
 					player.SetEffect(effect);
 				}
 			}
