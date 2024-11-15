@@ -36,7 +36,7 @@ namespace MiNET.Entities.Projectiles
 {
 	public class Arrow : Projectile
 	{
-		public byte Effect { get; set; } = 0;
+		public byte EffectValue { get; set; } = 0;
 		public int PickupDelay = 10;
 		public Arrow(Player shooter, Level level, int damage = 2, bool isCritical = false) : base(shooter, EntityType.ShotArrow, level, damage, isCritical)
 		{
@@ -71,11 +71,14 @@ namespace MiNET.Entities.Projectiles
 		{
 			IsCritical = false;
 			BroadcastSetEntityData();
-			Effect effect = getEffect(Effect);
-			effect.Duration = effect.Duration / 8;
-			if (entityCollided is Player player && effect != null)
+			var effects = Effect.GetEffects((byte) (EffectValue - 1));
+			if (entityCollided is Player player)
 			{
-				player.SetEffect(effect);
+				foreach (var effect in effects)
+				{
+					effect.Duration = effect.Duration / 8;
+					player.SetEffect(effect);
+				}
 			}
 			else if (entityCollided is PassiveMob mob) //todo
 			{
@@ -98,7 +101,7 @@ namespace MiNET.Entities.Projectiles
 				{
 					if (player.GameMode != GameMode.Spectator && bbox.Intersects(player.GetBoundingBox() + 1))
 					{
-						if (player.Inventory.SetFirstEmptySlot(ItemFactory.GetItem("minecraft:arrow", Effect), true))
+						if (player.Inventory.SetFirstEmptySlot(ItemFactory.GetItem("minecraft:arrow", EffectValue), true))
 						{
 							var takeItemEntity = McpeTakeItemEntity.CreateObject();
 							takeItemEntity.runtimeEntityId = EntityId;
@@ -114,281 +117,8 @@ namespace MiNET.Entities.Projectiles
 		public override MetadataDictionary GetMetadata()
 		{
 			MetadataDictionary metadata = base.GetMetadata();
-			metadata[(int) MetadataFlags.CustomDisplay] = new MetadataByte(Effect);
+			metadata[(int) MetadataFlags.CustomDisplay] = new MetadataByte(EffectValue);
 			return metadata;
-		}
-
-		private static Effect getEffect(int Metadata)
-		{
-			Effect e = null;
-			switch (Metadata)
-			{
-				case 6:
-					e = new NightVision
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 7:
-					e = new NightVision
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 8:
-					e = new Invisibility
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 9:
-					e = new Invisibility
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 10:
-					e = new JumpBoost
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 11:
-					e = new JumpBoost
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 12:
-					e = new JumpBoost
-					{
-						Duration = 1800,
-						Level = 1
-					};
-					break;
-				case 13:
-					e = new FireResistance
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 14:
-					e = new FireResistance
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 15:
-					e = new Speed
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 16:
-					e = new Speed
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 17:
-					e = new Speed
-					{
-						Duration = 1800,
-						Level = 1
-					};
-					break;
-				case 18:
-					e = new Slowness
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 19:
-					e = new Slowness
-					{
-						Duration = 4800,
-						Level = 0
-					};
-					break;
-				case 20:
-					e = new WaterBreathing
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 21:
-					e = new WaterBreathing
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 22:
-					e = new InstantHealth
-					{
-						Duration = 0,
-						Level = 0
-					};
-					break;
-				case 23:
-					e = new InstantHealth
-					{
-						Duration = 0,
-						Level = 1
-					};
-					break;
-				case 24:
-					e = new InstantDamage
-					{
-						Duration = 0,
-						Level = 0
-					};
-					break;
-				case 25:
-					e = new InstantDamage
-					{
-						Duration = 0,
-						Level = 1
-					};
-					break;
-				case 26:
-					e = new Poison
-					{
-						Duration = 900,
-						Level = 0
-					};
-					break;
-				case 27:
-					e = new Poison
-					{
-						Duration = 2400,
-						Level = 0
-					};
-					break;
-				case 28:
-					e = new Poison
-					{
-						Duration = 440,
-						Level = 1
-					};
-					break;
-				case 29:
-					e = new Regeneration
-					{
-						Duration = 900,
-						Level = 0
-					};
-					break;
-				case 30:
-					e = new Regeneration
-					{
-						Duration = 2400,
-						Level = 0
-					};
-					break;
-				case 31:
-					e = new Regeneration
-					{
-						Duration = 440,
-						Level = 1
-					};
-					break;
-				case 32:
-					e = new Strength
-					{
-						Duration = 3600,
-						Level = 0
-					};
-					break;
-				case 33:
-					e = new Strength
-					{
-						Duration = 9600,
-						Level = 0
-					};
-					break;
-				case 34:
-					e = new Strength
-					{
-						Duration = 1800,
-						Level = 1
-					};
-					break;
-				case 35:
-					e = new Weakness
-					{
-						Duration = 1800,
-						Level = 0
-					};
-					break;
-				case 36:
-					e = new Weakness
-					{
-						Duration = 4800,
-						Level = 0
-					};
-					break;
-				case 37:
-					e = new Wither
-					{
-						Duration = 800,
-						Level = 0
-					};
-					break;
-				/*case 38:           these effects doesn't exist but will.
-					e = new TurtleMaster
-					{
-						Duration = 400,
-						Level = 0
-					};
-					break;
-				case 39:
-					e = new TurtleMaster
-					{
-						Duration = 800,
-						Level = 1
-					};
-					break;
-				case 40:
-					e = new TurtleMaster
-					{
-						Duration = 400,
-						Level = 2
-					};
-					break;
-				case 41:
-					e = new SlowFalling
-					{
-						Duration = 2600,
-						Level = 0
-					};
-					break;
-				case 42:
-					e = new SlowFalling
-					{
-						Duration = 4800,
-						Level = 0
-					};
-					break;*/
-			}
-
-			if (e != null)
-			{
-				return e;
-			}
-			return null;
 		}
 	}
 }

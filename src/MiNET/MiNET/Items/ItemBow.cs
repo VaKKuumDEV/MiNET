@@ -132,7 +132,7 @@ namespace MiNET.Items
 
 			var arrow = new Arrow(player, world, 2, !(force < 1.0));
 			arrow.PowerLevel = this.GetEnchantingLevel(EnchantingType.Power);
-			arrow.Effect = effect;
+			arrow.EffectValue = effect;
 			arrow.KnownPosition = (PlayerLocation) player.KnownPosition.Clone();
 			arrow.KnownPosition.Y += 1.62f;
 
