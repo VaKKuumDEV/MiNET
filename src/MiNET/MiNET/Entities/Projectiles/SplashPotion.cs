@@ -67,8 +67,6 @@ namespace MiNET.Entities.Projectiles
 						float multiplier = (1 - (distance / 4));
 						effect.Duration = (int) (effect.Duration * multiplier);
 					}
-					Console.WriteLine(player.GetBoundingBox() + 1);
-					Console.WriteLine(GetBoundingBox());
 					effect.Particles = true;
 					player.SetEffect(effect);
 				}
