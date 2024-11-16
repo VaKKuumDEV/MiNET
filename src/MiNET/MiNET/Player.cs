@@ -3505,7 +3505,7 @@ namespace MiNET
 			levelSettings.hasAchievementsDisabled = true;
 			levelSettings.time = (int) Level.WorldTime;
 			levelSettings.eduOffer = PlayerInfo.Edition == 1 ? 1 : 0;
-			levelSettings.rainLevel = 0;
+			levelSettings.rainLevel = Level.rainLevel;
 			levelSettings.lightningLevel = 0;
 			levelSettings.isMultiplayer = true;
 			levelSettings.broadcastToLan = true;
