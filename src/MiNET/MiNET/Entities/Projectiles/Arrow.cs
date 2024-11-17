@@ -116,6 +116,11 @@ namespace MiNET.Entities.Projectiles
 							takeItemEntity.runtimeEntityId = EntityId;
 							takeItemEntity.target = player.EntityId;
 							Level.RelayBroadcast(takeItemEntity);
+
+							var takeItemEntity2 = McpeTakeItemEntity.CreateObject();
+							takeItemEntity2.runtimeEntityId = EntityId;
+							takeItemEntity2.target = EntityManager.EntityIdSelf;
+							player.SendPacket(takeItemEntity2);
 						}
 						DespawnEntity();
 					}
@@ -125,7 +130,10 @@ namespace MiNET.Entities.Projectiles
 
 		public override MetadataDictionary GetMetadata()
 		{
-			HealthManager.Ignite();
+			if (isFlame)
+			{
+				HealthManager.Ignite();
+			}
 			MetadataDictionary metadata = base.GetMetadata();
 			metadata[(int) MetadataFlags.CustomDisplay] = new MetadataByte(EffectValue);
 			return metadata;

@@ -261,11 +261,12 @@ namespace MiNET
 			var player = Entity as Player;
 			lock (_killSync)
 			{
+				if (IsDead) return;
+
 				if (player != null)
 				{
 					if (player.Inventory.GetItemInHand() is ItemTotemOfUndying || player.Inventory.OffHand is ItemTotemOfUndying)
 					{
-						IsDead = false;
 						Health = 2;
 
 						player.RemoveAllEffects();
@@ -294,7 +295,6 @@ namespace MiNET
 					}
 				}
 
-				if (IsDead) return;
 				IsDead = true;
 
 				Health = 0;
