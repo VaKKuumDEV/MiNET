@@ -25,9 +25,9 @@
 
 using System;
 using System.Buffers;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using log4net;
 using MiNET.Blocks;
@@ -87,7 +87,7 @@ namespace MiNET.Worlds
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool IsAllAir()
 		{
-			//if (IsDirty)
+			if (IsDirty)
 			{
 				_isAllAir = AllZeroFast(_blocks);
 			}
@@ -95,46 +95,33 @@ namespace MiNET.Worlds
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static unsafe bool AllZeroFast<T>(T[] data) where T : unmanaged
+		public static bool AllZeroFast<T>(T[] data) where T : unmanaged
 		{
-			fixed (T* shorts = data)
+			if (data == null || data.Length == 0) return true;
+
+			int vectorSize = Vector<T>.Count;
+			int i = 0;
+			int length = data.Length;
+
+			while (i <= length - vectorSize * 4)
 			{
-				byte* bytes = (byte*) shorts;
-				int len = data.Length * sizeof(T);
-				int rem = len % (sizeof(long) * 16);
-				long* b = (long*) bytes;
-				long* e = (long*) (shorts + len - rem);
+				var v1 = new Vector<T>(data, i);
+				var v2 = new Vector<T>(data, i + vectorSize);
+				var v3 = new Vector<T>(data, i + vectorSize * 2);
+				var v4 = new Vector<T>(data, i + vectorSize * 3);
 
-				while (b < e)
+				if (!Vector.EqualsAll(v1, Vector<T>.Zero) ||
+					!Vector.EqualsAll(v2, Vector<T>.Zero) ||
+					!Vector.EqualsAll(v3, Vector<T>.Zero) ||
+					!Vector.EqualsAll(v4, Vector<T>.Zero))
 				{
-					if ((*(b)
-						| *(b + 1)
-						| *(b + 2)
-						| *(b + 3)
-						| *(b + 4)
-						| *(b + 5)
-						| *(b + 6)
-						| *(b + 7)
-						| *(b + 8)
-						| *(b + 9)
-						| *(b + 10)
-						| *(b + 11)
-						| *(b + 12)
-						| *(b + 13)
-						| *(b + 14)
-						| *(b + 15)) != 0)
-						return false;
-					b += 16;
+					return false;
 				}
 
-				for (int i = 0; i < rem; i++)
-				{
-					if (data[len - 1 - i].Equals(default(T)))
-						return false;
-				}
-
-				return true;
+				i += vectorSize * 4;
 			}
+
+			return true;
 		}
 
 		private static int GetIndex(int bx, int by, int bz)
@@ -412,32 +399,38 @@ namespace MiNET.Worlds
 			return cc;
 		}
 
-		private static readonly ChunkPool<SubChunk> Pool = new ChunkPool<SubChunk>(() => new SubChunk());
-
 		public static SubChunk CreateObject()
 		{
 			return new SubChunk();
-			//return Pool.GetObject();
+			//return GetObject(); would be nice to fix
 		}
 
 		public void PutPool()
 		{
 			Dispose();
-			//Reset();
-			//Pool.PutObject(this);
+			//REMOVEReset();
+			//ReturnObject(this);
 		}
 
 		public void REMOVEReset()
 		{
 			_isAllAir = true;
+			IsDirty = false;
+			Hash = 0;
+			DisableCache = true;
+
 			_runtimeIds.Clear();
-			Array.Clear(_blocks, 0, _blocks.Length);
 			_loggedRuntimeIds.Clear();
-			Array.Clear(_loggedBlocks, 0, _blocks.Length);
+
+			_blocks = ArrayPool<short>.Shared.Rent(4096);
+			_loggedBlocks = ArrayPool<byte>.Shared.Rent(4096);
+			_blocklight = new NibbleArray(ArrayPool<byte>.Shared.Rent(2048));
+			_skylight = new NibbleArray(ArrayPool<byte>.Shared.Rent(2048));
+
+			Array.Clear(_blocks, 0, _blocks.Length);
+			Array.Clear(_loggedBlocks, 0, _loggedBlocks.Length);
 			Array.Clear(_blocklight.Data, 0, _blocklight.Data.Length);
 			Array.Fill<byte>(_skylight.Data, 0xff);
-			_cache = null;
-			IsDirty = false;
 		}
 
 		private void Dispose(bool disposing)
@@ -451,6 +444,32 @@ namespace MiNET.Worlds
 			}
 		}
 
+		public static readonly Queue<SubChunk> Pool = new Queue<SubChunk>();
+
+		private static readonly object poolLock = new object();
+
+		public static SubChunk GetObject()
+		{
+			lock (poolLock)
+			{
+				if (Pool.Count > 0)
+				{
+					var subChunk = Pool.Dequeue();
+					return subChunk;
+				}
+
+				return new SubChunk();
+			}
+		}
+
+		public static void ReturnObject(SubChunk subChunk)
+		{
+			lock (poolLock)
+			{
+				Pool.Enqueue(subChunk);
+			}
+		}
+
 		public void Dispose()
 		{
 			Dispose(true);
@@ -460,41 +479,6 @@ namespace MiNET.Worlds
 		~SubChunk()
 		{
 			Dispose(false);
-		}
-	}
-
-	public class ChunkPool<T>
-	{
-		private static readonly ILog Log = LogManager.GetLogger(typeof(ChunkPool<T>));
-
-		private ConcurrentQueue<T> _objects;
-
-		private Func<T> _objectGenerator;
-
-		public ChunkPool(Func<T> objectGenerator)
-		{
-			if (objectGenerator == null)
-				throw new ArgumentNullException("objectGenerator");
-			_objects = new ConcurrentQueue<T>();
-			_objectGenerator = objectGenerator;
-		}
-
-		public T GetObject()
-		{
-			if (_objects.IsEmpty)
-				return _objectGenerator();
-
-			T item;
-			if (_objects.TryDequeue(out item))
-				return item;
-			return _objectGenerator();
-		}
-
-		const long MaxPoolSize = 10000000;
-
-		public void PutObject(T item)
-		{
-			//_objects.Enqueue(item);
 		}
 	}
 }
