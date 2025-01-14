@@ -1040,7 +1040,8 @@ namespace MiNET
 				Abilities = PlayerAbility.All,
 				Values = (uint) abilities,
 				FlySpeed = 0.05f,
-				WalkSpeed = 0.1f
+				WalkSpeed = 0.1f,
+				VerticalFlySpeed = 0.1f
 			};
 
 			layers.Add(baseLayer);
@@ -1138,6 +1139,8 @@ namespace MiNET
 				SendSetTime();
 
 				SendStartGame();
+
+				SendItemComponents();
 
 				SendAvailableEntityIdentifiers();
 
@@ -2031,6 +2034,7 @@ namespace MiNET
 			if (!UseCreativeInventory) return;
 
 			var creativeContent = McpeCreativeContent.CreateObject();
+			creativeContent.groups = InventoryUtils.GetCreativeGroups();
 			creativeContent.input = InventoryUtils.GetCreativeMetadataSlots();
 			SendPacket(creativeContent);
 		}
@@ -3540,9 +3544,6 @@ namespace MiNET
 				startGame.enableNewBlockBreakSystem = true;
 			}
 
-			//startGame.blockPalette = BlockFactory.BlockPalette;
-			startGame.itemstates = ItemFactory.Itemstates;
-
 			startGame.enableNewInventorySystem = true;
 			startGame.blockPaletteChecksum = 0;
 			startGame.serverVersion = McpeProtocolInfo.GameVersion;
@@ -3558,6 +3559,13 @@ namespace MiNET
 			startGame.worldTemplateId = new UUID(Guid.Empty.ToByteArray());
 
 			SendPacket(startGame);
+		}
+
+		public void SendItemComponents()
+		{
+			McpeItemComponent itemComponent = McpeItemComponent.CreateObject();
+			itemComponent.entries = ItemFactory.Itemstates;
+			SendPacket(itemComponent);
 		}
 
 		/// <summary>
