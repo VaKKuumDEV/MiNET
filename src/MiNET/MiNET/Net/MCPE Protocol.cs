@@ -39,14 +39,13 @@ using MiNET.Utils.Metadata;
 using MiNET.Utils.Vectors;
 using MiNET.Utils.Nbt;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace MiNET.Net
 {
 	public class McpeProtocolInfo
 	{
-		public const int ProtocolVersion = 776;
-		public const string GameVersion = "1.21.60";
+		public const int ProtocolVersion = 766;
+		public const string GameVersion = "1.21.50";
 	}
 
 	public interface IMcpeMessageHandler
@@ -8895,7 +8894,7 @@ namespace MiNET.Net
 
 			eventId = ReadSignedVarInt();
 			//eventData = ReadNbt(); todo wrong
-			for (byte i = 0; i < 62; i++) //shhhh
+			for (byte i = 0; i < 60; i++) //shhhh
 			{
 				ReadByte();
 			}
@@ -9503,8 +9502,7 @@ namespace MiNET.Net
 	public partial class McpeCreativeContent : Packet<McpeCreativeContent>
 	{
 
-		public List<creativeGroup> groups; // = null;
-		public List<CreativeItemEntry> input; // = null;
+		public CreativeItemStacks input; // = null;
 
 		public McpeCreativeContent()
 		{
@@ -9518,7 +9516,6 @@ namespace MiNET.Net
 
 			BeforeEncode();
 
-			Write(groups);
 			Write(input);
 
 			AfterEncode();
@@ -9533,7 +9530,6 @@ namespace MiNET.Net
 
 			BeforeDecode();
 
-			groups = ReadCreativeGroups();
 			input = ReadCreativeItemStacks();
 
 			AfterDecode();
@@ -9546,8 +9542,7 @@ namespace MiNET.Net
 		{
 			base.ResetPacket();
 
-			groups=default(List<creativeGroup>);
-			input=default(List<CreativeItemEntry>);
+			input=default(CreativeItemStacks);
 		}
 
 	}
@@ -9826,7 +9821,7 @@ namespace MiNET.Net
 	public partial class McpeItemComponent : Packet<McpeItemComponent>
 	{
 
-		public Itemstates entries; // = null;
+		public ItemComponentList entries; // = null;
 
 		public McpeItemComponent()
 		{
@@ -9854,7 +9849,7 @@ namespace MiNET.Net
 
 			BeforeDecode();
 
-			entries = ReadItemstates();
+			entries = ReadItemComponentList();
 
 			AfterDecode();
 		}
@@ -9866,7 +9861,7 @@ namespace MiNET.Net
 		{
 			base.ResetPacket();
 
-			entries=default(Itemstates);
+			entries=default(ItemComponentList);
 		}
 
 	}
