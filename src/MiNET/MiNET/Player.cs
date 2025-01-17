@@ -3074,11 +3074,13 @@ namespace MiNET
 					//TODO Handle custom items, like player inventory and cursor. Not entirely sure how to handle this for crafting and similar inventories.
 					case CraftTransactionRecord _:
 					{
-						throw new Exception($"This should never happen with new inventory transactions");
+							Disconnect("Inventory transaction error");
+							break;
 					}
 					case CreativeTransactionRecord _:
 					{
-						throw new Exception($"This should never happen with new inventory transactions");
+							Disconnect("Inventory transaction error");
+							break;
 					}
 					case WorldInteractionTransactionRecord _:
 					{
