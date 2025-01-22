@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Numerics;
@@ -76,9 +77,9 @@ namespace MiNET
 
 		static MiNetServer()
 		{
-			
+
 		}
-		
+
 		public MiNetServer()
 		{
 			ServerRole = Config.GetProperty("ServerRole", ServerRole.Full);
@@ -112,10 +113,11 @@ namespace MiNET
 			Console.WriteLine("  Timer is accurate within {0} nanoseconds",
 				nanosecPerTick);
 		}
-		
+
 		public bool StartServer()
 		{
-			if (_listener != null) return false; // Already started
+			if (_listener != null)
+				return false; // Already started
 
 			try
 			{
@@ -123,7 +125,8 @@ namespace MiNET
 
 				if (ServerRole == ServerRole.Full || ServerRole == ServerRole.Proxy)
 				{
-					if (IsEdu) EduTokenManager = new EduTokenManager();
+					if (IsEdu)
+						EduTokenManager = new EduTokenManager();
 
 					if (Endpoint == null)
 					{
@@ -139,6 +142,14 @@ namespace MiNET
 				{
 					// This stuff needs to be in an extension to connection
 					// somehow ...
+
+					var pluginDir = Config.GetProperty("PluginDirectory", "Plugins").Trim();
+					var resourceDir = Config.GetProperty("ResourceDirectory", "ResourcePacks").Trim();
+
+					if (!Directory.Exists(pluginDir))
+						Directory.CreateDirectory(pluginDir);
+					if (!Directory.Exists(resourceDir))
+						Directory.CreateDirectory(resourceDir);
 
 					Log.Info("Loading plugins...");
 					PluginManager = new PluginManager();
@@ -156,7 +167,7 @@ namespace MiNET
 					PluginManager.EnablePlugins(this, LevelManager);
 
 					// Cache - remove
-					LevelManager.GetLevel(null, Dimension.Overworld.ToString());
+					LevelManager.GetLevel(null, Config.GetProperty("DefaultWorld", "world"));
 				}
 
 				GreyListManager ??= new GreyListManager();
@@ -194,16 +205,16 @@ namespace MiNET
 		{
 			Log.Info($"Stopping...");
 			LevelManager.Close();
-			
+
 			Log.Info("Disabling plugins...");
 			PluginManager?.DisablePlugins();
-			
+
 			_listener?.Stop();
 			ConnectionInfo?.Stop();
 
 			var fastThreadPool = FastThreadPool;
 			fastThreadPool?.Dispose();
-			
+
 			Log.Info($"Waiting for threads to exit...");
 			fastThreadPool?.WaitForThreadsExit();
 		}

@@ -40,12 +40,10 @@ using System.Threading.Tasks;
 using fNbt;
 using log4net;
 using MiNET.Blocks;
-using MiNET.Items;
 using MiNET.LevelDB;
 using MiNET.Utils;
 using MiNET.Utils.IO;
 using MiNET.Utils.Vectors;
-using Newtonsoft.Json;
 
 namespace MiNET.Worlds
 {
@@ -62,6 +60,7 @@ namespace MiNET.Worlds
 		public bool IsCaching { get; } = true;
 		public bool Locked { get; set; } = false;
 		public IWorldGenerator MissingChunkProvider { get; set; } = new SuperflatGenerator(Dimension.Overworld);
+		public string LevelName { get; set; } = Config.GetProperty("DefaultWorld", "world");
 		public Dimension Dimension { get; set; } = Dimension.Overworld;
 
 		public LevelDbProvider(Database db = null)
@@ -76,7 +75,7 @@ namespace MiNET.Worlds
 
 		public void Initialize()
 		{
-			BasePath ??= Config.GetProperty("WorldDirectory", "Worlds").Trim();
+			BasePath ??= Path.Combine(Config.GetProperty("WorldDirectory", "Worlds").Trim(), LevelName);
 
 			var directory = new DirectoryInfo(Path.Combine(BasePath, "db"));
 
@@ -100,20 +99,9 @@ namespace MiNET.Worlds
 			{
 				Log.Warn($"No level.dat found at {levelFileName}. Creating empty.");
 				LevelInfo = new LevelInfoBedrock();
-				var pluginDir = Config.GetProperty("PluginDirectory", "Plugins").Trim();
-				var resourceDir = Config.GetProperty("ResourceDirectory", "ResourcePacks").Trim();
-				if (!Directory.Exists(BasePath))
-				{
-					Directory.CreateDirectory(BasePath);
-				}
-				if (!Directory.Exists(pluginDir))
-				{
-					Directory.CreateDirectory(pluginDir);
-				}
-				if (!Directory.Exists(resourceDir))
-				{
-					Directory.CreateDirectory(resourceDir);
-				}
+				
+				if (!Directory.Exists(BasePath)) Directory.CreateDirectory(BasePath);
+				
 				SaveLevelInfo(LevelInfo);
 			}
 

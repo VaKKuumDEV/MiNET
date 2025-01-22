@@ -64,6 +64,7 @@ namespace MiNET
 						worldProvider = new LevelDbProvider()
 						{
 							MissingChunkProvider = Generator,
+							LevelName = name,
 						};
 						break;
 					case "cool":
