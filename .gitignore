@@ -199,3 +199,8 @@ src/MiNET/MiNET.Console/server.conf
 
 src/MiNET/MiNET.Client/start.bat
 src/MiNET/MiNET.Client/newResources
+
+src/MiNET/MiNET.AspNet/Worlds
+src/MiNET/MiNET.AspNet/Plugins
+src/MiNET/MiNET.AspNet/ResourcePacks
+src/MiNET/MiNET.AspNet/Properties
