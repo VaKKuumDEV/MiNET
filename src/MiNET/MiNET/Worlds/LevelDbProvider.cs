@@ -67,7 +67,7 @@ namespace MiNET.Worlds
 		{
 			Db = db;
 		}
-		
+
 		public LevelDbProvider(string basePath)
 		{
 			BasePath = basePath;
@@ -99,9 +99,10 @@ namespace MiNET.Worlds
 			{
 				Log.Warn($"No level.dat found at {levelFileName}. Creating empty.");
 				LevelInfo = new LevelInfoBedrock();
-				
-				if (!Directory.Exists(BasePath)) Directory.CreateDirectory(BasePath);
-				
+
+				if (!Directory.Exists(BasePath))
+					Directory.CreateDirectory(BasePath);
+
 				SaveLevelInfo(LevelInfo);
 			}
 
@@ -136,8 +137,10 @@ namespace MiNET.Worlds
 
 			if (_chunkCache.TryGetValue(chunkCoordinates, out ChunkColumn value))
 			{
-				if (value == null) _chunkCache.TryRemove(chunkCoordinates, out value);
-				if (value != null) return value;
+				if (value == null)
+					_chunkCache.TryRemove(chunkCoordinates, out value);
+				if (value != null)
+					return value;
 			}
 
 			// Warning: The following code MAY execute the GetChunk 2 times for the same coordinate
@@ -170,7 +173,7 @@ namespace MiNET.Worlds
 					Z = coordinates.Z
 				};
 
-				byte[] chunkDataKey = Combine(index, new byte[] {0x2f, 0});
+				byte[] chunkDataKey = Combine(index, new byte[] { 0x2f, 0 });
 				for (byte y = 0; y < 16; y++)
 				{
 					chunkDataKey[^1] = y;
@@ -229,7 +232,8 @@ namespace MiNET.Worlds
 						{
 							var blockObject = chunkColumn.GetBlockObject(x & 0x0f, y, z & 0x0f);
 
-							if (blockObject is SkullBase block) {
+							if (blockObject is SkullBase block)
+							{
 								var newBlock = (SkullBase) BlockFactory.GetBlockById(1219 + blockEntityTag["SkullType"].ByteValue);
 								newBlock.FacingDirection = block.FacingDirection;
 								chunkColumn.SetBlock(x & 0x0f, y, z & 0x0f, newBlock);
@@ -252,7 +256,8 @@ namespace MiNET.Worlds
 
 			if (chunkColumn == null)
 			{
-				if (version != null) Log.Error($"Expected other version, but got version={version.First()}");
+				if (version != null)
+					Log.Error($"Expected other version, but got version={version.First()}");
 
 				chunkColumn = generator?.GenerateChunkColumn(coordinates);
 				chunkColumn?.RecalcHeight();
@@ -287,7 +292,8 @@ namespace MiNET.Worlds
 			var reader = new MemoryStreamReader(data);
 
 			int version = reader.ReadByte();
-			if (version != 8) throw new Exception("Wrong chunk version");
+			if (version != 8)
+				throw new Exception("Wrong chunk version");
 
 			int storageSize = reader.ReadByte();
 			for (int storage = 0; storage < storageSize; storage++)
@@ -296,7 +302,8 @@ namespace MiNET.Worlds
 
 				byte paletteAndFlag = (byte) reader.ReadByte();
 				bool isRuntime = (paletteAndFlag & 1) != 0;
-				if (isRuntime) throw new Exception("Can't use runtime for persistent storage.");
+				if (isRuntime)
+					throw new Exception("Can't use runtime for persistent storage.");
 				int bitsPerBlock = paletteAndFlag >> 1;
 				int blocksPerWord = (int) Math.Floor(32d / bitsPerBlock);
 				int wordCount = (int) Math.Ceiling(4096d / blocksPerWord);
@@ -346,13 +353,15 @@ namespace MiNET.Worlds
 					uint word = reader.ReadUInt32();
 					for (int block = 0; block < blocksPerWord; block++)
 					{
-						if (position >= 4096) continue; // padding bytes
+						if (position >= 4096)
+							continue; // padding bytes
 
 						int state = (int) ((word >> ((position % blocksPerWord) * bitsPerBlock)) & ((1 << bitsPerBlock) - 1));
 						int x = (position >> 8) & 0xF;
 						int y = position & 0xF;
 						int z = (position >> 4) & 0xF;
-						if (state > palette.Count) Log.Error($"Got wrong state={state} from word. bitsPerBlock={bitsPerBlock}, blocksPerWord={blocksPerWord}, Word={word}");
+						if (state > palette.Count)
+							Log.Error($"Got wrong state={state} from word. bitsPerBlock={bitsPerBlock}, blocksPerWord={blocksPerWord}, Word={word}");
 
 						if (isNotLoggedStorage)
 						{
@@ -410,13 +419,14 @@ namespace MiNET.Worlds
 
 		public int SaveChunks()
 		{
-			if (!Config.GetProperty("Save.Enabled", false)) return 0;
+			if (!Config.GetProperty("Save.Enabled", false))
+				return 0;
 			int count = 0;
 			try
 			{
 				lock (_chunkCache)
 				{
-				SaveLevelInfo(LevelInfo);
+					SaveLevelInfo(LevelInfo);
 
 					foreach (ChunkColumn chunkColumn in _chunkCache.Values)
 					{
@@ -453,7 +463,7 @@ namespace MiNET.Worlds
 			var bytes = file.SaveToBuffer(NbtCompression.None);
 
 			using FileStream stream = File.Create(levelFileName);
-			stream.Write(new ReadOnlySpan<byte>(new byte[] {0x08, 0, 0, 0}));
+			stream.Write(new ReadOnlySpan<byte>(new byte[] { 0x08, 0, 0, 0 }));
 			stream.Write(BitConverter.GetBytes(bytes.Length));
 			stream.Write(bytes);
 			stream.Flush();
@@ -469,9 +479,10 @@ namespace MiNET.Worlds
 
 			byte[] versionKey = Combine(index, 0x76);
 			byte[] version = Db.Get(versionKey);
-			if (version == null) Db.Put(versionKey, new byte[] {13});
+			if (version == null)
+				Db.Put(versionKey, new byte[] { 13 });
 
-			var chunkDataKey = Combine(index, new byte[] {0x2f, 0});
+			var chunkDataKey = Combine(index, new byte[] { 0x2f, 0 });
 			for (byte y = 0; y < 16; y++)
 			{
 				chunkDataKey[^1] = y;
@@ -546,7 +557,8 @@ namespace MiNET.Worlds
 
 		internal bool WriteStore(MemoryStream stream, short[] blocks, byte[] loggedBlocks, bool forceWrite, List<int> palette)
 		{
-			if (palette.Count == 0) return false;
+			if (palette.Count == 0)
+				return false;
 
 			// log2(number of entries) => bits needed to store them
 			int bitsPerBlock = (int) Math.Ceiling(Math.Log(palette.Count, 2));
@@ -554,7 +566,8 @@ namespace MiNET.Worlds
 			switch (bitsPerBlock)
 			{
 				case 0:
-					if (!forceWrite && palette.Contains(0)) return false;
+					if (!forceWrite && palette.Contains(0))
+						return false;
 					bitsPerBlock = 1;
 					break;
 				case 1:
@@ -596,7 +609,8 @@ namespace MiNET.Worlds
 				uint word = 0;
 				for (int block = 0; block < blocksPerWord; block++)
 				{
-					if (position >= 4096) continue;
+					if (position >= 4096)
+						continue;
 
 					uint state;
 					if (blocks != null)
@@ -666,7 +680,7 @@ namespace MiNET.Worlds
 
 			lock (_chunkCache)
 			{
-				var coords = new List<ChunkCoordinates> {spawn};
+				var coords = new List<ChunkCoordinates> { spawn };
 
 				foreach (var player in players)
 				{
@@ -748,20 +762,20 @@ namespace MiNET.Worlds
 				switch (state)
 				{
 					case BlockStateByte value:
-					{
-						nbtStates.Add(new NbtByte(value.Name, value.Value));
-						break;
-					}
+						{
+							nbtStates.Add(new NbtByte(value.Name, value.Value));
+							break;
+						}
 					case BlockStateInt value:
-					{
-						nbtStates.Add(new NbtInt(value.Name, value.Value));
-						break;
-					}
+						{
+							nbtStates.Add(new NbtInt(value.Name, value.Value));
+							break;
+						}
 					case BlockStateString value:
-					{
-						nbtStates.Add(new NbtString(value.Name, value.Value));
-						break;
-					}
+						{
+							nbtStates.Add(new NbtString(value.Name, value.Value));
+							break;
+						}
 				}
 			}
 
@@ -862,7 +876,8 @@ namespace MiNET.Worlds
 		{
 			tag ??= new NbtCompound(string.Empty);
 
-			if (obj == null) throw new NullReferenceException();
+			if (obj == null)
+				throw new NullReferenceException();
 
 			PropertyInfo[] properties = obj.GetType().GetProperties();
 			foreach (PropertyInfo propertyInfo in properties)

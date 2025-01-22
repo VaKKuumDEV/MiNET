@@ -179,9 +179,12 @@ namespace MiNET
 
 		public virtual Level GetDimension(Level level, Dimension dimension)
 		{
-			if (dimension == Dimension.Overworld) throw new Exception($"Can not get level for '{dimension}' from the LevelManager");
-			if (dimension == Dimension.Nether && !level.WorldProvider.HaveNether()) return null;
-			if (dimension == Dimension.TheEnd && !level.WorldProvider.HaveTheEnd()) return null;
+			if (dimension == Dimension.Overworld)
+				throw new Exception($"Can not get level for '{dimension}' from the LevelManager");
+			if (dimension == Dimension.Nether && !level.WorldProvider.HaveNether())
+				return null;
+			if (dimension == Dimension.TheEnd && !level.WorldProvider.HaveTheEnd())
+				return null;
 
 			switch (level.WorldProvider)
 			{
@@ -295,7 +298,7 @@ namespace MiNET
 
 			return newLevel;
 		}
-		
+
 		public void Close()
 		{
 			var levels = Levels;
@@ -361,7 +364,7 @@ namespace MiNET
 			int viewDistance = Config.GetProperty("ViewDistance", 11);
 
 			IWorldProvider worldProvider = null;
-			worldProvider = provider ?? new AnvilWorldProvider {MissingChunkProvider = new SuperflatGenerator(Dimension.Overworld)};
+			worldProvider = provider ?? new AnvilWorldProvider { MissingChunkProvider = new SuperflatGenerator(Dimension.Overworld) };
 
 			var level = new Level(this, name, worldProvider, EntityManager, gameMode, difficulty, viewDistance);
 			level.Initialize();
