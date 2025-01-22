@@ -1,4 +1,4 @@
-﻿namespace MiNET.ApNet.Utils
+﻿namespace MiNET.AspNet.Utils
 {
 	public interface IShutdownTask
 	{

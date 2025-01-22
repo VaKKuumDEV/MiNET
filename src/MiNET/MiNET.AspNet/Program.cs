@@ -1,5 +1,5 @@
-﻿using MiNET.ApNet;
-using MiNET.ApNet.Utils;
+﻿using MiNET.AspNet;
+using MiNET.AspNet.Utils;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,16 +1,13 @@
 ﻿using log4net.Config;
 using log4net;
 using System.Diagnostics;
-using System.Net.Sockets;
-using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using MiNET.ApNet.Utils;
-using MiNET.Blocks;
 using MiNET.Net;
 using MiNET.Utils;
+using MiNET.AspNet.Utils;
 
-namespace MiNET.ApNet
+namespace MiNET.AspNet
 {
 	public class MinetStartupTask(ILogger<MinetStartupTask> logger) : IStartupTask, IShutdownTask
 	{
@@ -36,9 +33,7 @@ namespace MiNET.ApNet
 				Server = service;
 			}
 			else
-			{
 				_logger.LogError("Unsupported platform.");
-			}
 
 			return Task.CompletedTask;
 		}

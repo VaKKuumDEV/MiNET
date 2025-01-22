@@ -1,4 +1,4 @@
-﻿namespace MiNET.ApNet.Utils
+﻿namespace MiNET.AspNet.Utils
 {
 	public static class WebHostExtensions
 	{
@@ -12,9 +12,7 @@
 
 			// Выполнить эти задачи
 			foreach (IStartupTask startupTask in startupTasks)
-			{
 				await startupTask.ExecuteAsync(cancellationToken);
-			}
 
 			// Запустить сервис как обычно
 			await webHost.RunAsync(cancellationToken);
@@ -27,9 +25,7 @@
 
 			// Выполнить эти задачи
 			foreach (IShutdownTask startupTask in startupTasks)
-			{
 				await startupTask.ExecuteShutdownAsync(cancellationToken);
-			}
 		}
 	}
 }
