@@ -219,6 +219,7 @@ namespace MiNET
 			{
 				Dimension = dimension,
 				MissingChunkProvider = new SuperflatGenerator(dimension),
+				LevelName = level.LevelName,
 			};
 
 			Level newLevel = new Level(level.LevelManager, level.LevelId + "_" + dimension, worldProvider, EntityManager, level.GameMode, level.Difficulty, level.ViewDistance)

@@ -1105,7 +1105,7 @@ namespace MiNET
 
 					if (Level != null) return; // Already called this method.
 
-					Level = Server.LevelManager.GetLevel(this, Dimension.Overworld.ToString());
+					Level = Server.LevelManager.GetLevel(this, Config.GetProperty("DefaultWorld", "world"));
 				}
 
 				if (Level == null)
