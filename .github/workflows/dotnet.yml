@@ -18,11 +18,17 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      working-directory: src/MiNET/MiNET.Console
+      working-directory: src/MiNET/MiNET.AspNet
       run: dotnet restore
     - name: Test
-      working-directory: src/MiNET/MiNET.Console
+      working-directory: src/MiNET/MiNET.AspNet
       run: dotnet test --no-build --verbosity normal
+    - name: Build Linux
+      working-directory: src/MiNET/MiNET.AspNet
+      run: |
+        dotnet build --configuration Release --no-restore
+        dotnet publish -c Release -o ../linux-release -r linux-x64 --self-contained true /p:UseAppHost=true
+        zip -r ../linux-release.zip ../linux-release
 
   release:
     permissions: write-all
@@ -34,9 +40,9 @@ jobs:
     - name: Upload
       uses: svenstaro/upload-release-action@v2
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: src/MiNET/MiNET.Console/minet.zip
-        asset_name: MiNET.zip
+        repo_token: ${{ secrets.TOKEN }}
+        file: src/MiNET/linux-release.zip
+        asset_name: MiNET-linux-x64.zip
         tag: ${{ github.ref }}
-        release_name: MiNET-CobwebSMP 1.13.0.24 (1.21.50)
+        release_name: MiNET-VaKKuum 1.13.0.24 (1.21.50)
         body: ${{ github.event.head_commit.message }}
